@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="800" height="500" role="img" aria-label="Calculator results illustration">
+  <!-- Background warm -->
+  <rect width="800" height="500" fill="#FFF7ED" rx="20"/>
+  <!-- Calculator body -->
+  <rect x="250" y="60" width="300" height="380" rx="20" fill="white" stroke="#F4A261" stroke-width="2.5"/>
+  <!-- Screen area -->
+  <rect x="272" y="82" width="256" height="100" rx="12" fill="#FFF1E6"/>
+  <!-- Dollar amount on screen -->
+  <text x="400" y="140" text-anchor="middle" font-family="system-ui, monospace, sans-serif" font-size="40" font-weight="800" fill="#F4A261">$284.40</text>
+  <text x="400" y="162" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#9CA3AF">estimated monthly earnings</text>
+  <!-- Calculator buttons grid -->
+  <rect x="272" y="200" width="56" height="40" rx="8" fill="#F9FAFB" stroke="#E5E7EB" stroke-width="1.5"/>
+  <rect x="340" y="200" width="56" height="40" rx="8" fill="#F9FAFB" stroke="#E5E7EB" stroke-width="1.5"/>
+  <rect x="408" y="200" width="56" height="40" rx="8" fill="#F4A261"/>
+  <rect x="476" y="200" width="52" height="40" rx="8" fill="#F4A261"/>
+  <rect x="272" y="252" width="56" height="40" rx="8" fill="#F9FAFB" stroke="#E5E7EB" stroke-width="1.5"/>
+  <rect x="340" y="252" width="56" height="40" rx="8" fill="#F9FAFB" stroke="#E5E7EB" stroke-width="1.5"/>
+  <rect x="408" y="252" width="56" height="40" rx="8" fill="#F9FAFB" stroke="#E5E7EB" stroke-width="1.5"/>
+  <rect x="476" y="252" width="52" height="40" rx="8" fill="#F9FAFB" stroke="#E5E7EB" stroke-width="1.5"/>
+  <!-- Slider representation -->
+  <rect x="272" y="316" width="256" height="8" rx="4" fill="#E5E7EB"/>
+  <rect x="272" y="316" width="160" height="8" rx="4" fill="#F4A261"/>
+  <circle cx="432" cy="320" r="10" fill="#F4A261" stroke="white" stroke-width="2"/>
+  <rect x="272" y="348" width="256" height="8" rx="4" fill="#E5E7EB"/>
+  <rect x="272" y="348" width="100" height="8" rx="4" fill="#F4A261"/>
+  <circle cx="372" cy="352" r="10" fill="#F4A261" stroke="white" stroke-width="2"/>
+  <!-- Chart bars decorative left -->
+  <rect x="80" y="200" width="30" height="120" rx="6" fill="#F4A261" opacity="0.3"/>
+  <rect x="120" y="160" width="30" height="160" rx="6" fill="#F4A261" opacity="0.5"/>
+  <rect x="160" y="180" width="30" height="140" rx="6" fill="#F4A261" opacity="0.4"/>
+  <!-- Chart bars decorative right -->
+  <rect x="590" y="220" width="30" height="100" rx="6" fill="#F4A261" opacity="0.3"/>
+  <rect x="630" y="170" width="30" height="150" rx="6" fill="#F4A261" opacity="0.5"/>
+  <rect x="670" y="190" width="30" height="130" rx="6" fill="#F4A261" opacity="0.4"/>
+  <!-- Sparkle -->
+  <circle cx="130" cy="140" r="5" fill="#F4A261" opacity="0.6"/>
+  <circle cx="670" cy="140" r="4" fill="#F4A261" opacity="0.4"/>
+</svg>

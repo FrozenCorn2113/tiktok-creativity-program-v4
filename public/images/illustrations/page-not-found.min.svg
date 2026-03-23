@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="400" height="300" role="img" aria-label="Page not found illustration">
+  <!-- Background -->
+  <rect width="400" height="300" fill="#FFF7ED" rx="16"/>
+  <!-- Large 404 text -->
+  <text x="200" y="130" text-anchor="middle" font-family="system-ui, sans-serif" font-size="96" font-weight="800" fill="#F4A261" opacity="0.18">404</text>
+  <!-- Broken page icon -->
+  <rect x="140" y="60" width="120" height="150" rx="8" fill="white" stroke="#F4A261" stroke-width="2.5"/>
+  <!-- Page lines -->
+  <rect x="158" y="88" width="84" height="8" rx="4" fill="#F4A261" opacity="0.3"/>
+  <rect x="158" y="104" width="64" height="6" rx="3" fill="#F4A261" opacity="0.2"/>
+  <rect x="158" y="118" width="74" height="6" rx="3" fill="#F4A261" opacity="0.2"/>
+  <!-- Crack / broken element -->
+  <polyline points="170,140 185,155 175,170 195,185" stroke="#F4A261" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- X mark -->
+  <circle cx="240" cy="72" r="16" fill="#F4A261"/>
+  <line x1="233" y1="65" x2="247" y2="79" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+  <line x1="247" y1="65" x2="233" y2="79" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+  <!-- Search icon decoration -->
+  <circle cx="80" cy="180" r="22" fill="none" stroke="#F4A261" stroke-width="2.5" opacity="0.5"/>
+  <line x1="97" y1="197" x2="112" y2="212" stroke="#F4A261" stroke-width="2.5" stroke-linecap="round" opacity="0.5"/>
+  <!-- Stars/sparks -->
+  <circle cx="320" cy="90" r="4" fill="#F4A261" opacity="0.4"/>
+  <circle cx="340" cy="110" r="2.5" fill="#F4A261" opacity="0.3"/>
+  <circle cx="60" cy="120" r="3" fill="#F4A261" opacity="0.3"/>
+  <!-- Bottom text hint -->
+  <text x="200" y="248" text-anchor="middle" font-family="system-ui, sans-serif" font-size="13" fill="#9CA3AF" font-weight="500">Page not found</text>
+</svg>

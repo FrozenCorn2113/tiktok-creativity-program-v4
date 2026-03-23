@@ -1,0 +1,385 @@
+/* ─── Global Styles — TikTok Creativity Program ─────────────────────────────
+   Imported by globals.css after Tailwind directives.
+   Tokens are defined in tokens.css (imported in globals.css before this file).
+   ─────────────────────────────────────────────────────────────────────────── */
+
+/* ── Reset ─────────────────────────────────────────────────────────────────── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+/* ── Base ───────────────────────────────────────────────────────────────────── */
+html {
+  font-family: var(--font-sans);
+  background: var(--color-background);
+  color: var(--color-text);
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  min-height: 100svh;
+  background: var(--color-background);
+  color: var(--color-text);
+  line-height: var(--leading-body);
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ── Typography Base ────────────────────────────────────────────────────────── */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-sans);
+  color: var(--color-ink-strong);
+  margin: 0;
+}
+
+h1 {
+  font-size: var(--text-h1);
+  font-weight: 700;
+  line-height: var(--leading-h1);
+  letter-spacing: -0.025em;
+}
+
+h2 {
+  font-size: var(--text-h2);
+  font-weight: 700;
+  line-height: var(--leading-h2);
+}
+
+h3 {
+  font-size: var(--text-h3);
+  font-weight: 600;
+  line-height: var(--leading-h3);
+}
+
+h4 {
+  font-size: var(--text-h4);
+  font-weight: 600;
+  line-height: var(--leading-caption);
+}
+
+p {
+  margin: 0;
+  line-height: var(--leading-body);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+/* ── Selection ──────────────────────────────────────────────────────────────── */
+::selection {
+  background: var(--color-accent-soft);
+  color: var(--color-ink-strong);
+}
+
+/* ── Focus ──────────────────────────────────────────────────────────────────── */
+:focus-visible {
+  outline: none;
+  box-shadow: var(--focus-ring);
+  border-radius: var(--radius-sm);
+}
+
+/* ── Animation Keyframes ────────────────────────────────────────────────────── */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { transform: translateY(20px); opacity: 0; }
+  to   { transform: translateY(0);    opacity: 1; }
+}
+
+@keyframes fadeSlideUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0);    }
+}
+
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to   { opacity: 1; transform: scale(1);    }
+}
+
+@keyframes popIn {
+  0%   { opacity: 0; transform: scale(0); }
+  70%  {             transform: scale(1.1); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+@keyframes breathe {
+  0%, 100% { opacity: 0.7; transform: scale(1); }
+  50%       { opacity: 1;   transform: scale(1.015); }
+}
+
+@keyframes underlineGrow {
+  from { width: 0%; }
+  to   { width: 100%; }
+}
+
+@keyframes progressFill {
+  from { width: 0%; }
+  to   { width: var(--progress-width, 0%); }
+}
+
+@keyframes slideInRight {
+  from { transform: translateX(100%); opacity: 0; }
+  to   { transform: translateX(0);    opacity: 1; }
+}
+
+@keyframes arrowNudge {
+  0%, 100% { transform: translateX(0); }
+  50%       { transform: translateX(4px); }
+}
+
+/* ── Scroll Reveal Utilities ────────────────────────────────────────────────── */
+/* Applied by ScrollReveal component / IntersectionObserver hook.
+   GPU-composited (opacity + transform only). No layout-triggering props. */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition:
+    opacity 0.5s ease,
+    transform 0.5s ease;
+  transition-delay: var(--reveal-delay, 0s);
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Variant: fade only (no translate) */
+.reveal-fade {
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  transition-delay: var(--reveal-delay, 0s);
+}
+
+.reveal-fade.is-visible {
+  opacity: 1;
+}
+
+/* Variant: scale in */
+.reveal-scale {
+  opacity: 0;
+  transform: scale(0.97);
+  transition:
+    opacity 0.4s ease,
+    transform 0.4s ease;
+  transition-delay: var(--reveal-delay, 0s);
+}
+
+.reveal-scale.is-visible {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Stagger helper — apply --reveal-delay via inline style or data attr */
+.reveal-stagger > * {
+  opacity: 0;
+  transform: translateY(16px);
+  transition:
+    opacity 0.5s ease,
+    transform 0.5s ease;
+}
+
+.reveal-stagger.is-visible > * {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-stagger.is-visible > *:nth-child(1) { transition-delay: 0ms; }
+.reveal-stagger.is-visible > *:nth-child(2) { transition-delay: 75ms; }
+.reveal-stagger.is-visible > *:nth-child(3) { transition-delay: 150ms; }
+.reveal-stagger.is-visible > *:nth-child(4) { transition-delay: 225ms; }
+.reveal-stagger.is-visible > *:nth-child(5) { transition-delay: 300ms; }
+.reveal-stagger.is-visible > *:nth-child(6) { transition-delay: 375ms; }
+
+/* Respect prefers-reduced-motion — disable ALL animations */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .reveal,
+  .reveal-fade,
+  .reveal-scale,
+  .reveal-stagger > * {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .reveal-stagger.is-visible > * {
+    transition-delay: 0ms !important;
+  }
+}
+
+/* ── Illustration Placeholder ───────────────────────────────────────────────── */
+/* Breathing animation for illustration slots until real art arrives */
+.illustration-placeholder {
+  background: var(--color-surface-warm);
+  border: 1.5px dashed var(--color-border-strong);
+  border-radius: var(--radius-lg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text-subtle);
+  font-family: var(--font-sans);
+  font-size: var(--text-small);
+  font-weight: 500;
+  animation: breathe 4s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .illustration-placeholder {
+    animation: none;
+  }
+}
+
+/* ── Nav Underline Animation ────────────────────────────────────────────────── */
+.nav-underline {
+  position: relative;
+}
+
+.nav-underline::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0%;
+  height: 2px;
+  background: var(--color-primary);
+  border-radius: var(--radius-full);
+  transition: width 200ms ease;
+}
+
+.nav-underline:hover::after,
+.nav-underline.active::after {
+  width: 100%;
+}
+
+/* ── Accent Underline (Hero headlines) ──────────────────────────────────────── */
+.accent-underline {
+  position: relative;
+  display: inline-block;
+  z-index: 0;
+}
+
+.accent-underline::after {
+  content: '';
+  position: absolute;
+  left: 0.05em;
+  right: 0.05em;
+  bottom: 0.1em;
+  height: 0.3em;
+  border-radius: var(--radius-full);
+  background: var(--color-accent-soft);
+  z-index: -1;
+}
+
+/* ── Utility Classes ────────────────────────────────────────────────────────── */
+
+/* Reading progress bar */
+.reading-progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  background: var(--color-primary);
+  z-index: 100;
+  transition: width 100ms linear;
+  border-radius: 0 var(--radius-full) var(--radius-full) 0;
+}
+
+/* Surface patterns */
+.surface-card {
+  background: var(--color-background);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+}
+
+.surface-card:hover {
+  border-color: var(--color-primary);
+  box-shadow: var(--shadow-sm);
+}
+
+/* Step circle (numbered steps) */
+.step-circle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  background: var(--color-primary);
+  color: var(--color-ink-strong);
+  font-weight: 700;
+  font-size: var(--text-body);
+  font-family: var(--font-sans);
+  flex-shrink: 0;
+}
+
+/* Mono output (calculator results) */
+.mono-output {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  color: var(--color-ink-strong);
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: 'tnum';
+}
+
+/* Affiliate label */
+.affiliate-label {
+  font-family: var(--font-sans);
+  font-size: var(--text-caption);
+  font-weight: 500;
+  color: var(--color-text-subtle);
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+/* Scroll fade overlay (comparison table right edge on mobile) */
+.scroll-fade-right {
+  position: relative;
+}
+
+.scroll-fade-right::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 3rem;
+  background: linear-gradient(to right, transparent, rgba(255,255,255,0.9));
+  pointer-events: none;
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+}

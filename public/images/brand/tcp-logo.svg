@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <!--
+    TCP Logo — TikTok Creativity Program
+    Brand Architect: Vale
+    Concept: Rising bar chart + upward arrow — creator earnings growth
+    Colors: Ink #111827 background, Orange #F4A261 mark
+    Style: Flat geometric, no gradients, no shadows
+    Usage: Impact.com affiliate profile avatar — 400x400 PNG
+  -->
+
+  <!-- Background: rounded square, ink -->
+  <rect width="400" height="400" fill="#111827" rx="80"/>
+
+  <!-- Three ascending bars — bottom-anchored at y=336 -->
+
+  <!-- Bar 1: shortest -->
+  <rect x="60" y="236" width="72" height="100" fill="#F4A261" rx="10"/>
+
+  <!-- Bar 2: medium -->
+  <rect x="164" y="176" width="72" height="160" fill="#F4A261" rx="10"/>
+
+  <!-- Bar 3: tallest -->
+  <rect x="268" y="136" width="72" height="200" fill="#F4A261" rx="10"/>
+
+  <!-- Upward-right arrow above bar 3 -->
+  <!-- Arrow shaft -->
+  <line
+    x1="252" y1="128"
+    x2="332" y2="60"
+    stroke="#F4A261"
+    stroke-width="14"
+    stroke-linecap="round"
+  />
+  <!-- Arrow head left arm -->
+  <line
+    x1="332" y1="60"
+    x2="278" y2="56"
+    stroke="#F4A261"
+    stroke-width="14"
+    stroke-linecap="round"
+  />
+  <!-- Arrow head bottom arm -->
+  <line
+    x1="332" y1="60"
+    x2="336" y2="114"
+    stroke="#F4A261"
+    stroke-width="14"
+    stroke-linecap="round"
+  />
+
+</svg>

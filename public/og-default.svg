@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#FFF7ED"/>
+  <rect x="60" y="60" width="1080" height="510" rx="16" fill="white" stroke="#eadfd3" stroke-width="2"/>
+  <rect x="100" y="240" width="48" height="48" rx="12" fill="#f4a261"/>
+  <text x="124" y="271" font-family="system-ui,sans-serif" font-size="22" font-weight="800" fill="white" text-anchor="middle">TC</text>
+  <text x="170" y="260" font-family="system-ui,sans-serif" font-size="20" font-weight="700" fill="#101828">TikTok Creativity Program</text>
+  <text x="170" y="284" font-family="system-ui,sans-serif" font-size="15" fill="#667085">Practical creator monetization</text>
+  <text x="100" y="340" font-family="system-ui,sans-serif" font-size="36" font-weight="800" fill="#101828">Creator Rewards Guides,</text>
+  <text x="100" y="385" font-family="system-ui,sans-serif" font-size="36" font-weight="800" fill="#101828">Calculators &amp; Strategies</text>
+  <text x="100" y="430" font-family="system-ui,sans-serif" font-size="18" fill="#475467">Everything you need to monetize on TikTok.</text>
+</svg>
