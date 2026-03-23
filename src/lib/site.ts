@@ -2,7 +2,7 @@ export const siteConfig = {
   name: 'TikTok Creativity Program',
   description:
     'Practical guidance, calculators, and monetization strategies for TikTok creators.',
-  url: process.env.NEXT_PUBLIC_SITE_URL || 'https://tiktokcreativityprogram.com',
+  url: (process.env.NEXT_PUBLIC_SITE_URL || 'https://tiktokcreativityprogram.com').trim(),
   twitterHandle: '@tiktokcreativity',
 }
 
