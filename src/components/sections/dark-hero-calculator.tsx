@@ -5,8 +5,9 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useState, useMemo } from "react";
-import { BookOpen, BarChart2, Users, ArrowRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 
 export function DarkHeroCalculator() {
   const [views, setViews] = useState(500000);
@@ -40,7 +41,7 @@ export function DarkHeroCalculator() {
         </div>
 
         {/* Main layout — calculator left (3fr), quick links right (2fr) */}
-        <div className="grid grid-cols-1 lg:grid-cols-[3fr_2fr] gap-8 items-start mt-10">
+        <div className="grid grid-cols-1 lg:grid-cols-[3fr_2fr] gap-8 items-center mt-10">
 
           {/* Left — embedded calculator */}
           <div className="bg-[#1a2337] border border-white/10 rounded-2xl overflow-hidden">
@@ -159,50 +160,27 @@ export function DarkHeroCalculator() {
             </div>
           </div>
 
-          {/* Right — editorial quick nav */}
-          <div className="space-y-4">
-            {/* Featured stat cards */}
-            <div className="grid grid-cols-2 gap-3">
-              <div className="bg-[#1a2337] border border-white/10 rounded-xl p-4">
-                <div className="font-mono text-[2rem] font-bold text-[#F97316]">57</div>
-                <div className="text-[12px] text-gray-400 mt-0.5">Guides Published</div>
-              </div>
-              <div className="bg-[#1a2337] border border-white/10 rounded-xl p-4">
-                <div className="font-mono text-[2rem] font-bold text-[#F97316]">3</div>
-                <div className="text-[12px] text-gray-400 mt-0.5">Free Calculators</div>
-              </div>
-              <div className="bg-[#1a2337] border border-white/10 rounded-xl p-4 col-span-2">
-                <div className="text-[1rem] font-bold text-white">100% Free Forever</div>
-                <div className="text-[12px] text-gray-400 mt-0.5">Updated for 2026</div>
-              </div>
-            </div>
-
-            {/* Quick tools */}
-            <div className="bg-[#1a2337] border border-white/10 rounded-xl overflow-hidden">
-              <div className="px-4 py-3 border-b border-white/10">
-                <span className="text-[11px] font-bold uppercase tracking-widest text-gray-500">More Calculators</span>
-              </div>
-              {[
-                { Icon: BarChart2, title: "RPM by Country", href: "/calculators/rpm-by-country" },
-                { Icon: Users, title: "Follower Income Estimator", href: "/calculators/follower-income-estimator" },
-              ].map(({ Icon, title, href }) => (
-                <Link
-                  key={href}
-                  href={href}
-                  className="flex items-center gap-3 px-4 py-3.5 border-b border-white/5 hover:bg-white/5 transition-colors group"
-                >
-                  <Icon className="h-4 w-4 text-[#F97316] shrink-0" aria-hidden />
-                  <span className="flex-1 text-[14px] text-gray-300 font-medium group-hover:text-white transition-colors">{title}</span>
-                  <ArrowRight className="h-3.5 w-3.5 text-gray-600 group-hover:text-gray-400 transition-colors" />
-                </Link>
-              ))}
+          {/* Right — hero illustration */}
+          <div className="flex items-center justify-center lg:justify-end">
+            <div className="relative w-full max-w-[480px]">
+              {/* Subtle glow behind the image */}
+              <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-[#F97316]/10 to-transparent blur-2xl" />
+              <Image
+                src="/assets/brand-images/landpress-marketing-2.png"
+                alt="Creator analyzing TikTok earnings data"
+                width={480}
+                height={480}
+                className="relative w-full h-auto drop-shadow-2xl"
+                priority
+              />
+              {/* Floating badge */}
               <Link
-                href="/start-here"
-                className="flex items-center gap-3 px-4 py-3.5 hover:bg-white/5 transition-colors group"
+                href="/guides/creator-rewards-2026"
+                className="absolute bottom-6 left-1/2 -translate-x-1/2 flex items-center gap-2 bg-[#1a2337]/90 backdrop-blur-sm border border-white/10 rounded-full px-4 py-2 text-[13px] text-gray-300 font-medium hover:text-white hover:border-[#F97316]/40 transition-colors whitespace-nowrap"
               >
-                <BookOpen className="h-4 w-4 text-[#F97316] shrink-0" aria-hidden />
-                <span className="flex-1 text-[14px] text-gray-300 font-medium group-hover:text-white transition-colors">Start the Learning Path</span>
-                <ArrowRight className="h-3.5 w-3.5 text-gray-600 group-hover:text-gray-400 transition-colors" />
+                <span className="w-1.5 h-1.5 rounded-full bg-[#F97316] shrink-0" />
+                Start with the 2026 guide
+                <ArrowRight className="h-3.5 w-3.5 text-[#F97316]" />
               </Link>
             </div>
           </div>
