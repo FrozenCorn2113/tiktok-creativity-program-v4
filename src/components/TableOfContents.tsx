@@ -10,7 +10,7 @@ export type TocItem = {
 }
 
 type TableOfContentsProps = {
-  items: TocItem[]
+  items?: TocItem[]
   /** If true, renders as a sticky desktop sidebar (w-64). Default: false (inline). */
   sidebar?: boolean
 }
@@ -21,7 +21,7 @@ export default function TableOfContents({ items, sidebar = false }: TableOfConte
   const observerRef = useRef<IntersectionObserver | null>(null)
 
   useEffect(() => {
-    if (!items.length) return
+    if (!items || !items.length) return
 
     const headingIds = items.map((item) => item.id)
 
@@ -50,7 +50,8 @@ export default function TableOfContents({ items, sidebar = false }: TableOfConte
     return () => observerRef.current?.disconnect()
   }, [items])
 
-  if (!items.length) return null
+  // When rendered from MDX content without items prop, render nothing
+  if (!items || !items.length) return null
 
   const linkList = (
     <ul className="space-y-0.5">
