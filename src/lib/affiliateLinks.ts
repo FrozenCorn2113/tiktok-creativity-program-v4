@@ -14,8 +14,8 @@ export const affiliateLinks: Record<string, string> = {
 
   // TODO: Replace with affiliate link after approval — Expected: 30% for 1 year
   later: 'https://later.com/',
-  // TODO: Replace with affiliate link after approval — Expected: 25% monthly for 12 months
-  buffer: 'https://buffer.com/',
+  // Buffer — 25% monthly for 12 months
+  buffer: 'https://join.buffer.com/tik-tok-creativity-program',
   // TODO: Replace with affiliate link after approval (via ShareASale/CJ) — Expected: 30-50% tiered
   filmora: 'https://filmora.wondershare.com/',
   // Kit (formerly ConvertKit) — 50% recurring first 12 months; Bronze tier (10+ customers) = ongoing
@@ -91,8 +91,12 @@ export const affiliateLinks: Record<string, string> = {
   'obs-studio': 'https://obsproject.com/',
   // No affiliate program — hardware (use Amazon link instead)
   'elgato-stream-deck': 'https://www.elgato.com/stream-deck',
-  // No confirmed affiliate program
-  fillout: 'https://www.fillout.com/',
+  // Fillout — affiliate link via PartnerStack
+  fillout: 'https://try.fillout.com/tik-tok-creativity-program-zbzs',
+  // Wispr Flow — voice dictation affiliate link
+  'wispr-flow': 'https://ref.wisprflow.ai/tik-tok-creativity-program',
+  // Interact — quiz builder affiliate link
+  interact: 'https://get.tryinteract.com/tik-tok-creativity-program',
 
   // ── Ring Lights (Phase 1.5 Amazon product guides) ──
   'amazon-neewer-10-ring-light-b089nn7ks6': amz('B089NN7KS6'),
