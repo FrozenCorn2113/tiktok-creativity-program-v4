@@ -4,13 +4,5 @@
     "deploymentEnabled": {
       "main": true
     }
-  },
-  "redirects": [
-    {
-      "source": "/:path*",
-      "has": [{ "type": "host", "value": "www.tiktokcreativityprogram.com" }],
-      "destination": "https://tiktokcreativityprogram.com/:path*",
-      "permanent": true
-    }
-  ]
+  }
 }
