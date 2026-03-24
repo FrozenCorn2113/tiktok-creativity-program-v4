@@ -1,178 +1,70 @@
-# PROJECT: TikTok Creativity Program
+# TikTok Creativity Program
 
-**Pipeline:** full-creative
-**Sequence:** Atlas (setup) -> Christopher (research) -> Vale (brand) -> Scribe (content) -> Devan (build)
-**Owner:** Bernard
-**Created:** 2026-03-15
+## Repo
+- **Local path:** `/Users/bcarter/Desktop/Claude Agents/projects/tiktok-creativity-program`
+- **Remote:** `FrozenCorn2113/tiktok-creativity-program`
+- **Deploy:** Vercel auto-deploy from main
+- **Domain:** tiktokcreativityprogram.com
 
----
+## Tech Stack
+Next.js (App Router), Tailwind CSS, MDX guides, Resend email + Supabase subscribers
 
-## Objective
+## Accounts
+- Google Analytics: G-9YX5PRYTJJ (property 507035708)
+- Google Search Console: configured
+- Amazon Associates: tag `tiktokcreatpr-20`
+- Resend: transactional + welcome emails (RESEND_API_KEY via Vercel integration, free tier)
+- Supabase: email_subscribers table (lead_magnet, source columns) for subscriber storage + segmentation
 
-Transform tiktokcreativityprogram.com from a functional-but-ugly SEO/affiliate content site into a polished, monetized, production-grade resource for TikTok creators. Site already has 57 MDX guides, 3 calculators, affiliate redirects, and ConvertKit integration. Needs: research-informed monetization strategy, proper brand identity, improved content, clean codebase, and deployment.
+## Key Files
+- `content/guides/` — all MDX guide content
+- `src/app/` — Next.js App Router pages
+- `src/lib/mdx.ts` — MDX processing and frontmatter
+- `src/data/nicheData.ts` — niche page data and slug mappings
+- `research/` — keyword and competitor research files
+- `content/email-sequences/` — email sequences (sent via Resend)
+- `social/` — social content templates and calendars
 
-## Revenue Model
+## Autonomy
+- **Owner:** Bernard
+- **Level:** Full — route agents, review, ship. Only escalate blockers to Brett.
 
-- **Primary:** Affiliate commissions (Amazon gear, Canva, Fiverr, Mavely + new programs from research)
-- **Secondary:** Premium newsletter (waitlist exists, not yet launched)
-- **Tertiary:** Ad network (once traffic thresholds met)
-- **Future:** Digital products (templates, courses)
-- **No auth, no payments, no gated content** (email capture only)
+## Rules
+- The ONLY valid clone is this directory. Extra clones at `FrozenCorn2113/tiktok-creativity-program` and `design-system/tiktok-creativity-program` are archived — do NOT use them.
+- TCP is handed off to autonomous operation. Agents run it, Brett checks in when he wants.
+- No text in TCP images unless specifically asked.
+- Amazon affiliate links use the AffiliateLink component with tag `tiktokcreatpr-20`.
+- Exolyt has no affiliate program — removed from TCP tool list.
+- Autonomous content pipeline: auto-post to all socials, weekly analytics review, no approval gates.
+- Vercel auto-deploys from git pushes — no manual deploy needed. Verify local HEAD matches production before pushing.
 
-## What Exists
+## Active
+<!-- Bernard maintains this section. Current tasks in flight. -->
+- Week 1 social posts: scheduled (5 of 7), blocked on Zernio account connections
+- **Internal linking: READY for Devan** — Add 20 priority links from Christopher's audit (see Vault/Inbox/2026-03-23-tcp-research.md)
+- **Guide refreshes: READY for Devan** — Update tiktok-algorithm-2026 (ownership/local feed) + tiktok-search-seo-optimize-views (Google Search integration)
+- **New guide: Facebook Creator Fast Track vs TikTok Rewards** — READY for Scribe (timely, Meta launched March 18)
+- **New guide: TikTok Creator Health Rating** — READY for Scribe
+- **Resend + Supabase email integration: IN PROGRESS (Devan)** — Supabase table, Resend client, welcome email, download gating, API route updates
+- 88 guides deployed to live site, all images verified working
+- Growth plan delivered: see Vault/Inbox/2026-03-23-tcp-growth-plan.md
+- Reddit outreach: research complete, READY for Ricky to begin engagement (verify subreddit rules first)
+- Pinterest template creation: READY for Vale
+- Affiliate link activation: BLOCKED on Brett applying to 8 programs
+- Week 1 social posts: scheduled (5 of 7), blocked on Zernio account connections
 
-- Next.js 14 + TypeScript + Tailwind + MDX
-- 57 MDX guides (eligibility, earnings, niches, regional)
-- 3 interactive calculators (earnings, RPM, follower income)
-- ConvertKit email capture (inline + popup)
-- Affiliate redirect system (`/go/[slug]/`)
-- GA4 analytics
-- 4 brand illustrations (orange/black/white line-art) at `assets/brand-images/`
-- Comprehensive audit at `docs/rebuild/AUDIT.md`
-- 3-phase rebuild plan at `docs/rebuild/PLAN.md`
-- Strategy doc at `docs/strategy.md`
-
-## What's Wrong
-
-- Design is poor ("disgusting" per Brett)
-- 20+ dead Vite-era files polluting codebase
-- Broken ToC regex, dead Unsplash API for images, missing og-default.png
-- No tests, no ESLint config, strict mode off
-- No rate limiting on API endpoints
-- Placeholder product/resource pages
-- CommentSection is fake
-- Monetization strategy is basic -- needs research-driven optimization
-
----
-
-## Pipeline Phases
-
-### Phase 0: Atlas -- Project Setup
-**Status:** SKIP (PROJECT.md created by Bernard directly; project directory and docs already exist)
-
-### Phase 1: Christopher -- Research & Intelligence
-**Status:** LOCKED
-**Brief:** `Bernard/briefs/tcp-christopher-brief.md`
-**Deliverable:** `projects/tiktok-creativity-program/RESEARCH.md`
-**Success Criteria:**
-- Competitive landscape mapped (5+ competitor sites analyzed)
-- Top affiliate programs identified with commission rates
-- Ad network options with traffic thresholds documented
-- SEO keyword gaps identified (10+ opportunities)
-- Email monetization strategies researched
-- Content-to-revenue patterns documented from similar sites
-
-### Phase 2: Vale -- Brand & Visual Direction
-**Status:** LOCKED
-**Brief:** `Bernard/briefs/tcp-vale-brief.md`
-**Deliverable:** `projects/tiktok-creativity-program/BRAND.md` (1107 lines) + `design-system/tiktok-creativity-program/MASTER.md` (676 lines)
-**Success Criteria:**
-- Color palette formalized (extending orange/black/white) -- DONE: #F4A261 primary, full warm neutral system, WCAG contrast notes
-- Typography system defined -- DONE: Manrope + JetBrains Mono, full type scale with mobile/desktop
-- Component design direction (cards, CTAs, navigation) -- DONE: 10+ components with CSS specs and 21st.dev references
-- Illustration style guide for generating more images -- DONE: 12 scene briefs + AI generation prompt template
-- Page layout templates (guide page, calculator page, landing page, hub page) -- DONE: 6 page types with section-by-section structure
-- Brett approves the direction before Scribe/Devan proceed -- PENDING
-
-### Phase 3: Scribe -- Content
-**Status:** LOCKED
-**Brief:** `Bernard/briefs/tcp-scribe-brief.md`
-**Deliverable:** `projects/tiktok-creativity-program/content/` (~25 files) + `CONTENT_DELIVERABLES.md` manifest
-**Success Criteria:**
-- 5 reusable content templates (guide, roundup, comparison, landing page, email)
-- 8 new content pieces (3 roundups, 4 guides, 1 landing page)
-- 5-email ConvertKit welcome sequence
-- Homepage copy blocks for all 5 sections
-- Product/resource page copy (real, not placeholder)
-- All content matches BRAND.md voice/tone
-- All affiliate links labeled per strategy.md
-- No unverified facts presented as true
-- Templates detailed enough for autonomous agent production
-- CONTENT_DELIVERABLES.md manifest listing all files
-
-### Phase 4: Devan -- Build & Deploy
-**Status:** READY
-**Brief:** `Bernard/briefs/tcp-devan-brief.md`
-**Build Plan:** `projects/tiktok-creativity-program/BUILD_PLAN.md` (Devan-authored, 317 lines)
-**Deliverable:** Production-ready site on Vercel
-**Success Criteria:**
-- All dead Vite code removed
-- New brand/design implemented from Vale's BRAND.md + MASTER.md
-- All bugs from AUDIT.md fixed
-- Scribe's 7 new guides + homepage/product/resource copy integrated
-- 7 new affiliate redirect slugs added
-- Site feels interactive and animated (scroll reveals, micro-interactions, smooth transitions)
-- All animations respect prefers-reduced-motion
-- No animation libraries (CSS transitions + IntersectionObserver only)
-- No text-white on orange backgrounds (WCAG)
-- `npm run build` passes clean, `npm run typecheck` zero errors, `npm run lint` zero warnings
-- Lighthouse: SEO >= 95, Performance >= 85, Accessibility >= 90
-- Mobile: no horizontal scroll at 390px, all tap targets >= 48px
-- Deployed to Vercel
-
----
-
-## Quality Gates
-
-| Gate | Between | Bernard Reviews |
-|------|---------|-----------------|
-| G1 | Christopher -> Vale | Research quality, completeness, actionability |
-| G2 | Vale -> Scribe | Brand direction alignment, illustration guidance quality |
-| G3 | Scribe -> Devan | Content quality, proof standards, monetization rule compliance |
-| G4 | Devan -> Delivery | Build quality, design fidelity, deployment, performance |
-
----
+## Pending Review
+<!-- Agents add completed deliverables here. Bernard reviews and routes next. -->
+- **What:** Resend + Supabase email integration — Resend client, branded welcome email template, both API routes updated to send welcome emails, EmailSignupForm updated with leadMagnet prop, all 4 resource pages wired with lead magnet names, SQL migration for email_subscribers table
+- **Where:** `src/lib/resend.ts`, `src/lib/email/welcome-template.ts`, `src/lib/email/send-welcome.ts`, `src/app/api/email/route.ts`, `src/app/api/newsletter/route.ts`, `src/components/EmailSignupForm.tsx`, `supabase/migrations/001_create_email_subscribers.sql`
+- **Status:** READY FOR REVIEW
+- **BLOCKER:** The `email_subscribers` table must be created in Supabase before this works. Run the SQL in `supabase/migrations/001_create_email_subscribers.sql` via the Supabase SQL Editor (project: tpihpenmsiojzznpcmcr). I could not authenticate to the Supabase CLI to run it remotely.
+- **Note:** Resend `from` address is `hello@tiktokcreativityprogram.com` — the domain must be verified in Resend dashboard for emails to send. If not yet verified, Resend will reject sends gracefully (the API route still succeeds, email just doesn't go out).
 
 ## Work Log
+- [2026-03-23] Scribe — Search views SEO guide written + merged (old duplicate deleted). Bernard LOCKED.
 
-| Date | Agent | Action | Verdict |
-|------|-------|--------|---------|
-| 2026-03-15 | Bernard | PROJECT.md created, Christopher brief written, pipeline defined | -- |
-| 2026-03-15 | Bernard | Routing Christopher for Phase 1 research | ASSIGNED |
-| 2026-03-15 | Christopher | Phase 1 research delivered -- RESEARCH.md (557 lines, 6 areas, 7 competitors, ~15 affiliate programs, 20 keyword opportunities) | COMPLETE |
-| 2026-03-15 | Bernard | G1 Review -- research meets all 7 success criteria. Aligned to objective, covers all 6 areas substantively, UNVERIFIED tags used correctly, actionable recommendations throughout. Clear for Vale handoff. | LOCKED |
-| 2026-03-15 | Bernard | Vale brief written, routing Phase 2 brand direction | ASSIGNED |
-| 2026-03-15 | Vale | Phase 2 brand direction delivered -- BRAND.md (1107 lines) + MASTER.md (676 lines). Color palette, typography, 12 illustration briefs, 10+ component specs with CSS, 11 verified 21st.dev references, 6 page layouts, WCAG contrast analysis, ad-safe design notes. | COMPLETE |
-| 2026-03-15 | Bernard | G2 Review -- brand direction exceeds all 6 success criteria. Comprehensive, implementation-ready, aligned to research findings. Two-document approach (BRAND.md + MASTER.md) gives both Scribe and Devan clear references. 21st.dev components verified. Illustration prompt template and 12 scene briefs cover all page types. One note: Brett approval still pending on visual direction. | LOCKED |
-| 2026-03-15 | Bernard | Scribe brief written -- 5 deliverable groups, ~25 files, repeatable template system for autonomous operation. Routing Phase 3 content. | ASSIGNED |
-| 2026-03-15 | Scribe | Phase 3 content delivered -- 18 files: 5 templates, 7 new guides, 1 email sequence, 1 homepage copy, 2 page copies, 1 manifest. CONTENT_DELIVERABLES.md tracks everything. | COMPLETE |
-| 2026-03-15 | Bernard | G3 Review -- content passes all 5 review questions. Voice matches BRAND.md. Affiliate CTAs correctly placed per strategy.md (no CTAs in FAQs, eligibility lists, calculator outputs). Templates structured for autonomous agent reuse. 10 UNVERIFIED items flagged honestly and catalogued. Homepage copy aligns with Vale's 7-section layout. One note: total file count is 18 not 25 (brief overestimated). Quality is high. | LOCKED |
-| 2026-03-15 | Bernard | Devan brief written -- clean styling rebuild with animation/interaction directive from Brett. BUILD_PLAN.md referenced. All open questions answered. Routing Phase 4 build. | ASSIGNED |
-| 2026-03-15 | Devan | Phase 4 Step 1 (Foundation) delivered -- tailwind.config.ts, tokens.css, global.css, globals.css, layout.tsx | COMPLETE |
-| 2026-03-15 | Bernard | Phase 1 Checkpoint PASS -- all 18 hex values match Vale's spec, 13 animation keyframes, scroll reveal system (4 variants), prefers-reduced-motion block, dual token system aligned. Minor notes: duplicate font loading (import + link tag), h4 leading variable name. | PASS |
-| 2026-03-15 | Devan | Phase 4 Step 2 (Components) delivered -- 28 components (20 restyled, 8 new) | COMPLETE |
-| 2026-03-15 | Bernard | Phase 2 Checkpoint PASS -- 6 key components verified against BRAND.md specs. Button WCAG correct (ink-strong on orange). Navbar has scroll shadow, active underline, dropdown, mobile drawer. Footer 4-col grid with affiliate disclosure. CalloutBox 4 variants with correct semantic colors and Lucide icons. ComparisonTable has sticky first column, winner row highlight, scroll-fade-right. TrustBar has countUp with IntersectionObserver and prefers-reduced-motion check. TableOfContents has sticky sidebar (desktop) + accordion (mobile) with orange dot active indicator. All animations CSS-only, no libraries. | PASS |
-| 2026-03-15 | Devan | Phase 4 Step 3 (Pages) delivered -- 19 files, 15 pages | COMPLETE |
-| 2026-03-15 | Bernard | Phase 3 Checkpoint PASS -- 8 page files verified. All 6 homepage sections present with ScrollReveal + stagger. Guide detail: max-w-prose, sticky ToC sidebar, mobile accordion, RelatedGuides, no old cruft. Start Here: separate layout, logo-only header. Calculator: mono-output/font-mono for numbers, zero affiliate CTAs. Resources: affiliate disclosure top+bottom, every affiliate link has "Affiliate" label. Minor notes: (1) homepage pillar icons use emoji not Lucide, (2) earnings-calculator detail page missing ScrollReveal mount. | PASS |
-| 2026-03-15 | Devan | Phase 4 Step 4 (Content Integration) delivered -- 7 new guides moved to production, TrustBar updated to 64, emoji pillar icons replaced with Lucide, ScrollReveal added to earnings calculator page, 104 static pages, 0 errors, commit 9f4d52dc | COMPLETE |
-| 2026-03-15 | Bernard | G4 FINAL REVIEW -- SHIP. 8 files verified. (1) Brand alignment: all pages use design tokens, warm palette, Manrope type, no raw hex outside token system. (2) Content integration: 64 MDX guides in content/guides/, frontmatter correct, MDX components rendering. (3) Homepage: all 6 Vale sections, Lucide pillar icons (CheckCircle, Send, DollarSign, Wrench), ScrollReveal + stagger, accent-underline hero. (4) Guide detail: max-w-prose, sticky ToC sidebar, mobile accordion, RelatedGuides, JSON-LD, no old cruft. (5) Affiliates: all 7 new slugs in affiliateLinks.ts with URLs, /go/[slug] route handler present. (6) Calculators: JetBrains Mono via mono-output + font-mono, zero affiliate CTAs. (7) Start Here: separate layout, logo-only header. (8) Build: 104 pages, 0 errors. (9) No emoji icons anywhere in src/. (10) No blocking issues. Non-blocking notes: affiliate URLs are placeholder direct links (need real tracking URLs before launch), best-microphones-under-100.mdx has "Deliverable summary" section that reads like internal notes. | SHIP |
-| 2026-03-15 | Vale | BRAND.md v2.0 rewrite delivered -- 792 lines, 72-item Mandatory Implementation Checklist, implementation-enforced spec. Addresses v1.0 failure (build scored 10%). Every item screenshot-verifiable with copy-pasteable JSX, exact Tailwind classes, and explicit illustration placements. | COMPLETE |
-| 2026-03-15 | Bernard | G2 Review (v2.0) -- BRAND.md v2.0 passes all 7 review criteria. 72-item checklist is screenshot-verifiable and implementation-specific. Illustration placements explicit (file path, page, section, container specs, alt text). 8 21st.dev components specified with URLs and customization instructions. Color/typography/component direction appropriate for TikTok creator audience. Spec is implementable as written. Minor notes carried to Devan brief: (1) countUp needs custom hook not library, (2) calculator preview derives from calculator page spec, (3) guide illustration matching needs utility function. | LOCKED |
-| 2026-03-15 | Vale | Redesign v3 delivered -- 4-artifact handoff per HANDOFF_FORMAT.md: BRAND.md (86 lines), tokens.json (119 lines), PAGE_SPECS.md (755 lines), IMPLEMENTATION_CHECKLIST.md (132 items). Uses Web Builder Toolkit standards. Aceternity Spotlight hero, 3 Aceternity components, 3 Magic UI components, 3 21st.dev section components. All 4 brand images placed with exact dimensions/sections. 4 generated image prompts. 7 page types specified section-by-section. | COMPLETE |
-| 2026-03-15 | Bernard | G2 Review (v3 redesign) -- LOCKED. All 8 review criteria pass. (1) Format: 4 artifacts match HANDOFF_FORMAT.md exactly. BRAND.md 86 lines (under 300 cap). tokens.json valid, machine-readable. (2) Component specificity: every section names exact library + component + install command + Tailwind classes. No vague references. (3) Image coverage: all 4 brand images have page/section/dimensions/alt-text placements. 4 generated image prompts with style prefix. Guide image requirements defined (unique hero + thumbnail + 3-6 inline). (4) Hero: Aceternity Spotlight + staggered word reveal + warm bg + brand illustration. Passes 3-second test. (5) Checklist: 132 items, all screenshot-verifiable, no vague items. Source URL documentation required for every third-party component. (6) WCAG: no white-on-orange, contrast ratios documented, onPrimary token in JSON, touch targets specified, prefers-reduced-motion required. (7) Implementability: zero interpretation required -- copy-pasteable classes, file paths, animation params, mobile behavior per section. (8) First impression: creator-native, not generic. Warm palette + animated hero + segmented entry + dark calculator section. | LOCKED |
-| 2026-03-15 | Scribe | Phase 3 content delivered (v3 redesign) -- CONTENT.md with 34 content slots filled for PAGE_SPECS.md. All homepage, guide footer, start-here, 404, and footer copy. stat-creators-count flagged UNVERIFIED with fallback. | COMPLETE |
-| 2026-03-15 | Bernard | G3 Review (v3 redesign) -- LOCKED. All 34 PAGE_SPECS.md slots filled, zero gaps. Voice matches BRAND.md (warm, direct, creator-native). Humanizer check passed (zero AI vocabulary, no pattern violations). Hero headline "Everything TikTok Won't Tell You About Getting Paid" passes 2-second hook test. All CTAs action-specific (no generic "Learn More"). Creator authenticity strong (uses qualified views, RPM, mirrors real creator frustrations). Proof standards met (UNVERIFIED tag on creator count). stat-creators-count decision: use fallback "Updated for 2026" as third trust stat. Non-blocking notes for Devan: (1) verify actual guide count at build time (57 in copy vs 64 in v2 build), (2) update homepage-hero-badge to match real count, (3) third trust bar icon should be Calendar or RefreshCw instead of Users. | LOCKED |
-| 2026-03-15 | Bernard | Scribe brief written (tcp-scribe-brief-v2.md) -- homepage copy slots, guide intro hooks, CTA copy, brand voice alignment, humanizer requirement. Devan brief written (tcp-devan-brief-v3.md) -- clean rebuild from 4 artifacts, build checkpoint sequence, visual verification, component install-not-rebuild rule. Routing Phase 3 (Scribe) and Phase 4 (Devan, after Scribe). | ASSIGNED |
-| 2026-03-15 | Bernard | Build Phase 2 Checkpoint RE-REVIEW -- 7 fixes visually verified via screenshots (localhost:3004). VERDICT: PASS. Fix-by-fix: (1) Guides listing /guides -- cards rendering in 3-col grid with category badges, titles, descriptions, read times, "Read guide" links. Filter tabs (All/Eligibility/Application/Earnings/Tools) present. PASS. (2) Guide page header -- two-column layout confirmed on /guides/best-analytics-tools-tiktok: left col has breadcrumb, category badge, title, description, date/read-time; right col has category-matched illustration (tools category -> landpress-marketing-3.png). PASS. (3) Calculator page header -- two-column on /calculators/earnings-calculator: left col has breadcrumb, "Interactive tool" badge, title, description; right col shows landpress-marketing-hero.png illustration. PASS. (4) Calculator "What affects your results?" section -- visible below FAQ, covers RPM, qualified views, Additional Reward bonus with contextual links. PASS. (5) 404 page -- landpress-marketing-4.png illustration (woman sitting with phone/shopping cart), "Page not found" heading, helpful copy, two CTAs (Back to home, Browse guides). PASS. (6) Trust bar -- shows "64 Guides", "3 Free Calculators", "Updated 2026" (no comma). PASS. (7) Content pillar icons -- Lucide icons (Check, BookOpen, DollarSign, Wrench) with text-[#F4A261] orange color on bg-[#FFE9D5] background. PASS. (8) Bonus: Guide ToC -- "ON THIS PAGE" sidebar on left side with section links, content on right. PASS. All 8 items confirmed visually. | PASS |
-| 2026-03-15 | Bernard | Build Phase 3 Checkpoint (Pages) -- VISUAL VERIFICATION via localhost:3004 screenshots at 1280px and 390px. VERDICT: PASS. (1) Homepage: hero two-col with illustration, eyebrow pill, H1, subtitle, 2 CTAs, gradient bg. Trust bar shows 64/3/2026 correct. All 6 below-fold sections present (content pillars, calculator preview, featured guides, email capture) with ScrollReveal animations. (2) Guide page /guides/best-analytics-tools-tiktok: two-col header with category illustration (landpress-marketing-3.png), breadcrumbs with chevrons, category badge, meta row (clock+calendar icons), sticky ToC left ("ON THIS PAGE"), article prose right max-w-prose, comparison table, inline email CTA, "Related guides" grid at bottom. (3) Calculator /calculators/earnings-calculator: two-col header with illustration, two-panel layout, $57.40 in mono font, "What affects your results?" section with prose+guide links below calculator, "Related calculators" 2-card grid (RPM by Country, Follower Income Estimator). (4) Guides listing /guides: header with breadcrumb, title, description. Filter tabs (All/Eligibility/Application/Earnings/Tools). 3-col card grid with category badges, descriptions, read times, "Read guide" chevron links. (5) 404 page: landpress-marketing-4.png illustration, "Page not found" heading, descriptive copy, "Back to home" primary + "Browse guides" ghost CTAs. No illustration-placeholder div. (6) Mobile 390px: hero stacks correctly, illustration hidden, CTAs accessible. Guide header stacks, ToC collapses to accordion. Calculator stacks. 404 stacks with illustration visible. Non-blocking notes: (N1) Trust bar clips third stat "Updated 2026" at 390px -- flex gap-8 too wide for mobile, spec H7 says grid-cols-3, implementation uses flex. Devan should switch to grid-cols-3 on mobile. (N2) Reading progress bar present in code (progressbar role) but not visually confirmable in headless -- needs manual check. | PASS |
-| 2026-03-15 | Bernard | G4 FINAL REVIEW (v2.0 pipeline) -- VISUAL VERIFICATION via Puppeteer screenshots at 1280px desktop and 390px mobile across 6 page types (14 screenshots total). VERDICT: SHIP. FINDINGS BY CATEGORY: (1) VISUAL: Homepage hero two-col with landpress-marketing-hero.png illustration right, eyebrow "Free Guide" pill, H1 display text, subtitle, 2 CTAs (Start here primary + Browse guides ghost), gradient bg from-white to-warm. Trust bar 3 stats (64 Guides / 3 Free Calculators / Updated 2026) with countUp animation, SSR-safe initial render. Content pillars 4-card grid with Lucide icons (Check, BookOpen, DollarSign, Wrench) on orange-soft bg. Calculator preview with $57.40 in mono. Featured guides 3-card grid with category badges. Email capture two-col with landpress-marketing-4.png. Footer white bg, 4 columns, affiliate disclosure. (2) GUIDE PAGE: Two-col header with category illustration (landpress-marketing-3.png), breadcrumbs with ChevronRight, category badge, meta row. Sticky ToC left ("ON THIS PAGE"), article prose max-w-prose right. Callout boxes rendering. Comparison table present. Mobile: ToC collapses to "On this page" accordion. (3) CALCULATOR: Two-col header with landpress-marketing-hero.png. Two-panel calculator with mono font outputs ($57.40). Slider with orange fill. "What affects your results?" section present below calculator. Mobile stacks correctly. (4) GUIDES LISTING: Breadcrumbs, title, description. Filter tabs (All/Eligibility/Application/Earnings/Tools). 3-col card grid with category badges, descriptions, read times, "Read guide" chevron links. (5) 404 PAGE: landpress-marketing-4.png illustration (creator with phone/shopping cart), "Page not found" heading, helpful copy, two CTAs. No illustration-placeholder div. (6) MOBILE 390px: Hero stacks single-col, illustration hidden, CTAs accessible. Trust bar 3-col grid fits. Content pillars 2-col. Calculator stacks. Guide header stacks, ToC accordion. (7) BRAND ALIGNMENT: Manrope + JetBrains Mono via next/font/google in layout.tsx. All 18 color tokens present. No white-on-orange anywhere. Lucide icons throughout (13 component files). No emoji icons in src/. cursor-pointer on 15 component files. prefers-reduced-motion in 3 files (TrustBar, ScrollReveal, global.css). (8) CONTENT: 64 MDX guides in content/guides/. Frontmatter correct. MDX components (CalloutBox, ComparisonTable, QuickPickBox) rendering. "Deliverable summary" section REMOVED from best-microphones-under-100.mdx. (9) AFFILIATES: 14 slugs in affiliateLinks.ts. /go/[slug] route handler with redirect + logging. rel="noopener noreferrer sponsored" on affiliate components. Affiliate disclosure in Footer. (10) BUILD: npm run build clean (0 errors). npm run typecheck clean (0 errors). npx next lint zero warnings. (11) CHECKLIST SPOT-CHECK (15 items): G1 PASS (Manrope next/font/google). G2 PASS (JetBrains Mono next/font/google). G4 PASS (no white on orange). G8 PASS (no emoji, Lucide only). H2 PASS (hero two-col). H5 PASS (hero illustration). H7 PASS (trust bar grid-cols-3 mobile). H9 PASS (correct stats). H15 PASS (email two-col with illustration). A3 PASS (guide header illustration). A5 PASS (sticky ToC + max-w-prose). C3 PASS (calculator header illustration). C10 PASS (What affects section). E3 PASS (404 illustration). P1 PASS (all 4 brand images used). NON-BLOCKING NOTES: (N1) Affiliate URLs remain placeholder direct links -- need real tracking URLs before launch. (N2) illustration-placeholder CSS class still defined in global.css but not used in any component -- dead CSS, minor cleanup. (N3) Reading progress bar component exists but visual confirmation requires manual browser check. | SHIP |
-| 2026-03-16 | Bernard | BUSINESS MODEL v2 APPROVED by Brett. Full v4 pipeline executing autonomously. Vale brief written (tcp-vale-brief-v4.md). Routing Vale for Phase 2 brand revision -- remove Pro/pricing, add affiliate recommendation cards, email capture components, Tools/Resources page, affiliate disclosure. tokens.json LOCKED. | ASSIGNED |
-| 2026-03-16 | Vale | Phase 2 v4 brand revision delivered -- BRAND.md updated (504 lines, 6 new components with full Tailwind specs, reference analysis, 46-item mandatory checklist). PAGE_SPECS.md revised (927 lines, 7 page types, Tools/Resources page fully specified). IMPLEMENTATION_CHECKLIST.md revised (211 items, 79 NEW v4 items). 2 new images generated (tools hero, email capture illustration). All Pro/pricing elements removed. | COMPLETE |
-| 2026-03-16 | Devan | Phase 4 v4 build delivered -- 24 files, 8 new components, /tools page, page modifications, 107 pages, 0 errors, 0 lint warnings. Commit bb04f7cb. | COMPLETE |
-| 2026-03-16 | Bernard | G4 Review Round 1 -- REVISION NEEDED. Visual verification via Playwright screenshots at 1280px + 375px across 6 page types. 21 items PASS. 3 blocking issues: (1) Nav "Resources" -> should be "Tools" linking to /tools. (2) Calculator missing Section 4b. (3) Legacy /products/* pages with premium language. | REVISION NEEDED |
-| 2026-03-16 | Devan | G4 Revision -- all 3 fixes applied: (1) Nav updated Resources->Tools linking to /tools. (2) CalculatorSection4b component created with EmailCaptureInline + share buttons + AffiliateCardInline, added to all 3 calculator pages. (3) /products/ directory deleted (4 pages removed). Build: 103 pages, 0 errors. | COMPLETE |
-| 2026-03-16 | Bernard | G4 Review Round 2 -- SHIP. Visual verification via Playwright screenshots. (1) Nav: "Tools" link visible, links to /tools. PASS. (2) Calculator /calculators/earnings-calculator: Section 4b fully renders -- EmailCaptureInline ("Get a detailed breakdown emailed to you") with orange bg, email input, "Get It Free" button visible. Share buttons ("Share on X" + "Copy Link") visible. AffiliateCardInline (Exolyt) with "Affiliate" label, "Best for" badge, "Try Exolyt" CTA visible. PASS. (3) No-Pro audit: grep across src/app/ shows zero site-tier Pro language. Remaining "Pro"/"pricing" references are product names (CapCut Pro) and editorial tool descriptions -- acceptable. /products/ directory confirmed deleted. PASS. Build: 103 pages, 0 errors, 0 lint warnings. No white-on-orange. Lucide icons only. Source URL comments present on all new components. All 3 revision items resolved. | SHIP |
-| 2026-03-16 | Scribe | Phase 3 v4 content delivered -- CONTENT.md (1125 lines). All PAGE_SPECS.md slots filled. Tools/Resources page: 25 tool reviews across 8 categories. 6 lead magnet email capture forms. 5-email welcome sequence. 4 affiliate recommendation templates. 4 inline email CTA variants. Exit intent popup copy for 3 calculators. Calculator context card copy. Affiliate disclosure + policy page copy. All pricing tagged [UNVERIFIED]. Humanizer applied. | COMPLETE |
-| 2026-03-16 | Bernard | G3 Review (v4) -- LOCKED. All 10 success criteria met. (1) Every PAGE_SPECS.md slot filled -- hero badge "100% Free Resource", headline "The Real Guide to Getting Paid by TikTok", CTAs match v4 spec. (2) 25 tool reviews across 8 categories, editorial tone, "Best for" targeting, 1 Editor's Pick per category. (3) 5-email welcome sequence complete (Days 0/2/5/7/10), affiliate touchpoints in emails 3 and 5 (Exolyt, CapCut Pro). (4) All 6 lead magnets have headline + value prop + button text + thank-you. (5) 4 reusable affiliate templates (problem-solve, comparison, quick mention, end-of-guide). (6) 4 inline CTA variants (eligibility, RPM, tools, end-of-guide). (7) Voice is warm/direct/creator-native -- humanizer check passes. Zero AI vocabulary. (8) Zero Pro/pricing language. (9) UNVERIFIED tags on all tool pricing + niche RPM data + regional requirements. (10) Structured for direct integration with slot IDs. Tool data in consistent key-value format. Non-blocking: stat-creators-count still uses fallback "Updated for 2026" (no real data yet). | LOCKED |
-| 2026-03-16 | Bernard | G2 Review (v4) -- LOCKED. All 10 success criteria met. (1) Pro/pricing removed throughout (no-Pro audit items 169-175). (2) Tools/Resources page fully specified with 7 sections, category tabs, affiliate card grid. (3) AffiliateRecommendationCard inline+grid variants with full JSX and Tailwind classes. (4) EmailCaptureInline, EmailCapturePopup, LeadMagnetPreviewCard all specified with copy-pasteable code. (5) Homepage hero revised: "free resource" framing, calculator-first CTA, trust bar with "100% Free Forever". (6) Guide pages: AffiliateDisclosure below breadcrumb, affiliate card after 2nd H2, email capture after 3rd H2. (7) Calculator: all features free, results section adds email+share+affiliate card, exit intent popup. (8) 211-item checklist, all screenshot-verifiable. (9) 5 reference sites documented with pattern adoption rationale. (10) 2 new images generated. Non-blocking: brand-primaryDeep token not in tokens.json -- Devan should map to nearest available token. | LOCKED |
-| 2026-03-17 | Scribe | Phase 1 guide revision delivered -- all 8 guides fixed: EmailCapture replaced with EmailSignupForm variant="inline", CTA placement corrected in qualified-views-not-counting (after Step 3) and canada-without-rewards (after "Why Canada Is Excluded"), AffiliateLink components added to best-video-editing-apps-tiktok (Filmora, Adobe Rush). | COMPLETE |
-| 2026-03-17 | Bernard | Phase 1 Scribe Revision Review -- LOCKED. Spot-checked 3/8 guides against mdx-components.tsx registry. (1) qualified-views-not-counting: EmailSignupForm at line 84 (after Step 3 geography section), second at line 137 (after Step 7), third at end. Correct. (2) canada-without-rewards: EmailSignupForm at line 34 (after "Why Canada Is Excluded"), second at line 126 (near end). Correct. (3) best-video-editing-apps-tiktok: AffiliateLink for Filmora at line 97, AffiliateLink for Adobe Rush at line 119, hasAffiliateLinks: true in frontmatter. EmailSignupForm at line 102 and end. All components verified as registered in mdx-components.tsx. Devan integration brief written at Bernard/briefs/tcp-phase1-guide-integration.md. | LOCKED |
-| 2026-03-17 | Christopher | Phase 2 research -- first 4 affiliate packets delivered (best-ring-lights, best-microphones-under-100, best-scheduling-apps-tiktok, best-analytics-tools-tiktok). Flags: Neewer/RODE affiliate programs unconfirmed (JS-blocked). Analytics guide has zero affiliate revenue potential. Later confirmed at ~30% recurring. | COMPLETE |
-| 2026-03-17 | Christopher | Phase 2 research -- 4 troubleshooting packets delivered (rpm-dropping, rewards-disabled, creativity-program-not-showing, appeal-rejection). Flags: monthly RPM cycle taper [UNVERIFIED], appeal success rates community-based, country list needs live verification, named creator examples thin (anonymous Reddit). | COMPLETE |
-| 2026-03-17 | Christopher | Phase 2 research -- 4 ultimate niche guide packets delivered (ultimate-beauty-guide, ultimate-comedy-guide, ultimate-music-guide, ultimate-travel-guide). Flags: RPM ranges all [UNVERIFIED community consensus], no named creator discloses CRP earnings (structural), Epidemic Sound affiliate confirmed on Impact, credit card affiliates ($100-200/approval) flagged for travel, Airalo eSIM affiliate flagged for investigation. | COMPLETE |
-| 2026-03-17 | Christopher | Phase 2 research -- 4 strategy guide packets delivered (best-posting-schedule, tiktok-hook-formulas, tiktok-viral-formula, multiple-revenue-streams). Final batch of Phase 2. Flags: named creator examples anonymous but specific (strategy hardest category for named data), Passes 90% claim needs verification, hook formula data from specific Reddit threads with URLs, multiple-revenue-streams has most specific creator income data. | COMPLETE |
-| 2026-03-17 | Bernard | G1 Phase 2 (strategy batch) -- 4/4 strategy guide research packets reviewed. ALL LOCKED. All packets have 5-section structure, strong UNVERIFIED discipline, competitive audits identifying CRP-specific angle as the gap, cross-link opportunities flagged. hook-formulas strongest packet (original 3-layer framework + niche hook table). multiple-revenue-streams most data-rich (income stack by follower stage, 5 creator examples with dollar amounts). Named creators thin across all 4 (structural, acceptable). Passes 90% claim and Skool affiliate flagged as Brett action items. Review at Bernard/briefs/tcp-phase2-gate1-strategy.md. | LOCKED |
-| 2026-03-17 | Bernard | G1 Phase 2 (niche batch) -- 4/4 ultimate niche guide research packets reviewed. ALL LOCKED. All packets have unique competitive angles (beauty: CRP+Shop dual income, comedy: RPM paradox honesty, music: copyright-CRP conflict, travel: geography problem), sub-niche RPM tables (8-9 rows each), named creator examples (2+ per guide), income stacks at 100K followers, brand deal landscapes with named sponsors, competitive audits with specific gaps. UNVERIFIED flags applied correctly throughout. No named creator has public CRP earnings data in any niche (structural, acceptable). Material sufficient for 2,000-2,500 word flagship guides on all 4 topics. Brett action items: Airalo affiliate, Sephora/Rakuten, Later affiliate. Review at Bernard/briefs/tcp-phase2-gate1-niche.md. | LOCKED |
-| 2026-03-17 | Bernard | G1 Phase 2 (troubleshooting batch) -- 4/4 troubleshooting research packets reviewed. ALL LOCKED. All packets have structured root cause taxonomies, diagnostic steps, sourced data points with URLs, competitive audits with specific gaps identified, and correctly applied UNVERIFIED tags. Sufficient material for 1,500-2,000 word guides on all 4 topics. Content overlap between rewards-disabled and appeal-rejection noted -- Scribe must differentiate (kicked out vs. appeal already failed). Named creators thin across all 4 (structural, acceptable). Review at Bernard/briefs/tcp-phase2-gate1-troubleshooting.md. | LOCKED |
-| 2026-03-17 | Bernard | G1 Phase 2 (affiliate batch) -- 4/4 affiliate research packets reviewed. ALL LOCKED. Verifiability, sufficiency, recency, competitive insight all pass on all 4. Strategic reframe on analytics-tools: traffic + email capture guide, not affiliate (zero confirmed programs for any tool). Ring lights and microphones use Amazon Associates fallback (2-3%). Scheduling apps leads with Later (30% recurring). Named creator examples thin across all 4 (acceptable). Brett action items: check Impact/ShareASale for Neewer and RODE programs, confirm Later affiliate active. Review at Bernard/briefs/tcp-phase2-gate1-affiliate.md. | LOCKED |
-| 2026-03-15 | Bernard | G4 FINAL REVIEW (v3 pipeline) -- VISUAL VERIFICATION via Playwright screenshots at 1280px desktop and 390px mobile across 7 page types (12 screenshots total). VERDICT: SHIP. REVIEW BY CATEGORY: (1) HOMEPAGE DESKTOP: Two-column hero with landpress-marketing-hero.png illustration right column, warm bg (#FFF7ED), eyebrow pill "Updated for 2026 -- 64 Guides", H1 "Everything TikTok Won't Tell You About Getting Paid" matches CONTENT.md exactly, subtitle matches, 2 CTAs ("Start Here -- It's Free" primary with ChevronRight + "Try the Calculator" ghost with Calculator icon), ChevronDown scroll indicator. Trust bar: 64 Guides / 3 Free Calculators / Updated 2026 -- correct stats, Lucide icons (BookOpen, Calculator, BookOpen). Full-page scroll confirms all sections: Feature Spotlight with illustration, Three-Path Entry (3 cards), Featured Guides with tabs, dark Calculator Preview section with landpress-marketing-2.png, Email Capture with landpress-marketing-3.png, dark Footer with 4 columns and affiliate disclaimer. (2) HOMEPAGE MOBILE 390px: Single-column hero, illustration hidden, CTAs stack and are accessible, badge visible, trust bar renders 3 stats. (3) GUIDE ARTICLE (/guides/best-analytics-tools-tiktok): Breadcrumbs (Home > Guides > Tools > title) with ChevronRight separators. Category badge "Tools". H1 correct. Meta row with Clock and BookOpen icons. Sticky ToC sidebar ("ON THIS PAGE") on left with section links (TikTok native analytics, Exolyt, Analisa.io, Pentos, Later, Sprout Social). Article prose on right -- comparison table, callout boxes, related guides grid at bottom. (4) CALCULATOR (/calculators/earnings-calculator): Two-column header with "Interactive tool" badge, H1, description, landpress-marketing-hero.png illustration in right column. Calculator panel below (partially rendered in headless -- client component). "What affects your results?" section present with 3 explanation cards (Your RPM, Qualified view rate, Additional Reward bonus) each with guide links. FAQ accordion (7 questions). Related calculators 2-card grid. (5) GUIDES LISTING (/guides): Header "TikTok Creator Rewards Guides" with description "64 guides covering eligibility, earnings, troubleshooting, and strategy -- updated for 2026." Filter tabs (All, Getting Started, Maximize Earnings, Troubleshooting, Country Guides, Tools & Equipment, Niche Guides, Comparisons). Card grid uses Framer Motion AnimatePresence which renders in real browsers but shows faint/blank in headless Playwright -- Devan flagged this known behavior. Cards confirmed present in DOM and rendering correctly in first (styled) screenshot. (6) 404 PAGE: No nav, no footer (fixed z-[60] overlay approach). unDraw SVG illustration (orange, color-swapped from purple, verified 12 #F4A261 instances, 0 #6C63FF remaining). "Page Not Found" heading, body copy matches CONTENT.md 404-body exactly. Two CTAs: "Go Home" primary + "Browse Guides" outline. (7) START HERE: Logo-only header (no nav links), centered "TikTok Creativity Program" wordmark. "Start Here" badge with Star icon. H1 matches CONTENT.md starthere-headline. Subheadline matches. landpress-marketing-4.png illustration centered. "Are you eligible?" accordion with 6 requirements (10K followers, 100K views, 18+, Personal account, Eligible country, Original content). Email capture section "You'll Get the Checklist Right Now". "What happens next?" 3-step section. Minimal footer with copyright + privacy + affiliate disclosure. BRAND ALIGNMENT: (A) Fonts: Manrope + JetBrains Mono via next/font/google in layout.tsx. (B) Colors: All tokens from tokens.json present. No white-on-orange (grep confirms zero matches). (C) Icons: Lucide only, zero emoji in src/ (grep confirms). (D) prefers-reduced-motion: respected in 6 files (motion.ts, marquee, number-ticker, TrustBar, ScrollReveal, global.css). (E) Affiliate: rel="noopener noreferrer sponsored" on AffiliateLink + AffiliateLinkButton components. Footer includes "Not affiliated with TikTok or ByteDance" and Affiliate Disclosure link. (F) Source URLs: All 5 library components have source URL comments at top of file (floating-navbar, spotlight, guide-cards, email-capture, calculator-panel). BUILD QUALITY: 106 static pages, 0 build errors, 0 lint warnings. 64 MDX guides. 4 brand images in public/images/brand/. 2 unDraw SVGs in public/images/illustrations/ (orange, optimized, under 2KB each). 14 affiliate slugs in affiliateLinks.ts. CHECKLIST SPOT-CHECK (25 items across all categories): Items 2 PASS, 3 PASS, 7 PASS, 13 PASS, 14 PASS, 15 PASS, 16 PASS, 22 PASS, 23 PASS, 24 PASS, 25 PASS, 27 PASS, 28 PASS, 34 PASS, 52 PASS, 62 PASS, 75 PASS, 79 PASS, 85 PASS (SVG not placeholder), 86 PASS (orange not purple), 90 PASS, 91 PASS (no nav on 404), 92 PASS (no emoji), 97 PASS (footer on all pages except Start Here/404), 109-112 PASS (all 4 brand images exist and load). PRE-PRODUCTION REQUIREMENTS: (P1) GEMINI_API_KEY -- blocked, needed for guide thumbnails, hero images, and calculator hero images. No guide images exist yet in public/images/guides/. Guide cards show orange placeholder bg when thumbnail missing (graceful fallback via onError). (P2) Affiliate tracking URLs -- all 14 slugs point to placeholder direct links. Need real tracking URLs from affiliate programs before launch. (P3) ConvertKit form ID -- email capture forms styled but not wired to ConvertKit API. (P4) Manual browser test recommended for: reading progress bar, guides listing AnimatePresence cards, hover animations, mobile drawer nav. (P5) Lighthouse audit -- not run in this review (headless rendering issues), recommend manual run. KNOWN ACCEPTABLE GAPS: Guide thumbnails and hero images do not exist yet (blocked on GEMINI_API_KEY). This is acceptable for localhost demo -- the site handles missing images gracefully (orange placeholder bg). Brett should see the site with images before production deploy. | SHIP |
+## Done
+<!-- Completed and locked items. Archive periodically. -->
+- [2026-03-23] SEO guide rewrite: committed + pushed to production (b5eb90e). Slug renamed tiktok-search-views-seo → tiktok-search-seo-optimize-views. Bernard LOCKED.
+- [2026-03-23] Christopher research (internal linking + Reddit + keyword scan): LOCKED. Report at Vault/Inbox/2026-03-23-tcp-research.md. Key finding: Meta Creator Fast Track comparison guide opportunity.

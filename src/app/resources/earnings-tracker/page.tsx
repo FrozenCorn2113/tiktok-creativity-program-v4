@@ -74,7 +74,7 @@ export default function EarningsTrackerPage() {
             </CalloutBox>
           )}
 
-          <EmailSignupForm variant="inline" />
+          <EmailSignupForm variant="inline" leadMagnet="Earnings Tracker" />
         </div>
       </Container>
     </section>

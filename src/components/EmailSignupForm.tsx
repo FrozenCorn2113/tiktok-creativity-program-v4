@@ -12,6 +12,8 @@ type EmailSignupFormProps = {
   description?: string
   ctaLabel?: string
   className?: string
+  /** Lead magnet name — stored in Supabase for segmentation */
+  leadMagnet?: string
 }
 
 const defaultCopy: Record<Variant, { title: string; description: string; ctaLabel: string }> = {
@@ -43,6 +45,7 @@ export default function EmailSignupForm({
   description,
   ctaLabel,
   className = '',
+  leadMagnet,
 }: EmailSignupFormProps) {
   const [email, setEmail] = useState('')
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle')
@@ -68,6 +71,7 @@ export default function EmailSignupForm({
         body: JSON.stringify({
           email,
           source: variant,
+          lead_magnet: leadMagnet ?? undefined,
           page_url: typeof window !== 'undefined' ? window.location.pathname : undefined,
         }),
       })

@@ -39,7 +39,7 @@ export default function CreatorRewardsChecklistPage() {
             </CalloutBox>
           </div>
 
-          <EmailSignupForm variant="inline" />
+          <EmailSignupForm variant="inline" leadMagnet="Creator Rewards Checklist" />
         </div>
       </Container>
     </section>

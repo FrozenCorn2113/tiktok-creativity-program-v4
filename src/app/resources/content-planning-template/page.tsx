@@ -38,7 +38,7 @@ export default function ContentPlanningTemplatePage() {
             </CalloutBox>
           </div>
 
-          <EmailSignupForm variant="inline" />
+          <EmailSignupForm variant="inline" leadMagnet="Content Planning Template" />
         </div>
       </Container>
     </section>

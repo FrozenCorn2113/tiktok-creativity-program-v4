@@ -5,7 +5,6 @@ import './globals.css'
 import { siteConfig } from '@/lib/site'
 import NavbarDark from '@/components/NavbarDark'
 import FooterDark from '@/components/FooterDark'
-import { PostHogProvider } from '@/components/PostHogProvider'
 import { cn } from '@/lib/utils'
 
 // Manrope — primary brand font, all weights per BRAND.md
@@ -84,13 +83,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             </Script>
           </>
         ) : null}
-        <PostHogProvider>
-          <NavbarDark />
-          <main className="flex min-h-[calc(100vh-220px)] flex-col">
-            {children}
-          </main>
-          <FooterDark />
-        </PostHogProvider>
+        <NavbarDark />
+        <main className="flex min-h-[calc(100vh-220px)] flex-col">
+          {children}
+        </main>
+        <FooterDark />
       </body>
     </html>
   )

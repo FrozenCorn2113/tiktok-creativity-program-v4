@@ -1,5 +1,3 @@
-import posthog from 'posthog-js'
-
 export type AnalyticsEvent = {
   action: string
   category?: string
@@ -18,36 +16,23 @@ export function trackEvent({ action, category, label, value }: AnalyticsEvent) {
       value,
     })
   }
-
-  // PostHog — production only (PostHog is opted out in dev via PostHogProvider)
-  if (process.env.NODE_ENV === 'production') {
-    posthog.capture(action, {
-      category,
-      label,
-      value,
-    })
-  }
 }
 
-// Typed PostHog event helpers — use these across the app
+// Typed GA event helpers — use these across the app
 export function trackEmailSignupAttempt(location: string) {
-  if (typeof window === 'undefined' || process.env.NODE_ENV !== 'production') return
-  posthog.capture('email_signup_attempt', { location })
+  trackEvent({ action: 'email_signup_attempt', category: 'engagement', label: location })
 }
 
 export function trackAffiliateLinkClick(slug: string, destination?: string) {
-  if (typeof window === 'undefined' || process.env.NODE_ENV !== 'production') return
-  posthog.capture('affiliate_link_click', { slug, destination })
+  trackEvent({ action: 'affiliate_link_click', category: 'monetization', label: slug, value: undefined })
 }
 
 export function trackCalculatorUsed(calculatorName: string, inputs?: Record<string, unknown>) {
-  if (typeof window === 'undefined' || process.env.NODE_ENV !== 'production') return
-  posthog.capture('calculator_used', { calculator: calculatorName, ...inputs })
+  trackEvent({ action: 'calculator_used', category: 'engagement', label: calculatorName })
 }
 
 export function trackGuideScrollDepth(slug: string, depth: 25 | 50 | 75 | 100) {
-  if (typeof window === 'undefined' || process.env.NODE_ENV !== 'production') return
-  posthog.capture('guide_scroll_depth', { slug, depth })
+  trackEvent({ action: 'guide_scroll_depth', category: 'engagement', label: slug, value: depth })
 }
 
 declare global {

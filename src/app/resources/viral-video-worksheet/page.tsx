@@ -38,7 +38,7 @@ export default function ViralVideoWorksheetPage() {
             </CalloutBox>
           </div>
 
-          <EmailSignupForm variant="inline" />
+          <EmailSignupForm variant="inline" leadMagnet="Viral Video Worksheet" />
         </div>
       </Container>
     </section>

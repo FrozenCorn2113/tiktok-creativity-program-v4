@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server'
 import { z } from 'zod'
 import { createClient } from '@supabase/supabase-js'
+import { sendWelcomeEmail } from '@/lib/email/send-welcome'
 
 const bodySchema = z.object({
   email: z.string().email('Invalid email address').max(254),
@@ -43,6 +44,11 @@ export async function POST(request: Request) {
   if (error) {
     return NextResponse.json({ error: 'Failed to save' }, { status: 500 })
   }
+
+  // Send branded welcome email via Resend (fire-and-forget — don't block response)
+  sendWelcomeEmail({ email, leadMagnet: lead_magnet }).catch((err) => {
+    console.error('[api/email] Welcome email failed:', err)
+  })
 
   return NextResponse.json({ success: true })
 }
