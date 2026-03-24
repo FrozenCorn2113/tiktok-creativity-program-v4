@@ -1,11 +1,10 @@
-// Earnings Calculator page — Phase 3 v3 rebuild
-// PAGE_SPECS.md: C1-C3 two-column header, CalculatorPanel, "What affects your results?", FAQ accordion, NO affiliate CTAs
-// BRAND.md C1-C3: grid md:grid-cols-[3fr_2fr] gap-12, right col = landpress-marketing-hero.png fill object-contain h-[320px]
+// Earnings Calculator page — rebuilt with Fund vs Rewards comparison
+// SEO target: "TikTok Creativity Program Earnings Calculator"
 
 import type { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
-import { ChevronRight, BarChart2, Users, TrendingUp, Zap } from 'lucide-react'
+import { BarChart2, TrendingUp, Zap, DollarSign, ArrowRight } from 'lucide-react'
 import {
   Accordion,
   AccordionContent,
@@ -15,48 +14,174 @@ import {
 import Container from '@/components/ui/Container'
 import PageHeader from '@/components/PageHeader'
 import ScrollReveal from '@/components/ScrollReveal'
-import { CalculatorPanel } from '@/components/sections/calculator-panel'
+import { EarningsComparisonCalculator } from '@/components/sections/earnings-comparison-calculator'
 import { Badge } from '@/components/ui/badge'
 import { EmailCapturePopup } from '@/components/email/email-capture-popup'
-import { CalculatorSection4b } from '@/components/sections/calculator-section-4b'
+import { siteConfig } from '@/lib/site'
 
 export const metadata: Metadata = {
-  title: 'TikTok Earnings Calculator',
+  title: 'TikTok Creativity Program Earnings Calculator',
   description:
-    'Estimate your TikTok Creator Rewards payout based on qualified views and RPM. Uses the actual view-based payout model — not follower count.',
+    'Free TikTok earnings calculator. Compare Creator Rewards Program vs old Creator Fund payouts by niche, views, and posting frequency. See estimated monthly and yearly earnings instantly.',
+  keywords: [
+    'tiktok earnings calculator',
+    'tiktok creativity program calculator',
+    'tiktok creator rewards calculator',
+    'tiktok creator fund vs rewards',
+    'tiktok rpm calculator',
+    'tiktok money calculator',
+  ],
   openGraph: {
-    images: [{ url: `/og?title=${encodeURIComponent('TikTok Earnings Calculator')}`, width: 1200, height: 630 }],
+    title: 'TikTok Creativity Program Earnings Calculator',
+    description:
+      'Compare Creator Rewards vs old Creator Fund. Estimate monthly and yearly TikTok earnings by niche.',
+    images: [
+      {
+        url: `/og?title=${encodeURIComponent('TikTok Earnings Calculator — Creator Rewards vs Creator Fund')}`,
+        width: 1200,
+        height: 630,
+      },
+    ],
+    type: 'website',
+    url: `${siteConfig.url}/calculators/earnings-calculator`,
   },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'TikTok Creativity Program Earnings Calculator',
+    description:
+      'Compare Creator Rewards vs Creator Fund payouts. Free calculator with niche-specific RPM data.',
+  },
+  alternates: {
+    canonical: `${siteConfig.url}/calculators/earnings-calculator`,
+  },
+}
+
+// JSON-LD: WebApplication schema for tool pages
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'WebApplication',
+  name: 'TikTok Creativity Program Earnings Calculator',
+  description:
+    'Free calculator to estimate TikTok Creator Rewards Program earnings. Compare new Rewards payouts vs old Creator Fund by niche, views, and posting frequency.',
+  url: `${siteConfig.url}/calculators/earnings-calculator`,
+  applicationCategory: 'FinanceApplication',
+  operatingSystem: 'Any',
+  offers: {
+    '@type': 'Offer',
+    price: '0',
+    priceCurrency: 'USD',
+  },
+  creator: {
+    '@type': 'Organization',
+    name: siteConfig.name,
+    url: siteConfig.url,
+  },
+}
+
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    {
+      '@type': 'ListItem',
+      position: 1,
+      name: 'Home',
+      item: siteConfig.url,
+    },
+    {
+      '@type': 'ListItem',
+      position: 2,
+      name: 'Calculators',
+      item: `${siteConfig.url}/calculators`,
+    },
+    {
+      '@type': 'ListItem',
+      position: 3,
+      name: 'Earnings Calculator',
+      item: `${siteConfig.url}/calculators/earnings-calculator`,
+    },
+  ],
+}
+
+const faqJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'How much does TikTok pay per 1,000 views?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'The Creator Rewards Program (formerly Creativity Program) pays $0.40 to $1.00 per 1,000 qualified views depending on niche and audience geography. The old Creator Fund paid only $0.02 to $0.04 per 1,000 views — roughly 20x less.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'What is the difference between Creator Fund and Creator Rewards?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'The Creator Rewards Program replaced the Creator Fund in 2024. It pays significantly more ($0.40-$1.00 RPM vs $0.02-$0.04 RPM) but requires videos to be at least 1 minute long and counts only qualified views from the For You Page.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'What RPM should I expect on TikTok?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'RPM varies by niche: Finance and education content earns $0.60-$1.00 per 1,000 views, while entertainment and comedy typically earn $0.35-$0.70. Geography matters too — US, UK, and Germany have the highest rates.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'What are qualified views on TikTok?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Qualified views are organic views from the For You Page on videos 1 minute or longer. Duets, Stitches, Photo Mode, and paid promotion views do not count. Most creators see 70-90% of total views qualify.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'How much can you make with 1 million views on TikTok?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'With 1 million qualified views on the Creator Rewards Program, you can expect $400-$1,000 depending on your niche. With the Additional Reward bonus, this can reach up to $1,200. On the old Creator Fund, the same views would have earned only $20-$40.',
+      },
+    },
+  ],
 }
 
 const faqs = [
   {
-    q: 'What RPM should I use?',
-    a: "Start with $0.60–$0.80 if you're in the US, UK, or Germany and your content is consistently 1+ minute. Creators in other eligible countries often see $0.20–$0.50. Niche matters — finance and educational content earns more than trends.",
+    q: 'How much does TikTok pay per 1,000 views?',
+    a: 'The Creator Rewards Program pays $0.40 to $1.00 per 1,000 qualified views depending on your niche and audience geography. Finance and education content earns on the higher end. The old Creator Fund paid only $0.02 to $0.04 — roughly 20x less.',
+  },
+  {
+    q: 'What is the difference between Creator Fund and Creator Rewards?',
+    a: "The Creator Rewards Program (formerly Creativity Program) replaced the Creator Fund in 2024. It pays significantly more but requires videos to be at least 1 minute long. Only qualified views count — organic FYP views on 1+ minute content. The old Fund counted all views but paid almost nothing.",
+  },
+  {
+    q: 'What RPM should I expect?',
+    a: "Use the niche selector above to see RPM ranges for your content type. Finance and education earn the most ($0.60-$1.00). Entertainment and comedy are lower ($0.35-$0.70). Your country matters too — US, UK, and Germany have the highest advertiser demand.",
   },
   {
     q: 'Why are qualified views lower than total views?',
-    a: "TikTok only counts organic FYP views on videos 1 minute or longer after you join the program. Duets, Stitches, and Photo Mode don't count. Most creators see 70–90% of total views qualify.",
+    a: "TikTok only counts organic FYP views on videos 1 minute or longer. Duets, Stitches, Photo Mode, and paid promotion views don't qualify. Most creators see 70-90% of total views qualify. We use 82% as a typical baseline.",
   },
   {
-    q: 'What is the Additional Reward?',
-    a: "A bonus of up to 20% on top of base earnings for content that meets quality and engagement thresholds. It's not guaranteed — consistent 1+ minute videos with high completion rates earn it most reliably.",
+    q: 'What is the Additional Reward bonus?',
+    a: "A bonus of up to 20% on top of base earnings for content that meets TikTok's quality and engagement thresholds. It's not guaranteed — consistent 1+ minute videos with high completion rates earn it most reliably. Toggle it on in the calculator to see the impact.",
   },
   {
-    q: 'How often does TikTok pay out?',
-    a: 'Earnings accumulate monthly and become available for withdrawal around the 15th of the following month, once your balance exceeds $50. You can request a withdrawal to PayPal or direct deposit.',
+    q: 'How much can I make with 1 million views?',
+    a: "With 1 million qualified views on the Creator Rewards Program, expect $400-$1,000 depending on niche. With the +20% bonus, up to $1,200. On the old Creator Fund, the same views earned only $20-$40. Use the calculator above to model your specific scenario.",
   },
   {
-    q: 'Does my follower count affect earnings?',
-    a: "No. The Creator Rewards Program pays based on qualified views and your RPM — not follower count. A creator with 20K followers posting 1-minute videos can earn more than a creator with 500K followers posting short clips.",
-  },
-  {
-    q: 'Why does my RPM change month to month?',
-    a: "RPM fluctuates based on advertiser demand (higher in Q4), your content niche, audience geography, and TikTok's internal quality scoring. Track RPM over 3+ months to get a reliable baseline.",
+    q: 'Does follower count affect earnings?',
+    a: "No. The Creator Rewards Program pays based on qualified views and RPM — not follower count. A creator with 20K followers posting quality 1-minute videos can earn more than a creator with 500K followers posting short clips.",
   },
   {
     q: 'Are these estimates guaranteed?',
-    a: "No. This calculator uses average RPM ranges and typical qualified view ratios based on creator-reported data. Your actual earnings will vary. Use it to model scenarios, not to predict exact payouts.",
+    a: "No. This calculator uses average RPM ranges based on creator-reported data and publicly available information. Your actual earnings will vary based on content quality, audience geography, engagement patterns, and TikTok's algorithms. Use it to model scenarios and compare programs.",
   },
 ]
 
@@ -65,16 +190,30 @@ export default function EarningsCalculatorPage() {
     <>
       <ScrollReveal />
 
-      {/* Exit intent popup — v4: calculator pages only */}
+      {/* JSON-LD structured data */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+      />
+
+      {/* Exit intent popup */}
       <EmailCapturePopup
         leadMagnetTitle="Earnings Calculator Results Guide"
         headline="Get a breakdown of what your numbers actually mean"
-        description="We'll explain what your estimated earnings mean, how to improve your RPM, and which variables have the biggest impact on your payout."
+        description="We will explain what your estimated earnings mean, how to improve your RPM, and which variables have the biggest impact on your payout."
         itemCount="Free guide"
       />
 
-      {/* C1-C3: two-column header band with illustration */}
-      <section className="bg-[#FFF8F2] py-12 md:py-16">
+      {/* Hero header band */}
+      <section className="bg-[#FFF8F2] py-12 md:py-16 border-b border-orange-100">
         <Container>
           <div className="grid items-center gap-12 md:grid-cols-[3fr_2fr]">
             <div>
@@ -85,14 +224,19 @@ export default function EarningsCalculatorPage() {
                   { label: 'Earnings Calculator', href: '/calculators/earnings-calculator' },
                 ]}
                 category="Interactive tool"
-                title="TikTok earnings calculator"
-                description="Estimate Creator Rewards payouts based on qualified views and RPM. Built on the actual view-based model — not follower count, not total views."
+                title="TikTok Creativity Program earnings calculator"
+                description="Compare Creator Rewards vs the old Creator Fund. Estimate monthly and yearly earnings by niche, views per video, and posting frequency."
               />
-              {/* v4: Free badge */}
-              <Badge className="mt-3 bg-brand-primarySoft text-brand-primaryDeep border-brand-primary/30 text-xs font-semibold">
-                <Zap className="w-3 h-3 mr-1" aria-hidden />
-                100% Free • No signup required
-              </Badge>
+              <div className="flex flex-wrap gap-2 mt-4">
+                <Badge className="bg-brand-primarySoft text-brand-primaryDeep border-brand-primary/30 text-xs font-semibold">
+                  <Zap className="w-3 h-3 mr-1" aria-hidden />
+                  100% Free
+                </Badge>
+                <Badge className="bg-green-50 text-green-700 border-green-200 text-xs font-semibold">
+                  <DollarSign className="w-3 h-3 mr-1" aria-hidden />
+                  Fund vs Rewards comparison
+                </Badge>
+              </div>
             </div>
             <div className="relative hidden h-[320px] w-full md:block">
               <Image
@@ -107,35 +251,67 @@ export default function EarningsCalculatorPage() {
         </Container>
       </section>
 
-
       {/* Calculator tool */}
       <section className="py-12">
         <Container>
-          <div className="space-y-10">
+          <div className="space-y-12">
             {/* Calculator */}
-            <div className="max-w-2xl">
-              <CalculatorPanel />
+            <div className="max-w-4xl">
+              <EarningsComparisonCalculator />
             </div>
 
-            {/* Section 4b: Calculator results actions — email capture, share, affiliate */}
-            <CalculatorSection4b
-              emailLeadMagnetTitle="Get Your Results Explained"
-              emailLeadMagnetDescription="We will break down what your number actually means — what drives it up, what holds it down, and the one thing most creators in your range miss."
-              tweetText="I just calculated my estimated TikTok Creator Rewards earnings"
-              tweetUrl="https://tiktokcreativityprogram.com/calculators/earnings-calculator"
-              affiliateToolName="Exolyt"
-              affiliateSlug="exolyt"
-              affiliateReview="Exolyt tracks TikTok performance over time and lets you benchmark against other creators in your niche."
-              affiliateBestFor="Creators who want to understand what is driving their RPM"
-              affiliatePriceRange="Free tier available"
-              affiliateCtaText="Try Exolyt"
-            />
+            {/* Quick earnings reference table */}
+            <div className="max-w-4xl">
+              <h2 className="text-[1.5rem] font-bold text-brand-ink mb-6">
+                Earnings at a glance: Rewards vs Creator Fund
+              </h2>
+              <div className="overflow-x-auto rounded-xl border border-border-default">
+                <table className="w-full text-sm">
+                  <thead>
+                    <tr className="bg-background-surface border-b border-border-default">
+                      <th className="text-left px-5 py-3 font-semibold text-brand-ink">Monthly Views</th>
+                      <th className="text-right px-5 py-3 font-semibold text-green-700">Creator Rewards</th>
+                      <th className="text-right px-5 py-3 font-semibold text-red-600">Old Creator Fund</th>
+                      <th className="text-right px-5 py-3 font-semibold text-brand-ink">Difference</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-border-default">
+                    {[
+                      { views: '10,000', rewards: '$4 - $10', fund: '$0.20 - $0.40', diff: '~20x more' },
+                      { views: '100,000', rewards: '$40 - $100', fund: '$2 - $4', diff: '~20x more' },
+                      { views: '500,000', rewards: '$200 - $500', fund: '$10 - $20', diff: '~20x more' },
+                      { views: '1,000,000', rewards: '$400 - $1,000', fund: '$20 - $40', diff: '~20x more' },
+                      { views: '5,000,000', rewards: '$2,000 - $5,000', fund: '$100 - $200', diff: '~20x more' },
+                    ].map((row) => (
+                      <tr key={row.views} className="bg-white hover:bg-background-surface/50 transition-colors">
+                        <td className="px-5 py-3 font-medium text-brand-ink" style={{ fontFamily: 'var(--font-mono)' }}>
+                          {row.views}
+                        </td>
+                        <td className="px-5 py-3 text-right font-semibold text-green-700" style={{ fontFamily: 'var(--font-mono)' }}>
+                          {row.rewards}
+                        </td>
+                        <td className="px-5 py-3 text-right font-semibold text-red-500" style={{ fontFamily: 'var(--font-mono)' }}>
+                          {row.fund}
+                        </td>
+                        <td className="px-5 py-3 text-right">
+                          <span className="inline-flex items-center gap-1 text-xs font-bold text-green-700 bg-green-50 px-2 py-1 rounded-full">
+                            {row.diff}
+                          </span>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+              <p className="mt-3 text-xs text-text-muted">
+                Based on qualified views (82% of total) at average RPM ranges. Actual earnings vary by niche and geography.
+              </p>
+            </div>
 
-            {/* What affects your results? — required per BRAND.md */}
+            {/* What affects your results? */}
             <div>
               <h2 className="text-[1.5rem] font-bold text-brand-ink mb-6">What affects your results?</h2>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-                {/* Card 1 */}
                 <div className="bg-background-surface p-5 rounded-xl border border-border-default">
                   <div className="flex items-center gap-2 mb-3">
                     <BarChart2 className="h-5 w-5 text-brand-primary" aria-hidden />
@@ -143,14 +319,13 @@ export default function EarningsCalculatorPage() {
                   </div>
                   <p className="text-sm text-text-secondary leading-[1.65] mb-3">
                     RPM varies by country, niche, content length, and viewer behavior. US, UK, and Germany see the highest
-                    rates ($0.50–$1.20). Finance and educational content consistently earns more than trends.
+                    rates ($0.50-$1.20). Finance and educational content consistently earns more than trends.
                   </p>
                   <Link href="/guides/optimize-rpm" className="text-xs font-semibold text-brand-primaryDeep hover:underline">
                     How to improve your RPM &rarr;
                   </Link>
                 </div>
 
-                {/* Card 2 */}
                 <div className="bg-background-surface p-5 rounded-xl border border-border-default">
                   <div className="flex items-center gap-2 mb-3">
                     <TrendingUp className="h-5 w-5 text-brand-primary" aria-hidden />
@@ -158,31 +333,30 @@ export default function EarningsCalculatorPage() {
                   </div>
                   <p className="text-sm text-text-secondary leading-[1.65] mb-3">
                     TikTok only counts organic FYP views on 1+ minute videos. Duets, Stitches, and Photo Mode don&apos;t
-                    count. Most creators qualify 70–90% of total views.
+                    count. Most creators qualify 70-90% of total views.
                   </p>
                   <Link href="/guides/no-qualified-views" className="text-xs font-semibold text-brand-primaryDeep hover:underline">
                     Why views aren&apos;t counting &rarr;
                   </Link>
                 </div>
 
-                {/* Card 3 */}
                 <div className="bg-background-surface p-5 rounded-xl border border-border-default">
                   <div className="flex items-center gap-2 mb-3">
                     <Zap className="h-5 w-5 text-brand-primary" aria-hidden />
-                    <h3 className="font-bold text-brand-ink text-sm">Additional Reward bonus</h3>
+                    <h3 className="font-bold text-brand-ink text-sm">Content niche</h3>
                   </div>
                   <p className="text-sm text-text-secondary leading-[1.65] mb-3">
-                    Up to 20% bonus for content that meets TikTok&apos;s quality and engagement thresholds. Not guaranteed —
-                    but consistently earns with high-completion 1+ minute content.
+                    Finance and education niches earn up to 2x more than entertainment or gaming. Choose your niche in the
+                    calculator above to see niche-specific RPM ranges.
                   </p>
-                  <Link href="/guides/additional-reward-criteria-2025" className="text-xs font-semibold text-brand-primaryDeep hover:underline">
-                    Additional Reward criteria &rarr;
+                  <Link href="/guides/tiktok-creator-rewards-earnings-by-niche" className="text-xs font-semibold text-brand-primaryDeep hover:underline">
+                    RPM by niche breakdown &rarr;
                   </Link>
                 </div>
               </div>
             </div>
 
-            {/* FAQ Accordion — no affiliate links */}
+            {/* FAQ Accordion */}
             <div className="max-w-2xl">
               <h2 className="text-[1.5rem] font-bold text-brand-ink mb-8">Frequently Asked Questions</h2>
               <Accordion className="space-y-3">
@@ -203,34 +377,82 @@ export default function EarningsCalculatorPage() {
               </Accordion>
             </div>
 
-            {/* Related calculators — C11: 2-col grid, NO affiliate CTAs */}
+            {/* Internal links to related content */}
             <div>
-              <h2 className="mb-4 text-[var(--text-h2)] font-bold text-[var(--color-ink-strong)]">
-                Related calculators
+              <h2 className="text-[1.5rem] font-bold text-brand-ink mb-4">
+                Related guides and tools
               </h2>
-              <div className="grid gap-4 md:grid-cols-2">
+              <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+                <Link
+                  href="/guides/how-much-does-tiktok-creativity-program-pay"
+                  className="group flex flex-col rounded-2xl border border-border-default bg-white p-6 transition-all duration-150 hover:border-brand-primary hover:shadow-sm"
+                >
+                  <h3 className="text-base font-semibold text-brand-ink">How Much Does TikTok Pay?</h3>
+                  <p className="mt-2 flex-1 text-sm leading-[1.65] text-text-secondary">
+                    Complete earnings breakdown with real creator examples and RPM data.
+                  </p>
+                  <span className="mt-4 flex items-center gap-1 text-sm font-semibold text-brand-primary transition-transform duration-200 group-hover:translate-x-0.5">
+                    Read guide <ArrowRight className="h-4 w-4" aria-hidden />
+                  </span>
+                </Link>
+                <Link
+                  href="/guides/optimize-rpm"
+                  className="group flex flex-col rounded-2xl border border-border-default bg-white p-6 transition-all duration-150 hover:border-brand-primary hover:shadow-sm"
+                >
+                  <h3 className="text-base font-semibold text-brand-ink">How to Optimize Your RPM</h3>
+                  <p className="mt-2 flex-1 text-sm leading-[1.65] text-text-secondary">
+                    Actionable strategies to increase your revenue per 1,000 views.
+                  </p>
+                  <span className="mt-4 flex items-center gap-1 text-sm font-semibold text-brand-primary transition-transform duration-200 group-hover:translate-x-0.5">
+                    Read guide <ArrowRight className="h-4 w-4" aria-hidden />
+                  </span>
+                </Link>
                 <Link
                   href="/calculators/rpm-by-country"
-                  className="group flex flex-col rounded-2xl border border-[#E8D5C4] bg-white p-6 transition-all duration-150 hover:border-[#F97316] hover:shadow-sm"
+                  className="group flex flex-col rounded-2xl border border-border-default bg-white p-6 transition-all duration-150 hover:border-brand-primary hover:shadow-sm"
                 >
-                  <h3 className="text-[1.125rem] font-[600] text-[#0F172A]">RPM by Country</h3>
-                  <p className="mt-2 flex-1 text-sm leading-[1.65] text-[#475467]">
-                    Compare typical RPM ranges by country and model weighted earnings based on your audience mix.
+                  <h3 className="text-base font-semibold text-brand-ink">RPM by Country Calculator</h3>
+                  <p className="mt-2 flex-1 text-sm leading-[1.65] text-text-secondary">
+                    Compare RPM rates by country and model weighted earnings by audience geography.
                   </p>
-                  <span className="mt-4 flex items-center gap-1 text-sm font-[600] text-[#F97316] transition-transform duration-200 group-hover:translate-x-0.5">
-                    Open calculator <span aria-hidden>&rarr;</span>
+                  <span className="mt-4 flex items-center gap-1 text-sm font-semibold text-brand-primary transition-transform duration-200 group-hover:translate-x-0.5">
+                    Open calculator <ArrowRight className="h-4 w-4" aria-hidden />
+                  </span>
+                </Link>
+                <Link
+                  href="/guides/creator-fund-vs-creativity-program"
+                  className="group flex flex-col rounded-2xl border border-border-default bg-white p-6 transition-all duration-150 hover:border-brand-primary hover:shadow-sm"
+                >
+                  <h3 className="text-base font-semibold text-brand-ink">Creator Fund vs Rewards Program</h3>
+                  <p className="mt-2 flex-1 text-sm leading-[1.65] text-text-secondary">
+                    Full comparison of the old Creator Fund and new Creator Rewards Program.
+                  </p>
+                  <span className="mt-4 flex items-center gap-1 text-sm font-semibold text-brand-primary transition-transform duration-200 group-hover:translate-x-0.5">
+                    Read guide <ArrowRight className="h-4 w-4" aria-hidden />
+                  </span>
+                </Link>
+                <Link
+                  href="/guides/additional-reward-criteria-2025"
+                  className="group flex flex-col rounded-2xl border border-border-default bg-white p-6 transition-all duration-150 hover:border-brand-primary hover:shadow-sm"
+                >
+                  <h3 className="text-base font-semibold text-brand-ink">Additional Reward Criteria</h3>
+                  <p className="mt-2 flex-1 text-sm leading-[1.65] text-text-secondary">
+                    How to qualify for the +20% bonus on your Creator Rewards earnings.
+                  </p>
+                  <span className="mt-4 flex items-center gap-1 text-sm font-semibold text-brand-primary transition-transform duration-200 group-hover:translate-x-0.5">
+                    Read guide <ArrowRight className="h-4 w-4" aria-hidden />
                   </span>
                 </Link>
                 <Link
                   href="/calculators/follower-income-estimator"
-                  className="group flex flex-col rounded-2xl border border-[#E8D5C4] bg-white p-6 transition-all duration-150 hover:border-[#F97316] hover:shadow-sm"
+                  className="group flex flex-col rounded-2xl border border-border-default bg-white p-6 transition-all duration-150 hover:border-brand-primary hover:shadow-sm"
                 >
-                  <h3 className="text-[1.125rem] font-[600] text-[#0F172A]">Follower Income Estimator</h3>
-                  <p className="mt-2 flex-1 text-sm leading-[1.65] text-[#475467]">
-                    Project earnings based on follower count, engagement rate, and monthly posting frequency.
+                  <h3 className="text-base font-semibold text-brand-ink">Follower Income Estimator</h3>
+                  <p className="mt-2 flex-1 text-sm leading-[1.65] text-text-secondary">
+                    Project earnings based on follower count, engagement rate, and posting frequency.
                   </p>
-                  <span className="mt-4 flex items-center gap-1 text-sm font-[600] text-[#F97316] transition-transform duration-200 group-hover:translate-x-0.5">
-                    Open calculator <span aria-hidden>&rarr;</span>
+                  <span className="mt-4 flex items-center gap-1 text-sm font-semibold text-brand-primary transition-transform duration-200 group-hover:translate-x-0.5">
+                    Open calculator <ArrowRight className="h-4 w-4" aria-hidden />
                   </span>
                 </Link>
               </div>
