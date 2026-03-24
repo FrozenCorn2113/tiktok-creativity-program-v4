@@ -17,11 +17,13 @@ When approved, update the URL in `src/lib/affiliateLinks.ts` for the matching ke
   - best-tiktok-tools-2026 (tools roundup)
   - resources-page-copy (resources page x2)
 
-### 2. Kit (ConvertKit)
+### 2. Kit (ConvertKit) — DONE
 - **Apply:** https://kit.com/affiliate
 - **Network:** Direct
-- **Commission:** 50% first 12 months, then 10-20% recurring
+- **Commission:** 50% recurring first 12 months; Bronze tier (10+ paying customers/year) = ongoing commissions beyond year 1
+- **Affiliate link:** https://partners.kit.com/o474ub5e1gtu
 - **Key in affiliateLinks.ts:** `kit`
+- **Activated:** 2026-03-24
 - **Guides using this link:**
   - ultimate-educators-guide
   - ultimate-beauty-guide
@@ -33,6 +35,15 @@ When approved, update the URL in `src/lib/affiliateLinks.ts` for the matching ke
   - monetize-fitness
   - monetize-travel
   - coaching-consulting-offers
+  - best-ai-creative-tools-tiktok-creators
+  - multiple-revenue-streams
+  - premium-newsletter
+  - sell-digital-products-tiktok
+  - ultimate-music-guide
+  - ultimate-artists-guide
+  - ultimate-comedy-guide
+  - monetize-artists
+  - ultimate-travel-guide
 
 ### 3. Buffer
 - **Apply:** https://buffer.com/partners

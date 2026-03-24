@@ -18,8 +18,8 @@ export const affiliateLinks: Record<string, string> = {
   buffer: 'https://buffer.com/',
   // TODO: Replace with affiliate link after approval (via ShareASale/CJ) — Expected: 30-50% tiered
   filmora: 'https://filmora.wondershare.com/',
-  // TODO: Replace with affiliate link after approval — Expected: 50% first 12 months, then 10-20% recurring
-  kit: 'https://kit.com/',
+  // Kit (formerly ConvertKit) — 50% recurring first 12 months; Bronze tier (10+ customers) = ongoing
+  kit: 'https://partners.kit.com/o474ub5e1gtu',
   // TODO: Replace with affiliate link after approval — Expected: up to $399 one-time + up to 20% recurring
   kajabi: 'https://kajabi.com/',
   // TODO: Replace with affiliate link after approval — Expected: 10% platform referrals
