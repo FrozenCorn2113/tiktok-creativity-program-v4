@@ -125,7 +125,7 @@ export default async function GuidePage({ params }: GuidePageProps) {
 
   const articleUrl = `${siteConfig.url}/guides/${frontmatter.slug}`
 
-  // JSON-LD structured data
+  // JSON-LD structured data — Article schema
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'Article',
@@ -134,10 +134,52 @@ export default async function GuidePage({ params }: GuidePageProps) {
     datePublished: frontmatter.date,
     dateModified: frontmatter.date,
     url: articleUrl,
-    image: heroImageSrc,
+    image: `${siteConfig.url}${heroImageSrc}`,
     author: { '@type': 'Organization', name: siteConfig.name, url: siteConfig.url },
-    publisher: { '@type': 'Organization', name: siteConfig.name, url: siteConfig.url },
+    publisher: {
+      '@type': 'Organization',
+      name: siteConfig.name,
+      url: siteConfig.url,
+      logo: {
+        '@type': 'ImageObject',
+        url: `${siteConfig.url}/images/brand/tcp-logo.png`,
+      },
+    },
+    mainEntityOfPage: { '@type': 'WebPage', '@id': articleUrl },
     keywords: frontmatter.keywords?.join(', '),
+  }
+
+  // BreadcrumbList schema
+  const breadcrumbItems = [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: siteConfig.url },
+    { '@type': 'ListItem', position: 2, name: 'Guides', item: `${siteConfig.url}/guides` },
+  ]
+  if (frontmatter.category) {
+    breadcrumbItems.push({
+      '@type': 'ListItem',
+      position: 3,
+      name: frontmatter.category,
+      item: `${siteConfig.url}/guides`,
+    })
+    breadcrumbItems.push({
+      '@type': 'ListItem',
+      position: 4,
+      name: frontmatter.title,
+      item: articleUrl,
+    })
+  } else {
+    breadcrumbItems.push({
+      '@type': 'ListItem',
+      position: 3,
+      name: frontmatter.title,
+      item: articleUrl,
+    })
+  }
+
+  const breadcrumbJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: breadcrumbItems,
   }
 
   return (
@@ -145,6 +187,10 @@ export default async function GuidePage({ params }: GuidePageProps) {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
       />
 
       {/* Reading progress bar — client component */}
