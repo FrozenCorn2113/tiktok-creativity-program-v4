@@ -114,6 +114,17 @@ export default function FooterDark() {
               See our Affiliate Disclosure
             </Link>.
           </p>
+          <p className="text-xs text-gray-600 mt-2">
+            Find this helpful?{' '}
+            <a
+              href="https://ko-fi.com/tiktokcreativityprogram"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-[#F97316] hover:text-[#EA6A0A] transition-colors"
+            >
+              Support this site on Ko-fi
+            </a>
+          </p>
         </div>
       </div>
     </footer>

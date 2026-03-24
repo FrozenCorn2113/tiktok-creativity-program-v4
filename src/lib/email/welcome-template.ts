@@ -159,7 +159,7 @@ export function buildWelcomeEmail(options: WelcomeEmailOptions = {}): {
                   <td style="padding:20px 24px;">
                     <p style="margin:0 0 4px 0;font-family:'Manrope',Arial,Helvetica,sans-serif;font-size:14px;font-weight:700;color:#0B0F1A;">What you get as a subscriber:</p>
                     <p style="margin:0;font-family:'Manrope',Arial,Helvetica,sans-serif;font-size:13px;color:#475467;line-height:1.7;">
-                      &bull;&nbsp; 88+ in-depth guides on TikTok monetization<br>
+                      &bull;&nbsp; 100+ in-depth guides on TikTok monetization<br>
                       &bull;&nbsp; Free earnings calculators and RPM data<br>
                       &bull;&nbsp; Strategy updates when TikTok changes the rules<br>
                       &bull;&nbsp; No spam, ever. Only useful stuff.

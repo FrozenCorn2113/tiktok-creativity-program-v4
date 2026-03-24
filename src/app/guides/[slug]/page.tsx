@@ -50,6 +50,8 @@ import GuideArticleClient from './GuideArticleClient'
 import { AffiliateDisclosure } from '@/components/affiliate/affiliate-disclosure'
 import { AffiliateCardInline } from '@/components/affiliate/affiliate-card-inline'
 import { EmailCaptureInline } from '@/components/email/email-capture-inline'
+import { EmailCapturePopup } from '@/components/email/email-capture-popup'
+import { MobileStickyEmailBar } from '@/components/email/mobile-sticky-email-bar'
 
 type GuidePageProps = {
   params: { slug: string }
@@ -315,13 +317,11 @@ export default async function GuidePage({ params }: GuidePageProps) {
                 {compiled.content}
               </div>
 
-              {/* v4: Email capture inline — after main article body */}
-              {Boolean((frontmatter as Record<string, unknown>).hasAffiliateLinks) && (
-                <EmailCaptureInline
-                  leadMagnetTitle="Get the Free Creator Rewards Checklist"
-                  leadMagnetDescription="Every requirement, the most common rejection reasons, and what to do if your qualified views aren't counting. Free instant download."
-                />
-              )}
+              {/* Inline email capture — shown on ALL guides */}
+              <EmailCaptureInline
+                leadMagnetTitle="Get the Free Creator Rewards Checklist"
+                leadMagnetDescription="Every requirement, the most common rejection reasons, and what to do if your qualified views aren't counting. Free instant download."
+              />
 
               {/* v4: Affiliate card inline — tools recommendation */}
               {Boolean((frontmatter as Record<string, unknown>).hasAffiliateLinks) && (
@@ -386,6 +386,16 @@ export default async function GuidePage({ params }: GuidePageProps) {
         showImage={false}
         compact={true}
       />
+
+      {/* Exit-intent popup — desktop users */}
+      <EmailCapturePopup
+        leadMagnetTitle="Creator Rewards Checklist"
+        headline="Before you go — grab the free checklist"
+        description="Every requirement, common rejection reasons, and what to do if your qualified views aren't counting. Updated for 2026."
+      />
+
+      {/* Mobile sticky bar — shows after 30s of reading */}
+      <MobileStickyEmailBar />
     </>
   )
 }

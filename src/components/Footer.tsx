@@ -135,6 +135,17 @@ export default function Footer() {
               See our Affiliate Disclosure
             </Link>.
           </p>
+          <p className="text-xs text-gray-500 text-center mt-2">
+            Find this helpful?{' '}
+            <a
+              href="https://ko-fi.com/tiktokcreativityprogram"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-brand-primary hover:text-brand-primaryHover transition-colors"
+            >
+              Support this site on Ko-fi
+            </a>
+          </p>
         </div>
       </div>
     </footer>
