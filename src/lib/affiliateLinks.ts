@@ -20,6 +20,8 @@ export const affiliateLinks: Record<string, string> = {
   filmora: 'https://filmora.wondershare.com/',
   // Kit (formerly ConvertKit) — 50% recurring first 12 months; Bronze tier (10+ customers) = ongoing
   kit: 'https://partners.kit.com/o474ub5e1gtu',
+  // Kit Mailchimp switcher campaign — dedicated link from Kit affiliate team (Zoe)
+  'kit-mailchimp': 'https://partners.kit.com/21jzv',
   // TODO: Replace with affiliate link after approval — Expected: up to $399 one-time + up to 20% recurring
   kajabi: 'https://kajabi.com/',
   // TODO: Replace with affiliate link after approval — Expected: 10% platform referrals
