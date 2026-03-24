@@ -41,6 +41,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/privacy',
     '/terms',
     '/affiliate-disclosure',
+    '/lead-magnets/rpm-cheat-sheet',
+    '/lead-magnets/eligibility-checklist',
   ].map((route) => ({
     url: `${siteConfig.url}${route}`,
     lastModified: new Date().toISOString(),

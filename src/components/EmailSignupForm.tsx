@@ -28,9 +28,9 @@ const defaultCopy: Record<Variant, { title: string; description: string; ctaLabe
     ctaLabel: 'Join the list',
   },
   'exit-intent': {
-    title: 'Before you go — want the earnings tracker?',
-    description: 'It takes 30 seconds to set up and keeps your Creator Rewards organized.',
-    ctaLabel: 'Email me the tracker',
+    title: 'Before you go — want the free RPM Cheat Sheet?',
+    description: 'RPM ranges for 18 TikTok niches and tips to push your rate higher. Instant access.',
+    ctaLabel: 'Get the cheat sheet',
   },
   hero: {
     title: 'Start earning more from TikTok',

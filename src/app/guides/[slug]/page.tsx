@@ -317,10 +317,10 @@ export default async function GuidePage({ params }: GuidePageProps) {
                 {compiled.content}
               </div>
 
-              {/* Inline email capture — shown on ALL guides */}
+              {/* Inline email capture — shown on ALL guides, promotes RPM Cheat Sheet */}
               <EmailCaptureInline
-                leadMagnetTitle="Get the Free Creator Rewards Checklist"
-                leadMagnetDescription="Every requirement, the most common rejection reasons, and what to do if your qualified views aren't counting. Free instant download."
+                leadMagnetTitle="Get the Free RPM Cheat Sheet"
+                leadMagnetDescription="RPM ranges for 18 TikTok niches, the 4 factors that set your rate, and quick tips to push your RPM higher. Free instant access."
               />
 
               {/* v4: Affiliate card inline — tools recommendation */}
@@ -387,11 +387,11 @@ export default async function GuidePage({ params }: GuidePageProps) {
         compact={true}
       />
 
-      {/* Exit-intent popup — desktop users */}
+      {/* Exit-intent popup — desktop users, promotes RPM Cheat Sheet */}
       <EmailCapturePopup
-        leadMagnetTitle="Creator Rewards Checklist"
-        headline="Before you go — grab the free checklist"
-        description="Every requirement, common rejection reasons, and what to do if your qualified views aren't counting. Updated for 2026."
+        leadMagnetTitle="RPM Cheat Sheet"
+        headline="Before you go — grab the free RPM Cheat Sheet"
+        description="RPM ranges for 18 TikTok niches, the 4 factors that determine your rate, and quick tips to earn more per view."
       />
 
       {/* Mobile sticky bar — shows after 30s of reading */}

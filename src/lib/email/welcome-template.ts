@@ -1,7 +1,7 @@
 /**
- * Branded welcome email template for TCP.
+ * Welcome email template — Email 1 of 5-email sequence.
+ * Delivers lead magnet link and introduces the site.
  * All CSS is inline for email client compatibility.
- * Uses Manrope with Arial/Helvetica/sans-serif fallback.
  *
  * Brand tokens:
  *   Orange CTA:   #F4A261 bg, #0B0F1A text (NEVER white text on orange)
@@ -23,17 +23,20 @@ interface WelcomeEmailOptions {
   downloadUrl?: string | null
 }
 
-/** Map lead magnet names to their guide/resource URLs */
+/** Map lead magnet identifiers to their page URLs */
 const LEAD_MAGNET_URLS: Record<string, string> = {
-  // Guide inline captures
-  'Get the Free Creator Rewards Checklist': '/guides/tiktok-creativity-program-beta-requirements',
+  'rpm-cheat-sheet': '/lead-magnets/rpm-cheat-sheet',
+  'RPM Cheat Sheet': '/lead-magnets/rpm-cheat-sheet',
+  'Get the Free RPM Cheat Sheet': '/lead-magnets/rpm-cheat-sheet',
+  'eligibility-checklist': '/lead-magnets/eligibility-checklist',
+  'Eligibility Checklist': '/lead-magnets/eligibility-checklist',
+  'Get the Free Creator Rewards Checklist': '/lead-magnets/eligibility-checklist',
+  // Legacy mappings
   'RPM Optimization Guide': '/guides/tiktok-rpm-rates-by-country',
   'Follower Income Guide': '/guides/tiktok-money-per-follower',
   'Earnings Calculator Results Guide': '/guides/tiktok-earnings-calculator',
-  'Eligibility Checklist': '/guides/tiktok-creativity-program-beta-requirements',
-  // Resource page lead magnets
   'Earnings Tracker': '/resources/earnings-tracker',
-  'Creator Rewards Checklist': '/resources/creator-rewards-checklist',
+  'Creator Rewards Checklist': '/lead-magnets/eligibility-checklist',
   'Content Planning Template': '/resources/content-planning-template',
   'Viral Video Worksheet': '/resources/viral-video-worksheet',
 }
@@ -44,14 +47,14 @@ function getDownloadUrl(leadMagnet?: string | null, downloadUrl?: string | null)
   return `${SITE_URL}/guides`
 }
 
-function getCtaText(leadMagnet?: string | null): string {
-  if (leadMagnet) return 'Access Your Free Guide'
-  return 'Explore All Guides'
+function isRpmCheatSheet(leadMagnet?: string | null): boolean {
+  if (!leadMagnet) return false
+  return leadMagnet.toLowerCase().includes('rpm')
 }
 
-function getSubjectLine(leadMagnet?: string | null): string {
-  if (leadMagnet) return `Your free guide is ready`
-  return `Welcome to TikTok Creativity Program`
+function isEligibilityChecklist(leadMagnet?: string | null): boolean {
+  if (!leadMagnet) return false
+  return leadMagnet.toLowerCase().includes('eligibility') || leadMagnet.toLowerCase().includes('checklist')
 }
 
 export function buildWelcomeEmail(options: WelcomeEmailOptions = {}): {
@@ -59,9 +62,91 @@ export function buildWelcomeEmail(options: WelcomeEmailOptions = {}): {
   html: string
 } {
   const { leadMagnet, downloadUrl } = options
-  const ctaUrl = getDownloadUrl(leadMagnet, downloadUrl)
-  const ctaText = getCtaText(leadMagnet)
-  const subject = getSubjectLine(leadMagnet)
+  const mainDownloadUrl = getDownloadUrl(leadMagnet, downloadUrl)
+
+  // Subject line from sequence: "Here's your TikTok cheat sheet"
+  const subject = leadMagnet ? "Here's your TikTok cheat sheet" : 'Welcome to TikTok Creativity Program'
+  const previewText = leadMagnet
+    ? 'Plus what to check before you apply for Creator Rewards.'
+    : 'Free guides, calculators, and tips to grow your TikTok earnings.'
+
+  // Build the lead magnet delivery section based on what they signed up for
+  let leadMagnetSection = ''
+  if (isRpmCheatSheet(leadMagnet)) {
+    leadMagnetSection = `
+      <p style="margin:0 0 16px 0;font-family:'Manrope',Arial,Helvetica,sans-serif;font-size:15px;color:#111827;line-height:1.65;">
+        Your download is ready:
+      </p>
+      <table role="presentation" cellpadding="0" cellspacing="0" border="0" style="margin:0 0 16px 0;">
+        <tr>
+          <td style="background-color:#F4A261;border-radius:999px;">
+            <!--[if mso]>
+            <v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="${mainDownloadUrl}" style="height:48px;v-text-anchor:middle;width:280px;" arcsize="50%" fillcolor="#F4A261" stroke="f">
+              <w:anchorlock/>
+              <center style="color:#0B0F1A;font-family:Arial,Helvetica,sans-serif;font-size:15px;font-weight:bold;">Download: TikTok RPM Cheat Sheet</center>
+            </v:roundrect>
+            <![endif]-->
+            <!--[if !mso]><!-->
+            <a href="${mainDownloadUrl}" target="_blank" style="display:inline-block;padding:14px 28px;font-family:'Manrope',Arial,Helvetica,sans-serif;font-size:15px;font-weight:700;color:#0B0F1A;text-decoration:none;border-radius:999px;background-color:#F4A261;line-height:1;">
+              Download: TikTok RPM Cheat Sheet
+            </a>
+            <!--<![endif]-->
+          </td>
+        </tr>
+      </table>
+      <p style="margin:0 0 16px 0;font-family:'Manrope',Arial,Helvetica,sans-serif;font-size:15px;color:#111827;line-height:1.65;">
+        It covers RPM ranges for 18 niches, the 4 factors TikTok uses to calculate your rate, and the quickest ways to push that number higher.
+      </p>
+      <p style="margin:0 0 16px 0;font-family:'Manrope',Arial,Helvetica,sans-serif;font-size:15px;color:#111827;line-height:1.65;">
+        You might also find the eligibility checklist useful:
+      </p>
+      <p style="margin:0 0 20px 0;font-family:'Manrope',Arial,Helvetica,sans-serif;font-size:15px;line-height:1.65;">
+        <a href="${SITE_URL}/lead-magnets/eligibility-checklist" style="color:#0B0F1A;font-weight:700;text-decoration:underline;">Download: Creator Rewards Eligibility Checklist</a>
+      </p>`
+  } else if (isEligibilityChecklist(leadMagnet)) {
+    leadMagnetSection = `
+      <p style="margin:0 0 16px 0;font-family:'Manrope',Arial,Helvetica,sans-serif;font-size:15px;color:#111827;line-height:1.65;">
+        Your download is ready:
+      </p>
+      <table role="presentation" cellpadding="0" cellspacing="0" border="0" style="margin:0 0 16px 0;">
+        <tr>
+          <td style="background-color:#F4A261;border-radius:999px;">
+            <!--[if mso]>
+            <v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="${mainDownloadUrl}" style="height:48px;v-text-anchor:middle;width:320px;" arcsize="50%" fillcolor="#F4A261" stroke="f">
+              <w:anchorlock/>
+              <center style="color:#0B0F1A;font-family:Arial,Helvetica,sans-serif;font-size:15px;font-weight:bold;">Download: Eligibility Checklist</center>
+            </v:roundrect>
+            <![endif]-->
+            <!--[if !mso]><!-->
+            <a href="${mainDownloadUrl}" target="_blank" style="display:inline-block;padding:14px 28px;font-family:'Manrope',Arial,Helvetica,sans-serif;font-size:15px;font-weight:700;color:#0B0F1A;text-decoration:none;border-radius:999px;background-color:#F4A261;line-height:1;">
+              Download: Eligibility Checklist
+            </a>
+            <!--<![endif]-->
+          </td>
+        </tr>
+      </table>
+      <p style="margin:0 0 16px 0;font-family:'Manrope',Arial,Helvetica,sans-serif;font-size:15px;color:#111827;line-height:1.65;">
+        Every requirement, the most common rejection reasons, and what to do if your application is denied.
+      </p>
+      <p style="margin:0 0 16px 0;font-family:'Manrope',Arial,Helvetica,sans-serif;font-size:15px;color:#111827;line-height:1.65;">
+        You might also find the RPM cheat sheet useful:
+      </p>
+      <p style="margin:0 0 20px 0;font-family:'Manrope',Arial,Helvetica,sans-serif;font-size:15px;line-height:1.65;">
+        <a href="${SITE_URL}/lead-magnets/rpm-cheat-sheet" style="color:#0B0F1A;font-weight:700;text-decoration:underline;">Download: TikTok RPM Cheat Sheet</a>
+      </p>`
+  } else {
+    // Generic signup — link both lead magnets
+    leadMagnetSection = `
+      <p style="margin:0 0 16px 0;font-family:'Manrope',Arial,Helvetica,sans-serif;font-size:15px;color:#111827;line-height:1.65;">
+        Here are two free resources to get you started:
+      </p>
+      <p style="margin:0 0 8px 0;font-family:'Manrope',Arial,Helvetica,sans-serif;font-size:15px;line-height:1.65;">
+        <a href="${SITE_URL}/lead-magnets/rpm-cheat-sheet" style="color:#0B0F1A;font-weight:700;text-decoration:underline;">Download: TikTok RPM Cheat Sheet</a>
+      </p>
+      <p style="margin:0 0 20px 0;font-family:'Manrope',Arial,Helvetica,sans-serif;font-size:15px;line-height:1.65;">
+        <a href="${SITE_URL}/lead-magnets/eligibility-checklist" style="color:#0B0F1A;font-weight:700;text-decoration:underline;">Download: Creator Rewards Eligibility Checklist</a>
+      </p>`
+  }
 
   const html = `<!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
@@ -89,7 +174,7 @@ export function buildWelcomeEmail(options: WelcomeEmailOptions = {}): {
 
   <!-- Preheader text (hidden) -->
   <div style="display:none;font-size:1px;color:#FFF7ED;line-height:1px;max-height:0;max-width:0;opacity:0;overflow:hidden;">
-    ${leadMagnet ? `Your free guide is ready to download.` : `Welcome — free guides, calculators, and tips to grow your TikTok earnings.`}
+    ${previewText}
   </div>
 
   <!-- Outer wrapper -->
@@ -116,53 +201,34 @@ export function buildWelcomeEmail(options: WelcomeEmailOptions = {}): {
           <!-- Main content -->
           <tr>
             <td style="padding:28px 32px 0 32px;">
-              <h1 style="margin:0 0 16px 0;font-family:'Manrope',Arial,Helvetica,sans-serif;font-size:24px;font-weight:800;color:#0B0F1A;line-height:1.3;text-align:center;">
-                ${leadMagnet ? `Your guide is ready` : `Welcome aboard`}
-              </h1>
-              <p style="margin:0 0 20px 0;font-family:'Manrope',Arial,Helvetica,sans-serif;font-size:15px;color:#111827;line-height:1.65;text-align:center;">
-                ${leadMagnet
-                  ? `Thanks for downloading <strong style="color:#0B0F1A;">${leadMagnet}</strong>. Click below to access it right away.`
-                  : `You just joined thousands of creators using free guides, earnings calculators, and data-backed strategies to maximize their TikTok Creativity Program earnings.`
-                }
+              ${leadMagnetSection}
+
+              <p style="margin:0 0 16px 0;font-family:'Manrope',Arial,Helvetica,sans-serif;font-size:15px;color:#111827;line-height:1.65;">
+                Quick intro: TikTok Creativity Program is a free resource site with 100+ guides on everything from Creator Rewards eligibility to RPM optimization to building income beyond the program itself. No course to sell, no membership gate.
+              </p>
+
+              <p style="margin:0 0 16px 0;font-family:'Manrope',Arial,Helvetica,sans-serif;font-size:15px;color:#111827;line-height:1.65;">
+                Over the next couple weeks, I'll send a few short emails covering the things that trip up the most creators. Each one links to a specific guide if you want to go deeper.
+              </p>
+
+              <p style="margin:0 0 16px 0;font-family:'Manrope',Arial,Helvetica,sans-serif;font-size:15px;color:#111827;line-height:1.65;">
+                Reply to any of these emails if you have a question. I read them.
+              </p>
+
+              <p style="margin:0 0 4px 0;font-family:'Manrope',Arial,Helvetica,sans-serif;font-size:15px;color:#111827;line-height:1.65;">
+                Talk soon.
               </p>
             </td>
           </tr>
 
-          <!-- CTA Button -->
+          <!-- P.S. tip -->
           <tr>
-            <td style="padding:4px 32px 0 32px;text-align:center;">
-              <table role="presentation" cellpadding="0" cellspacing="0" border="0" style="margin:0 auto;">
-                <tr>
-                  <td style="background-color:#F4A261;border-radius:999px;">
-                    <!--[if mso]>
-                    <v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="${ctaUrl}" style="height:48px;v-text-anchor:middle;width:240px;" arcsize="50%" fillcolor="#F4A261" stroke="f">
-                      <w:anchorlock/>
-                      <center style="color:#0B0F1A;font-family:Arial,Helvetica,sans-serif;font-size:15px;font-weight:bold;">${ctaText}</center>
-                    </v:roundrect>
-                    <![endif]-->
-                    <!--[if !mso]><!-->
-                    <a href="${ctaUrl}" target="_blank" style="display:inline-block;padding:14px 32px;font-family:'Manrope',Arial,Helvetica,sans-serif;font-size:15px;font-weight:700;color:#0B0F1A;text-decoration:none;border-radius:999px;background-color:#F4A261;line-height:1;">
-                      ${ctaText}
-                    </a>
-                    <!--<![endif]-->
-                  </td>
-                </tr>
-              </table>
-            </td>
-          </tr>
-
-          <!-- Value props -->
-          <tr>
-            <td style="padding:28px 32px 0 32px;">
+            <td style="padding:16px 32px 0 32px;">
               <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="background-color:#FFF1E6;border-radius:12px;">
                 <tr>
-                  <td style="padding:20px 24px;">
-                    <p style="margin:0 0 4px 0;font-family:'Manrope',Arial,Helvetica,sans-serif;font-size:14px;font-weight:700;color:#0B0F1A;">What you get as a subscriber:</p>
+                  <td style="padding:16px 20px;">
                     <p style="margin:0;font-family:'Manrope',Arial,Helvetica,sans-serif;font-size:13px;color:#475467;line-height:1.7;">
-                      &bull;&nbsp; 100+ in-depth guides on TikTok monetization<br>
-                      &bull;&nbsp; Free earnings calculators and RPM data<br>
-                      &bull;&nbsp; Strategy updates when TikTok changes the rules<br>
-                      &bull;&nbsp; No spam, ever. Only useful stuff.
+                      <strong style="color:#0B0F1A;">P.S.</strong> The single most common reason applications get rejected has nothing to do with follower count. It's account type. Business accounts get auto-rejected, and TikTok doesn't always make the reason obvious. Check yours: Settings &gt; Account &gt; Account type.
                     </p>
                   </td>
                 </tr>
