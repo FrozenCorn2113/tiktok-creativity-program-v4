@@ -2,56 +2,96 @@ const AMAZON_TAG = 'tiktokcreatpr-20'
 const amz = (asin: string) => `https://www.amazon.com/dp/${asin}/?tag=${AMAZON_TAG}`
 
 export const affiliateLinks: Record<string, string> = {
-  // Existing
+  // ── ACTIVE affiliate links (do not change) ──
   // Neewer 10" Ring Light Kit (ASIN B01LZKIBUK) — top-rated creator ring light ~$42
   amazonRingLight: amz('B01LZKIBUK'),
   // Blue Yeti Nano USB Mic (ASIN B07DTTGP7V) — compact USB condenser, creator standard
   amazonMic: amz('B07DTTGP7V'),
   mavely: 'https://www.joinmavely.com/',
   fiverr: 'https://www.fiverr.com/',
+
+  // ── TIER 1: Easy approval — apply now ──
+
+  // TODO: Replace with affiliate link after approval — Expected: 30% for 1 year
+  later: 'https://later.com/',
+  // TODO: Replace with affiliate link after approval — Expected: 25% monthly for 12 months
+  buffer: 'https://buffer.com/',
+  // TODO: Replace with affiliate link after approval (via ShareASale/CJ) — Expected: 30-50% tiered
+  filmora: 'https://filmora.wondershare.com/',
+  // TODO: Replace with affiliate link after approval — Expected: 50% first 12 months, then 10-20% recurring
+  kit: 'https://kit.com/',
+  // TODO: Replace with affiliate link after approval — Expected: up to $399 one-time + up to 20% recurring
+  kajabi: 'https://kajabi.com/',
+  // TODO: Replace with affiliate link after approval — Expected: 10% platform referrals
+  gumroad: 'https://gumroad.com/',
+  // No affiliate program available — direct link only
   canva: 'https://www.canva.com/',
 
-  // Phase 3 additions — affiliate URLs TBD, placeholder direct links
-  filmora: 'https://filmora.wondershare.com/',
-  'adobe-cc': 'https://www.adobe.com/creativecloud.html',
-  later: 'https://later.com/',
-  buffer: 'https://buffer.com/',
-  'sprout-social': 'https://sproutsocial.com/',
-  'epidemic-sound': 'https://www.epidemicsound.com/',
-  artlist: 'https://artlist.io/',
+  // ── TIER 2: Manual review — apply soon ──
 
-  // Clipping Tools — placeholder direct links, needs affiliate approval
+  // TODO: Replace with affiliate link after approval — Expected: 20% recurring (requires Stan subscription)
+  'stan-store': 'https://stan.store/',
+  // TODO: Replace with affiliate link after approval — Expected: subscription discounts, then 50/50 at Ambassador
+  'epidemic-sound': 'https://www.epidemicsound.com/',
+
+  // ── TIER 3: Need traffic first ──
+
+  // TODO: Replace with affiliate link after approval — Expected: $30 per signup (selective, 60-day review)
+  artlist: 'https://artlist.io/',
+  // TODO: Replace with affiliate link after approval — Expected: up to $36/new Pro subscriber (currently CLOSED)
+  'canva-pro': 'https://www.canva.com/pro/',
+  // No affiliate program — Adobe has Impact.com program (we were denied)
+  'adobe-cc': 'https://www.adobe.com/creativecloud.html',
+
+  // ── Scheduling & Analytics (no affiliate program or TBD) ──
+
+  // No confirmed affiliate program
+  'sprout-social': 'https://sproutsocial.com/',
+
+  // ── Clipping Tools — placeholder direct links ──
+
+  // No confirmed affiliate program — check PartnerStack
   opusclip: 'https://www.opus.pro',
+  // No confirmed affiliate program
   vizard: 'https://vizard.ai',
+  // No confirmed affiliate program
   submagic: 'https://www.submagic.co',
+  // No confirmed affiliate program
   kapwing: 'https://www.kapwing.com',
+  // TODO: Replace with affiliate link after approval — check Descript partner program
   descript: 'https://www.descript.com',
+  // No confirmed affiliate program
   pictory: 'https://pictory.ai',
+  // No confirmed affiliate program
   klap: 'https://klap.app',
 
-  // Amazon Associates — slug aliases used in resources page copy
+  // ── Amazon Associates — slug aliases used in resources page copy ──
   // Neewer 10" Ring Light Kit (ASIN B01LZKIBUK)
   'amazon-ring-light': amz('B01LZKIBUK'),
   // Blue Yeti Nano USB Mic (ASIN B07DTTGP7V)
   'amazon-mic': amz('B07DTTGP7V'),
 
-  // Niche page tools — affiliate URLs TBD, placeholder direct links
+  // ── Niche page tools ──
+
+  // No affiliate program — free tool
   'capcut-pro': 'https://www.capcut.com/',
+  // No affiliate program — free software
   'davinci-resolve': 'https://www.blackmagicdesign.com/products/davinciresolve',
-  'canva-pro': 'https://www.canva.com/pro/',
   // Neewer 10" Ring Light Kit (ASIN B01LZKIBUK)
   'ring-light': amz('B01LZKIBUK'),
   // Blue Yeti Nano USB Mic (ASIN B07DTTGP7V)
   microphone: amz('B07DTTGP7V'),
   // AmazonBasics 60" Lightweight Tripod (ASIN B00XI87KV8)
   tripod: amz('B00XI87KV8'),
-  'stan-store': 'https://stan.store/',
+  // No confirmed affiliate program
   'linktree-pro': 'https://linktr.ee/s/pricing',
+  // No confirmed affiliate program — check for partner program
   skillshare: 'https://www.skillshare.com/',
+  // No affiliate program — free/open-source
   'obs-studio': 'https://obsproject.com/',
+  // No affiliate program — hardware (use Amazon link instead)
   'elgato-stream-deck': 'https://www.elgato.com/stream-deck',
-  // Fitness niche tools
-  kit: 'https://kit.com/',
+  // No confirmed affiliate program
   fillout: 'https://www.fillout.com/',
 
   // ── Ring Lights (Phase 1.5 Amazon product guides) ──
