@@ -221,20 +221,20 @@ export const nicheContent: Record<string, NicheData> = {
     focus: ['Print sales', 'Commissions', 'Process content', 'Behind-the-scenes'],
     creators: [
       {
-        name: 'Mimielita',
-        handle: 'mimielita',
-        followers: '5.2M',
+        name: 'Kooleen',
+        handle: 'kooleenart',
+        followers: '487K',
         description:
-          'Bright, charming illustrations and Procreate time-lapse videos that are as hypnotic to watch as they are educational.',
-        lesson: 'Visual process content is native to TikTok and earns strong watch-through rates',
+          'Digital illustration creator known for stylized character art and Procreate tutorials. Her process breakdowns teach specific techniques while showcasing a distinctive pastel-toned style that keeps viewers watching.',
+        lesson: 'Tutorial-style process content builds authority and drives Procreate brush sales at mid-tier followings',
       },
       {
-        name: 'Itsmoncus',
-        handle: 'itsmoncus',
-        followers: '3.6M',
+        name: 'Dina Norlund',
+        handle: 'dinanorlund',
+        followers: '215K',
         description:
-          'Versatile digital artist known for pop culture character recreations and vibrant marker-based illustrations that tap into trending fandoms.',
-        lesson: 'Intersecting art with trending fandoms keeps content algorithm-friendly',
+          'Watercolor and gouache artist who films satisfying real-time painting sessions. Her content proves that traditional media process videos hold attention just as well as digital art on TikTok.',
+        lesson: 'Traditional media artists can build engaged audiences by leaning into the tactile, ASMR-like quality of real paint on paper',
       },
       {
         name: 'Noor Ahmad',
@@ -245,12 +245,12 @@ export const nicheContent: Record<string, NicheData> = {
         lesson: 'Traditional media art (not just digital) can thrive on TikTok with the right tutorial approach',
       },
       {
-        name: 'Chandanartacademy',
-        handle: 'chandanartacademy',
-        followers: '3.4M',
+        name: 'Jess Karp',
+        handle: 'jesskarp',
+        followers: '178K',
         description:
-          'Art academy focused on teaching drawing techniques to a wide audience, proving consistent tutorial content builds massive followings.',
-        lesson: 'Teaching rather than showcasing finished work builds audiences and monetizes through branded tutorials',
+          'Mixed media and collage artist who shares her creative process from concept to finished piece. Sells original work and prints directly through TikTok traffic to her online shop.',
+        lesson: 'Showing the full creative journey from idea to finished sale converts viewers into buyers at any follower count',
       },
       {
         name: 'Mysweetchubs',

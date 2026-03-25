@@ -1,5 +1,6 @@
 'use client'
 
+import React from 'react'
 import Container from '@/components/ui/Container'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -80,33 +81,34 @@ function RpmRangeBar({ range, nicheSlug }: { range: string; nicheSlug: string })
 // ---------------------------------------------------------------------------
 function CreatorCard({ creator }: { creator: Creator }) {
   const imagePath = `/images/creators/${creator.handle}.webp`
+  const [imgFailed, setImgFailed] = React.useState(false)
 
   return (
     <motion.div
       variants={staggerItem}
       className="rounded-xl border border-border-default bg-white overflow-hidden hover:shadow-md transition-shadow duration-200"
     >
-      {/* Creator image or placeholder */}
+      {/* Creator image or placeholder -- show one or the other, never both */}
       <div className="relative w-full h-48 bg-[var(--color-surface-warm)]">
-        <Image
-          src={imagePath}
-          alt={`${creator.name} TikTok profile`}
-          fill
-          className="object-cover"
-          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-          onError={(e) => {
-            (e.target as HTMLImageElement).style.display = 'none'
-          }}
-        />
-        {/* Placeholder always rendered underneath */}
-        <div className="absolute inset-0 flex flex-col items-center justify-center">
-          <div className="w-16 h-16 rounded-full bg-brand-primary/20 border-2 border-brand-primary/30 flex items-center justify-center mb-2">
-            <span className="text-lg font-bold text-brand-primaryDeep">
-              {getInitials(creator.name)}
-            </span>
+        {!imgFailed ? (
+          <Image
+            src={imagePath}
+            alt={`${creator.name} TikTok profile`}
+            fill
+            className="object-cover"
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+            onError={() => setImgFailed(true)}
+          />
+        ) : (
+          <div className="absolute inset-0 flex flex-col items-center justify-center">
+            <div className="w-16 h-16 rounded-full bg-brand-primary/20 border-2 border-brand-primary/30 flex items-center justify-center mb-2">
+              <span className="text-lg font-bold text-brand-primaryDeep">
+                {getInitials(creator.name)}
+              </span>
+            </div>
+            <span className="text-xs text-text-muted">@{creator.handle}</span>
           </div>
-          <span className="text-xs text-text-muted">@{creator.handle}</span>
-        </div>
+        )}
       </div>
 
       {/* Card content */}
