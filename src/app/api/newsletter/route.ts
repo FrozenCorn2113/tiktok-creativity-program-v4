@@ -40,12 +40,11 @@ export async function POST(request: Request) {
 
   const { error } = await supabase
     .from('email_subscribers')
-    .upsert(
-      { email, source: source ?? 'newsletter', lead_magnet: lead_magnet ?? null, page_url: page_url ?? null },
-      { onConflict: 'email', ignoreDuplicates: false }
-    )
+    .insert({ email, source: source ?? 'newsletter', lead_magnet: lead_magnet ?? null, page_url: page_url ?? null })
 
-  if (error) {
+  // 23505 = unique_violation — email already exists, treat as success
+  if (error && error.code !== '23505') {
+    console.error('[api/newsletter] Supabase insert error:', error)
     return NextResponse.json({ error: 'Failed to save' }, { status: 500 })
   }
 
