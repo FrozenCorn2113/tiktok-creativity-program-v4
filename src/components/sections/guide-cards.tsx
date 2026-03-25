@@ -45,7 +45,7 @@ function GuideCard({ guide }: { guide: GuideCardData }) {
       {/* Thumbnail */}
       <div className="relative w-full h-36 bg-brand-primarySoft overflow-hidden">
         <Image
-          src={`/images/guides/thumb-${guide.slug}.webp`}
+          src={`/images/guides/hero-${guide.slug}.webp`}
           alt={`Thumbnail for ${guide.title}`}
           fill
           className="object-cover"

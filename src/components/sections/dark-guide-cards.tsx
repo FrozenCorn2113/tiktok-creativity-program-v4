@@ -24,7 +24,7 @@ function DarkGuideCard({ guide, featured = false }: { guide: GuideCardData; feat
       >
         <div className="relative w-full h-52 bg-[#0F172A] overflow-hidden">
           <Image
-            src={`/images/guides/thumb-${guide.slug}.webp`}
+            src={`/images/guides/hero-${guide.slug}.webp`}
             alt={`Thumbnail for ${guide.title}`}
             fill
             className="object-cover opacity-70 group-hover:opacity-90 transition-opacity"
@@ -68,7 +68,7 @@ function DarkGuideCard({ guide, featured = false }: { guide: GuideCardData; feat
       {/* Small thumbnail */}
       <div className="relative w-16 h-16 shrink-0 rounded-lg overflow-hidden bg-[#1a2337]">
         <Image
-          src={`/images/guides/thumb-${guide.slug}.webp`}
+          src={`/images/guides/hero-${guide.slug}.webp`}
           alt=""
           fill
           className="object-cover opacity-60"

@@ -149,7 +149,7 @@ function GuideCard({ guide }: { guide: GuideItem }) {
       <div className="relative w-full h-48 bg-brand-primarySoft overflow-hidden">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
-          src={`/images/guides/thumb-${guide.slug}.webp`}
+          src={`/images/guides/hero-${guide.slug}.webp`}
           alt={`Thumbnail for ${guide.title}`}
           className="w-full h-full object-cover"
           loading="lazy"
