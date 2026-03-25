@@ -129,7 +129,7 @@ export default function EarningsCalculator() {
               Estimate only. Actual payouts vary by country, content quality, and engagement.
             </p>
             <a
-              href="/guides/improve-rpm"
+              href="/guides/optimize-rpm"
               className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-[var(--color-primary)] hover:underline"
             >
               How to improve your RPM &rarr;

@@ -100,6 +100,20 @@ export const affiliateLinks: Record<string, string> = {
   // Interact — quiz builder affiliate link
   interact: 'https://get.tryinteract.com/tik-tok-creativity-program',
 
+  // ── MDX content slug aliases ──
+  // Beehiiv — no affiliate program yet, direct link
+  beehiiv: 'https://www.beehiiv.com/',
+  // FLORA — AI creative tool
+  flora: 'https://www.flora.ai/',
+  // UBeesize 12" Ring Light (ASIN B07GDC39Y2)
+  'ubeesize-ring-light': amz('B07GDC39Y2'),
+  // Neewer RP19H 19" Ring Light (ASIN B0CHRNFZC3)
+  'neewer-rp19h': amz('B0CHRNFZC3'),
+  // Neewer RL-18 18" Ring Light (ASIN B01LXDNNBW)
+  'neewer-rl18': amz('B01LXDNNBW'),
+  // Neewer RL45B Wireless Ring Light (ASIN B0D3TVGQWZ)
+  'neewer-rl45b': amz('B0D3TVGQWZ'),
+
   // ── Ring Lights (Phase 1.5 Amazon product guides) ──
   'amazon-neewer-10-ring-light-b089nn7ks6': amz('B089NN7KS6'),
   'amazon-emart-10-rgb-ring-light-b081mxv9ft': amz('B081MXV9FT'),

@@ -317,7 +317,7 @@ export default function EarningsCalculatorPage() {
                     Finance and education niches earn up to 2x more than entertainment or gaming. Choose your niche in the
                     calculator above to see niche-specific RPM ranges.
                   </p>
-                  <Link href="/guides/tiktok-creator-rewards-earnings-by-niche" className="text-xs font-semibold text-brand-primaryDeep hover:underline">
+                  <Link href="/guides/tiktok-rpm-by-niche-2026" className="text-xs font-semibold text-brand-primaryDeep hover:underline">
                     RPM by niche breakdown &rarr;
                   </Link>
                 </div>
@@ -352,7 +352,7 @@ export default function EarningsCalculatorPage() {
               </h2>
               <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
                 <Link
-                  href="/guides/how-much-does-tiktok-creativity-program-pay"
+                  href="/guides/how-much-does-tiktok-pay-per-view"
                   className="group flex flex-col rounded-2xl border border-border-default bg-white p-6 transition-all duration-150 hover:border-brand-primary hover:shadow-sm"
                 >
                   <h3 className="text-base font-semibold text-brand-ink">How Much Does TikTok Pay?</h3>
