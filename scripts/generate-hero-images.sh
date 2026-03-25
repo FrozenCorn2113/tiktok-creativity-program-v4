@@ -12,7 +12,7 @@ IMAGES_DIR="${PROJECT_ROOT}/public/images/guides"
 TMP_DIR="${PROJECT_ROOT}/scripts/.tmp-images"
 LOG_PREFIX="[hero-gen]"
 
-MAX_PER_RUN=65
+MAX_PER_RUN=30  # Daily quota limit; stop before hitting API rate limits
 DELAY_SECONDS=3
 MODEL="imagen-4.0-generate-001"
 
@@ -136,6 +136,12 @@ ENDJSON
     local body
     body=$(echo "$response" | sed '$d')
 
+    if [ "$http_code" = "429" ]; then
+        echo "${LOG_PREFIX} API returned HTTP 429 — daily quota exhausted"
+        echo "${LOG_PREFIX} Response: $(echo "$body" | head -5)"
+        return 2  # Special return code for quota exhaustion
+    fi
+
     if [ "$http_code" != "200" ]; then
         echo "${LOG_PREFIX} API returned HTTP ${http_code}"
         echo "${LOG_PREFIX} Response: $(echo "$body" | head -5)"
@@ -208,6 +214,7 @@ convert_images() {
 generated=0
 skipped=0
 failed=0
+consecutive_failures=0
 
 for mdx_file in "${GUIDES_DIR}"/*.mdx; do
     [ -f "$mdx_file" ] || continue
@@ -249,7 +256,13 @@ for mdx_file in "${GUIDES_DIR}"/*.mdx; do
 
     # Generate
     tmp_png="${TMP_DIR}/${slug}.png"
-    if generate_image "$prompt" "$tmp_png"; then
+    gen_rc=0
+    generate_image "$prompt" "$tmp_png" || gen_rc=$?
+
+    if [ "$gen_rc" -eq 2 ]; then
+        echo "${LOG_PREFIX} Quota exhausted. Stopping run cleanly. Will resume on next run."
+        break
+    elif [ "$gen_rc" -eq 0 ]; then
         # Convert to hero + thumb
         if convert_images "$tmp_png" "$hero_path" "$thumb_path"; then
             echo "${LOG_PREFIX}   Saved: hero-${slug}.webp + thumb-${slug}.webp"
@@ -263,6 +276,16 @@ for mdx_file in "${GUIDES_DIR}"/*.mdx; do
     else
         echo "${LOG_PREFIX}   ERROR: API call failed for ${slug}"
         failed=$((failed + 1))
+        consecutive_failures=$((consecutive_failures + 1))
+        if [ "$consecutive_failures" -ge 3 ]; then
+            echo "${LOG_PREFIX} 3 consecutive failures — stopping to avoid wasting time."
+            break
+        fi
+    fi
+
+    # Reset consecutive failures on success
+    if [ "$gen_rc" -eq 0 ]; then
+        consecutive_failures=0
     fi
 
     # Rate limit delay (skip on last image)
