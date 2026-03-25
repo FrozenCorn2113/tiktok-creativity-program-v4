@@ -1,6 +1,5 @@
 import Container from '@/components/ui/Container'
 import FollowerIncomeEstimator from '@/components/FollowerIncomeEstimator'
-import ScrollReveal from '@/components/ScrollReveal'
 import Link from 'next/link'
 import type { Metadata } from 'next'
 import { ArrowRight } from 'lucide-react'
@@ -39,14 +38,13 @@ export default function FollowerIncomeEstimatorPage() {
         description="We will explain what your estimated earnings mean, how engagement rate affects income, and which moves have the biggest impact on your payout."
         itemCount="Free guide"
       />
-      <ScrollReveal />
 
-      {/* Hero header */}
-      <section className="py-16 md:py-20">
+      {/* Hero header - tighter */}
+      <section className="pt-10 pb-6 md:pt-12 md:pb-8">
         <Container>
           <div className="max-w-3xl">
             {/* Breadcrumbs */}
-            <nav aria-label="Breadcrumb" className="mb-6">
+            <nav aria-label="Breadcrumb" className="mb-4">
               <ol className="flex flex-wrap items-center gap-1 text-xs text-text-muted">
                 <li><Link href="/" className="hover:text-brand-ink transition-colors">Home</Link></li>
                 <li className="text-border-default">/</li>
@@ -56,30 +54,28 @@ export default function FollowerIncomeEstimatorPage() {
               </ol>
             </nav>
 
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-brand-ink leading-[1.1]">
+            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-brand-ink leading-[1.1]">
               Follower Income Estimator
             </h1>
-            <p className="mt-4 text-lg md:text-xl text-text-secondary leading-relaxed max-w-2xl">
+            <p className="mt-3 text-base md:text-lg text-text-secondary leading-relaxed max-w-2xl">
               How much can you earn based on your follower count? Enter your followers, engagement rate, and posting frequency to see estimated Creator Rewards earnings.
             </p>
           </div>
         </Container>
       </section>
 
-      <section className="pb-16">
+      <section className="pb-10">
         <Container>
-          <div className="space-y-16">
+          <div className="space-y-10">
             {/* Calculator */}
-            <div className="max-w-4xl">
-              <FollowerIncomeEstimator />
-            </div>
+            <FollowerIncomeEstimator />
 
             {/* How it works */}
             <div className="max-w-3xl">
-              <h2 className="text-2xl font-bold text-brand-ink mb-6">
+              <h2 className="text-xl font-bold text-brand-ink mb-3">
                 How the estimate works
               </h2>
-              <div className="space-y-4 text-sm text-text-secondary leading-[1.7]">
+              <div className="space-y-3 text-sm text-text-secondary leading-[1.7]">
                 <p>
                   This calculator models your earnings using three variables: <strong className="text-brand-ink">follower count</strong>, <strong className="text-brand-ink">engagement rate</strong>, and <strong className="text-brand-ink">posting frequency</strong>. It estimates how many views your content will generate, then applies your RPM to calculate monthly earnings.
                 </p>
@@ -93,26 +89,35 @@ export default function FollowerIncomeEstimatorPage() {
             </div>
 
             {/* Key factors */}
-            <div className="max-w-4xl">
-              <h2 className="text-2xl font-bold text-brand-ink mb-6">
+            <div>
+              <h2 className="text-xl font-bold text-brand-ink mb-4">
                 What moves the number
               </h2>
               <div className="grid gap-4 md:grid-cols-3">
                 <div className="bg-white rounded-xl border border-border-default p-5">
-                  <p className="text-sm font-bold text-brand-ink mb-2">Engagement Rate</p>
-                  <p className="text-sm text-text-secondary leading-[1.65]">
+                  <div className="h-8 w-8 rounded-lg bg-orange-50 flex items-center justify-center mb-2">
+                    <span className="text-sm font-bold text-brand-primary">%</span>
+                  </div>
+                  <p className="text-sm font-bold text-brand-ink mb-1.5">Engagement Rate</p>
+                  <p className="text-xs text-text-secondary leading-[1.6]">
                     Higher engagement means more of your followers actually see and watch your content. Even a 1% improvement can significantly change your monthly views.
                   </p>
                 </div>
                 <div className="bg-white rounded-xl border border-border-default p-5">
-                  <p className="text-sm font-bold text-brand-ink mb-2">RPM (Revenue Per Mille)</p>
-                  <p className="text-sm text-text-secondary leading-[1.65]">
+                  <div className="h-8 w-8 rounded-lg bg-orange-50 flex items-center justify-center mb-2">
+                    <span className="text-sm font-bold text-brand-primary">$</span>
+                  </div>
+                  <p className="text-sm font-bold text-brand-ink mb-1.5">RPM (Revenue Per Mille)</p>
+                  <p className="text-xs text-text-secondary leading-[1.6]">
                     RPM varies from $0.35 (gaming, comedy) to $1.00+ (finance, education). Your niche is the single biggest factor in how much each view is worth.
                   </p>
                 </div>
                 <div className="bg-white rounded-xl border border-border-default p-5">
-                  <p className="text-sm font-bold text-brand-ink mb-2">Audience Location</p>
-                  <p className="text-sm text-text-secondary leading-[1.65]">
+                  <div className="h-8 w-8 rounded-lg bg-orange-50 flex items-center justify-center mb-2">
+                    <span className="text-sm font-bold text-brand-primary">G</span>
+                  </div>
+                  <p className="text-sm font-bold text-brand-ink mb-1.5">Audience Location</p>
+                  <p className="text-xs text-text-secondary leading-[1.6]">
                     Views from the US, UK, and Germany pay the most. If most of your followers are in lower-RPM regions, your effective earnings per view will be lower.
                   </p>
                 </div>
@@ -121,44 +126,44 @@ export default function FollowerIncomeEstimatorPage() {
 
             {/* Related calculators */}
             <div>
-              <h2 className="text-2xl font-bold text-brand-ink mb-4">
+              <h2 className="text-xl font-bold text-brand-ink mb-3">
                 Related calculators and guides
               </h2>
-              <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+              <div className="grid gap-3 md:grid-cols-2 lg:grid-cols-3">
                 <Link
                   href="/calculators/earnings-calculator"
-                  className="group flex flex-col rounded-2xl border border-border-default bg-white p-6 transition-all duration-150 hover:border-brand-primary hover:shadow-sm"
+                  className="group flex flex-col rounded-xl border border-border-default bg-white p-5 transition-all duration-150 hover:border-brand-primary hover:shadow-sm"
                 >
-                  <h3 className="text-base font-semibold text-brand-ink">Earnings Calculator</h3>
-                  <p className="mt-2 flex-1 text-sm leading-[1.65] text-text-secondary">
+                  <h3 className="text-sm font-semibold text-brand-ink">Earnings Calculator</h3>
+                  <p className="mt-1.5 flex-1 text-xs leading-[1.6] text-text-secondary">
                     Estimate Creator Rewards payouts based on view count, RPM, and the Additional Reward bonus.
                   </p>
-                  <span className="mt-4 flex items-center gap-1 text-sm font-semibold text-brand-primary transition-transform duration-200 group-hover:translate-x-0.5">
-                    Open calculator <ArrowRight className="h-4 w-4" aria-hidden />
+                  <span className="mt-3 flex items-center gap-1 text-xs font-semibold text-brand-primary transition-transform duration-200 group-hover:translate-x-0.5">
+                    Open calculator <ArrowRight className="h-3.5 w-3.5" aria-hidden />
                   </span>
                 </Link>
                 <Link
                   href="/calculators/rpm-by-country"
-                  className="group flex flex-col rounded-2xl border border-border-default bg-white p-6 transition-all duration-150 hover:border-brand-primary hover:shadow-sm"
+                  className="group flex flex-col rounded-xl border border-border-default bg-white p-5 transition-all duration-150 hover:border-brand-primary hover:shadow-sm"
                 >
-                  <h3 className="text-base font-semibold text-brand-ink">RPM by Country</h3>
-                  <p className="mt-2 flex-1 text-sm leading-[1.65] text-text-secondary">
+                  <h3 className="text-sm font-semibold text-brand-ink">RPM by Country</h3>
+                  <p className="mt-1.5 flex-1 text-xs leading-[1.6] text-text-secondary">
                     Compare typical RPM ranges by country and model weighted earnings based on your audience mix.
                   </p>
-                  <span className="mt-4 flex items-center gap-1 text-sm font-semibold text-brand-primary transition-transform duration-200 group-hover:translate-x-0.5">
-                    Open calculator <ArrowRight className="h-4 w-4" aria-hidden />
+                  <span className="mt-3 flex items-center gap-1 text-xs font-semibold text-brand-primary transition-transform duration-200 group-hover:translate-x-0.5">
+                    Open calculator <ArrowRight className="h-3.5 w-3.5" aria-hidden />
                   </span>
                 </Link>
                 <Link
                   href="/guides/grow-5k-to-10k"
-                  className="group flex flex-col rounded-2xl border border-border-default bg-white p-6 transition-all duration-150 hover:border-brand-primary hover:shadow-sm"
+                  className="group flex flex-col rounded-xl border border-border-default bg-white p-5 transition-all duration-150 hover:border-brand-primary hover:shadow-sm"
                 >
-                  <h3 className="text-base font-semibold text-brand-ink">Growing from 5K to 10K</h3>
-                  <p className="mt-2 flex-1 text-sm leading-[1.65] text-text-secondary">
+                  <h3 className="text-sm font-semibold text-brand-ink">Growing from 5K to 10K</h3>
+                  <p className="mt-1.5 flex-1 text-xs leading-[1.6] text-text-secondary">
                     Strategies for hitting the Creator Rewards eligibility threshold faster.
                   </p>
-                  <span className="mt-4 flex items-center gap-1 text-sm font-semibold text-brand-primary transition-transform duration-200 group-hover:translate-x-0.5">
-                    Read guide <ArrowRight className="h-4 w-4" aria-hidden />
+                  <span className="mt-3 flex items-center gap-1 text-xs font-semibold text-brand-primary transition-transform duration-200 group-hover:translate-x-0.5">
+                    Read guide <ArrowRight className="h-3.5 w-3.5" aria-hidden />
                   </span>
                 </Link>
               </div>
