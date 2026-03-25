@@ -4,6 +4,7 @@
 'use client'
 
 import Link from 'next/link'
+import Image from 'next/image'
 import { useState, useEffect } from 'react'
 import { usePathname } from 'next/navigation'
 import { navigation } from '@/lib/site'
@@ -37,12 +38,20 @@ export default function NavbarDark() {
         <div className="flex h-16 items-center justify-between">
 
           {/* Logo */}
-          <Link href="/" className="shrink-0 cursor-pointer no-underline">
+          <Link href="/" className="shrink-0 cursor-pointer no-underline flex items-center gap-2.5">
+            <Image
+              src="/favicon.svg"
+              alt="TikTok Creativity Program"
+              width={36}
+              height={36}
+              className="rounded-lg"
+              priority
+            />
             <span
-              className="text-[18px] font-[700] leading-none tracking-[-0.02em] text-white"
+              className="hidden sm:inline text-[15px] font-[700] leading-none tracking-[-0.02em] text-white"
               style={{ fontFamily: 'var(--font-sans)' }}
             >
-              TikTok Creativity Program
+              TCP
             </span>
           </Link>
 
