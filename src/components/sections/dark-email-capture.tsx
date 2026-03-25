@@ -17,7 +17,12 @@ export function DarkEmailCapture() {
       const res = await fetch("/api/newsletter", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email }),
+        body: JSON.stringify({
+          email,
+          source: "dark-section",
+          lead_magnet: "Eligibility Checklist",
+          page_url: typeof window !== "undefined" ? window.location.pathname : undefined,
+        }),
       });
       if (res.ok) {
         setStatus("success");

@@ -1,6 +1,5 @@
 import Container from '@/components/ui/Container'
 import type { Metadata } from 'next'
-import { LeadMagnetGate } from '@/components/email/lead-magnet-gate'
 import { PrintButton } from '@/components/PrintButton'
 
 export const metadata: Metadata = {
@@ -76,13 +75,16 @@ export default function EligibilityChecklistPage() {
 
       <section className="bg-white py-12 print:py-4">
         <Container size="narrow">
-          {/* Email gate */}
+          {/* Welcome banner for email subscribers */}
           <div className="print:hidden mb-12">
-            <LeadMagnetGate
-              leadMagnet="eligibility-checklist"
-              title="Get instant access to this checklist"
-              description="Enter your email to unlock the download link. You'll also get tips on maximizing your Creator Rewards earnings."
-            />
+            <div className="rounded-2xl bg-brand-primarySoft border border-brand-primary/20 p-6 text-center">
+              <p className="font-bold text-brand-ink text-lg mb-1">
+                Your checklist is ready
+              </p>
+              <p className="text-text-secondary text-sm">
+                Use the interactive checkboxes below to track your progress. You can also save this page as a PDF using your browser&apos;s print function (Ctrl+P / Cmd+P).
+              </p>
+            </div>
           </div>
 
           {/* The 5 Requirements */}

@@ -79,7 +79,7 @@ export default function EmailSignupForm({
       if (!response.ok) throw new Error('Request failed')
 
       setStatus('success')
-      setMessage('Check your inbox — tracker and next steps on the way.')
+      setMessage('Check your inbox for your free resources.')
       setEmail('')
       trackEvent({
         action: 'email_signup',

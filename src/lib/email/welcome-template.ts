@@ -1,5 +1,5 @@
 /**
- * Welcome email template — Email 1 of 5-email sequence.
+ * Welcome email template — single welcome email.
  * Delivers lead magnet link and introduces the site.
  * All CSS is inline for email client compatibility.
  *
@@ -208,11 +208,17 @@ export function buildWelcomeEmail(options: WelcomeEmailOptions = {}): {
               </p>
 
               <p style="margin:0 0 16px 0;font-family:'Manrope',Arial,Helvetica,sans-serif;font-size:15px;color:#111827;line-height:1.65;">
-                Over the next couple weeks, I'll send a few short emails covering the things that trip up the most creators. Each one links to a specific guide if you want to go deeper.
+                Here are the most popular starting points:
               </p>
 
+              <ul style="margin:0 0 16px 0;padding-left:20px;font-family:'Manrope',Arial,Helvetica,sans-serif;font-size:15px;color:#111827;line-height:1.8;">
+                <li><a href="${SITE_URL}/guides/eligibility-requirements" style="color:#0B0F1A;font-weight:600;text-decoration:underline;">Eligibility requirements explained</a></li>
+                <li><a href="${SITE_URL}/guides/optimize-rpm" style="color:#0B0F1A;font-weight:600;text-decoration:underline;">How to optimize your RPM</a></li>
+                <li><a href="${SITE_URL}/calculators/earnings-calculator" style="color:#0B0F1A;font-weight:600;text-decoration:underline;">Earnings calculator</a></li>
+              </ul>
+
               <p style="margin:0 0 16px 0;font-family:'Manrope',Arial,Helvetica,sans-serif;font-size:15px;color:#111827;line-height:1.65;">
-                Reply to any of these emails if you have a question. I read them.
+                Reply to this email if you have a question. I read them.
               </p>
 
               <p style="margin:0 0 4px 0;font-family:'Manrope',Arial,Helvetica,sans-serif;font-size:15px;color:#111827;line-height:1.65;">

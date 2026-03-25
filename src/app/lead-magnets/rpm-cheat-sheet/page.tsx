@@ -1,6 +1,5 @@
 import Container from '@/components/ui/Container'
 import type { Metadata } from 'next'
-import { LeadMagnetGate } from '@/components/email/lead-magnet-gate'
 import { PrintButton } from '@/components/PrintButton'
 
 export const metadata: Metadata = {
@@ -62,13 +61,16 @@ export default function RpmCheatSheetPage() {
 
       <section className="bg-white py-12 print:py-4">
         <Container size="narrow">
-          {/* Email gate */}
+          {/* Welcome banner for email subscribers */}
           <div className="print:hidden mb-12">
-            <LeadMagnetGate
-              leadMagnet="rpm-cheat-sheet"
-              title="Get instant access to this cheat sheet"
-              description="Enter your email to unlock the download link. You'll also get our best TikTok monetization tips."
-            />
+            <div className="rounded-2xl bg-brand-primarySoft border border-brand-primary/20 p-6 text-center">
+              <p className="font-bold text-brand-ink text-lg mb-1">
+                Your cheat sheet is ready
+              </p>
+              <p className="text-text-secondary text-sm">
+                All 18 niche RPM ranges are below. Save this page as a PDF using your browser&apos;s print function (Ctrl+P / Cmd+P).
+              </p>
+            </div>
           </div>
 
           {/* RPM Table */}

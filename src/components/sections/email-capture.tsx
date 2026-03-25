@@ -48,7 +48,12 @@ export function EmailCapture({
       const res = await fetch("/api/newsletter", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email }),
+        body: JSON.stringify({
+          email,
+          source: "homepage-section",
+          lead_magnet: "Eligibility Checklist",
+          page_url: typeof window !== "undefined" ? window.location.pathname : undefined,
+        }),
       });
       if (res.ok) {
         setStatus("success");
@@ -98,7 +103,7 @@ export function EmailCapture({
           {/* Form */}
           {status === "success" ? (
             <div className="mt-8 rounded-2xl bg-status-successSoft border border-status-success/20 p-6 text-status-success font-medium">
-              You&apos;re in. Check your inbox for the checklist.
+              You&apos;re in! Check your inbox for your free resources.
             </div>
           ) : (
             <form onSubmit={handleSubmit} className="mt-8">

@@ -51,7 +51,7 @@ export function EmailCaptureInline({
     return (
       <div className="bg-brand-primarySoft border border-brand-primary/20 rounded-xl p-6 my-8 not-prose text-center">
         <p className="font-manrope font-semibold text-brand-ink text-base">
-          You&apos;re in. Check your inbox for your download.
+          You&apos;re in! Check your inbox for your free resources.
         </p>
       </div>
     );
