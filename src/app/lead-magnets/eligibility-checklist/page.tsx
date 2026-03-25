@@ -77,13 +77,19 @@ export default function EligibilityChecklistPage() {
         <Container size="narrow">
           {/* Welcome banner for email subscribers */}
           <div className="print:hidden mb-12">
-            <div className="rounded-2xl bg-brand-primarySoft border border-brand-primary/20 p-6 text-center">
-              <p className="font-bold text-brand-ink text-lg mb-1">
-                Your checklist is ready
-              </p>
-              <p className="text-text-secondary text-sm">
-                Use the interactive checkboxes below to track your progress. You can also save this page as a PDF using your browser&apos;s print function (Ctrl+P / Cmd+P).
-              </p>
+            <div className="rounded-2xl bg-gradient-to-r from-brand-primarySoft via-[#FFF0E0] to-brand-primarySoft border border-brand-primary/20 p-8 text-center relative overflow-hidden">
+              <div className="absolute inset-0 opacity-[0.03] pointer-events-none" style={{ backgroundImage: 'radial-gradient(circle at 20% 50%, var(--color-primary) 1px, transparent 1px), radial-gradient(circle at 80% 50%, var(--color-primary) 1px, transparent 1px)', backgroundSize: '40px 40px' }} />
+              <div className="relative">
+                <div className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-brand-primary/15 mb-3">
+                  <svg className="w-5 h-5 text-brand-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                </div>
+                <p className="font-bold text-brand-ink text-xl mb-2">
+                  Your checklist is ready
+                </p>
+                <p className="text-text-secondary text-[15px] max-w-md mx-auto leading-relaxed">
+                  Use the interactive checkboxes below to track your progress. Save as PDF anytime with Ctrl+P / Cmd+P.
+                </p>
+              </div>
             </div>
           </div>
 

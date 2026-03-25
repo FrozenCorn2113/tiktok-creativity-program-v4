@@ -180,14 +180,14 @@ export function EarningsComparisonCalculator({ className }: { className?: string
           </div>
 
           {/* Right: results panel */}
-          <div className="border-t border-border-default bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 p-5 lg:border-t-0 lg:border-l lg:border-l-slate-700 lg:p-6 text-white">
+          <div className="border-t border-border-default bg-gradient-to-br from-[#0A0F1C] via-[#111827] to-[#0A0F1C] p-5 lg:border-t-0 lg:border-l lg:border-l-[#1E293B] lg:p-6 text-white">
             {/* Monthly views badge */}
             <div className="flex items-center gap-2 mb-4">
               <div className="h-7 w-7 rounded-full bg-white/10 flex items-center justify-center">
-                <Eye className="h-3.5 w-3.5 text-slate-300" aria-hidden />
+                <Eye className="h-3.5 w-3.5 text-gray-400" aria-hidden />
               </div>
               <div>
-                <p className="text-[10px] font-semibold uppercase tracking-widest text-slate-400">
+                <p className="text-[10px] font-semibold uppercase tracking-widest text-gray-400">
                   Monthly Views
                 </p>
                 <p
@@ -215,12 +215,12 @@ export function EarningsComparisonCalculator({ className }: { className?: string
                 <span className="text-3xl lg:text-[2.25rem] font-bold text-emerald-400 tabular-nums whitespace-nowrap" style={{ fontFamily: 'var(--font-mono)' }}>
                   {formatMoney(results.low)}
                 </span>
-                <span className="text-lg text-slate-500 font-medium mx-0.5">-</span>
+                <span className="text-lg text-gray-500 font-medium mx-0.5">-</span>
                 <span className="text-3xl lg:text-[2.25rem] font-bold text-emerald-400 tabular-nums whitespace-nowrap" style={{ fontFamily: 'var(--font-mono)' }}>
                   {formatMoney(results.high)}
                 </span>
               </div>
-              <p className="text-xs text-slate-400 mt-1.5 tabular-nums" style={{ fontFamily: 'var(--font-mono)' }}>
+              <p className="text-xs text-gray-400 mt-1.5 tabular-nums" style={{ fontFamily: 'var(--font-mono)' }}>
                 {formatMoney(results.yearlyLow)} - {formatMoney(results.yearlyHigh)} / year
               </p>
             </div>
@@ -228,7 +228,7 @@ export function EarningsComparisonCalculator({ className }: { className?: string
             {/* Breakdown */}
             <div className="space-y-2.5">
               <div className="flex items-center justify-between text-sm">
-                <span className="text-slate-400 text-xs">Qualified views (82%)</span>
+                <span className="text-gray-400 text-xs">Qualified views (82%)</span>
                 <span
                   className="font-semibold text-white text-xs tabular-nums"
                   style={{ fontFamily: 'var(--font-mono)' }}
@@ -237,7 +237,7 @@ export function EarningsComparisonCalculator({ className }: { className?: string
                 </span>
               </div>
               <div className="flex items-center justify-between text-sm">
-                <span className="text-slate-400 text-xs">RPM range</span>
+                <span className="text-gray-400 text-xs">RPM range</span>
                 <span
                   className="font-semibold text-white text-xs tabular-nums"
                   style={{ fontFamily: 'var(--font-mono)' }}
@@ -247,7 +247,7 @@ export function EarningsComparisonCalculator({ className }: { className?: string
               </div>
               {includeBonus && (
                 <div className="flex items-center justify-between text-sm">
-                  <span className="text-slate-400 text-xs">Additional Reward</span>
+                  <span className="text-gray-400 text-xs">Additional Reward</span>
                   <span className="font-semibold text-emerald-400 text-xs">+20% applied</span>
                 </div>
               )}
@@ -255,8 +255,8 @@ export function EarningsComparisonCalculator({ className }: { className?: string
 
             <div className="mt-4 rounded-lg bg-white/[0.05] border border-white/10 p-2.5">
               <div className="flex gap-2">
-                <Info className="h-3.5 w-3.5 text-slate-500 flex-shrink-0 mt-0.5" aria-hidden />
-                <p className="text-[11px] text-slate-400 leading-[1.5]">
+                <Info className="h-3.5 w-3.5 text-gray-500 flex-shrink-0 mt-0.5" aria-hidden />
+                <p className="text-[11px] text-gray-400 leading-[1.5]">
                   Only 1+ min videos earn Creator Rewards. Qualified views exclude Duets, Stitches, and paid promotion.
                 </p>
               </div>

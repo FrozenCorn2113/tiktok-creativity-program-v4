@@ -169,7 +169,7 @@ function GuideCard({ guide }: { guide: GuideItem }) {
         <h3 className="text-[1.125rem] font-bold text-brand-ink leading-snug line-clamp-2 mb-2">
           {guide.title}
         </h3>
-        <p className="text-sm text-text-secondary leading-relaxed line-clamp-3 flex-1">
+        <p className="text-[15px] text-[#4B5563] leading-relaxed line-clamp-3 flex-1">
           {guide.excerpt}
         </p>
         <div className="flex items-center gap-1.5 mt-4 text-xs font-medium text-text-muted">

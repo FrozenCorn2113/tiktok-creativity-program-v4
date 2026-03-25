@@ -48,7 +48,7 @@ export function BentoCard({
     <div
       className={cn(
         "relative overflow-hidden rounded-2xl border border-border-default bg-white p-8",
-        "shadow-sm hover:shadow-md transition-shadow duration-200",
+        "shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-200",
         className
       )}
     >
@@ -59,17 +59,17 @@ export function BentoCard({
       )}
       <div className="relative z-10">
         {Icon && (
-          <div className="mb-4">
-            <Icon className="h-8 w-8 text-brand-primary" aria-hidden />
+          <div className="mb-5 w-12 h-12 rounded-xl bg-brand-primarySoft border border-brand-primary/20 flex items-center justify-center">
+            <Icon className="h-6 w-6 text-brand-primary" aria-hidden />
           </div>
         )}
         {name && (
-          <h3 className="text-xl font-bold text-brand-ink mb-2" style={{ fontWeight: 700 }}>
+          <h3 className="text-[1.35rem] font-bold text-brand-ink mb-3" style={{ fontWeight: 700 }}>
             {name}
           </h3>
         )}
         {description && (
-          <p className="text-[15px] leading-relaxed text-text-secondary">
+          <p className="text-[15px] leading-[1.7] text-text-secondary">
             {description}
           </p>
         )}
