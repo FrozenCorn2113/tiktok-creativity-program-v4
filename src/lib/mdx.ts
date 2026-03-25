@@ -2,6 +2,7 @@ import fs from 'fs'
 import path from 'path'
 import matter from 'gray-matter'
 import { compileMDX } from 'next-mdx-remote/rsc'
+import remarkGfm from 'remark-gfm'
 import { useMDXComponents } from '@/app/mdx-components'
 
 const contentRoot = path.join(process.cwd(), 'content')
@@ -129,6 +130,11 @@ export async function compileGuide(content: string) {
     source: content,
     // eslint-disable-next-line react-hooks/rules-of-hooks -- useMDXComponents is an MDX utility, not a React hook
     components: useMDXComponents({}),
-    options: { parseFrontmatter: false },
+    options: {
+      parseFrontmatter: false,
+      mdxOptions: {
+        remarkPlugins: [remarkGfm],
+      },
+    },
   })
 }

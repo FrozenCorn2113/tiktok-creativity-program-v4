@@ -72,6 +72,45 @@
     --tw-prose-td-borders: var(--color-border);
   }
 
+  /* Table styling — branded header, striped rows, responsive overflow */
+  .prose :where(table):not(:where([class~='not-prose'] *)) {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9375em;
+    border-radius: 0.5rem;
+    border: 1px solid var(--color-border);
+    display: block;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .prose :where(thead):not(:where([class~='not-prose'] *)) {
+    background: var(--color-brand-primarySoft);
+  }
+
+  .prose :where(thead th):not(:where([class~='not-prose'] *)) {
+    font-weight: 700;
+    color: var(--color-ink-strong);
+    text-align: left;
+    padding: 0.75rem 1rem;
+    border-bottom: 2px solid var(--color-brand-primary);
+    white-space: nowrap;
+  }
+
+  .prose :where(tbody td):not(:where([class~='not-prose'] *)) {
+    padding: 0.625rem 1rem;
+    border-bottom: 1px solid var(--color-border);
+    color: var(--color-text-secondary);
+  }
+
+  .prose :where(tbody tr:last-child td):not(:where([class~='not-prose'] *)) {
+    border-bottom: none;
+  }
+
+  .prose :where(tbody tr:nth-child(even)):not(:where([class~='not-prose'] *)) {
+    background: var(--color-background-surface);
+  }
+
   .prose :where(code):not(:where([class~='not-prose'] *)) {
     font-family: var(--font-mono);
     background: var(--color-brand-primarySoft);
