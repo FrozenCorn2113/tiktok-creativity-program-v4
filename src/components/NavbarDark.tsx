@@ -9,6 +9,7 @@ import { usePathname } from 'next/navigation'
 import { navigation } from '@/lib/site'
 import Container from '@/components/ui/Container'
 import { X, Menu } from 'lucide-react'
+import SearchBar from '@/components/SearchBar'
 
 export default function NavbarDark() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
@@ -68,8 +69,9 @@ export default function NavbarDark() {
             })}
           </nav>
 
-          {/* Right side — CTA + hamburger */}
+          {/* Right side — Search + CTA + hamburger */}
           <div className="flex items-center gap-3">
+            <SearchBar />
             <Link
               href="/start-here"
               className="hidden sm:inline-flex items-center px-4 py-2 rounded-lg bg-[#F97316] text-[#0F172A] text-[14px] font-bold hover:bg-[#EA6A0A] transition-colors"
