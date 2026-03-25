@@ -33,6 +33,15 @@ const nextConfig = {
   async headers() {
     return [{ source: '/(.*)', headers: securityHeaders }]
   },
+  async redirects() {
+    return [
+      {
+        source: '/guides/additional-reward-criteria-2025',
+        destination: '/guides/additional-reward-criteria-2026',
+        permanent: true,
+      },
+    ]
+  },
 }
 
 export default withMDX(nextConfig)
