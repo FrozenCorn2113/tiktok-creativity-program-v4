@@ -1,18 +1,33 @@
 import Container from '@/components/ui/Container'
-import CalloutBox from '@/components/CalloutBox'
 import RpmByCountryCalculator from '@/components/RpmByCountryCalculator'
-import PageHeader from '@/components/PageHeader'
 import ScrollReveal from '@/components/ScrollReveal'
-import Image from 'next/image'
 import Link from 'next/link'
 import type { Metadata } from 'next'
+import { ArrowRight } from 'lucide-react'
 import { EmailCapturePopup } from '@/components/email/email-capture-popup'
-import { CalculatorSection4b } from '@/components/sections/calculator-section-4b'
+import { siteConfig } from '@/lib/site'
 
 export const metadata: Metadata = {
   title: 'TikTok RPM by Country Estimator',
   description:
-    'Compare TikTok Creator Rewards RPM rates by country to understand how your audience location affects earnings.',
+    'Compare TikTok Creator Rewards RPM rates by country. Model your blended RPM based on audience location and estimate monthly earnings.',
+  openGraph: {
+    title: 'TikTok RPM by Country Estimator',
+    description:
+      'Compare RPM rates by country. Understand how audience location affects your TikTok Creator Rewards earnings.',
+    images: [
+      {
+        url: `/og?title=${encodeURIComponent('TikTok RPM by Country Estimator')}`,
+        width: 1200,
+        height: 630,
+      },
+    ],
+    type: 'website',
+    url: `${siteConfig.url}/calculators/rpm-by-country`,
+  },
+  alternates: {
+    canonical: `${siteConfig.url}/calculators/rpm-by-country`,
+  },
 }
 
 export default function RpmByCountryPage() {
@@ -21,159 +36,163 @@ export default function RpmByCountryPage() {
       <EmailCapturePopup
         leadMagnetTitle="RPM Optimization Guide"
         headline="Learn how to improve your RPM in your region"
-        description="We'll break down how audience location affects your RPM, which content niches earn most per view, and how to shift your numbers over time."
+        description="We will break down how audience location affects your RPM, which content niches earn most per view, and how to shift your numbers over time."
         itemCount="Free guide"
       />
       <ScrollReveal />
-      {/* C1-C3: two-column header band with illustration */}
-      <section className="bg-[#FFF8F2] py-12 md:py-16">
+
+      {/* Hero header */}
+      <section className="py-16 md:py-20">
         <Container>
-          <div className="grid items-center gap-12 md:grid-cols-[3fr_2fr]">
-            <PageHeader
-              breadcrumbs={[
-                { label: 'Home', href: '/' },
-                { label: 'Calculators', href: '/calculators' },
-                { label: 'RPM by Country', href: '/calculators/rpm-by-country' },
-              ]}
-              category="Interactive tool"
-              title="RPM by country estimator"
-              description="Estimate typical RPM ranges by country and model earnings based on your audience mix."
-            />
-            <div className="relative hidden h-[320px] w-full md:block">
-              <Image
-                src="/assets/brand-images/landpress-marketing-hero.png"
-                alt="Creator analyzing TikTok RPM rates by country"
-                fill
-                className="object-contain object-right"
-              />
-            </div>
+          <div className="max-w-3xl">
+            {/* Breadcrumbs */}
+            <nav aria-label="Breadcrumb" className="mb-6">
+              <ol className="flex flex-wrap items-center gap-1 text-xs text-text-muted">
+                <li><Link href="/" className="hover:text-brand-ink transition-colors">Home</Link></li>
+                <li className="text-border-default">/</li>
+                <li><Link href="/calculators" className="hover:text-brand-ink transition-colors">Calculators</Link></li>
+                <li className="text-border-default">/</li>
+                <li className="text-brand-ink font-medium">RPM by Country</li>
+              </ol>
+            </nav>
+
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-brand-ink leading-[1.1]">
+              RPM by Country Estimator
+            </h1>
+            <p className="mt-4 text-lg md:text-xl text-text-secondary leading-relaxed max-w-2xl">
+              Your audience location directly affects your earnings. Set your audience mix across eligible countries to calculate your blended RPM and estimated monthly payout.
+            </p>
           </div>
         </Container>
       </section>
 
-    <section className="py-12">
-      <Container>
-        <div className="space-y-10">
-          {/* Calculator */}
-          <RpmByCountryCalculator />
+      <section className="pb-16">
+        <Container>
+          <div className="space-y-16">
+            {/* Calculator */}
+            <div className="max-w-4xl">
+              <RpmByCountryCalculator />
+            </div>
 
-          {/* Section 4b: Calculator results actions — email capture, share, affiliate */}
-          <CalculatorSection4b
-            emailLeadMagnetTitle="Get Your Results Explained"
-            emailLeadMagnetDescription="We will break down what your blended RPM means — which countries move it most and what you can do to shift the mix over time."
-            tweetText="I just estimated my TikTok Creator Rewards RPM based on my audience countries"
-            tweetUrl="https://tiktokcreativityprogram.com/calculators/rpm-by-country"
-            affiliateToolName="Exolyt"
-            affiliateSlug="exolyt"
-            affiliateReview="Exolyt tracks TikTok performance over time and lets you benchmark against other creators in your niche."
-            affiliateBestFor="Creators who want to understand what is driving their RPM"
-            affiliatePriceRange="Free tier available"
-            affiliateCtaText="Try Exolyt"
-          />
-
-          {/* Guidance */}
-          <CalloutBox type="tip">
-            If your audience mix isn&apos;t 100% yet, use your best estimate. Update monthly to track
-            changes in RPM.
-          </CalloutBox>
-
-          {/* How to use */}
-          <div className="grid gap-8 lg:grid-cols-2">
-            <div className="rounded-[var(--radius-lg)] border border-[var(--color-border)] bg-white p-6">
-              <h2 className="text-[var(--text-h3)] font-semibold text-[var(--color-ink-strong)]">
-                Inputs
+            {/* RPM reference table */}
+            <div className="max-w-3xl">
+              <h2 className="text-2xl font-bold text-brand-ink mb-6">
+                RPM ranges by country
               </h2>
-              <ul className="mt-3 space-y-1.5 text-[var(--text-small)] text-[var(--color-text-muted)]">
-                <li>Country selector (8 eligible countries)</li>
-                <li>Audience mix percentages by country</li>
-                <li>Monthly view count</li>
-              </ul>
+              <div className="overflow-x-auto rounded-xl border border-border-default">
+                <table className="w-full text-sm">
+                  <thead>
+                    <tr className="bg-background-surface border-b border-border-default">
+                      <th className="text-left px-5 py-3 font-semibold text-brand-ink">Country</th>
+                      <th className="text-right px-5 py-3 font-semibold text-brand-ink">RPM Low</th>
+                      <th className="text-right px-5 py-3 font-semibold text-brand-ink">RPM High</th>
+                      <th className="text-right px-5 py-3 font-semibold text-brand-ink">Tier</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-border-default">
+                    {[
+                      { country: 'United States', low: '$0.70', high: '$1.00', tier: 'Top' },
+                      { country: 'Japan', low: '$0.60', high: '$0.95', tier: 'Top' },
+                      { country: 'United Kingdom', low: '$0.60', high: '$0.90', tier: 'Top' },
+                      { country: 'South Korea', low: '$0.55', high: '$0.90', tier: 'High' },
+                      { country: 'Germany', low: '$0.55', high: '$0.85', tier: 'High' },
+                      { country: 'France', low: '$0.50', high: '$0.80', tier: 'Mid' },
+                      { country: 'Mexico', low: '$0.35', high: '$0.60', tier: 'Lower' },
+                      { country: 'Brazil', low: '$0.30', high: '$0.55', tier: 'Lower' },
+                    ].map((row) => (
+                      <tr key={row.country} className="bg-white hover:bg-background-surface/50 transition-colors">
+                        <td className="px-5 py-3 font-medium text-brand-ink">{row.country}</td>
+                        <td className="px-5 py-3 text-right text-text-secondary" style={{ fontFamily: 'var(--font-mono)' }}>
+                          {row.low}
+                        </td>
+                        <td className="px-5 py-3 text-right font-semibold text-green-700" style={{ fontFamily: 'var(--font-mono)' }}>
+                          {row.high}
+                        </td>
+                        <td className="px-5 py-3 text-right">
+                          <span className={`inline-flex items-center text-xs font-semibold px-2 py-0.5 rounded-full ${
+                            row.tier === 'Top' ? 'bg-green-50 text-green-700' :
+                            row.tier === 'High' ? 'bg-blue-50 text-blue-700' :
+                            row.tier === 'Mid' ? 'bg-amber-50 text-amber-700' :
+                            'bg-gray-50 text-gray-600'
+                          }`}>
+                            {row.tier}
+                          </span>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+              <p className="mt-3 text-xs text-text-muted">
+                RPM ranges based on creator-reported data for the Creator Rewards Program. Actual RPM varies by niche, content quality, and seasonal ad spend.
+              </p>
             </div>
-            <div className="rounded-[var(--radius-lg)] border border-[var(--color-border)] bg-white p-6">
-              <h2 className="text-[var(--text-h3)] font-semibold text-[var(--color-ink-strong)]">
-                Outputs
+
+            {/* What affects RPM */}
+            <div className="max-w-3xl">
+              <h2 className="text-2xl font-bold text-brand-ink mb-6">
+                What affects RPM by country
               </h2>
-              <ul className="mt-3 space-y-1.5 text-[var(--text-small)] text-[var(--color-text-muted)]">
-                <li>RPM range by country</li>
-                <li>Weighted blended RPM</li>
-                <li>Estimated earnings by audience mix</li>
-              </ul>
-            </div>
-          </div>
-
-          {/* C10: "What affects your results?" — required per BRAND.md */}
-          <div className="max-w-prose space-y-4">
-            <h2 className="text-[var(--text-h2)] font-bold text-[var(--color-ink-strong)]">
-              What affects your results?
-            </h2>
-            <p className="text-[var(--text-body)] leading-[1.7] text-[var(--color-text-muted)]">
-              RPM is not uniform — it varies by country based on advertiser demand, content category,
-              and seasonal ad spend patterns. The US, UK, Germany, and Australia consistently show the
-              highest RPMs in the Creator Rewards Program. France and Japan sit in the mid-tier.
-              Brazil and Indonesia are lower but still eligible.
-            </p>
-            <p className="text-[var(--text-body)] leading-[1.7] text-[var(--color-text-muted)]">
-              Your audience mix determines your blended RPM. If 80% of your views come from the US
-              but 20% come from Brazil, your effective RPM will be weighted accordingly. Creators who
-              grow their audience in high-RPM markets typically see the biggest impact on earnings
-              per qualified view.
-            </p>
-            <p className="text-[var(--text-body)] leading-[1.7] text-[var(--color-text-muted)]">
-              Content niche also plays a role within each country. Finance, technology, and educational
-              content attracts higher advertiser bids across all markets. Entertainment and trending
-              content tends to have lower RPMs regardless of region.
-            </p>
-            <div className="flex flex-wrap gap-3 pt-2">
-              <Link
-                href="/calculators/earnings-calculator"
-                className="text-sm font-[500] text-[#F97316] hover:underline"
-              >
-                Use the full earnings calculator &rarr;
-              </Link>
-              <Link
-                href="/guides/optimize-rpm"
-                className="text-sm font-[500] text-[#F97316] hover:underline"
-              >
-                How to improve your RPM &rarr;
-              </Link>
-            </div>
-          </div>
-
-          {/* C11: Related calculators — 2-col grid */}
-          <div>
-            <h2 className="mb-4 text-[var(--text-h2)] font-bold text-[var(--color-ink-strong)]">
-              Related calculators
-            </h2>
-            <div className="grid gap-4 md:grid-cols-2">
-              <Link
-                href="/calculators/earnings-calculator"
-                className="group flex flex-col rounded-2xl border border-[#E8D5C4] bg-white p-6 transition-all duration-150 hover:border-[#F97316] hover:shadow-sm"
-              >
-                <h3 className="text-[1.125rem] font-[600] text-[#0F172A]">Earnings Calculator</h3>
-                <p className="mt-2 flex-1 text-sm leading-[1.65] text-[#475467]">
-                  Estimate Creator Rewards payouts based on view count, RPM, and the Additional Reward bonus.
+              <div className="space-y-4 text-sm text-text-secondary leading-[1.7]">
+                <p>
+                  RPM is not uniform. It varies by country based on <strong className="text-brand-ink">advertiser demand</strong>, <strong className="text-brand-ink">content category</strong>, and <strong className="text-brand-ink">seasonal ad spend</strong> patterns. The US, UK, Japan, and Germany consistently show the highest RPMs in the Creator Rewards Program.
                 </p>
-                <span className="mt-4 flex items-center gap-1 text-sm font-[600] text-[#F97316] transition-transform duration-200 group-hover:translate-x-0.5">
-                  Open calculator <span aria-hidden>&rarr;</span>
-                </span>
-              </Link>
-              <Link
-                href="/calculators/follower-income-estimator"
-                className="group flex flex-col rounded-2xl border border-[#E8D5C4] bg-white p-6 transition-all duration-150 hover:border-[#F97316] hover:shadow-sm"
-              >
-                <h3 className="text-[1.125rem] font-[600] text-[#0F172A]">Follower Income Estimator</h3>
-                <p className="mt-2 flex-1 text-sm leading-[1.65] text-[#475467]">
-                  Project earnings based on follower count, engagement rate, and monthly posting frequency.
+                <p>
+                  Your audience mix determines your blended RPM. If 80% of your views come from the US but 20% come from Brazil, your effective RPM will be weighted accordingly. Creators who grow their audience in high-RPM markets typically see the biggest impact on earnings per qualified view.
                 </p>
-                <span className="mt-4 flex items-center gap-1 text-sm font-[600] text-[#F97316] transition-transform duration-200 group-hover:translate-x-0.5">
-                  Open calculator <span aria-hidden>&rarr;</span>
-                </span>
-              </Link>
+                <p>
+                  Content niche also plays a role within each country. Finance, technology, and educational content attracts higher advertiser bids across all markets. Entertainment and trending content tends to have lower RPMs regardless of region.
+                </p>
+              </div>
+            </div>
+
+            {/* Related calculators */}
+            <div>
+              <h2 className="text-2xl font-bold text-brand-ink mb-4">
+                Related calculators and guides
+              </h2>
+              <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+                <Link
+                  href="/calculators/earnings-calculator"
+                  className="group flex flex-col rounded-2xl border border-border-default bg-white p-6 transition-all duration-150 hover:border-brand-primary hover:shadow-sm"
+                >
+                  <h3 className="text-base font-semibold text-brand-ink">Earnings Calculator</h3>
+                  <p className="mt-2 flex-1 text-sm leading-[1.65] text-text-secondary">
+                    Estimate Creator Rewards payouts based on view count, RPM, and the Additional Reward bonus.
+                  </p>
+                  <span className="mt-4 flex items-center gap-1 text-sm font-semibold text-brand-primary transition-transform duration-200 group-hover:translate-x-0.5">
+                    Open calculator <ArrowRight className="h-4 w-4" aria-hidden />
+                  </span>
+                </Link>
+                <Link
+                  href="/calculators/follower-income-estimator"
+                  className="group flex flex-col rounded-2xl border border-border-default bg-white p-6 transition-all duration-150 hover:border-brand-primary hover:shadow-sm"
+                >
+                  <h3 className="text-base font-semibold text-brand-ink">Follower Income Estimator</h3>
+                  <p className="mt-2 flex-1 text-sm leading-[1.65] text-text-secondary">
+                    Project earnings based on follower count, engagement rate, and monthly posting frequency.
+                  </p>
+                  <span className="mt-4 flex items-center gap-1 text-sm font-semibold text-brand-primary transition-transform duration-200 group-hover:translate-x-0.5">
+                    Open calculator <ArrowRight className="h-4 w-4" aria-hidden />
+                  </span>
+                </Link>
+                <Link
+                  href="/guides/optimize-rpm"
+                  className="group flex flex-col rounded-2xl border border-border-default bg-white p-6 transition-all duration-150 hover:border-brand-primary hover:shadow-sm"
+                >
+                  <h3 className="text-base font-semibold text-brand-ink">How to Optimize Your RPM</h3>
+                  <p className="mt-2 flex-1 text-sm leading-[1.65] text-text-secondary">
+                    Actionable strategies to increase your revenue per 1,000 views across any niche.
+                  </p>
+                  <span className="mt-4 flex items-center gap-1 text-sm font-semibold text-brand-primary transition-transform duration-200 group-hover:translate-x-0.5">
+                    Read guide <ArrowRight className="h-4 w-4" aria-hidden />
+                  </span>
+                </Link>
+              </div>
             </div>
           </div>
-        </div>
-      </Container>
-    </section>
+        </Container>
+      </section>
     </>
   )
 }

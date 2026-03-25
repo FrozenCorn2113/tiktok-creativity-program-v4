@@ -7,10 +7,9 @@ import { NumberTicker } from '@/components/magicui/number-ticker'
 import { cn } from '@/lib/utils'
 import { fadeUp, viewportOnce } from '@/lib/motion'
 import { trackCalculatorUsed } from '@/lib/analytics'
-import { TrendingUp, TrendingDown, Info } from 'lucide-react'
+import { TrendingUp, Info } from 'lucide-react'
 
 // ── Niche RPM data ──────────────────────────────────────────────────────────
-// Creativity Program (Rewards) RPM ranges by niche
 const niches = [
   { id: 'general',       label: 'General / Entertainment', rpmLow: 0.40, rpmHigh: 0.70 },
   { id: 'comedy',        label: 'Comedy',                  rpmLow: 0.35, rpmHigh: 0.65 },
@@ -26,12 +25,7 @@ const niches = [
   { id: 'pets',          label: 'Pets / Animals',          rpmLow: 0.35, rpmHigh: 0.60 },
 ] as const
 
-// Old Creator Fund RPM (same for all niches)
-const CREATOR_FUND_RPM_LOW = 0.02
-const CREATOR_FUND_RPM_HIGH = 0.04
 const QUALIFIED_VIEW_RATIO = 0.82
-
-type Program = 'rewards' | 'fund' | 'both'
 
 function formatMoney(n: number): string {
   if (n >= 1000) return `$${(n / 1000).toFixed(1)}K`
@@ -51,7 +45,6 @@ export function EarningsComparisonCalculator({ className }: { className?: string
   const [viewsPerVideo, setViewsPerVideo] = useState(50000)
   const [videosPerMonth, setVideosPerMonth] = useState(15)
   const [nicheId, setNicheId] = useState('general')
-  const [program, setProgram] = useState<Program>('both')
   const [includeBonus, setIncludeBonus] = useState(false)
 
   const niche = niches.find((n) => n.id === nicheId) || niches[0]
@@ -60,52 +53,31 @@ export function EarningsComparisonCalculator({ className }: { className?: string
   const results = useMemo(() => {
     const totalMonthlyViews = viewsPerVideo * videosPerMonth
     const qualifiedViews = Math.round(totalMonthlyViews * QUALIFIED_VIEW_RATIO)
-
-    // Rewards program
-    const rewardsLow = (qualifiedViews / 1000) * niche.rpmLow
-    const rewardsHigh = (qualifiedViews / 1000) * niche.rpmHigh
-    const rewardsMid = (rewardsLow + rewardsHigh) / 2
     const bonusMultiplier = includeBonus ? 1.2 : 1
 
-    // Creator Fund
-    const fundLow = (qualifiedViews / 1000) * CREATOR_FUND_RPM_LOW
-    const fundHigh = (qualifiedViews / 1000) * CREATOR_FUND_RPM_HIGH
-    const fundMid = (fundLow + fundHigh) / 2
-
-    // Multiplier (how much more Rewards pays vs Fund)
-    const multiplier = fundMid > 0 ? rewardsMid / fundMid : 0
+    const rewardsLow = (qualifiedViews / 1000) * niche.rpmLow * bonusMultiplier
+    const rewardsHigh = (qualifiedViews / 1000) * niche.rpmHigh * bonusMultiplier
+    const rewardsMid = (rewardsLow + rewardsHigh) / 2
 
     return {
       totalMonthlyViews,
       qualifiedViews,
-      rewards: {
-        low: rewardsLow * bonusMultiplier,
-        high: rewardsHigh * bonusMultiplier,
-        mid: rewardsMid * bonusMultiplier,
-        yearlyLow: rewardsLow * bonusMultiplier * 12,
-        yearlyHigh: rewardsHigh * bonusMultiplier * 12,
-        yearlyMid: rewardsMid * bonusMultiplier * 12,
-      },
-      fund: {
-        low: fundLow,
-        high: fundHigh,
-        mid: fundMid,
-        yearlyLow: fundLow * 12,
-        yearlyHigh: fundHigh * 12,
-        yearlyMid: fundMid * 12,
-      },
-      multiplier,
+      low: rewardsLow,
+      high: rewardsHigh,
+      mid: rewardsMid,
+      yearlyLow: rewardsLow * 12,
+      yearlyHigh: rewardsHigh * 12,
+      yearlyMid: rewardsMid * 12,
       rpmRange: `$${niche.rpmLow.toFixed(2)} - $${niche.rpmHigh.toFixed(2)}`,
     }
   }, [viewsPerVideo, videosPerMonth, niche, includeBonus])
 
   // Track calculator usage
   const handleInteraction = () => {
-    trackCalculatorUsed('earnings_comparison_calculator', {
+    trackCalculatorUsed('earnings_calculator', {
       viewsPerVideo,
       videosPerMonth,
       niche: nicheId,
-      program,
       includeBonus,
     })
   }
@@ -119,44 +91,12 @@ export function EarningsComparisonCalculator({ className }: { className?: string
         variants: fadeUp,
       }
 
-  const showRewards = program === 'rewards' || program === 'both'
-  const showFund = program === 'fund' || program === 'both'
-
   return (
     <motion.div {...motionProps} className={cn('space-y-6', className)}>
-      {/* Input card */}
       <div className="bg-white rounded-2xl border border-border-default shadow-lg overflow-hidden">
         <div className="grid gap-0 lg:grid-cols-[1.2fr_1fr]">
           {/* Left: inputs */}
           <div className="p-6 lg:p-8 space-y-6">
-            {/* Program toggle */}
-            <div>
-              <label className="block text-sm font-semibold text-brand-ink mb-3">
-                Compare Programs
-              </label>
-              <div className="grid grid-cols-3 gap-1 rounded-xl bg-background-surface p-1">
-                {([
-                  { value: 'both', label: 'Compare Both' },
-                  { value: 'rewards', label: 'Rewards Only' },
-                  { value: 'fund', label: 'Creator Fund' },
-                ] as const).map((opt) => (
-                  <button
-                    key={opt.value}
-                    type="button"
-                    onClick={() => { setProgram(opt.value); handleInteraction() }}
-                    className={cn(
-                      'rounded-lg px-3 py-2 text-xs font-semibold transition-all duration-200',
-                      program === opt.value
-                        ? 'bg-white text-brand-ink shadow-sm'
-                        : 'text-text-muted hover:text-text-secondary'
-                    )}
-                  >
-                    {opt.label}
-                  </button>
-                ))}
-              </div>
-            </div>
-
             {/* Niche selector */}
             <div>
               <label htmlFor="niche-select" className="block text-sm font-semibold text-brand-ink mb-2">
@@ -175,7 +115,7 @@ export function EarningsComparisonCalculator({ className }: { className?: string
                 ))}
               </select>
               <p className="mt-1.5 text-xs text-text-muted">
-                Rewards RPM for {niche.label}: {results.rpmRange} per 1,000 views
+                RPM for {niche.label}: {results.rpmRange} per 1,000 views
               </p>
             </div>
 
@@ -242,17 +182,15 @@ export function EarningsComparisonCalculator({ className }: { className?: string
             </div>
 
             {/* Bonus toggle */}
-            {showRewards && (
-              <label className="flex cursor-pointer items-center gap-3 text-sm text-text-secondary">
-                <input
-                  type="checkbox"
-                  checked={includeBonus}
-                  onChange={(e) => { setIncludeBonus(e.target.checked); handleInteraction() }}
-                  className="h-4 w-4 cursor-pointer rounded border-border-default accent-brand-primary"
-                />
-                Include Additional Reward bonus (+20%)
-              </label>
-            )}
+            <label className="flex cursor-pointer items-center gap-3 text-sm text-text-secondary">
+              <input
+                type="checkbox"
+                checked={includeBonus}
+                onChange={(e) => { setIncludeBonus(e.target.checked); handleInteraction() }}
+                className="h-4 w-4 cursor-pointer rounded border-border-default accent-brand-primary"
+              />
+              Include Additional Reward bonus (+20%)
+            </label>
           </div>
 
           {/* Right: results panel */}
@@ -267,102 +205,40 @@ export function EarningsComparisonCalculator({ className }: { className?: string
               {results.totalMonthlyViews.toLocaleString()}
             </p>
 
-            {/* Rewards result */}
-            {showRewards && (
-              <div className="mb-5">
-                <div className="flex items-center gap-2 mb-2">
-                  <TrendingUp className="h-4 w-4 text-green-600" aria-hidden />
-                  <p className="text-xs font-semibold uppercase tracking-wide text-green-700">
-                    Creator Rewards (2024+)
-                  </p>
-                </div>
-                <div
-                  className="text-[2.25rem] font-bold text-green-600 leading-none"
-                  style={{ fontFamily: 'var(--font-mono)', fontWeight: 700 }}
-                  aria-live="polite"
-                  aria-atomic="true"
-                >
-                  $<NumberTicker
-                    value={results.rewards.low}
-                    decimalPlaces={2}
-                    className="text-green-600"
-                  />
-                  {' - $'}
-                  <NumberTicker
-                    value={results.rewards.high}
-                    decimalPlaces={2}
-                    className="text-green-600"
-                  />
-                </div>
-                <p className="text-xs text-text-muted mt-1">per month</p>
-                <p
-                  className="text-sm font-medium text-text-secondary mt-1"
-                  style={{ fontFamily: 'var(--font-mono)' }}
-                >
-                  {formatMoney(results.rewards.yearlyLow)} - {formatMoney(results.rewards.yearlyHigh)} / year
+            {/* Monthly earnings */}
+            <div className="mb-5">
+              <div className="flex items-center gap-2 mb-2">
+                <TrendingUp className="h-4 w-4 text-green-600" aria-hidden />
+                <p className="text-xs font-semibold uppercase tracking-wide text-green-700">
+                  Estimated Monthly Earnings
                 </p>
               </div>
-            )}
-
-            {/* Creator Fund result */}
-            {showFund && (
-              <div className="mb-5">
-                <div className="flex items-center gap-2 mb-2">
-                  <TrendingDown className="h-4 w-4 text-red-500" aria-hidden />
-                  <p className="text-xs font-semibold uppercase tracking-wide text-red-600">
-                    Old Creator Fund
-                  </p>
-                </div>
-                <div
-                  className="text-[2.25rem] font-bold text-red-500 leading-none"
-                  style={{ fontFamily: 'var(--font-mono)', fontWeight: 700 }}
-                  aria-live="polite"
-                  aria-atomic="true"
-                >
-                  $<NumberTicker
-                    value={results.fund.low}
-                    decimalPlaces={2}
-                    className="text-red-500"
-                  />
-                  {' - $'}
-                  <NumberTicker
-                    value={results.fund.high}
-                    decimalPlaces={2}
-                    className="text-red-500"
-                  />
-                </div>
-                <p className="text-xs text-text-muted mt-1">per month</p>
-                <p
-                  className="text-sm font-medium text-text-secondary mt-1"
-                  style={{ fontFamily: 'var(--font-mono)' }}
-                >
-                  {formatMoney(results.fund.yearlyLow)} - {formatMoney(results.fund.yearlyHigh)} / year
-                </p>
+              <div
+                className="text-[2.25rem] font-bold text-green-600 leading-none"
+                style={{ fontFamily: 'var(--font-mono)', fontWeight: 700 }}
+                aria-live="polite"
+                aria-atomic="true"
+              >
+                $<NumberTicker
+                  value={results.low}
+                  decimalPlaces={2}
+                  className="text-green-600"
+                />
+                {' - $'}
+                <NumberTicker
+                  value={results.high}
+                  decimalPlaces={2}
+                  className="text-green-600"
+                />
               </div>
-            )}
-
-            {/* Comparison callout */}
-            {program === 'both' && (
-              <div className="rounded-xl bg-green-50 border border-green-200 p-4 mt-4">
-                <p className="text-sm font-bold text-green-800">
-                  Creator Rewards pays{' '}
-                  <span
-                    className="text-lg"
-                    style={{ fontFamily: 'var(--font-mono)' }}
-                  >
-                    {results.multiplier.toFixed(0)}x
-                  </span>{' '}
-                  more than the old Creator Fund
-                </p>
-                <p className="text-xs text-green-700 mt-1">
-                  That is{' '}
-                  <span className="font-semibold" style={{ fontFamily: 'var(--font-mono)' }}>
-                    {formatMoney(results.rewards.mid - results.fund.mid)}
-                  </span>{' '}
-                  more per month with the same content.
-                </p>
-              </div>
-            )}
+              <p className="text-xs text-text-muted mt-1">per month</p>
+              <p
+                className="text-sm font-medium text-text-secondary mt-1"
+                style={{ fontFamily: 'var(--font-mono)' }}
+              >
+                {formatMoney(results.yearlyLow)} - {formatMoney(results.yearlyHigh)} / year
+              </p>
+            </div>
 
             {/* Breakdown details */}
             <div className="mt-5 pt-4 border-t border-border-default space-y-2">
@@ -375,29 +251,16 @@ export function EarningsComparisonCalculator({ className }: { className?: string
                   {results.qualifiedViews.toLocaleString()}
                 </span>
               </div>
-              {showRewards && (
-                <div className="flex items-center justify-between text-sm">
-                  <span className="text-text-muted">Rewards RPM range</span>
-                  <span
-                    className="font-semibold text-brand-ink"
-                    style={{ fontFamily: 'var(--font-mono)' }}
-                  >
-                    {results.rpmRange}
-                  </span>
-                </div>
-              )}
-              {showFund && (
-                <div className="flex items-center justify-between text-sm">
-                  <span className="text-text-muted">Creator Fund RPM</span>
-                  <span
-                    className="font-semibold text-brand-ink"
-                    style={{ fontFamily: 'var(--font-mono)' }}
-                  >
-                    $0.02 - $0.04
-                  </span>
-                </div>
-              )}
-              {includeBonus && showRewards && (
+              <div className="flex items-center justify-between text-sm">
+                <span className="text-text-muted">RPM range</span>
+                <span
+                  className="font-semibold text-brand-ink"
+                  style={{ fontFamily: 'var(--font-mono)' }}
+                >
+                  {results.rpmRange}
+                </span>
+              </div>
+              {includeBonus && (
                 <div className="flex items-center justify-between text-sm">
                   <span className="text-text-muted">Additional Reward</span>
                   <span className="font-semibold text-green-600">+20% applied</span>
@@ -405,7 +268,16 @@ export function EarningsComparisonCalculator({ className }: { className?: string
               )}
             </div>
 
-            <p className="mt-4 text-xs text-text-muted leading-[1.6]">
+            <div className="mt-4 rounded-lg bg-brand-primarySoft/50 border border-brand-primary/20 p-3">
+              <div className="flex gap-2">
+                <Info className="h-4 w-4 text-brand-primary flex-shrink-0 mt-0.5" aria-hidden />
+                <p className="text-xs text-text-secondary leading-[1.6]">
+                  Only videos 1 minute or longer earn Creator Rewards. Qualified views are organic FYP views, excluding Duets, Stitches, and paid promotion.
+                </p>
+              </div>
+            </div>
+
+            <p className="mt-3 text-xs text-text-muted leading-[1.6]">
               Estimates based on creator-reported RPM data. Actual earnings vary by country, content quality, and engagement.
             </p>
           </div>
