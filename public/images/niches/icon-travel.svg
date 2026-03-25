@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="none">
+  <!-- Globe: circle with meridians and equator -->
+  <circle cx="12" cy="12" r="9.5" stroke="#F4A261" stroke-width="1.5" fill="none"/>
+  <!-- Equator -->
+  <path d="M2.5 12h19" stroke="#F4A261" stroke-width="1.5" stroke-linecap="round"/>
+  <!-- Vertical center meridian -->
+  <path d="M12 2.5c-3 2.5-4.5 5.5-4.5 9.5s1.5 7 4.5 9.5c3-2.5 4.5-5.5 4.5-9.5s-1.5-7-4.5-9.5Z" stroke="#F4A261" stroke-width="1.5" fill="none"/>
+</svg>

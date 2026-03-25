@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="none">
+  <!-- Paint palette: oval body with thumb hole and color dots -->
+  <path d="M12 3C7 3 3 7 3 12c0 2.5 1 4.5 2.5 5.5 1 .6 2 .5 2.5-.5.5-1 1.5-1 2 0 .5 1 1.5 1.5 3 1 2.5-1 5.5-4 6-7 .5-5-3-9-7-9Z" fill="#F4A261"/>
+  <circle cx="8.5" cy="9" r="1.2" fill="#FFF7ED"/>
+  <circle cx="12" cy="7" r="1.2" fill="#FFF7ED"/>
+  <circle cx="15.5" cy="9" r="1.2" fill="#FFF7ED"/>
+  <circle cx="16.5" cy="13" r="1.2" fill="#FFF7ED"/>
+  <circle cx="8" cy="12.5" r="1" fill="#FFF7ED"/>
+</svg>
