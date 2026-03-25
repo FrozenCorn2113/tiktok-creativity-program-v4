@@ -45,12 +45,12 @@ export const nicheContent: Record<string, NicheData> = {
     focus: ['Promote music links', 'Sync licensing', 'Live gifts + tips', 'Brand deals'],
     creators: [
       {
-        name: 'Bella Poarch',
-        handle: 'bellapoarch',
-        followers: '92.8M',
+        name: 'CHINCHILLA',
+        handle: 'chinchilla_music',
+        followers: '389K',
         description:
-          'Rose to fame with one of the most-liked TikToks ever, then converted that attention into a genuine music career with Warner Records.',
-        lesson: 'TikTok virality can be a launchpad, not a one-time moment',
+          'UK indie pop artist whose track "Little Girl Gone" grew her from 16K to 250K followers in a single week after she previewed it organically on TikTok. Featured in the TikTok Elevate programme for emerging artists.',
+        lesson: 'Previewing original music directly on TikTok can trigger explosive organic growth without a label or ad spend',
       },
       {
         name: 'Venbee',
@@ -61,20 +61,12 @@ export const nicheContent: Record<string, NicheData> = {
         lesson: 'Mid-tier musicians can monetize original music directly through the platform without a label',
       },
       {
-        name: 'Billie Eilish',
-        handle: 'billieeilish',
-        followers: '74.4M',
+        name: 'Mae Stephens',
+        handle: 'maestephens_',
+        followers: '373K',
         description:
-          'Uses TikTok for behind-the-scenes access and mental health conversations alongside music promotion, building deep fan loyalty.',
-        lesson: 'Transparency and vulnerability build communities that cross-convert to streaming revenue',
-      },
-      {
-        name: 'Spencer X',
-        handle: 'spencerx',
-        followers: '54.1M',
-        description:
-          'Built one of the largest TikTok followings using a single skill: beatboxing. Proves deeply specialized musical talent commands a massive audience.',
-        lesson: 'Niche musical skills open multiple revenue paths including brand deals at $25K+ per post',
+          'UK singer-songwriter who built her audience entirely on original songwriting content. "If We Ever Broke Up" went viral on TikTok, earning 9.3M+ likes while she remains fully independent with no label deal.',
+        lesson: 'Independent artists can build a viable music career through TikTok without signing away rights to a label',
       },
       {
         name: 'Tate McRae',
@@ -108,7 +100,7 @@ export const nicheContent: Record<string, NicheData> = {
       },
     ],
     rpmNote:
-      'Music content RPMs typically range from $0.20 to $0.80 depending on audience region and video length. US-based audiences watching 1-minute-plus music tutorial content trend toward the higher end.',
+      'Music content RPMs typically range from $0.20 to $0.80 depending on audience region and video length. Tutorial-style music content (songwriting breakdowns, production walkthroughs, instrument lessons) consistently outperforms 15-second performance clips because watch time per view is 3-4x higher. US-based audiences watching 60-second-plus music tutorial content trend toward the $0.60-$0.80 range.',
     tools: [
       { name: 'DistroKid', description: 'Distribute music to all streaming platforms', href: '/guides/best-monetization-methods' },
       { name: 'Stan Store', description: 'Sell music, merch, and digital downloads', href: '/guides/best-monetization-methods' },
@@ -357,8 +349,8 @@ export const nicheContent: Record<string, NicheData> = {
         handle: 'markrober',
         followers: '3.8M',
         description:
-          'Former NASA engineer turned science-entertainment creator. His elaborate engineering projects make science viscerally entertaining.',
-        lesson: 'TikTok clips as trailers that drive YouTube viewers, plus a STEM subscription box for kids',
+          'Former NASA engineer turned science-entertainment creator. His elaborate engineering projects make science viscerally entertaining. Uses TikTok to build awareness that converts into his CrunchLabs STEM subscription box for kids.',
+        lesson: 'High-production educational content builds authority that converts to product sales and subscription revenue',
       },
       {
         name: 'Mrs. Kelly',
@@ -425,40 +417,24 @@ export const nicheContent: Record<string, NicheData> = {
         handle: 'abbyroberts',
         followers: '16M',
         description:
-          'Special effects makeup artist whose transformation videos regularly go viral. Her artistry level far exceeds standard beauty content.',
-        lesson: 'Skill-based content that is genuinely hard to replicate sustains a massive following over years',
+          'Special effects makeup artist whose transformation videos regularly go viral. Her artistry level far exceeds standard beauty content, proving that skill-based beauty content retains audiences for years.',
+        lesson: 'Skill-based content that is genuinely hard to replicate sustains a massive following and commands premium brand deals',
       },
       {
-        name: 'Hyram Yarbro',
-        handle: 'hyramhair',
-        followers: '7M',
+        name: 'Skincare by Hyram',
+        handle: 'skincarebyhyram',
+        followers: '6.5M',
         description:
-          'Built his audience doing ingredient-level analysis of skincare products, calling out both overpriced and overlooked affordable options.',
-        lesson: 'An opinionated, critical point of view builds more trust than promotional content',
-      },
-      {
-        name: 'Mari Maria',
-        handle: 'marimariamakeup',
-        followers: '20M+',
-        description:
-          'One of Brazil\'s most famous beauty creators with a global reach who expanded from makeup tutorials to her own makeup brand.',
-        lesson: 'Beauty content transcends language barriers and can scale internationally',
+          'Built his audience doing ingredient-level analysis of skincare products, calling out both overpriced and overlooked affordable options. Launched his own skincare line Selfless by Hyram with The Inkey List.',
+        lesson: 'An opinionated, critical point of view builds more trust than promotional content and can lead to product partnerships',
       },
       {
         name: 'Hindash',
         handle: 'hindash',
-        followers: '577K-710K',
+        followers: '710K',
         description:
-          'Dubai-based celebrity makeup artist and founder of Hindash Cosmetics. Worked with Naomi Campbell and partnered with Charlotte Tilbury and MAC.',
-        lesson: 'Technique over trends differentiates you and enables a cosmetics brand launch',
-      },
-      {
-        name: 'NikkieTutorials',
-        handle: 'nikkietutorials',
-        followers: '14M+',
-        description:
-          'Dutch makeup artist and television host known for "The Power of Makeup" viral video. Over a decade of sustained relevance in beauty.',
-        lesson: 'Audience longevity is possible through personal storytelling and evolving content',
+          'Dubai-based celebrity makeup artist and founder of Hindash Cosmetics. Has worked with Naomi Campbell and partnered with Charlotte Tilbury and MAC. Technique-focused tutorials that teach rather than promote.',
+        lesson: 'Technique over trends differentiates you in the beauty space and enables a cosmetics brand launch',
       },
     ],
     strategy: [
@@ -505,52 +481,44 @@ export const nicheContent: Record<string, NicheData> = {
     focus: ['Skits and series', 'Creator Rewards', 'Superfan monetization', 'Brand comedy deals'],
     creators: [
       {
-        name: 'Khaby Lame',
-        handle: 'khaby.lame',
-        followers: '161.5M',
+        name: 'Shelby Lynch',
+        handle: 'shellybellycomedy',
+        followers: '1.6M',
         description:
-          'Built the largest TikTok following in the world through completely wordless reaction videos. Former factory worker to global icon. Earned $20M in 2025.',
-        lesson: 'A repeatable format, executed consistently, beats variety',
-      },
-      {
-        name: 'Matt Rife',
-        handle: 'mattrife',
-        followers: '42M',
-        description:
-          'Stand-up comedian who leveraged TikTok clips of crowd work to build a massive following. Earned $50M in 2025, the highest-earning creator on Forbes\' list.',
-        lesson: 'TikTok as a direct-to-fan marketing machine for touring can fill arenas internationally',
-      },
-      {
-        name: 'Druski',
-        handle: 'druski',
-        followers: '12.6M',
-        description:
-          'Known for character-based skits and improvised interactions with celebrities. His fictional personas are as recognizable as the creator himself.',
-        lesson: 'Humor that is safe for corporate sponsors while staying authentic earns premium brand partnerships',
-      },
-      {
-        name: 'Brittany Broski',
-        handle: 'brittany_broski',
-        followers: '7.5M',
-        description:
-          'Originally went viral as "Kombucha girl" and built a sustained comedy career around absurdist humor and podcast hosting. Named to TIME100 Creators 2025.',
-        lesson: 'Long-term sustainability comes from diversifying into podcasts and live appearances',
+          'Character-based comedy creator whose recurring characters and skits keep the algorithm feeding her content to new audiences. One of the best examples of how recurring formats build loyal followings in the 1-2M range.',
+        lesson: 'Character-based comedy builds retention and return viewership, critical for Creator Rewards qualification',
       },
       {
         name: 'John Crist',
         handle: 'johncristcomedian',
         followers: '2.2M',
         description:
-          'Stand-up comedian targeting Christian and Southern American culture with observational humor. His niche positioning creates high engagement and loyal sponsors.',
-        lesson: 'Niche audience alignment drives higher conversion rates than broad comedy',
+          'Stand-up comedian targeting Christian and Southern American culture with observational humor. His niche positioning creates high engagement and loyal sponsors who align with his audience demographics.',
+        lesson: 'Niche audience alignment drives higher conversion rates and sponsor deals than broad comedy',
       },
       {
-        name: 'Shelby Lynch',
-        handle: 'shellybellycomedy',
-        followers: '1.6M',
+        name: 'Hulk The Comedian',
+        handle: 'hulkthecomedian',
+        followers: '396K',
         description:
-          'Character-based comedy creator whose recurring characters and skits keep the algorithm feeding her content to new audiences.',
-        lesson: 'Character-based comedy builds retention and return viewership, critical for Creator Rewards qualification',
+          'Character-based skit creator who performs as "Cousin Hulk" in the Kountry Wayne comedy universe. Built a dedicated following through consistent character work and relatable Southern humor.',
+        lesson: 'Joining an existing comedy universe (collaborations with bigger creators) accelerates growth while you build your own brand',
+      },
+      {
+        name: 'Trey da Comedian',
+        handle: 'trey_da_comedian1',
+        followers: '317K',
+        description:
+          'Texas-based comedy creator focused on parody and relatable everyday skit content. His "laughter is good for the soul" approach keeps content brand-safe while staying genuinely funny.',
+        lesson: 'Relatable, everyday humor with a clean tone attracts both audiences and brand deal opportunities at any follower count',
+      },
+      {
+        name: 'Dave Fein',
+        handle: 'davefeincomedian',
+        followers: '276K',
+        description:
+          'Stand-up comedian building his touring career through TikTok. Uses short clips of crowd work and original bits to drive ticket sales and grow his live audience.',
+        lesson: 'TikTok comedy clips work as free advertising for live shows, turning views into ticket sales even at sub-500K followings',
       },
     ],
     strategy: [
@@ -613,12 +581,20 @@ export const nicheContent: Record<string, NicheData> = {
         lesson: 'Dense, no-fluff business advice rewards viewers who want actionable frameworks',
       },
       {
-        name: 'Tony Robbins',
-        handle: 'tonyrobbins',
-        followers: '1.3M',
+        name: 'Tiffany Carter',
+        handle: 'projectme_with_tiffany',
+        followers: '426K',
         description:
-          'The most recognized name in life coaching. His TikTok extends a decades-long brand into short-form video, using the platform to promote live events and courses.',
-        lesson: 'Coaches can build significant TikTok followings without abandoning their core business model',
+          'Business and online income coach who teaches women to monetize online. Millionaire entrepreneur with 5.3M+ likes, proving that coaching content in the 400K range can drive real client revenue through TikTok funnels.',
+        lesson: 'A content-to-client funnel on TikTok can replace traditional marketing for coaching businesses',
+      },
+      {
+        name: 'Charity Rogers',
+        handle: 'charityrogers_',
+        followers: '363K',
+        description:
+          'TikTok-specific business coach who teaches entrepreneurs how to grow and monetize on the platform. 5.3M likes. Meta-example: a TikTok coach who uses TikTok to prove her own methods work.',
+        lesson: 'Teaching what you practice on the same platform creates instant credibility and a self-reinforcing growth loop',
       },
       {
         name: 'Rob Dial',
@@ -689,52 +665,44 @@ export const nicheContent: Record<string, NicheData> = {
     focus: ['Travel partnerships', 'Affiliate hotels + gear', 'Creator Rewards', 'Brand campaigns'],
     creators: [
       {
-        name: 'Alex Ojeda',
-        handle: 'alexojeda',
-        followers: '8.4M',
+        name: 'Sightsofsara',
+        handle: 'sightsofsara',
+        followers: '1.4M',
         description:
-          'Turned adventure travel into a globally recognized personal brand by focusing on extreme attractions. Named to TIME100 Creators 2025.',
-        lesson: 'A specific content angle (adventure/extreme) outperforms general travel content',
-      },
-      {
-        name: 'Drew Binsky',
-        handle: 'drewbinsky',
-        followers: '3.9M',
-        description:
-          'Has visited every country in the world. His commitment to a singular measurable goal gave his channel a compelling ongoing narrative.',
-        lesson: 'Mission-driven content where the goal itself is the engine creates perennial search value',
-      },
-      {
-        name: 'Nas Daily',
-        handle: 'nasdaily',
-        followers: '8.8M',
-        description:
-          'Famous for making one video every day for 1,000 days while traveling the world. Now runs nas.io, a platform helping creators build communities.',
-        lesson: 'Consistency and constraint as content strategy can evolve into building a SaaS product for creators',
-      },
-      {
-        name: 'Florina Toma',
-        handle: 'florina_toma',
-        followers: '6M',
-        description:
-          'Cinematic luxury travel content that turns destination footage into aspirational visual stories with first-second visual hooks.',
-        lesson: 'Tourism board partnerships and luxury hotel collaborations are premium revenue for visual creators',
+          'Solo female travel creator focused on mountainous backpacking and outdoor adventure, serving an underrepresented audience with safety tips and gear reviews. Demonstrates that niche positioning works at any scale.',
+        lesson: 'Niche positioning (solo female adventure travel) creates deeper audience loyalty and stronger brand deal appeal',
       },
       {
         name: 'Jordentually',
         handle: 'jordentually',
         followers: '3.7M',
         description:
-          'Cultural adventure travel creator who focuses on unique and unusual experiences rather than Instagram-standard destinations.',
-        lesson: 'Authentic cultural storytelling outperforms generic "beautiful places" content',
+          'Cultural adventure travel creator who focuses on unique and unusual experiences rather than Instagram-standard destinations. Proves that offbeat, curiosity-driven content outperforms generic travel footage.',
+        lesson: 'Authentic cultural storytelling outperforms generic "beautiful places" content in both retention and RPM',
       },
       {
-        name: 'Sightsofsara',
-        handle: 'sightsofsara',
-        followers: '1.4M',
+        name: 'Trent + Sarah',
+        handle: 'riotravelers',
+        followers: '495K',
         description:
-          'Solo female travel creator focused on mountainous backpacking and outdoor adventure, serving an underrepresented audience with safety tips and gear reviews.',
-        lesson: 'Niche positioning (solo female adventure travel) creates deeper audience loyalty',
+          'Budget travel couple specializing in off-the-beaten-track destinations. Their "how we afford to travel" content directly addresses the #1 question aspiring travel creators have, making it highly shareable.',
+        lesson: 'Budget travel content is more relatable and actionable than luxury travel, driving higher engagement per follower',
+      },
+      {
+        name: 'Natasha Danielle',
+        handle: 'theworldpursuit',
+        followers: '229K',
+        description:
+          'Solo female travel tips and encouragement creator with a specific focus on safety, budgeting, and first-time solo travel. Serves an underrepresented audience that converts well to affiliate and course revenue.',
+        lesson: 'A clearly defined sub-niche (solo female travel tips) attracts a highly targeted audience that trusts product recommendations',
+      },
+      {
+        name: 'Em',
+        handle: 'emsbudgettravel',
+        followers: '103K',
+        description:
+          'Visited 17 countries in 2024 while working a 9-to-5 job. Her content proves travel creation is accessible to anyone with PTO and a plan, making her relatable to viewers who are not full-time creators.',
+        lesson: 'You do not need to quit your job to build a travel audience. Part-time creators at 100K can monetize through gear affiliates and tourism partnerships.',
       },
     ],
     strategy: [
