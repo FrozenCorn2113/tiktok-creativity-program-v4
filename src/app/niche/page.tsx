@@ -1,7 +1,8 @@
 // Niches index page -- links to all niche pages and features ultimate guides as cornerstone content
 import type { Metadata } from 'next'
 import Link from 'next/link'
-import { ChevronRight, BookOpen } from 'lucide-react'
+import Image from 'next/image'
+import { BookOpen } from 'lucide-react'
 
 import { buildMetadata } from '@/lib/seo'
 import { EmailCapture } from '@/components/sections/email-capture'
@@ -20,6 +21,7 @@ const niches = [
     description: 'Promote music, drive streams, stack income beyond Creator Rewards.',
     guideSlug: 'ultimate-music-guide',
     guideLabel: 'Ultimate TikTok Monetization Guide for Musicians',
+    heroImage: '/images/guides/hero-ultimate-music-guide.webp',
     focus: ['Music promotion links', 'Sync licensing', 'Live gifts + tips', 'Brand deals'],
   },
   {
@@ -28,6 +30,7 @@ const niches = [
     description: 'Earn from workout content, programs, and affiliate tools built for creators.',
     guideSlug: 'ultimate-fitness-guide',
     guideLabel: 'Ultimate TikTok Monetization Guide for Fitness Creators',
+    heroImage: '/images/guides/hero-ultimate-fitness-guide.webp',
     focus: ['Workout plans', 'Affiliate supplements', 'Program upsells', 'Live sessions'],
   },
   {
@@ -36,6 +39,7 @@ const niches = [
     description: 'Showcase process content, sell prints, turn engagement into income.',
     guideSlug: 'ultimate-artists-guide',
     guideLabel: 'Ultimate TikTok Monetization Guide for Artists',
+    heroImage: '/images/guides/hero-ultimate-artists-guide.webp',
     focus: ['Print sales', 'Commissions', 'Process content', 'Behind-the-scenes'],
   },
   {
@@ -44,6 +48,7 @@ const niches = [
     description: 'Build authority, sell lesson resources, keep your account compliant.',
     guideSlug: 'ultimate-educators-guide',
     guideLabel: 'Ultimate TikTok Monetization Guide for Educators',
+    heroImage: '/images/guides/hero-ultimate-educators-guide.webp',
     focus: ['Course funnels', 'Affiliate tools', 'Community memberships', 'Lead magnets'],
   },
   {
@@ -52,6 +57,7 @@ const niches = [
     description: 'Monetize tutorials, reviews, and affiliate deals in the beauty space.',
     guideSlug: 'ultimate-beauty-guide',
     guideLabel: 'Ultimate TikTok Monetization Guide for Beauty Creators',
+    heroImage: '/images/guides/hero-ultimate-beauty-guide.webp',
     focus: ['Affiliate reviews', 'Creator Rewards', 'Brand partnerships', 'Product launches'],
   },
   {
@@ -60,6 +66,7 @@ const niches = [
     description: 'Monetize skits, series, and superfans -- comedy is high-RPM if done right.',
     guideSlug: 'ultimate-comedy-guide',
     guideLabel: 'Ultimate TikTok Monetization Guide for Comedians',
+    heroImage: '/images/guides/hero-ultimate-comedy-guide.webp',
     focus: ['Skits and series', 'Creator Rewards', 'Superfan monetization', 'Brand comedy deals'],
   },
   {
@@ -68,6 +75,7 @@ const niches = [
     description: 'Turn authority content into clients, courses, and recurring revenue.',
     guideSlug: 'ultimate-coaches-guide',
     guideLabel: 'Ultimate TikTok Monetization Guide for Coaches and Consultants',
+    heroImage: '/images/guides/hero-ultimate-coaches-guide.webp',
     focus: ['High-ticket offers', 'Content-to-client funnel', 'Creator Rewards', 'Email list building'],
   },
   {
@@ -76,6 +84,7 @@ const niches = [
     description: 'Earn from travel content with partnerships, affiliates, and Creator Rewards.',
     guideSlug: 'ultimate-travel-guide',
     guideLabel: 'Ultimate TikTok Monetization Guide for Travel Creators',
+    heroImage: '/images/guides/hero-ultimate-travel-guide.webp',
     focus: ['Travel partnerships', 'Affiliate hotels + gear', 'Creator Rewards', 'Brand campaigns'],
   },
 ]
@@ -103,28 +112,36 @@ export default function NichesIndexPage() {
                 <Link
                   key={niche.slug}
                   href={`/niche/${niche.slug}`}
-                  className="group flex flex-col border border-border-default rounded-xl bg-white p-6 hover:shadow-md hover:-translate-y-0.5 transition-all duration-200"
+                  className="group flex flex-col border border-border-default rounded-xl bg-white overflow-hidden hover:shadow-md hover:-translate-y-0.5 transition-all duration-200"
                 >
-                  <div className="flex items-start justify-between mb-1">
-                    <h2 className="text-lg font-bold text-brand-ink group-hover:text-brand-primaryDeep transition-colors">
+                  <div className="relative w-full aspect-[16/9] bg-background-warm">
+                    <Image
+                      src={niche.heroImage}
+                      alt={`${niche.label} niche`}
+                      fill
+                      sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                      className="object-cover"
+                    />
+                  </div>
+                  <div className="flex flex-col p-6 flex-1">
+                    <h2 className="text-lg font-bold text-brand-ink group-hover:text-brand-primaryDeep transition-colors mb-1">
                       {niche.label}
                     </h2>
-                    <ChevronRight className="w-5 h-5 text-text-muted group-hover:text-brand-primary transition-colors flex-shrink-0 mt-1" />
-                  </div>
-                  <p className="text-sm text-text-secondary leading-relaxed mb-4 flex-1">
-                    {niche.description}
-                  </p>
-                  <ul className="space-y-1 mb-4">
-                    {niche.focus.map((item) => (
-                      <li key={item} className="flex items-center gap-2 text-xs text-text-muted">
-                        <span className="h-1 w-1 rounded-full bg-brand-primary flex-shrink-0" aria-hidden />
-                        {item}
-                      </li>
-                    ))}
-                  </ul>
-                  <div className="flex items-center gap-1.5 text-xs font-semibold text-brand-primaryDeep mt-auto pt-2 border-t border-border-default">
-                    <BookOpen className="w-3.5 h-3.5" aria-hidden />
-                    Read the full guide
+                    <p className="text-sm text-text-secondary leading-relaxed mb-4 flex-1">
+                      {niche.description}
+                    </p>
+                    <ul className="space-y-1 mb-4">
+                      {niche.focus.map((item) => (
+                        <li key={item} className="flex items-center gap-2 text-xs text-text-muted">
+                          <span className="h-1 w-1 rounded-full bg-brand-primary flex-shrink-0" aria-hidden />
+                          {item}
+                        </li>
+                      ))}
+                    </ul>
+                    <div className="flex items-center gap-1.5 text-xs font-semibold text-brand-primaryDeep mt-auto pt-2 border-t border-border-default">
+                      <BookOpen className="w-3.5 h-3.5" aria-hidden />
+                      Read the full guide
+                    </div>
                   </div>
                 </Link>
             ))}
@@ -146,14 +163,22 @@ export default function NichesIndexPage() {
               <Link
                 key={niche.guideSlug}
                 href={`/guides/${niche.guideSlug}`}
-                className="flex items-center gap-4 border border-border-default rounded-xl p-4 bg-white hover:shadow-sm hover:border-brand-primary/40 transition-all duration-200 group"
+                className="flex items-center gap-4 border border-border-default rounded-xl overflow-hidden bg-white hover:shadow-sm hover:border-brand-primary/40 transition-all duration-200 group"
               >
-                <div className="flex-1 min-w-0">
+                <div className="relative w-24 h-16 flex-shrink-0 bg-background-warm">
+                  <Image
+                    src={niche.heroImage}
+                    alt={niche.label}
+                    fill
+                    sizes="96px"
+                    className="object-cover"
+                  />
+                </div>
+                <div className="flex-1 min-w-0 py-3 pr-4">
                   <p className="text-sm font-bold text-brand-ink line-clamp-1 group-hover:text-brand-primaryDeep transition-colors">
                     {niche.guideLabel}
                   </p>
                 </div>
-                <ChevronRight className="w-4 h-4 text-text-muted group-hover:text-brand-primary flex-shrink-0 transition-colors" />
               </Link>
             ))}
           </div>
