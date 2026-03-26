@@ -26,11 +26,13 @@ const filterTabs = [
   { label: 'All', value: 'all' },
   { label: 'Getting Started', value: 'Getting Started' },
   { label: 'Maximize Earnings', value: 'Maximize Earnings' },
+  { label: 'Growth', value: 'Growth' },
   { label: 'Troubleshooting', value: 'Troubleshooting' },
   { label: 'Country Guides', value: 'International' },
   { label: 'Tools & Equipment', value: 'Tools' },
   { label: 'Niche Guides', value: 'Niche Guide' },
   { label: 'Comparisons', value: 'Comparison' },
+  { label: 'Advanced', value: 'Advanced' },
 ]
 
 const PAGE_SIZE = 12
@@ -62,7 +64,7 @@ export default function GuidesListingClient({ guides }: { guides: GuideItem[] })
             TikTok Creator Rewards Guides
           </h1>
           <p className="text-[1.125rem] text-text-secondary max-w-2xl mx-auto leading-[1.7]">
-            64 guides covering eligibility, earnings, troubleshooting, and strategy — updated for 2026.
+            107 guides covering eligibility, earnings, troubleshooting, and strategy — updated for 2026.
           </p>
 
           {/* Category filter tabs — scrollable horizontal on mobile */}

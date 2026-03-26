@@ -661,7 +661,7 @@ Uses 21st.dev moumensoliman/hero-section-shadcnui for the hero section.
 - [ ] H6. Hero stagger animation from moumensoliman component: eyebrow fades in first, then H1, then subtitle, then buttons. Stagger delay 150ms between each element. Honor `prefers-reduced-motion`.
 - [ ] H7. Trust bar: three stats. Desktop: `flex items-center justify-center gap-12 md:gap-16`. Mobile: grid-cols-3.
 - [ ] H8. Trust bar numbers: countUp animation via `useCountUp` hook. Animation triggers on IntersectionObserver — initial render must show the TARGET number (not 0) as a `data-target` attribute or SSR-safe fallback. Fix: render the final number as the initial state and only trigger animation if JavaScript is available and element enters viewport.
-- [ ] H9. Trust bar stats: exactly these three: "64 Guides", "3 Free Calculators", "Updated 2026". Labels below numbers in 12px text-muted.
+- [ ] H9. Trust bar stats: exactly these three: "107 Guides", "3 Free Calculators", "Updated 2026". Labels below numbers in 12px text-muted.
 - [ ] H10. Content pillars section: four cards in `grid grid-cols-2 md:grid-cols-4 gap-4`. Each card: white bg, `border border-[#EADFD3] rounded-2xl p-6`, hover `border-[#F4A261] shadow-sm`. Icon: Lucide SVG 24px, orange. Title: H3. Description: 14px body.
 - [ ] H11. Content pillars use 21st.dev jatin-yadav05/feature-spotlight as reference. URL: https://21st.dev/components/jatin-yadav05/feature-spotlight — visit and copy. Adapt card structure.
 - [ ] H12. Calculator preview: inline panel showing one input (monthly views) and a calculated result. Link to full calculator via ghost button "Calculate your earnings".

@@ -9,7 +9,7 @@ import GuidesListingClient from './GuidesListingClient'
 export const metadata = buildMetadata({
   title: 'TikTok Creator Rewards Guides',
   description:
-    'Everything TikTok creators need to know about eligibility, qualifying, and earning from the Creator Rewards Program. 64 guides updated for 2026.',
+    'Everything TikTok creators need to know about eligibility, qualifying, and earning from the Creator Rewards Program. 107 guides updated for 2026.',
   path: '/guides',
 })
 

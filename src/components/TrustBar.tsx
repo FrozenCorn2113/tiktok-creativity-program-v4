@@ -16,7 +16,7 @@ type TrustStat = {
 
 // H9: exactly these three stats
 const defaultStats: TrustStat[] = [
-  { value: 64, suffix: ' Guides', label: '' },
+  { value: 107, suffix: ' Guides', label: '' },
   { value: 3, suffix: ' Free Calculators', label: '' },
   { value: 2026, prefix: 'Updated ', label: '', noGrouping: true },
 ]
