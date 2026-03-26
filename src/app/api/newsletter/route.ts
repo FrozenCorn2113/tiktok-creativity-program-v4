@@ -1,5 +1,5 @@
 // Newsletter subscription — Supabase capture + Resend welcome email
-// Uses direct REST API instead of JS client for reliability in serverless
+// Uses direct REST API for reliability in Vercel serverless
 import { NextResponse } from 'next/server'
 import { z } from 'zod'
 import { sendWelcomeEmail } from '@/lib/email/send-welcome'
@@ -56,51 +56,6 @@ async function insertSubscriber(record: {
   }
 }
 
-export async function GET() {
-  const hasUrl = !!process.env.NEXT_PUBLIC_SUPABASE_URL
-  const hasServiceKey = !!process.env.SUPABASE_SERVICE_ROLE_KEY
-  const hasAnonKey = !!process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
-  const hasResendKey = !!process.env.RESEND_API_KEY
-
-  // Test outbound connectivity
-  let connectivityTest = 'untested'
-  let externalTest = 'untested'
-  const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL
-  try {
-    if (supabaseUrl) {
-      const testRes = await fetch(`${supabaseUrl}/rest/v1/`, {
-        method: 'GET',
-        headers: {
-          'apikey': process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY ?? '',
-        },
-      })
-      connectivityTest = `status=${testRes.status}`
-    }
-  } catch (err) {
-    connectivityTest = `error: ${err instanceof Error ? err.message : String(err)}`
-  }
-  try {
-    const extRes = await fetch('https://httpbin.org/status/200')
-    externalTest = `status=${extRes.status}`
-  } catch (err) {
-    externalTest = `error: ${err instanceof Error ? err.message : String(err)}`
-  }
-
-  return NextResponse.json({
-    status: 'ok',
-    version: 'v5-dual-test',
-    supabaseUrlPrefix: supabaseUrl ? supabaseUrl.substring(0, 30) : 'missing',
-    connectivity: connectivityTest,
-    externalConnectivity: externalTest,
-    config: {
-      supabaseUrl: hasUrl,
-      serviceRoleKey: hasServiceKey,
-      anonKey: hasAnonKey,
-      resendKey: hasResendKey,
-    },
-  })
-}
-
 export async function POST(request: Request) {
   let body: unknown
   try {
@@ -127,7 +82,8 @@ export async function POST(request: Request) {
   })
 
   if (!result.ok) {
-    return NextResponse.json({ error: 'Failed to save', debug: result.error }, { status: 500 })
+    console.error('[api/newsletter] Insert failed:', result.error)
+    return NextResponse.json({ error: 'Failed to save' }, { status: 500 })
   }
 
   // Send branded welcome email via Resend (fire-and-forget)
