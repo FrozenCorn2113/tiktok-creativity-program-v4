@@ -8,11 +8,10 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { Zap, ChevronRight, Calculator, ChevronDown } from "lucide-react";
+import { ChevronRight, Calculator, ChevronDown } from "lucide-react";
 import { motion, useReducedMotion } from "framer-motion";
 import { wordRevealContainer, wordRevealItem } from "@/lib/motion";
 import { SpotlightContainer } from "@/components/aceternity/spotlight";
-import { Badge } from "@/components/ui/badge";
 
 const headline = "The Real Guide to Getting Paid by TikTok";
 const words = headline.split(" ");
@@ -34,17 +33,6 @@ export function HeroSpotlight() {
             {/* Left — text column */}
             <div className="flex flex-col">
               {/* Badge */}
-              <motion.div
-                initial={false}
-                animate={mounted && !shouldReduceMotion ? { opacity: 1, y: 0 } : { opacity: 1, y: 0 }}
-                transition={{ duration: 0.4 }}
-              >
-                <Badge className="w-fit mb-6 bg-brand-primarySoft text-brand-primaryDeep border border-brand-primary/30 text-xs font-semibold tracking-wide px-3 py-1.5">
-                  <Zap className="mr-1.5 h-3 w-3" aria-hidden />
-                  100% Free Resource
-                </Badge>
-              </motion.div>
-
               {/* H1 — staggered word reveal (client-only, SSR shows full text) */}
               {mounted && !shouldReduceMotion ? (
                 <motion.h1

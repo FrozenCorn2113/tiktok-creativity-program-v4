@@ -7,7 +7,6 @@ import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import {
   ChevronRight,
-  BookOpen,
   ArrowRight,
   Users,
   TrendingUp,
@@ -20,7 +19,7 @@ import {
   Target,
   Zap,
 } from 'lucide-react'
-import { Badge } from '@/components/ui/badge'
+
 import { motion } from 'framer-motion'
 import { fadeUp, staggerContainer, staggerItem, viewportOnce } from '@/lib/motion'
 import { EmailCapture } from '@/components/sections/email-capture'
@@ -183,8 +182,8 @@ export default function NichePageClient({ params }: { params: { slug: string } }
             variants={staggerContainer}
             className="max-w-3xl"
           >
-            {/* Icon + label */}
-            <motion.div variants={staggerItem} className="flex items-center gap-3 mb-4">
+            {/* Icon */}
+            <motion.div variants={staggerItem} className="mb-4">
               <Image
                 src={content.icon}
                 alt=""
@@ -192,9 +191,6 @@ export default function NichePageClient({ params }: { params: { slug: string } }
                 height={48}
                 aria-hidden="true"
               />
-              <Badge className="bg-brand-primarySoft text-brand-primaryDeep border-brand-primary/30 text-xs font-semibold">
-                {nicheLabel}
-              </Badge>
             </motion.div>
 
             {/* Headline */}
@@ -431,10 +427,6 @@ export default function NichePageClient({ params }: { params: { slug: string } }
             <div className="rounded-2xl border-2 border-brand-primary/30 bg-gradient-to-br from-brand-primarySoft to-[var(--color-surface-warm)] p-8 md:p-10">
               <div className="flex flex-col md:flex-row md:items-center gap-6">
                 <div className="flex-1">
-                  <Badge className="mb-3 bg-brand-primary/10 text-brand-primaryDeep border-brand-primary/30 text-xs font-semibold">
-                    <BookOpen className="w-3 h-3 mr-1" aria-hidden />
-                    Ultimate Guide
-                  </Badge>
                   <h2 className="text-xl md:text-2xl font-bold text-brand-ink mb-3">
                     {content.ultimateGuide.label}
                   </h2>

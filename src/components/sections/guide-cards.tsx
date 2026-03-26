@@ -10,7 +10,7 @@ import { useEffect, useState } from "react";
 import { Clock } from "lucide-react";
 import { motion, useReducedMotion, AnimatePresence } from "framer-motion";
 import { staggerContainer, staggerItem, viewportOnce } from "@/lib/motion";
-import { Badge } from "@/components/ui/badge";
+
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 export interface GuideCardData {
@@ -63,9 +63,6 @@ function GuideCard({ guide }: { guide: GuideCardData }) {
 
       {/* Card content */}
       <div className="flex flex-col flex-1 p-5">
-        <Badge className="w-fit mb-3 bg-brand-primarySoft text-brand-primaryDeep border-brand-primary/30 text-xs font-semibold">
-          {guide.category}
-        </Badge>
         <h3 className="text-[18px] font-bold text-brand-ink leading-snug line-clamp-2 mb-2" style={{ fontWeight: 700 }}>
           {guide.title}
         </h3>

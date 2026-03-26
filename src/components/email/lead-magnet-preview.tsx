@@ -1,7 +1,6 @@
 // Designed by Vale v4 — Lead magnet preview card for email capture
 
 import { Download } from "lucide-react";
-import { Badge } from "@/components/ui/badge";
 
 interface LeadMagnetPreviewCardProps {
   title: string;
@@ -33,10 +32,10 @@ export function LeadMagnetPreviewCard({ title, previewSrc, itemCount }: LeadMagn
         <p className="font-manrope font-semibold text-brand-ink text-sm leading-tight">{title}</p>
         <p className="text-text-muted text-[11px] mt-0.5">{itemCount} • Free instant download</p>
       </div>
-      {/* Free badge */}
-      <Badge className="ml-auto bg-brand-primarySoft text-brand-primaryDeep text-xs font-manrope font-semibold flex-shrink-0 border-0">
+      {/* Free label */}
+      <span className="ml-auto text-brand-primaryDeep text-xs font-manrope font-semibold flex-shrink-0">
         FREE
-      </Badge>
+      </span>
     </div>
   );
 }

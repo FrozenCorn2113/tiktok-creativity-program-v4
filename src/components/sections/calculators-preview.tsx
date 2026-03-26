@@ -8,7 +8,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { Calculator, BarChart2, Users, ChevronRight } from "lucide-react";
-import { Badge } from "@/components/ui/badge";
+
 import { motion, useReducedMotion } from "framer-motion";
 import { fadeUp, viewportOnce } from "@/lib/motion";
 
@@ -68,9 +68,9 @@ export function CalculatorsPreview() {
                   <span className="flex-1 text-[15px] font-semibold text-white">
                     {title}
                   </span>
-                  <Badge className="bg-brand-primarySoft text-brand-primaryDeep text-xs font-manrope border-0 mr-1">
+                  <span className="text-brand-primaryDeep text-xs font-manrope font-semibold mr-1">
                     Free
-                  </Badge>
+                  </span>
                   <ChevronRight className="h-4 w-4 text-gray-500 group-hover:text-gray-300 transition-colors" aria-hidden />
                 </Link>
               ))}

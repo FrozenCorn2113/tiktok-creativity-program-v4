@@ -4,7 +4,6 @@
 
 import { useState } from "react";
 import { Info, Tag, ExternalLink, Star } from "lucide-react";
-import { Badge } from "@/components/ui/badge";
 
 /** Review text with 3-line clamp and expand toggle */
 function ReviewText({ text }: { text: string }) {
@@ -84,12 +83,12 @@ export function AffiliateCardGrid({
           <h3 className="font-manrope font-bold text-brand-ink text-base leading-tight">{toolName}</h3>
           <span className="text-text-muted text-xs">{priceRange}</span>
         </div>
-        {/* Optional: editor's pick badge */}
+        {/* Optional: editor's pick label */}
         {isEditorsPick && (
-          <Badge className="bg-brand-primarySoft text-brand-primaryDeep border-brand-primary/30 text-xs font-manrope font-semibold flex-shrink-0">
+          <span className="inline-flex items-center text-brand-primaryDeep text-xs font-manrope font-semibold flex-shrink-0">
             <Star className="w-3 h-3 mr-1" aria-hidden />
             Editor&apos;s Pick
-          </Badge>
+          </span>
         )}
       </div>
 
@@ -98,10 +97,10 @@ export function AffiliateCardGrid({
 
       {/* Best for tag */}
       <div className="mb-4">
-        <Badge className="bg-surface text-text-secondary border-border-default text-xs font-manrope max-w-full">
+        <span className="inline-flex items-center text-text-secondary text-xs font-manrope max-w-full">
           <Tag className="w-3 h-3 mr-1 flex-shrink-0" aria-hidden />
           <span className="truncate">Best for: {bestFor}</span>
-        </Badge>
+        </span>
       </div>
 
       {/* CTA */}

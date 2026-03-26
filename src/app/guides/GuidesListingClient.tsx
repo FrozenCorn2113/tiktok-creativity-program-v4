@@ -8,7 +8,7 @@ import Link from 'next/link'
 import { Clock } from 'lucide-react'
 import { motion, AnimatePresence, useReducedMotion } from 'framer-motion'
 import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs'
-import { Badge } from '@/components/ui/badge'
+
 import { Button } from '@/components/ui/button'
 import { staggerContainer, staggerItem, viewportOnce } from '@/lib/motion'
 import { EmailCapture } from '@/components/sections/email-capture'
@@ -161,11 +161,6 @@ function GuideCard({ guide }: { guide: GuideItem }) {
 
       {/* Card content */}
       <div className="flex flex-col flex-1 p-5">
-        {guide.category && (
-          <Badge className="w-fit mb-3 bg-brand-primarySoft text-brand-primaryDeep border-brand-primary/30 text-xs font-semibold">
-            {guide.category}
-          </Badge>
-        )}
         <h3 className="text-[1.125rem] font-bold text-brand-ink leading-snug line-clamp-2 mb-2">
           {guide.title}
         </h3>

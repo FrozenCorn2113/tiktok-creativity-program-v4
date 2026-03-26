@@ -32,7 +32,7 @@ import { Clock, BookOpen, ChevronRight } from 'lucide-react'
 import { buildMetadata } from '@/lib/seo'
 import { compileGuide, getGuideBySlug, getTableOfContents, getAllGuides } from '@/lib/mdx'
 import { siteConfig } from '@/lib/site'
-import { Badge } from '@/components/ui/badge'
+
 import {
   Breadcrumb,
   BreadcrumbList,
@@ -246,13 +246,6 @@ export default async function GuidePage({ params }: GuidePageProps) {
 
       {/* Article header — checklist items 53 */}
       <div className="max-w-container mx-auto px-6 pt-6 pb-8">
-        {/* Category badge */}
-        {frontmatter.category && (
-          <Badge className="mb-4 bg-brand-primarySoft text-brand-primaryDeep border border-brand-primary/30 text-xs font-semibold">
-            {frontmatter.category}
-          </Badge>
-        )}
-
         {/* H1 — Manrope 800, 48px desktop / 32px mobile */}
         <h1 className="text-[2rem] md:text-[3rem] font-extrabold text-brand-ink leading-[1.15] mb-4">
           {frontmatter.title}
@@ -363,9 +356,6 @@ export default async function GuidePage({ params }: GuidePageProps) {
                       />
                     </div>
                     <div className="p-4 flex-1">
-                      <Badge className="mb-2 text-xs bg-brand-primarySoft text-brand-primaryDeep border-brand-primary/30">
-                        {guide.category}
-                      </Badge>
                       <p className="text-sm font-bold text-brand-ink line-clamp-2 leading-snug">
                         {guide.title}
                       </p>

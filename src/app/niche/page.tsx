@@ -3,7 +3,7 @@ import type { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
 import { ChevronRight, BookOpen } from 'lucide-react'
-import { Badge } from '@/components/ui/badge'
+
 import { buildMetadata } from '@/lib/seo'
 import { EmailCapture } from '@/components/sections/email-capture'
 
@@ -95,9 +95,6 @@ export default function NichesIndexPage() {
       {/* Page header */}
       <section className="bg-background-warm pt-24 pb-16">
         <div className="max-w-container mx-auto px-6">
-          <Badge className="mb-4 bg-brand-primarySoft text-brand-primaryDeep border-brand-primary/30 text-xs font-semibold">
-            By Creator Type
-          </Badge>
           <h1 className="text-[2.25rem] md:text-[3rem] font-extrabold text-brand-ink leading-tight mb-4">
             Monetization guides for your niche
           </h1>

@@ -3,8 +3,7 @@
 // CONTENT.md tool data — 25 tools across 7 categories
 
 import type { Metadata } from "next";
-import { Wrench, Package, Tag } from "lucide-react";
-import { Badge } from "@/components/ui/badge";
+import { Package, Tag } from "lucide-react";
 import Image from "next/image";
 import { AffiliateDisclosure } from "@/components/affiliate/affiliate-disclosure";
 import { EmailCapture } from "@/components/sections/email-capture";
@@ -351,10 +350,6 @@ export default function ToolsPage() {
           <div className="grid md:grid-cols-[1fr_1fr] gap-12 items-center">
             {/* Left — text */}
             <div>
-              <Badge className="mb-4 bg-brand-primarySoft text-brand-primaryDeep border-brand-primary/30 text-xs font-semibold">
-                <Wrench className="w-3 h-3 mr-1" aria-hidden />
-                Curated Tools
-              </Badge>
               <h1
                 className="text-[2.25rem] md:text-[3rem] font-extrabold text-brand-ink leading-tight"
                 style={{ fontWeight: 800 }}

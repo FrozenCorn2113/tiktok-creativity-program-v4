@@ -3,7 +3,6 @@
 "use client";
 
 import { Info, Tag, ExternalLink } from "lucide-react";
-import { Badge } from "@/components/ui/badge";
 
 interface AffiliateCardInlineProps {
   toolName: string;
@@ -62,10 +61,10 @@ export function AffiliateCardInline({
         <h4 className="font-manrope font-semibold text-brand-ink text-base mb-1">{toolName}</h4>
         <p className="text-text-secondary text-sm leading-relaxed mb-3">{review}</p>
         <div className="flex items-center gap-2 flex-wrap mb-3">
-          <Badge className="bg-surface text-text-secondary border-border-default text-xs font-manrope">
+          <span className="inline-flex items-center text-text-secondary text-xs font-manrope">
             <Tag className="w-3 h-3 mr-1" aria-hidden />
             Best for: {bestFor}
-          </Badge>
+          </span>
           <span className="text-text-muted text-xs">{priceRange}</span>
         </div>
         <a
