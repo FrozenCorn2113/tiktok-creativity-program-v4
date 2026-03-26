@@ -1,18 +1,11 @@
 // Newsletter subscription — Supabase capture + Resend welcome email
 // Uses direct REST API for reliability in Vercel serverless
-//
-// NOTE: Supabase URL is hardcoded because Vercel's Supabase integration
-// overrides ALL standard env var names (SUPABASE_URL, NEXT_PUBLIC_SUPABASE_URL)
-// with a different project's credentials at runtime.
 import { NextResponse } from 'next/server'
 import { z } from 'zod'
 import { sendWelcomeEmail } from '@/lib/email/send-welcome'
 
-// Hardcoded — Vercel Supabase integration overrides env vars at runtime
-// with a different project's credentials. These are the correct values for
-// the tpihpenmsiojzznpcmcr project (TCP email subscribers).
-const SUPABASE_REST_URL = 'https://tpihpenmsiojzznpcmcr.supabase.co/rest/v1'
-const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRwaWhwZW5tc2lvanp6bnBjbWNyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQzMTgxODYsImV4cCI6MjA4OTg5NDE4Nn0.ggN0_rv01pKqU-SS-KWW4gs0iKpgHG1f4N3E6Q2A8aw'
+const SUPABASE_REST_URL = `${process.env.NEXT_PUBLIC_SUPABASE_URL}/rest/v1`
+const SUPABASE_ANON_KEY = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
 
 const bodySchema = z.object({
   email: z.string().email('Invalid email address').max(254),
@@ -22,7 +15,6 @@ const bodySchema = z.object({
 })
 
 function getSupabaseKey() {
-  // Prefer service role key from env if available (bypasses RLS)
   return process.env.TCP_SUPABASE_SERVICE_KEY || SUPABASE_ANON_KEY
 }
 
