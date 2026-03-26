@@ -1,7 +1,7 @@
-// Newsletter subscription — unified Supabase capture + Resend welcome email
+// Newsletter subscription — Supabase capture + Resend welcome email
+// Uses direct REST API instead of JS client for reliability in serverless
 import { NextResponse } from 'next/server'
 import { z } from 'zod'
-import { createClient } from '@supabase/supabase-js'
 import { sendWelcomeEmail } from '@/lib/email/send-welcome'
 
 const bodySchema = z.object({
@@ -11,20 +11,52 @@ const bodySchema = z.object({
   page_url: z.string().max(500).optional(),
 })
 
-function getSupabaseClient() {
+async function insertSubscriber(record: {
+  email: string
+  source: string | null
+  lead_magnet: string | null
+  page_url: string | null
+}): Promise<{ ok: boolean; duplicate?: boolean; error?: string }> {
   const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL
-  // Prefer service role key for server-side (bypasses RLS)
   const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
 
   if (!supabaseUrl || !supabaseKey) {
-    return null
+    return { ok: false, error: 'Missing Supabase env vars' }
   }
 
-  return createClient(supabaseUrl, supabaseKey)
+  const restUrl = `${supabaseUrl}/rest/v1/email_subscribers`
+
+  try {
+    const res = await fetch(restUrl, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'apikey': supabaseKey,
+        'Authorization': `Bearer ${supabaseKey}`,
+        'Prefer': 'return=minimal',
+      },
+      body: JSON.stringify(record),
+    })
+
+    if (res.ok) {
+      return { ok: true }
+    }
+
+    // 409 Conflict = unique violation (email already exists)
+    if (res.status === 409) {
+      return { ok: true, duplicate: true }
+    }
+
+    const errorBody = await res.text()
+    console.error(`[api/newsletter] Supabase REST error (${res.status}):`, errorBody)
+    return { ok: false, error: `Supabase ${res.status}: ${errorBody}` }
+  } catch (err) {
+    console.error('[api/newsletter] Supabase fetch error:', err)
+    return { ok: false, error: err instanceof Error ? err.message : 'Unknown fetch error' }
+  }
 }
 
 export async function GET() {
-  // Health check endpoint for debugging
   const hasUrl = !!process.env.NEXT_PUBLIC_SUPABASE_URL
   const hasServiceKey = !!process.env.SUPABASE_SERVICE_ROLE_KEY
   const hasAnonKey = !!process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
@@ -59,31 +91,18 @@ export async function POST(request: Request) {
 
   const { email, source, lead_magnet, page_url } = parsed.data
 
-  const supabase = getSupabaseClient()
-  if (!supabase) {
-    const hasUrl = !!process.env.NEXT_PUBLIC_SUPABASE_URL
-    const hasKey = !!process.env.SUPABASE_SERVICE_ROLE_KEY || !!process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
-    console.error(`[api/newsletter] Missing env vars — URL: ${hasUrl}, Key: ${hasKey}`)
-    return NextResponse.json({ error: 'Email provider not configured' }, { status: 500 })
+  const result = await insertSubscriber({
+    email,
+    source: source ?? 'newsletter',
+    lead_magnet: lead_magnet ?? null,
+    page_url: page_url ?? null,
+  })
+
+  if (!result.ok) {
+    return NextResponse.json({ error: 'Failed to save' }, { status: 500 })
   }
 
-  const usingServiceRole = !!process.env.SUPABASE_SERVICE_ROLE_KEY
-  console.log(`[api/newsletter] Inserting subscriber: ${email} (source: ${source ?? 'newsletter'}, serviceRole: ${usingServiceRole})`)
-
-  const { data, error, status, statusText } = await supabase
-    .from('email_subscribers')
-    .insert({ email, source: source ?? 'newsletter', lead_magnet: lead_magnet ?? null, page_url: page_url ?? null })
-    .select()
-
-  // 23505 = unique_violation — email already exists, treat as success
-  if (error && error.code !== '23505') {
-    console.error(`[api/newsletter] Supabase insert error (HTTP ${status} ${statusText}):`, JSON.stringify(error))
-    return NextResponse.json({ error: 'Failed to save', debug: { code: error.code, message: error.message, hint: error.hint, status } }, { status: 500 })
-  }
-
-  console.log(`[api/newsletter] Insert success for ${email}`, data ? `rows: ${data.length}` : '(no select data)')
-
-  // Send branded welcome email via Resend (fire-and-forget — don't block response)
+  // Send branded welcome email via Resend (fire-and-forget)
   sendWelcomeEmail({ email, leadMagnet: lead_magnet }).catch((err) => {
     console.error('[api/newsletter] Welcome email failed:', err)
   })
