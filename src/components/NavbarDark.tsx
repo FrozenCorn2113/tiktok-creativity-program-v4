@@ -38,21 +38,15 @@ export default function NavbarDark() {
         <div className="flex h-16 items-center justify-between">
 
           {/* Logo */}
-          <Link href="/" className="shrink-0 cursor-pointer no-underline flex items-center gap-2.5">
+          <Link href="/" className="shrink-0 cursor-pointer no-underline flex items-center">
             <Image
               src="/favicon.svg"
               alt="TikTok Creativity Program"
-              width={36}
-              height={36}
+              width={44}
+              height={44}
               className="rounded-lg"
               priority
             />
-            <span
-              className="hidden sm:inline text-[15px] font-[700] leading-none tracking-[-0.02em] text-white"
-              style={{ fontFamily: 'var(--font-sans)' }}
-            >
-              TCP
-            </span>
           </Link>
 
           {/* Desktop nav */}
