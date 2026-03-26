@@ -166,11 +166,11 @@ export function DarkHeroCalculator() {
               {/* Subtle glow behind the image */}
               <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-[#F97316]/10 to-transparent blur-2xl" />
               <Image
-                src="/images/brand/hero-illustration.webp"
-                alt="Creator monetization and earnings growth visualization"
+                src="/images/creators/alexeubank.webp"
+                alt="TikTok creator"
                 width={480}
                 height={480}
-                className="relative w-full h-auto drop-shadow-2xl"
+                className="relative w-full h-auto rounded-2xl object-cover drop-shadow-2xl"
                 priority
               />
               {/* Floating badge */}
