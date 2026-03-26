@@ -11,6 +11,18 @@ const bodySchema = z.object({
   page_url: z.string().max(500).optional(),
 })
 
+function getSupabaseClient() {
+  const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL
+  // Prefer service role key for server-side (bypasses RLS)
+  const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
+
+  if (!supabaseUrl || !supabaseKey) {
+    return null
+  }
+
+  return createClient(supabaseUrl, supabaseKey)
+}
+
 export async function POST(request: Request) {
   let body: unknown
   try {
@@ -29,14 +41,14 @@ export async function POST(request: Request) {
 
   const { email, source, lead_magnet, page_url } = parsed.data
 
-  const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL
-  const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
-
-  if (!supabaseUrl || !supabaseAnonKey) {
+  const supabase = getSupabaseClient()
+  if (!supabase) {
+    console.error('[api/newsletter] Missing NEXT_PUBLIC_SUPABASE_URL or Supabase key env vars')
     return NextResponse.json({ error: 'Email provider not configured' }, { status: 500 })
   }
 
-  const supabase = createClient(supabaseUrl, supabaseAnonKey)
+  const usingServiceRole = !!process.env.SUPABASE_SERVICE_ROLE_KEY
+  console.log(`[api/newsletter] Inserting subscriber: ${email} (source: ${source ?? 'newsletter'}, serviceRole: ${usingServiceRole})`)
 
   const { error } = await supabase
     .from('email_subscribers')
@@ -44,7 +56,7 @@ export async function POST(request: Request) {
 
   // 23505 = unique_violation — email already exists, treat as success
   if (error && error.code !== '23505') {
-    console.error('[api/newsletter] Supabase insert error:', error)
+    console.error('[api/newsletter] Supabase insert error:', JSON.stringify(error))
     return NextResponse.json({ error: 'Failed to save' }, { status: 500 })
   }
 
