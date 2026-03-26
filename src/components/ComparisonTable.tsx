@@ -13,10 +13,24 @@ type ComparisonTableRow = {
 }
 
 type ComparisonTableProps = {
-  columns: string[]
-  rows: ComparisonTableRow[] | Array<string[]>
+  /** Accepts a JSON string (for MDX v6 RSC compatibility) or a native array */
+  columns: string | string[]
+  /** Accepts a JSON string (for MDX v6 RSC compatibility) or a native array */
+  rows: string | ComparisonTableRow[] | Array<string[]>
   caption?: string
-  winnerIndex?: number
+  winnerIndex?: number | string
+}
+
+/** Safely parse a prop that may be a JSON string or already the expected type */
+function parseProp<T>(value: string | T): T {
+  if (typeof value === 'string') {
+    try {
+      return JSON.parse(value) as T
+    } catch {
+      return [] as unknown as T
+    }
+  }
+  return value
 }
 
 function renderCell(value: CellValue, colIndex: number) {
@@ -45,7 +59,7 @@ function renderCell(value: CellValue, colIndex: number) {
   return <span className={colIndex === 0 ? 'font-[600] text-[#0F172A]' : ''}>{value}</span>
 }
 
-function normalizeRows(rows: ComparisonTableProps['rows'], winnerIndex?: number): Array<{ cells: CellValue[]; isWinner: boolean }> {
+function normalizeRows(rows: ComparisonTableRow[] | Array<string[]>, winnerIndex?: number): Array<{ cells: CellValue[]; isWinner: boolean }> {
   return rows.map((row, i) => {
     if (Array.isArray(row)) {
       return { cells: row as CellValue[], isWinner: i === winnerIndex }
@@ -54,9 +68,14 @@ function normalizeRows(rows: ComparisonTableProps['rows'], winnerIndex?: number)
   })
 }
 
-export default function ComparisonTable({ columns, rows, caption, winnerIndex }: ComparisonTableProps) {
-  // Guard against undefined props (can happen with certain MDX compilation modes)
-  if (!rows || !columns) return null
+export default function ComparisonTable({ columns: rawColumns, rows: rawRows, caption, winnerIndex: rawWinnerIndex }: ComparisonTableProps) {
+  // Parse JSON string props (required for next-mdx-remote v6 RSC mode which drops expression props)
+  const columns = parseProp<string[]>(rawColumns)
+  const rows = parseProp<ComparisonTableRow[] | Array<string[]>>(rawRows)
+  const winnerIndex = typeof rawWinnerIndex === 'string' ? parseInt(rawWinnerIndex, 10) : rawWinnerIndex
+
+  // Guard against undefined/empty props
+  if (!rows || !columns || !Array.isArray(rows) || !Array.isArray(columns)) return null
   const normalizedRows = normalizeRows(rows, winnerIndex)
 
   return (
