@@ -64,8 +64,9 @@ export async function GET() {
 
   // Test outbound connectivity
   let connectivityTest = 'untested'
+  let externalTest = 'untested'
+  const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL
   try {
-    const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL
     if (supabaseUrl) {
       const testRes = await fetch(`${supabaseUrl}/rest/v1/`, {
         method: 'GET',
@@ -78,11 +79,19 @@ export async function GET() {
   } catch (err) {
     connectivityTest = `error: ${err instanceof Error ? err.message : String(err)}`
   }
+  try {
+    const extRes = await fetch('https://httpbin.org/status/200')
+    externalTest = `status=${extRes.status}`
+  } catch (err) {
+    externalTest = `error: ${err instanceof Error ? err.message : String(err)}`
+  }
 
   return NextResponse.json({
     status: 'ok',
-    version: 'v4-connectivity-test',
+    version: 'v5-dual-test',
+    supabaseUrlPrefix: supabaseUrl ? supabaseUrl.substring(0, 30) : 'missing',
     connectivity: connectivityTest,
+    externalConnectivity: externalTest,
     config: {
       supabaseUrl: hasUrl,
       serviceRoleKey: hasServiceKey,
