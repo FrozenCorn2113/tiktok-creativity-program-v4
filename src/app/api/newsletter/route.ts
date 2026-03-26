@@ -11,22 +11,13 @@ const bodySchema = z.object({
   page_url: z.string().max(500).optional(),
 })
 
-// Hardcoded Supabase project URL — not a secret, avoids env var override issues
-// from Vercel integrations that inject wrong project credentials
+// Hardcoded Supabase credentials for TCP project (tpihpenmsiojzznpcmcr)
+// These are the public anon credentials — same values exposed in the client bundle.
+// Hardcoded here because Vercel's Supabase integration overrides env vars with
+// credentials from a different project, breaking the newsletter API.
 const SUPABASE_PROJECT_URL = 'https://tpihpenmsiojzznpcmcr.supabase.co'
-
-function getSupabaseUrl(): string {
-  return SUPABASE_PROJECT_URL
-}
-
-function getSupabaseKey(): string | undefined {
-  // Prefer NEXT_PUBLIC_ vars (manually set, known correct) over integration vars
-  return (
-    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY ||
-    process.env.TCP_SUPABASE_KEY ||
-    process.env.SUPABASE_ANON_KEY
-  )
-}
+const SUPABASE_ANON_KEY =
+  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRwaWhwZW5tc2lvanp6bnBjbWNyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQzMTgxODYsImV4cCI6MjA4OTg5NDE4Nn0.ggN0_rv01pKqU-SS-KWW4gs0iKpgHG1f4N3E6Q2A8aw'
 
 async function insertSubscriber(record: {
   email: string
@@ -34,23 +25,15 @@ async function insertSubscriber(record: {
   lead_magnet: string | null
   page_url: string | null
 }): Promise<{ ok: boolean; duplicate?: boolean; error?: string }> {
-  const supabaseUrl = getSupabaseUrl()
-  const supabaseKey = getSupabaseKey()
-
-  if (!supabaseKey) {
-    console.error('[api/newsletter] Missing Supabase anon key')
-    return { ok: false, error: 'Missing Supabase key' }
-  }
-
-  const restUrl = `${supabaseUrl}/rest/v1`
+  const restUrl = `${SUPABASE_PROJECT_URL}/rest/v1`
 
   try {
     const res = await fetch(`${restUrl}/email_subscribers`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'apikey': supabaseKey,
-        'Authorization': `Bearer ${supabaseKey}`,
+        'apikey': SUPABASE_ANON_KEY,
+        'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
         'Prefer': 'return=minimal',
       },
       body: JSON.stringify(record),
@@ -101,7 +84,7 @@ export async function POST(request: Request) {
 
   if (!result.ok) {
     console.error('[api/newsletter] Insert failed:', result.error)
-    return NextResponse.json({ error: 'Failed to save', _debug: result.error }, { status: 500 })
+    return NextResponse.json({ error: 'Failed to save' }, { status: 500 })
   }
 
   // Send branded welcome email via Resend (fire-and-forget)
