@@ -23,7 +23,7 @@ Practical resources — not generic templates. Coming soon.
 A set of four checklists covering the complete Creator Rewards journey: eligibility requirements, application steps, qualified view audit, and payout troubleshooting. PDF format. Designed to work alongside the free guides — these are the reference documents you open when you're in the middle of the process and need to check something fast.
 
 **What's included:**
-- Eligibility checklist — every requirement, verified for 2026 [UNVERIFIED — update before launch]
+- Eligibility checklist — every requirement, verified for 2026 (update before launch)
 - Application checklist — step-by-step, nothing skipped
 - Qualified view audit checklist — diagnose why views might not be counting
 - Payout troubleshooting checklist — what to check when a payment is late or lower than expected
@@ -48,7 +48,7 @@ A Notion template and PDF calendar built around the Creator Rewards Program's re
 - 30-day content calendar with posting prompts
 - Hook formula reference card
 - Qualified views and RPM weekly tracking section
-- Notes on which content types tend to perform best for CRP earnings [UNVERIFIED — tie to research when available]
+- Notes on which content types tend to perform best for CRP earnings (tie to research when available)
 
 **Planned price:** $15–$29 (to be confirmed at launch)
 

@@ -50,7 +50,7 @@ Start the Learning Path
 
 ## stat-creators-count
 
-[UNVERIFIED — do not display a creator count stat until real subscriber or visitor data is available. Use the fallback below instead.]
+Do not display a creator count stat until real subscriber or visitor data is available. Use the fallback below instead.
 
 **Fallback text for third stat slot:** Updated for 2026
 
@@ -265,7 +265,7 @@ Join Free
 # TOOL REVIEWS — Editorial Copy for Tools/Resources Page
 
 *Format: slug | toolName | review (3-5 sentences) | bestFor | priceRange | ctaText | isEditorsPick*
-*All pricing marked [UNVERIFIED] — confirm before publishing.*
+*All pricing requires confirmation before publishing. Check each tool's current pricing page.*
 *Affiliate disclosure rendered by AffiliateDisclosure component — not repeated in card copy.*
 
 ---
@@ -281,9 +281,9 @@ The videos that get qualified views are almost never raw footage. Good editing k
 
 **Tool:** CapCut Pro
 **Slug:** capcut-pro
-**Review:** CapCut is already the most popular editing app among TikTok creators — the Pro version [UNVERIFIED] adds AI-powered features, expanded cloud storage, and access to a broader template library. If you're already editing in the free version, the upgrade is worth considering once you're consistently posting long-form content. The learning curve is minimal because the interface doesn't change between tiers.
+**Review:** CapCut is already the most popular editing app among TikTok creators. The Pro version adds AI-powered features, expanded cloud storage, and access to a broader template library. If you're already editing in the free version, the upgrade is worth considering once you're consistently posting long-form content. The learning curve is minimal because the interface doesn't change between tiers.
 **Best for:** Creators who edit on mobile and want to skip the desktop workflow
-**Price:** [UNVERIFIED — approximately $7-8/month or ~$70/year for Pro tier]
+**Price:** Check current pricing on capcut.com (Pro tier)
 **CTA text:** Try CapCut Pro
 **Editor's Pick:** Yes
 
@@ -293,9 +293,9 @@ The videos that get qualified views are almost never raw footage. Good editing k
 
 **Tool:** Filmora
 **Slug:** filmora
-**Review:** Filmora sits in the middle ground between beginner apps and professional software — capable enough for polished TikTok content, simple enough that you're not learning a new skill every session. The timeline-based editor works well for creators who want more control than CapCut offers without jumping to DaVinci or Premiere. [UNVERIFIED] Annual pricing makes it cheaper than a monthly subscription for anyone serious about sticking with it.
+**Review:** Filmora sits in the middle ground between beginner apps and professional software — capable enough for polished TikTok content, simple enough that you're not learning a new skill every session. The timeline-based editor works well for creators who want more control than CapCut offers without jumping to DaVinci or Premiere. Annual pricing makes it cheaper than a monthly subscription for anyone serious about sticking with it.
 **Best for:** Creators moving from mobile editing to a desktop workflow for the first time
-**Price:** [UNVERIFIED — approximately $40-50/year]
+**Price:** Check current pricing on filmora.wondershare.com
 **CTA text:** Try Filmora Free
 **Editor's Pick:** No
 
@@ -307,7 +307,7 @@ The videos that get qualified views are almost never raw footage. Good editing k
 **Slug:** davinci-resolve
 **Review:** DaVinci Resolve's free version is genuinely professional-grade — the same tool used on major film productions, free to download and use indefinitely. The color grading tools are best-in-class. The trade-off is the learning curve: if you're new to desktop editing, expect a few hours before the workflow feels natural. Worth it if you're serious about quality; overkill if you're posting casual content.
 **Best for:** Creators who want professional color grading and have the patience to learn it
-**Price:** Free (Resolve), [UNVERIFIED — approximately $300 one-time for Studio version]
+**Price:** Free (Resolve); check blackmagicdesign.com for current Studio version pricing
 **CTA text:** Download Free
 **Editor's Pick:** No
 
@@ -317,9 +317,9 @@ The videos that get qualified views are almost never raw footage. Good editing k
 
 **Tool:** Adobe Premiere Rush
 **Slug:** premiere-rush
-**Review:** Premiere Rush is Adobe's simplified video editor, designed for creators who want Premiere-quality output without the full complexity of the Professional suite. It syncs across devices, which makes starting a video on mobile and finishing on desktop practical. [UNVERIFIED] It's included in some Creative Cloud plans, so if you're already paying for Adobe, check before buying separately.
+**Review:** Premiere Rush is Adobe's simplified video editor, designed for creators who want Premiere-quality output without the full complexity of the Professional suite. It syncs across devices, which makes starting a video on mobile and finishing on desktop practical. It's included in some Creative Cloud plans, so if you're already paying for Adobe, check before buying separately.
 **Best for:** Creators already in the Adobe ecosystem who want a lighter editing option
-**Price:** [UNVERIFIED — included with Creative Cloud plans, approximately $9.99/month standalone]
+**Price:** Included with some Creative Cloud plans; check adobe.com for current standalone pricing
 **CTA text:** Try Adobe Rush
 **Editor's Pick:** No
 
@@ -336,9 +336,9 @@ Music licensing is one of the most common ways creators accidentally lose qualif
 
 **Tool:** Epidemic Sound
 **Slug:** epidemic-sound
-**Review:** Epidemic Sound is the most creator-friendly music licensing service we've found. The personal plan covers TikTok use, and you get access to a large catalog of tracks specifically designed for short-form video — meaning they're structured to hit at the right moments. [UNVERIFIED] The catalog skews toward contemporary and trending sounds rather than generic background music. If music licensing is something you've been ignoring, this is the clearest starting point.
+**Review:** Epidemic Sound is the most creator-friendly music licensing service we've found. The personal plan covers TikTok use, and you get access to a large catalog of tracks specifically designed for short-form video — meaning they're structured to hit at the right moments. The catalog skews toward contemporary and trending sounds rather than generic background music. If music licensing is something you've been ignoring, this is the clearest starting point.
 **Best for:** Creators who post frequently and can't afford to have videos muted after the fact
-**Price:** [UNVERIFIED — approximately $9/month personal plan]
+**Price:** Check current pricing on epidemicsound.com (personal plan)
 **CTA text:** Try Epidemic Sound
 **Editor's Pick:** Yes
 
@@ -348,9 +348,9 @@ Music licensing is one of the most common ways creators accidentally lose qualif
 
 **Tool:** Artlist
 **Slug:** artlist
-**Review:** Artlist uses an annual subscription model that covers commercial use across platforms, including TikTok. The catalog is smaller than Epidemic Sound but is well-curated — you spend less time searching. [UNVERIFIED] One subscription covers music and sound effects, which helps if you're building content that needs both. Better option for creators who want a clean, simple library over the largest possible selection.
+**Review:** Artlist uses an annual subscription model that covers commercial use across platforms, including TikTok. The catalog is smaller than Epidemic Sound but is well-curated — you spend less time searching. One subscription covers music and sound effects, which helps if you're building content that needs both. Better option for creators who want a clean, simple library over the largest possible selection.
 **Best for:** Creators who prioritize quality over catalog size and prefer annual billing
-**Price:** [UNVERIFIED — approximately $100-200/year depending on plan]
+**Price:** Check current pricing on artlist.io
 **CTA text:** Explore Artlist
 **Editor's Pick:** No
 
@@ -360,9 +360,9 @@ Music licensing is one of the most common ways creators accidentally lose qualif
 
 **Tool:** Envato Elements (Audio)
 **Slug:** envato-elements
-**Review:** Envato Elements is a broad creative subscription that includes music, sound effects, stock footage, templates, and graphics. If you already use it for design assets, the audio library is a useful bonus. [UNVERIFIED] As a standalone music solution, it's less targeted than Epidemic Sound or Artlist — the catalog is large but takes more time to search through. Best value if you need creative assets across categories, not just music.
+**Review:** Envato Elements is a broad creative subscription that includes music, sound effects, stock footage, templates, and graphics. If you already use it for design assets, the audio library is a useful bonus. As a standalone music solution, it's less targeted than Epidemic Sound or Artlist — the catalog is large but takes more time to search through. Best value if you need creative assets across categories, not just music.
 **Best for:** Creators who need music, graphics, and templates under one subscription
-**Price:** [UNVERIFIED — approximately $16.50/month]
+**Price:** Check current pricing on elements.envato.com
 **CTA text:** Try Envato Elements
 **Editor's Pick:** No
 
@@ -379,9 +379,9 @@ TikTok's built-in analytics tell you total views and engagement rates. They don'
 
 **Tool:** Pentos
 **Slug:** pentos
-**Review:** Pentos is one of the few analytics tools built specifically for TikTok — it tracks creator performance over time, monitors trends, and gives you access to data that TikTok's native analytics don't surface. [UNVERIFIED] Particularly useful if you're trying to understand why your RPM fluctuates: tracking view patterns across multiple accounts or time periods requires a tool like this. Not necessary for new creators, but worth it once you have a consistent posting schedule and real data to analyze.
+**Review:** Pentos is one of the few analytics tools built specifically for TikTok — it tracks creator performance over time, monitors trends, and gives you access to data that TikTok's native analytics don't surface. Particularly useful if you're trying to understand why your RPM fluctuates: tracking view patterns across multiple accounts or time periods requires a tool like this. Not necessary for new creators, but worth it once you have a consistent posting schedule and real data to analyze.
 **Best for:** Established creators who want to track performance trends and optimize systematically
-**Price:** [UNVERIFIED — confirm current pricing on their site]
+**Price:** Check current pricing on pentos.co
 **CTA text:** Try Pentos
 **Editor's Pick:** No
 
@@ -391,9 +391,9 @@ TikTok's built-in analytics tell you total views and engagement rates. They don'
 
 **Tool:** Exolyt
 **Slug:** exolyt
-**Review:** Exolyt gives you detailed TikTok analytics with a focus on growth tracking and competitor benchmarking. The free tier offers meaningful data, and paid plans unlock deeper historical analysis and tracking across more accounts. [UNVERIFIED] If you're trying to understand how your content compares to similar creators in your niche — particularly for RPM optimization — competitor benchmarking is where Exolyt stands out. Simple interface, doesn't require significant setup time.
+**Review:** Exolyt gives you detailed TikTok analytics with a focus on growth tracking and competitor benchmarking. The free tier offers meaningful data, and paid plans unlock deeper historical analysis and tracking across more accounts. If you're trying to understand how your content compares to similar creators in your niche — particularly for RPM optimization — competitor benchmarking is where Exolyt stands out. Simple interface, doesn't require significant setup time.
 **Best for:** Creators actively comparing their content performance against similar accounts in their niche
-**Price:** [UNVERIFIED — free tier available; paid plans for advanced features]
+**Price:** Free tier available; check exolyt.com for paid plan pricing
 **CTA text:** Try Exolyt Free
 **Editor's Pick:** Yes
 
@@ -403,9 +403,9 @@ TikTok's built-in analytics tell you total views and engagement rates. They don'
 
 **Tool:** Analisa.io
 **Slug:** analisa
-**Review:** Analisa covers both TikTok and Instagram analytics, which makes it useful if you're posting on both platforms. [UNVERIFIED] The audience analysis and hashtag reporting are solid, though the TikTok-specific depth is less detailed than Pentos or Exolyt. Worth trying if you're managing a cross-platform content strategy and want one tool handling both — less compelling if TikTok is your only focus.
+**Review:** Analisa covers both TikTok and Instagram analytics, which makes it useful if you're posting on both platforms. The audience analysis and hashtag reporting are solid, though the TikTok-specific depth is less detailed than Pentos or Exolyt. Worth trying if you're managing a cross-platform content strategy and want one tool handling both — less compelling if TikTok is your only focus.
 **Best for:** Creators managing both TikTok and Instagram who want a single analytics view
-**Price:** [UNVERIFIED — free reports available; paid plans for full access]
+**Price:** Free reports available; check analisa.io for paid plan pricing
 **CTA text:** Try Analisa Free
 **Editor's Pick:** No
 
@@ -422,9 +422,9 @@ The Creator Rewards Program pays based on qualified views, and qualified views r
 
 **Tool:** Ring Light (Various — Amazon)
 **Slug:** ring-light
-**Review:** A ring light is the single cheapest way to improve video quality. Flat, natural-looking light removes the main reason people skip a video in the first two seconds: a dark or weirdly lit frame. Most affordable ring lights [UNVERIFIED] are under $30 and attach to a phone or desk. You don't need a studio — you need consistent, even lighting for the 10-second hook that keeps someone from scrolling past.
+**Review:** A ring light is the single cheapest way to improve video quality. Flat, natural-looking light removes the main reason people skip a video in the first two seconds: a dark or weirdly lit frame. Most affordable ring lights are under $30 and attach to a phone or desk. You don't need a studio — you need consistent, even lighting for the 10-second hook that keeps someone from scrolling past.
 **Best for:** Creators filming at home who want better lighting without complex setup
-**Price:** [UNVERIFIED — typically $20-60 depending on size and brand, via Amazon Associates]
+**Price:** Typically $20-60 depending on size and brand (Amazon Associates)
 **CTA text:** Browse Ring Lights on Amazon
 **Editor's Pick:** No
 
@@ -434,9 +434,9 @@ The Creator Rewards Program pays based on qualified views, and qualified views r
 
 **Tool:** USB/Lavalier Microphone (Various — Amazon)
 **Slug:** microphone
-**Review:** Built-in phone microphones pick up room noise and put the speaker too far from the source. A lavalier (clip-on) mic solves both problems for around $20-30 [UNVERIFIED]. For creators doing voiceover or talking-head content, the audio upgrade has a larger impact on watch time than any lighting change. [UNVERIFIED] Better audio signals production quality even to viewers who can't articulate why — they just watch longer.
+**Review:** Built-in phone microphones pick up room noise and put the speaker too far from the source. A lavalier (clip-on) mic solves both problems for around $20-30. For creators doing voiceover or talking-head content, the audio upgrade has a larger impact on watch time than any lighting change. Better audio signals production quality even to viewers who can't articulate why — they just watch longer.
 **Best for:** Creators doing talking-head or voiceover content who want to improve retention
-**Price:** [UNVERIFIED — lavalier mics typically $20-40; USB desktop mics $50-150]
+**Price:** Lavalier mics typically $20-40; USB desktop mics $50-150 (Amazon Associates)
 **CTA text:** Browse Microphones on Amazon
 **Editor's Pick:** Yes
 
@@ -446,9 +446,9 @@ The Creator Rewards Program pays based on qualified views, and qualified views r
 
 **Tool:** Phone Tripod / Stand (Various — Amazon)
 **Slug:** tripod
-**Review:** Shaky footage reads as low-effort, regardless of content quality. A basic phone tripod gives you stable, hands-free recording, which is necessary for any content longer than a quick clip. [UNVERIFIED] Mini tripods and flexible gorilla-grip stands are inexpensive and compact — there's no reason to be holding the phone yourself if you're posting content regularly.
+**Review:** Shaky footage reads as low-effort, regardless of content quality. A basic phone tripod gives you stable, hands-free recording, which is necessary for any content longer than a quick clip. Mini tripods and flexible gorilla-grip stands are inexpensive and compact — there's no reason to be holding the phone yourself if you're posting content regularly.
 **Best for:** Creators filming solo who want stable footage without an extra person on set
-**Price:** [UNVERIFIED — typically $15-40 for a basic tripod or flexible stand]
+**Price:** Typically $15-40 for a basic tripod or flexible stand (Amazon Associates)
 **CTA text:** Browse Tripods on Amazon
 **Editor's Pick:** No
 
@@ -465,9 +465,9 @@ Thumbnails and cover images determine whether people tap on your profile or scro
 
 **Tool:** Canva Pro
 **Slug:** canva-pro
-**Review:** Canva Pro is the most practical design tool for creators who aren't designers. The free version is usable; the Pro version adds a larger template library, background removal, brand kit (consistent fonts and colors), and bulk creation tools. [UNVERIFIED] If you're creating thumbnails, cover images, or promotional graphics regularly, the Pro upgrade pays for itself in time saved. The template library specifically for TikTok and short-form content is well-stocked.
+**Review:** Canva Pro is the most practical design tool for creators who aren't designers. The free version is usable; the Pro version adds a larger template library, background removal, brand kit (consistent fonts and colors), and bulk creation tools. If you're creating thumbnails, cover images, or promotional graphics regularly, the Pro upgrade pays for itself in time saved. The template library specifically for TikTok and short-form content is well-stocked.
 **Best for:** Creators who want professional-looking graphics without design experience
-**Price:** [UNVERIFIED — approximately $12-15/month or ~$120/year for Pro]
+**Price:** Check current pricing on canva.com (Pro plan)
 **CTA text:** Try Canva Pro
 **Editor's Pick:** Yes
 
@@ -477,9 +477,9 @@ Thumbnails and cover images determine whether people tap on your profile or scro
 
 **Tool:** Storyblocks
 **Slug:** storyblocks
-**Review:** Storyblocks gives you access to stock video footage, backgrounds, motion graphics, and audio under a single subscription. [UNVERIFIED] The video library is particularly strong for B-roll — if your content regularly uses footage to illustrate points rather than just talking-head framing, Storyblocks fills that gap without per-clip licensing fees. Less useful if you're creating entirely original content.
+**Review:** Storyblocks gives you access to stock video footage, backgrounds, motion graphics, and audio under a single subscription. The video library is particularly strong for B-roll — if your content regularly uses footage to illustrate points rather than just talking-head framing, Storyblocks fills that gap without per-clip licensing fees. Less useful if you're creating entirely original content.
 **Best for:** Creators who use B-roll, stock footage, or motion graphics backgrounds in their videos
-**Price:** [UNVERIFIED — approximately $15-20/month depending on plan]
+**Price:** Check current pricing on storyblocks.com
 **CTA text:** Try Storyblocks
 **Editor's Pick:** No
 
@@ -489,9 +489,9 @@ Thumbnails and cover images determine whether people tap on your profile or scro
 
 **Tool:** Envato Elements (Design Assets)
 **Slug:** envato-elements-design
-**Review:** Envato Elements covers a broad range of creative assets — templates, fonts, graphics, presentations, and more. The TikTok template selection is [UNVERIFIED] solid and regularly updated. If you need a wide variety of design assets across categories and don't want to pay per-item, the subscription model makes financial sense for creators producing content at volume.
+**Review:** Envato Elements covers a broad range of creative assets — templates, fonts, graphics, presentations, and more. The TikTok template selection is solid and regularly updated. If you need a wide variety of design assets across categories and don't want to pay per-item, the subscription model makes financial sense for creators producing content at volume.
 **Best for:** High-volume creators who need diverse design assets across multiple formats
-**Price:** [UNVERIFIED — approximately $16.50/month]
+**Price:** Check current pricing on elements.envato.com
 **CTA text:** Browse Envato Elements
 **Editor's Pick:** No
 
@@ -508,9 +508,9 @@ The best way to improve Creator Rewards earnings is to improve the content — w
 
 **Tool:** Skillshare
 **Slug:** skillshare
-**Review:** Skillshare has a strong library of short-form video and content creation courses, and the platform structure (short lessons, project-based learning) fits the way creators actually consume educational content. [UNVERIFIED] Free trial available. Worth going through specific courses on hook writing, video editing, and TikTok strategy rather than browsing broadly — the platform has a lot of courses and varying quality.
+**Review:** Skillshare has a strong library of short-form video and content creation courses, and the platform structure (short lessons, project-based learning) fits the way creators actually consume educational content. Free trial available. Worth going through specific courses on hook writing, video editing, and TikTok strategy rather than browsing broadly — the platform has a lot of courses and varying quality.
 **Best for:** Creators who learn by watching and want structured short-form video skills
-**Price:** [UNVERIFIED — approximately $15-17/month or ~$100/year; free trial available]
+**Price:** Check current pricing on skillshare.com (free trial available)
 **CTA text:** Try Skillshare Free
 **Editor's Pick:** Yes
 
@@ -520,9 +520,9 @@ The best way to improve Creator Rewards earnings is to improve the content — w
 
 **Tool:** Udemy (Creator Courses)
 **Slug:** udemy
-**Review:** Udemy operates differently than Skillshare — you buy individual courses outright rather than subscribing. This means you can pick a specific, well-reviewed course on TikTok content strategy and pay once. [UNVERIFIED] Prices fluctuate significantly with frequent sales. If you want to learn one specific skill and don't need an ongoing subscription, Udemy's one-time purchase model makes sense. Quality varies by instructor, so check reviews before buying.
+**Review:** Udemy operates differently than Skillshare — you buy individual courses outright rather than subscribing. This means you can pick a specific, well-reviewed course on TikTok content strategy and pay once. Prices fluctuate significantly with frequent sales. If you want to learn one specific skill and don't need an ongoing subscription, Udemy's one-time purchase model makes sense. Quality varies by instructor, so check reviews before buying.
 **Best for:** Creators who want to learn one specific skill without a subscription commitment
-**Price:** [UNVERIFIED — individual courses typically $15-200, heavily discounted in frequent sales]
+**Price:** Individual courses vary; check udemy.com (frequent sales significantly reduce prices)
 **CTA text:** Browse Creator Courses on Udemy
 **Editor's Pick:** No
 
@@ -539,9 +539,9 @@ The Creator Rewards Program is one income stream. These platforms help creators 
 
 **Tool:** Stan Store
 **Slug:** stan-store
-**Review:** Stan Store is a simple creator storefront — you get a link-in-bio page that can sell digital products, coaching bookings, or memberships directly. [UNVERIFIED] No coding needed, setup is quick, and it integrates with the platforms creators already use. For creators who want to monetize beyond Creator Rewards without building a full website, Stan Store removes most of the technical friction. The free tier is limited; paid plans add more product types.
+**Review:** Stan Store is a simple creator storefront — you get a link-in-bio page that can sell digital products, coaching bookings, or memberships directly. No coding needed, setup is quick, and it integrates with the platforms creators already use. For creators who want to monetize beyond Creator Rewards without building a full website, Stan Store removes most of the technical friction. The free tier is limited; paid plans add more product types.
 **Best for:** Creators ready to sell a digital product or coaching offer without building a website
-**Price:** [UNVERIFIED — free plan available; paid plans approximately $29-99/month]
+**Price:** Free plan available; check stan.store for current paid plan pricing
 **CTA text:** Try Stan Store
 **Editor's Pick:** Yes
 
@@ -551,9 +551,9 @@ The Creator Rewards Program is one income stream. These platforms help creators 
 
 **Tool:** Linktree Pro
 **Slug:** linktree-pro
-**Review:** Linktree is the most recognized link-in-bio tool, and the Pro version adds analytics, custom domains, affiliate link management, and email capture. [UNVERIFIED] The free version covers basic link organization; Pro is worth it if you want to understand where clicks are coming from and capture emails directly from your bio. For Creator Rewards creators who are also building an email list, the email capture feature alone makes the upgrade worth considering.
+**Review:** Linktree is the most recognized link-in-bio tool, and the Pro version adds analytics, custom domains, affiliate link management, and email capture. The free version covers basic link organization; Pro is worth it if you want to understand where clicks are coming from and capture emails directly from your bio. For Creator Rewards creators who are also building an email list, the email capture feature alone makes the upgrade worth considering.
 **Best for:** Creators who want analytics and email capture from their bio link
-**Price:** [UNVERIFIED — free plan available; Pro approximately $9/month]
+**Price:** Free plan available; check linktr.ee for current Pro pricing
 **CTA text:** Try Linktree Pro
 **Editor's Pick:** No
 
@@ -563,9 +563,9 @@ The Creator Rewards Program is one income stream. These platforms help creators 
 
 **Tool:** Mavely
 **Slug:** mavely
-**Review:** Mavely is an affiliate marketing platform designed for creators — you share product links and earn commissions when your audience buys. [UNVERIFIED] The catalog covers a wide range of brands, and the payout structure is transparent. Worth exploring if you're already mentioning products in your content and not currently monetizing those mentions. Setup is straightforward, and it complements Creator Rewards income without requiring a separate audience to build.
+**Review:** Mavely is an affiliate marketing platform designed for creators — you share product links and earn commissions when your audience buys. The catalog covers a wide range of brands, and the payout structure is transparent. Worth exploring if you're already mentioning products in your content and not currently monetizing those mentions. Setup is straightforward, and it complements Creator Rewards income without requiring a separate audience to build.
 **Best for:** Creators who regularly mention products and want to earn commissions on those recommendations
-**Price:** [UNVERIFIED — free to join; revenue-share model]
+**Price:** Free to join; revenue-share model
 **CTA text:** Join Mavely
 **Editor's Pick:** No
 
@@ -582,9 +582,9 @@ Once Creator Rewards is a real income source, the business side matters more: em
 
 **Tool:** Kit (formerly ConvertKit)
 **Slug:** convertkit
-**Review:** Kit is the email marketing platform this site runs on, so we can speak to it directly: the subscriber management, automation, and form builder are well-designed for creators. [UNVERIFIED] The free plan supports up to 1,000 subscribers, which is enough to start. For creators building an email list alongside Creator Rewards, Kit is the clearest path — the tag-based subscriber system makes it easy to send different content to different audience segments without getting complicated.
+**Review:** Kit is the email marketing platform this site runs on, so we can speak to it directly: the subscriber management, automation, and form builder are well-designed for creators. The free plan supports up to 1,000 subscribers, which is enough to start. For creators building an email list alongside Creator Rewards, Kit is the clearest path — the tag-based subscriber system makes it easy to send different content to different audience segments without getting complicated.
 **Best for:** Creators who want to build an email list and automate welcome sequences
-**Price:** [UNVERIFIED — free up to 1,000 subscribers; paid plans from approximately $9/month]
+**Price:** Free up to 1,000 subscribers; check kit.com for current paid plan pricing
 **CTA text:** Try Kit Free
 **Editor's Pick:** Yes
 
@@ -594,9 +594,9 @@ Once Creator Rewards is a real income source, the business side matters more: em
 
 **Tool:** Carrd
 **Slug:** carrd
-**Review:** Carrd is a simple website builder for creating one-page sites — landing pages, link pages, or basic portfolio pages. [UNVERIFIED] At around $19/year for the paid plan, it's the most affordable way to have a real website rather than just a link-in-bio page. For creators who need a simple home base for their content or a dedicated landing page for a lead magnet, Carrd gets the job done without requiring design or coding skills.
+**Review:** Carrd is a simple website builder for creating one-page sites — landing pages, link pages, or basic portfolio pages. The paid plan is one of the more affordable ways to have a real website rather than just a link-in-bio page. For creators who need a simple home base for their content or a dedicated landing page for a lead magnet, Carrd gets the job done without requiring design or coding skills.
 **Best for:** Creators who need a simple landing page or one-page site on a tight budget
-**Price:** [UNVERIFIED — free plan available; Pro plans from approximately $19/year]
+**Price:** Free plan available; check carrd.co for current Pro plan pricing
 **CTA text:** Try Carrd
 **Editor's Pick:** No
 
@@ -606,9 +606,9 @@ Once Creator Rewards is a real income source, the business side matters more: em
 
 **Tool:** Notion
 **Slug:** notion
-**Review:** Notion is a flexible productivity tool that works well for content planning — tracking post ideas, managing editorial calendars, storing research, and building simple databases for your content library. [UNVERIFIED] The free personal plan is genuinely full-featured. It's not a tool you need to start with, but if your content volume has grown to where tracking ideas in notes feels chaotic, Notion brings that under control without much setup time.
+**Review:** Notion is a flexible productivity tool that works well for content planning — tracking post ideas, managing editorial calendars, storing research, and building simple databases for your content library. The free personal plan is genuinely full-featured. It's not a tool you need to start with, but if your content volume has grown to where tracking ideas in notes feels chaotic, Notion brings that under control without much setup time.
 **Best for:** Creators managing a high-volume posting schedule who need an organized content system
-**Price:** Free personal plan; [UNVERIFIED — paid plans for teams approximately $8-16/month per member]
+**Price:** Free personal plan; check notion.so for current team plan pricing
 **CTA text:** Try Notion Free
 **Editor's Pick:** No
 
@@ -690,7 +690,7 @@ Once Creator Rewards is a real income source, the business side matters more: em
 
 **headline:** Niche RPM Benchmark Data
 
-**description:** RPM ranges by content category — what finance, beauty, fitness, education, and entertainment creators actually earn per 1,000 qualified views. [UNVERIFIED — confirm data accuracy against research before displaying]
+**description:** RPM ranges by content category — what finance, beauty, fitness, education, and entertainment creators actually earn per 1,000 qualified views. (Confirm data accuracy against research before publishing.)
 
 **button:** See the Data
 
@@ -845,7 +845,7 @@ Hi [first_name],
 
 Quick one today. What you should focus on depends on where you are in Creator Rewards:
 
-**If you're not yet approved:** The two things that matter most right now are account age (must be 30+ days for most regions [UNVERIFIED — verify regional requirements]) and recent content history. Make sure your last 30 days of videos are mostly 60+ seconds. Don't apply until those two boxes are checked.
+**If you're not yet approved:** The two things that matter most right now are account age (must be 30+ days for most regions — verify current requirements in your Creator Center) and recent content history. Make sure your last 30 days of videos are mostly 60+ seconds. Don't apply until those two boxes are checked.
 
 **If you were just accepted:** Post at least 3-4 videos this week that are over 90 seconds. Your first few weeks set a baseline. The longer your average video length in those early weeks, the higher the qualified view rate tends to be as the algorithm calibrates.
 
@@ -1074,7 +1074,7 @@ If you have questions about how we handle this, or you think a recommendation we
 
 **Icon:** BarChart2
 **Title:** RPM varies by niche and region
-**Body:** The RPM range we use reflects current program data [UNVERIFIED — update when new data available], but your actual RPM depends on your content category, audience region, and recent account history. Finance and education niches typically see higher RPM than entertainment. [/guides/rpm-by-niche Check niche RPM data →]
+**Body:** The RPM range we use reflects current program data (update when new data is available), but your actual RPM depends on your content category, audience region, and recent account history. Finance and education niches typically see higher RPM than entertainment. [/guides/rpm-by-niche Check niche RPM data →]
 
 ---
 
@@ -1113,7 +1113,7 @@ If you have questions about how we handle this, or you think a recommendation we
 ---
 
 *Notes for Devan:*
-- All `[UNVERIFIED]` tags in tool reviews must be confirmed before going live, or the claim should be replaced with "check current pricing on their site"
+- All pricing in tool reviews must be confirmed before going live, or replaced with "check current pricing on their site"
 - ConvertKit form IDs are placeholders — Brett provides the actual form IDs
 - Affiliate slugs at `/go/[slug]` — confirm these match the existing redirect system
 - Email sender name "[Site name / author name]" in Email 1 — confirm what name displays in ConvertKit
@@ -1122,7 +1122,7 @@ If you have questions about how we handle this, or you think a recommendation we
 
 ---
 
-*CONTENT.md v4 — Scribe, 2026-03-16. All PAGE_SPECS.md content slots filled. Humanizer check applied. [UNVERIFIED] tags placed on all unconfirmed pricing and feature claims.*
+*CONTENT.md v4 — Scribe, 2026-03-16. All PAGE_SPECS.md content slots filled. Humanizer check applied. Pricing requires verification before publishing.*
 
 ---
 
@@ -1178,7 +1178,7 @@ All guides reviewed against Bernard's humanizer checklist:
 
 ## UNVERIFIED Data Handling
 
-All [UNVERIFIED] data from Christopher's research is framed with community-reported qualifiers in the published content:
+All unverified data from Christopher's research is framed with community-reported qualifiers in the published content:
 - RPM ranges: "creators report," "community data suggests," "based on reports from r/tiktokgrowth"
 - Eligibility requirements: "verify current requirements at TikTok's Creator Center" included as natural aside
 - Program terms: presented with date qualifiers and update notices

@@ -286,8 +286,7 @@ CapCut is TikTok's own editing app...
 **Is CapCut free for TikTok?**
 Yes. CapCut's free version does not add a watermark to exports. The Pro version adds additional
 templates, AI tools, and team features — but the free version handles everything most creators
-need. [UNVERIFIED — CapCut's Pro features and watermark policy may have changed; verify at
-capcut.com before publishing.]
+need. (Verify current Pro features and watermark policy at capcut.com before publishing.)
 
 [FAQ answer: direct, no affiliate CTA, flags unverified detail.]
 ```

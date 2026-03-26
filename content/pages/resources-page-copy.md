@@ -20,7 +20,7 @@ A curated list of the apps, platforms, and services that make the Creator Reward
 These are the apps most TikTok creators use to film, cut, and export their content. See the [full video editing roundup](/guides/best-video-editing-apps-tiktok) for a detailed comparison.
 
 **CapCut**
-TikTok's own editing app. Free, no watermark on exports [UNVERIFIED — verify current terms], and built around vertical video. The default recommendation for creators who edit on mobile. No affiliate link.
+TikTok's own editing app. Free, no watermark on exports (verify current terms at capcut.com), and built around vertical video. The default recommendation for creators who edit on mobile. No affiliate link.
 
 **Filmora**
 A desktop and mobile editor with a simpler learning curve than Premiere. Good template library, reasonable pricing. Better for creators who've outgrown mobile-only editing.
@@ -70,14 +70,14 @@ Scheduling tool with solid TikTok analytics. Best for creators who want scheduli
 `<span className="affiliate-label">Affiliate</span>`
 
 **Exolyt**
-TikTok-specific analytics with competitor tracking and hashtag analytics. More depth than native analytics for creators doing competitive research. [Current pricing at exolyt.com — UNVERIFIED — no confirmed affiliate program; link directly]
+TikTok-specific analytics with competitor tracking and hashtag analytics. More depth than native analytics for creators doing competitive research. Check current pricing at exolyt.com. No confirmed affiliate program — link directly.
 
 ---
 
 ## Category 4: Scheduling
 
 **TikTok Studio (native scheduler)**
-Free. Available on desktop at studio.tiktok.com. Basic scheduling up to 10 days in advance [UNVERIFIED — verify current window]. Good enough for most solo creators. No affiliate link.
+Free. Available on desktop at studio.tiktok.com. Basic scheduling available (verify current advance scheduling window in TikTok Studio). Good enough for most solo creators. No affiliate link.
 
 **Later**
 Multi-platform scheduling with a visual calendar. Best for creators managing TikTok alongside Instagram, Pinterest, or other platforms.

@@ -14,7 +14,7 @@ Same voice as the guide template: knowledgeable peer, direct, no hype. The addit
 - Name a clear winner
 - Acknowledge the cases where the loser is the right choice
 - Use specific numbers and features when comparing — vague claims ("better performance") are useless
-- Flag unverified specs/pricing with `[UNVERIFIED]`
+- Flag unverified specs/pricing with a "(verify before publishing)" note
 
 **Do not:**
 - Hedge the verdict ("it depends on your needs" is not a verdict)
@@ -84,7 +84,7 @@ keywords:
 />
 ```
 
-Minimum 5 comparison rows. Use specific values, not "good/bad." If a value is unknown, write `[UNVERIFIED]`.
+Minimum 5 comparison rows. Use specific values, not "good/bad." If a value is unknown, write "Not confirmed" and flag for verification before publishing.
 
 ---
 
@@ -181,7 +181,7 @@ No affiliate CTAs in FAQ answers. Direct, specific questions and answers.
 - [ ] Affiliate CTA only after the verdict, not before
 - [ ] All affiliate links labeled
 - [ ] No affiliate CTAs in FAQ
-- [ ] Unverified specs or prices marked `[UNVERIFIED]`
+- [ ] Unverified specs or prices flagged with "(verify before publishing)" note
 
 ---
 

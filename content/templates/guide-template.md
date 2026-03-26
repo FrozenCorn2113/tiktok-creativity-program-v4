@@ -21,7 +21,7 @@ The voice is the knowledgeable peer — someone who went through the Creator Rew
 - Use "exciting," "amazing," "fantastic," or any enthusiasm language
 - Write FAQ sections that read like a robot answering support tickets
 - Put affiliate CTAs in FAQ answers, eligibility checklists, or calculator outputs
-- Invent facts. If unsure, mark `[UNVERIFIED]` and note what needs verification
+- Invent facts. If unsure, add a parenthetical note like "(verify before publishing)" and flag it for Christopher
 
 ---
 
@@ -227,7 +227,7 @@ you're in.
 
 <CalloutBox type="info" title="Quick check">
   <ul>
-    <li>Region must be supported (US, UK, France, Germany, Brazil, Japan, South Korea, and others) [UNVERIFIED — verify current list with TikTok's official help page]</li>
+    <li>Region must be supported (US, UK, France, Germany, Brazil, Japan, South Korea, and others — verify current list with TikTok's official help page)</li>
     <li>Account must be Personal (not Business)</li>
     <li>Must be 18+ with 10,000+ followers and 100,000+ views in the last 30 days</li>
   </ul>
@@ -270,7 +270,7 @@ Sometimes clearing your cache resolves display issues. Go to Profile → Setting
 
 When refreshing this guide type each January:
 1. Update the year in the title, meta description, and all H2s where year appears
-2. Verify all policy details against TikTok's current help pages — mark `[UNVERIFIED]` any claim that can't be confirmed
+2. Verify all policy details against TikTok's current help pages — add a "(verify before publishing)" note to any claim that can't be confirmed, and flag for Christopher
 3. Update the `date` field in frontmatter to the refresh date
 4. Do not change the slug (it has SEO history)
 5. Add a "Last updated: [month] [year]" line to the opening paragraph or callout if significant content has changed

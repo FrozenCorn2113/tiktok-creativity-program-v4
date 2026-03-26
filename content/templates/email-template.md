@@ -136,7 +136,7 @@ What matters is qualified views — and they're stricter than you'd expect.
 finds you well" warmup.]
 
 A qualified view requires: the video to be at least 1 minute long, the viewer to watch a
-minimum portion of it (exact threshold not publicly confirmed by TikTok [UNVERIFIED]),
+minimum portion of it (exact threshold not publicly confirmed by TikTok),
 and the view to come from an eligible region. Saves and replays may count — views from
 bots or low-quality traffic don't.
 
