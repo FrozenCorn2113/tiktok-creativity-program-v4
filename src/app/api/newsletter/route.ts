@@ -1,5 +1,9 @@
 // Newsletter subscription — Supabase capture + Resend welcome email
 // Uses direct REST API for reliability in Vercel serverless
+//
+// IMPORTANT: Uses SUPABASE_URL (not NEXT_PUBLIC_SUPABASE_URL) to avoid
+// conflicts with Vercel's Supabase integration which may inject a different
+// project's credentials. Falls back to NEXT_PUBLIC_ vars if custom ones aren't set.
 import { NextResponse } from 'next/server'
 import { z } from 'zod'
 import { sendWelcomeEmail } from '@/lib/email/send-welcome'
@@ -11,14 +15,20 @@ const bodySchema = z.object({
   page_url: z.string().max(500).optional(),
 })
 
+function getSupabaseConfig() {
+  // Prefer non-public env vars (not overridden by Supabase integration)
+  const url = process.env.SUPABASE_URL || process.env.NEXT_PUBLIC_SUPABASE_URL
+  const key = process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.SUPABASE_ANON_KEY || process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
+  return { url, key }
+}
+
 async function insertSubscriber(record: {
   email: string
   source: string | null
   lead_magnet: string | null
   page_url: string | null
 }): Promise<{ ok: boolean; duplicate?: boolean; error?: string }> {
-  const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL
-  const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
+  const { url: supabaseUrl, key: supabaseKey } = getSupabaseConfig()
 
   if (!supabaseUrl || !supabaseKey) {
     return { ok: false, error: 'Missing Supabase env vars' }
@@ -83,11 +93,7 @@ export async function POST(request: Request) {
 
   if (!result.ok) {
     console.error('[api/newsletter] Insert failed:', result.error)
-    const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL
-    return NextResponse.json({
-      error: 'Failed to save',
-      _debug: { err: result.error, urlPrefix: supabaseUrl?.substring(0, 30) }
-    }, { status: 500 })
+    return NextResponse.json({ error: 'Failed to save' }, { status: 500 })
   }
 
   // Send branded welcome email via Resend (fire-and-forget)
