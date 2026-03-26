@@ -3,6 +3,7 @@ import FollowerIncomeEstimator from '@/components/FollowerIncomeEstimator'
 import Link from 'next/link'
 import type { Metadata } from 'next'
 import { ArrowRight } from 'lucide-react'
+import { CalculatorNav } from '@/components/calculators/CalculatorNav'
 import { EmailCapturePopup } from '@/components/email/email-capture-popup'
 import { siteConfig } from '@/lib/site'
 
@@ -61,6 +62,13 @@ export default function FollowerIncomeEstimatorPage() {
               How much can you earn based on your follower count? Enter your followers, engagement rate, and posting frequency to see estimated Creator Rewards earnings.
             </p>
           </div>
+        </Container>
+      </section>
+
+      {/* Calculator navigation */}
+      <section className="pb-4">
+        <Container>
+          <CalculatorNav currentCalculator="follower-income-estimator" />
         </Container>
       </section>
 

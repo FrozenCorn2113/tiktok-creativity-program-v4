@@ -13,6 +13,7 @@ import {
 } from '@/components/ui/accordion'
 import Container from '@/components/ui/Container'
 import { EarningsComparisonCalculator } from '@/components/sections/earnings-comparison-calculator'
+import { CalculatorNav } from '@/components/calculators/CalculatorNav'
 import { EmailCapturePopup } from '@/components/email/email-capture-popup'
 import { siteConfig } from '@/lib/site'
 
@@ -216,6 +217,13 @@ export default function EarningsCalculatorPage() {
               Estimate your monthly and yearly Creator Rewards earnings. Select your niche, set your average views, and see what your content could earn.
             </p>
           </div>
+        </Container>
+      </section>
+
+      {/* Calculator navigation */}
+      <section className="pb-4">
+        <Container>
+          <CalculatorNav currentCalculator="earnings-calculator" />
         </Container>
       </section>
 

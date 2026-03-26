@@ -3,6 +3,7 @@ import RpmByCountryCalculator from '@/components/RpmByCountryCalculator'
 import Link from 'next/link'
 import type { Metadata } from 'next'
 import { ArrowRight } from 'lucide-react'
+import { CalculatorNav } from '@/components/calculators/CalculatorNav'
 import { EmailCapturePopup } from '@/components/email/email-capture-popup'
 import { siteConfig } from '@/lib/site'
 
@@ -61,6 +62,13 @@ export default function RpmByCountryPage() {
               Your audience location directly affects your earnings. Set your audience mix across eligible countries to calculate your blended RPM and estimated monthly payout.
             </p>
           </div>
+        </Container>
+      </section>
+
+      {/* Calculator navigation */}
+      <section className="pb-4">
+        <Container>
+          <CalculatorNav currentCalculator="rpm-by-country" />
         </Container>
       </section>
 
