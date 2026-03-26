@@ -81,6 +81,7 @@ function RpmRangeBar({ range, nicheSlug }: { range: string; nicheSlug: string })
 function CreatorCard({ creator }: { creator: Creator }) {
   const imagePath = `/images/creators/${creator.handle}.webp`
   const [imgFailed, setImgFailed] = React.useState(false)
+  const tiktokUrl = `https://www.tiktok.com/@${creator.handle}`
 
   // Generate a consistent color from the creator name for the avatar gradient
   const nameHash = creator.name.split('').reduce((acc, c) => acc + c.charCodeAt(0), 0)
@@ -88,62 +89,66 @@ function CreatorCard({ creator }: { creator: Creator }) {
   const hueShift = hueRotations[nameHash % hueRotations.length]
 
   return (
-    <motion.div
-      variants={staggerItem}
-      className="rounded-xl border border-border-default bg-white overflow-hidden hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200"
-    >
-      {/* Profile screenshot -- the main visual element */}
-      <div className="relative w-full aspect-[976/212] bg-gray-50">
-        {!imgFailed ? (
-          <Image
-            src={imagePath}
-            alt={`${creator.name} TikTok profile`}
-            fill
-            className="object-contain object-top"
-            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-            unoptimized
-            onError={() => setImgFailed(true)}
-          />
-        ) : (
-          <div
-            className="absolute inset-0 flex flex-col items-center justify-center"
-            style={{
-              background: `linear-gradient(135deg, hsl(${25 + hueShift}, 85%, 92%), hsl(${25 + hueShift}, 75%, 82%))`,
-            }}
-          >
-            <span className="text-4xl font-bold text-brand-primaryDeep">
-              {getInitials(creator.name)}
-            </span>
-            <span className="text-sm text-brand-primaryDeep/70 mt-1">@{creator.handle}</span>
-          </div>
-        )}
-      </div>
-
-      {/* Creator info below the screenshot */}
-      <div className="px-5 pt-4 pb-5 space-y-3">
-        <div>
-          <h3 className="text-base font-bold text-brand-ink">{creator.name}</h3>
-          <div className="flex items-center gap-2 mt-0.5">
-            <span className="text-sm text-brand-primaryDeep font-semibold">@{creator.handle}</span>
-            <span className="text-sm text-text-muted flex items-center gap-1">
-              <Users className="w-3.5 h-3.5" />
-              {creator.followers}
-            </span>
-          </div>
+    <motion.div variants={staggerItem}>
+      <a
+        href={tiktokUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="block rounded-xl border border-border-default bg-white overflow-hidden hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200 h-full"
+      >
+        {/* Profile screenshot -- the main visual element */}
+        <div className="relative w-full aspect-[976/212] bg-gray-50">
+          {!imgFailed ? (
+            <Image
+              src={imagePath}
+              alt={`${creator.name} TikTok profile`}
+              fill
+              className="object-contain object-top"
+              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+              unoptimized
+              onError={() => setImgFailed(true)}
+            />
+          ) : (
+            <div
+              className="absolute inset-0 flex flex-col items-center justify-center"
+              style={{
+                background: `linear-gradient(135deg, hsl(${25 + hueShift}, 85%, 92%), hsl(${25 + hueShift}, 75%, 82%))`,
+              }}
+            >
+              <span className="text-4xl font-bold text-brand-primaryDeep">
+                {getInitials(creator.name)}
+              </span>
+              <span className="text-sm text-brand-primaryDeep/70 mt-1">@{creator.handle}</span>
+            </div>
+          )}
         </div>
 
-        <p className="text-[15px] text-text-secondary leading-relaxed line-clamp-3">
-          {creator.description}
-        </p>
+        {/* Creator info below the screenshot */}
+        <div className="px-5 pt-3 pb-4 space-y-2">
+          <div>
+            <h3 className="text-base font-bold text-brand-ink">{creator.name}</h3>
+            <div className="flex items-center gap-2 mt-0.5">
+              <span className="text-sm text-brand-primaryDeep font-semibold">@{creator.handle}</span>
+              <span className="text-sm text-text-muted flex items-center gap-1">
+                <Users className="w-3.5 h-3.5" />
+                {creator.followers}
+              </span>
+            </div>
+          </div>
 
-        <div className="flex items-start gap-2.5 pt-3 border-t border-border-default">
-          <Lightbulb className="w-4 h-4 text-brand-primary flex-shrink-0 mt-0.5" />
-          <p className="text-sm text-text-muted leading-relaxed">
-            <span className="font-semibold text-brand-ink">What you can learn:</span>{' '}
-            {creator.lesson}
+          <p className="text-[15px] text-text-secondary leading-relaxed line-clamp-3">
+            {creator.description}
           </p>
+
+          <div className="flex items-start gap-2.5 pt-2 border-t border-border-default">
+            <Lightbulb className="w-4 h-4 text-brand-primary flex-shrink-0 mt-0.5" />
+            <p className="text-sm text-text-muted leading-relaxed">
+              <span className="font-semibold text-brand-ink">What you can learn:</span>{' '}
+              {creator.lesson}
+            </p>
+          </div>
         </div>
-      </div>
+      </a>
     </motion.div>
   )
 }
@@ -165,10 +170,10 @@ export default function NichePageClient({ params }: { params: { slug: string } }
       {/* ================================================================= */}
       {/* Section 1: Hero                                                   */}
       {/* ================================================================= */}
-      <section className="bg-white pt-24 pb-12">
+      <section className="bg-white pt-24 pb-8">
         <Container>
           {/* Breadcrumb */}
-          <nav className="flex items-center gap-2 text-xs text-text-muted mb-8">
+          <nav className="flex items-center gap-2 text-xs text-text-muted mb-6">
             <Link href="/" className="hover:text-brand-primary transition-colors">Home</Link>
             <ChevronRight className="w-3 h-3" aria-hidden />
             <Link href="/niche" className="hover:text-brand-primary transition-colors">Niches</Link>
@@ -183,7 +188,7 @@ export default function NichePageClient({ params }: { params: { slug: string } }
             className="max-w-3xl"
           >
             {/* Icon */}
-            <motion.div variants={staggerItem} className="mb-4">
+            <motion.div variants={staggerItem} className="mb-3">
               <Image
                 src={content.icon}
                 alt=""
@@ -196,7 +201,7 @@ export default function NichePageClient({ params }: { params: { slug: string } }
             {/* Headline */}
             <motion.h1
               variants={staggerItem}
-              className="text-[2rem] md:text-[2.75rem] font-extrabold text-brand-ink leading-tight mb-4"
+              className="text-[2rem] md:text-[2.75rem] font-extrabold text-brand-ink leading-tight mb-3"
             >
               {content.headline}
             </motion.h1>
@@ -204,7 +209,7 @@ export default function NichePageClient({ params }: { params: { slug: string } }
             {/* Description */}
             <motion.p
               variants={staggerItem}
-              className="text-[1.05rem] text-text-secondary leading-[1.7] mb-8 max-w-2xl"
+              className="text-[1.05rem] text-text-secondary leading-[1.7] mb-5 max-w-2xl"
             >
               {content.description}
             </motion.p>
@@ -243,7 +248,7 @@ export default function NichePageClient({ params }: { params: { slug: string } }
       {/* ================================================================= */}
       {/* Section 2: Creator Spotlights                                     */}
       {/* ================================================================= */}
-      <section className="bg-white py-16">
+      <section className="bg-white py-10">
         <Container>
           <motion.div
             initial="hidden"
@@ -251,8 +256,8 @@ export default function NichePageClient({ params }: { params: { slug: string } }
             viewport={viewportOnce}
             variants={staggerContainer}
           >
-            <motion.div variants={staggerItem} className="mb-10">
-              <div className="flex items-center gap-2 mb-3">
+            <motion.div variants={staggerItem} className="mb-6">
+              <div className="flex items-center gap-2 mb-2">
                 <Star className="w-6 h-6 text-brand-primary" />
                 <h2 className="text-[1.75rem] font-bold text-brand-ink">
                   Creator spotlights
@@ -268,7 +273,7 @@ export default function NichePageClient({ params }: { params: { slug: string } }
               initial="hidden"
               whileInView="show"
               viewport={viewportOnce}
-              className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
+              className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"
             >
               {content.creators.map((creator) => (
                 <CreatorCard key={creator.handle} creator={creator} />
@@ -281,7 +286,7 @@ export default function NichePageClient({ params }: { params: { slug: string } }
       {/* ================================================================= */}
       {/* Section 3: Strategy Breakdown                                     */}
       {/* ================================================================= */}
-      <section className="bg-[var(--color-background-surface)] py-16">
+      <section className="bg-[var(--color-background-surface)] py-10">
         <Container>
           <motion.div
             initial="hidden"
@@ -290,8 +295,8 @@ export default function NichePageClient({ params }: { params: { slug: string } }
             variants={staggerContainer}
             className="max-w-3xl mx-auto"
           >
-            <motion.div variants={staggerItem} className="mb-8">
-              <div className="flex items-center gap-2 mb-3">
+            <motion.div variants={staggerItem} className="mb-5">
+              <div className="flex items-center gap-2 mb-2">
                 <Target className="w-6 h-6 text-brand-primary" />
                 <h2 className="text-[1.75rem] font-bold text-brand-ink">
                   Strategy breakdown
@@ -302,12 +307,12 @@ export default function NichePageClient({ params }: { params: { slug: string } }
               </p>
             </motion.div>
 
-            <div className="space-y-6">
+            <div className="space-y-4">
               {content.strategy.map((section, i) => (
                 <motion.div
                   key={section.heading}
                   variants={staggerItem}
-                  className="rounded-xl border border-border-default bg-white p-6"
+                  className="rounded-xl border border-border-default bg-white p-5"
                 >
                   <div className="flex items-start gap-4">
                     <div className="flex-shrink-0 w-9 h-9 rounded-full bg-brand-primarySoft border border-brand-primary/30 flex items-center justify-center">
@@ -323,7 +328,7 @@ export default function NichePageClient({ params }: { params: { slug: string } }
             </div>
 
             {/* Focus areas */}
-            <motion.div variants={staggerItem} className="mt-8 rounded-xl border border-border-default bg-white p-6">
+            <motion.div variants={staggerItem} className="mt-5 rounded-xl border border-border-default bg-white p-5">
               <h3 className="text-lg font-bold text-brand-ink mb-4 flex items-center gap-2">
                 <Zap className="w-5 h-5 text-brand-primary" />
                 Key focus areas
@@ -344,7 +349,7 @@ export default function NichePageClient({ params }: { params: { slug: string } }
       {/* ================================================================= */}
       {/* Section 4: RPM & Earnings Data                                    */}
       {/* ================================================================= */}
-      <section className="bg-white py-16">
+      <section className="bg-white py-10">
         <Container>
           <motion.div
             initial="hidden"
@@ -381,7 +386,7 @@ export default function NichePageClient({ params }: { params: { slug: string } }
       {/* ================================================================= */}
       {/* Section 5: Recommended Tools                                      */}
       {/* ================================================================= */}
-      <section className="bg-[var(--color-background-surface)] py-16">
+      <section className="bg-[var(--color-background-surface)] py-10">
         <Container>
           <motion.div
             initial="hidden"
@@ -390,7 +395,7 @@ export default function NichePageClient({ params }: { params: { slug: string } }
             variants={staggerContainer}
             className="max-w-3xl mx-auto"
           >
-            <motion.div variants={staggerItem} className="flex items-center gap-2 mb-6">
+            <motion.div variants={staggerItem} className="flex items-center gap-2 mb-4">
               <Wrench className="w-6 h-6 text-brand-primary" />
               <h2 className="text-[1.5rem] font-bold text-brand-ink">Recommended tools</h2>
             </motion.div>
@@ -415,7 +420,7 @@ export default function NichePageClient({ params }: { params: { slug: string } }
       {/* ================================================================= */}
       {/* Section 6: Ultimate Guide CTA                                     */}
       {/* ================================================================= */}
-      <section className="bg-white py-16">
+      <section className="bg-white py-10">
         <Container>
           <motion.div
             initial="hidden"
@@ -424,7 +429,7 @@ export default function NichePageClient({ params }: { params: { slug: string } }
             variants={fadeUp}
             className="max-w-4xl mx-auto"
           >
-            <div className="rounded-2xl border-2 border-brand-primary/30 bg-gradient-to-br from-brand-primarySoft to-[var(--color-surface-warm)] p-8 md:p-10">
+            <div className="rounded-2xl border-2 border-brand-primary/30 bg-gradient-to-br from-brand-primarySoft to-[var(--color-surface-warm)] p-6 md:p-8">
               <div className="flex flex-col md:flex-row md:items-center gap-6">
                 <div className="flex-1">
                   <h2 className="text-xl md:text-2xl font-bold text-brand-ink mb-3">
@@ -458,7 +463,7 @@ export default function NichePageClient({ params }: { params: { slug: string } }
       {/* ================================================================= */}
       {/* Section 7: Related Guides                                         */}
       {/* ================================================================= */}
-      <section className="bg-[var(--color-background-surface)] py-16">
+      <section className="bg-[var(--color-background-surface)] py-10">
         <Container>
           <motion.div
             initial="hidden"
@@ -466,7 +471,7 @@ export default function NichePageClient({ params }: { params: { slug: string } }
             viewport={viewportOnce}
             variants={staggerContainer}
           >
-            <motion.h2 variants={staggerItem} className="text-[1.5rem] font-bold text-brand-ink mb-6">
+            <motion.h2 variants={staggerItem} className="text-[1.5rem] font-bold text-brand-ink mb-4">
               Related guides
             </motion.h2>
 
