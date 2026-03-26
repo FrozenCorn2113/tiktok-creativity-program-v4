@@ -2,26 +2,6 @@
 // PAGE_SPECS.md: breadcrumb, category badge, H1, description, meta, hero image, ToC LEFT + prose RIGHT
 // checklist items 52-68
 
-// Per-guide unique hero images (Phase 4 — 15 high-traffic guides)
-// Falls back to category image for all other guides
-const PER_GUIDE_SLUGS = new Set([
-  'creator-rewards-2026',
-  'qualified-views-not-counting',
-  'optimize-rpm',
-  'grow-5k-to-10k',
-  'best-ring-lights',
-  'no-qualified-views',
-  'rpm-dropping',
-  'creativity-program-not-showing',
-  'tiktok-hook-formulas',
-  'tiktok-viral-formula',
-  'viral-psychology',
-  'monetize-beauty',
-  'monetize-fitness',
-  'case-study-0-to-100k',
-  'creator-rewards-uk',
-])
-
 // next-mdx-remote RSC (compileMDX) cannot be serialized during static generation;
 // render on-demand at runtime to avoid prerender failures on Vercel
 export const dynamic = 'force-dynamic'
@@ -81,35 +61,8 @@ export default async function GuidePage({ params }: GuidePageProps) {
   const toc = getTableOfContents(content)
   const compiled = await compileGuide(content)
 
-  // Category → hero/thumb image mapping
-  // Keys are lowercase — lookup normalizes with .toLowerCase() to handle mixed-case frontmatter
-  // Only 8 category-level images exist; map all guide categories to the nearest one
-  const categoryImageMap: Record<string, string> = {
-    'creator rewards': 'getting-started',
-    eligibility: 'getting-started',
-    'ultimate guide': 'niche-guides',
-    'niche guide': 'niche-guides',
-    niche: 'niche-guides',
-    strategy: 'strategy',
-    growth: 'strategy',
-    'case study': 'strategy',
-    seasonal: 'strategy',
-    monetization: 'maximize-earnings',
-    earnings: 'maximize-earnings',
-    troubleshooting: 'troubleshooting',
-    tools: 'tools-equipment',
-    affiliate: 'tools-equipment',
-    comparison: 'comparisons',
-    international: 'country-guides',
-    regional: 'country-guides',
-    hub: 'getting-started',
-    core: 'getting-started',
-    payment: 'maximize-earnings',
-  }
-  const categoryKey = frontmatter.category ? (categoryImageMap[frontmatter.category.toLowerCase()] ?? 'getting-started') : 'getting-started'
-  const perGuideHero = `/images/guides/hero-${frontmatter.slug}.webp`
-  const heroImageSrc = PER_GUIDE_SLUGS.has(frontmatter.slug) ? perGuideHero : `/images/guides/hero-${categoryKey}.webp`
-  const thumbImagePrefix = `/images/guides/hero-`
+  // Every guide has its own hero image at /images/guides/hero-{slug}.webp
+  const heroImageSrc = `/images/guides/hero-${frontmatter.slug}.webp`
 
   // Related guides — same category, exclude current
   const related = getAllGuides()
@@ -270,7 +223,7 @@ export default async function GuidePage({ params }: GuidePageProps) {
         </div>
       </div>
 
-      {/* Hero image — checklist items 54-56 — uses category image, not per-guide slug */}
+      {/* Hero image — checklist items 54-56 — per-guide hero */}
       <div className="max-w-container mx-auto px-6">
         <Image
           src={heroImageSrc}
@@ -349,7 +302,7 @@ export default async function GuidePage({ params }: GuidePageProps) {
                     <div className="relative w-full h-36 bg-brand-primarySoft overflow-hidden">
                       {/* eslint-disable-next-line @next/next/no-img-element */}
                       <img
-                        src={`${thumbImagePrefix}${categoryImageMap[guide.category] ?? 'getting-started'}.webp`}
+                        src={`/images/guides/hero-${guide.slug}.webp`}
                         alt={`Thumbnail for ${guide.title}`}
                         className="w-full h-full object-cover"
                         loading="lazy"
