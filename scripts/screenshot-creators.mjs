@@ -30,13 +30,13 @@ const ALL_CREATORS = [
   'ryanhumiston',
   'jordanshrinks',
   'hannaoeberg',
-  'sivan.tm',
+  'maddielymburner',
   // Artists
   'artwithflo',
   'dinanorlund',
   'noorahmad_art',
   'jesskarp',
-  'mysweetchubs',
+  'kaseygolden',
   'samdoesarts',
   // Teachers
   'mr.terry_',
@@ -50,6 +50,7 @@ const ALL_CREATORS = [
   'mimielita',
   'marimariamakeup',
   'hindash',
+  'rowisingh',
   // Comedy
   'brandoncaleb',
   'zacklugo',
@@ -62,7 +63,7 @@ const ALL_CREATORS = [
   'projectme_with_tiffany',
   'charityrogers_',
   'keenyakelly',
-  'theambitious.christian',
+  'nataliebacon',
   'marcchinkoun',
   // Travel
   'heleneinbetween',

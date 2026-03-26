@@ -161,12 +161,12 @@ export const nicheContent: Record<string, NicheData> = {
         lesson: 'International fitness creators can build US-heavy audiences and monetize through digital product sales',
       },
       {
-        name: 'Sivan Tayer',
-        handle: 'sivan.tm',
-        followers: '572.8K',
+        name: 'Maddie Lymburner',
+        handle: 'maddielymburner',
+        followers: '462K',
         description:
-          'College student from Orlando who built a following around Pilates and walking. Her "hot girl Pilates" content went viral as a cultural moment in 2024-2025.',
-        lesson: 'TikTok-native creators in the 100K-1M range can monetize through brand deals and paid program affiliations',
+          'Canadian fitness creator and certified personal trainer who posts full-length follow-along workouts targeting women. Her structured programs and no-equipment home workout content drive consistent qualified views through strong watch-time retention.',
+        lesson: 'Full-length follow-along workouts earn premium watch times that push well above Creator Rewards qualification thresholds',
       },
     ],
     strategy: [
@@ -245,12 +245,12 @@ export const nicheContent: Record<string, NicheData> = {
         lesson: 'Showing the full creative journey from idea to finished sale converts viewers into buyers at any follower count',
       },
       {
-        name: 'Mysweetchubs',
-        handle: 'mysweetchubs',
-        followers: '540.9K',
+        name: 'Kasey Golden',
+        handle: 'kaseygolden',
+        followers: '358K',
         description:
-          'Digital art creator focused on Procreate brush content and character illustration with strong engagement relative to follower count.',
-        lesson: 'A smaller audience can support strong product revenue through Procreate brush sales',
+          'Digital illustrator and Procreate tutorial creator who teaches character design and digital painting techniques. Her brush packs and course content convert TikTok tutorial viewers into paying students at high rates.',
+        lesson: 'Tutorial content that teaches a transferable skill builds an audience primed to buy your digital products',
       },
       {
         name: 'Sam Does Arts',
@@ -423,10 +423,18 @@ export const nicheContent: Record<string, NicheData> = {
       {
         name: 'Hindash',
         handle: 'hindash',
-        followers: '710K',
+        followers: '380K',
         description:
-          'Dubai-based celebrity makeup artist and founder of Hindash Cosmetics. Has worked with Naomi Campbell and partnered with Charlotte Tilbury and MAC. Technique-focused tutorials that teach rather than promote.',
-        lesson: 'Technique over trends differentiates you in the beauty space and enables a cosmetics brand launch',
+          'Dubai-based makeup artist and founder of Hindash Cosmetics. Technique-focused tutorials that break down advanced application methods in step-by-step format, teaching skills rather than just showcasing products.',
+        lesson: 'Technique over trends differentiates you in the beauty space and builds a loyal audience invested in improving their skills',
+      },
+      {
+        name: 'Rowi Singh',
+        handle: 'rowisingh',
+        followers: '452K',
+        description:
+          'Indian-Australian makeup artist known for bold, editorial looks that blend traditional South Asian beauty techniques with modern editorial styles. Her GRWM videos consistently earn strong watch times through storytelling paired with step-by-step application.',
+        lesson: 'Culturally specific beauty content reaches an underserved audience and commands stronger engagement than generic tutorials',
       },
     ],
     strategy: [
@@ -597,12 +605,12 @@ export const nicheContent: Record<string, NicheData> = {
         lesson: 'Podcast + coaching program + courses is a proven multi-stream revenue model even at sub-300K followings',
       },
       {
-        name: 'Theambitious.christian',
-        handle: 'theambitious.christian',
-        followers: '751.5K',
+        name: 'Natalie Bacon',
+        handle: 'nataliebacon',
+        followers: '142K',
         description:
-          'Business and faith-integrated coaching content that speaks to a specific and highly engaged community of faith-based entrepreneurs.',
-        lesson: 'Community-specific coaching creates deeper loyalty than competing in the mainstream motivational space',
+          'Life and mindset coach who teaches productivity, goal-setting, and intentional living. Her structured framework-based content walks viewers through a specific concept in each video, building trust before pitching her coaching program.',
+        lesson: 'Framework-first coaching content builds credibility faster than motivational content and converts better to paid offers',
       },
       {
         name: 'Marc Chinkoun',
