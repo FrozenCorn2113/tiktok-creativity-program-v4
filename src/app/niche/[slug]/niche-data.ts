@@ -76,6 +76,14 @@ export const nicheContent: Record<string, NicheData> = {
           'New Jersey singer-songwriter who built his TikTok audience through acoustic sessions and songwriting breakdowns. His warm, storytelling approach to music content turns casual viewers into dedicated fans who follow him to streaming platforms.',
         lesson: 'Showing the messy creative process builds a more loyal audience than polished final performances alone',
       },
+      {
+        name: 'Rayya Elias',
+        handle: 'rayyaelias',
+        followers: '68K',
+        description:
+          'Bedroom pop artist and multi-instrumentalist who posts raw songwriting sessions and layered loop recordings in single takes. Her lo-fi production style makes music creation feel accessible while showcasing genuine talent.',
+        lesson: 'Raw, unproduced music content filmed in your bedroom can outperform polished studio clips because it feels authentic and replicable',
+      },
     ],
     strategy: [
       {
@@ -151,6 +159,14 @@ export const nicheContent: Record<string, NicheData> = {
         description:
           'Swedish fitness creator and certified PT who shares full workout routines with detailed form cues. Built a six-figure business selling training programs directly to her TikTok audience.',
         lesson: 'International fitness creators can build US-heavy audiences and monetize through digital product sales',
+      },
+      {
+        name: 'Sydney Cummings',
+        handle: 'sydneycummings',
+        followers: '175K',
+        description:
+          'Home workout creator who posts full-length follow-along routines requiring minimal equipment. Her daily upload consistency and motivational coaching style have built a community that treats her TikTok like a free personal training app.',
+        lesson: 'Consistent daily workout content builds habit-forming viewership that converts directly to program and app subscriptions',
       },
     ],
     strategy: [
@@ -312,6 +328,14 @@ export const nicheContent: Record<string, NicheData> = {
           'English language educator who creates vocabulary and grammar content for learners worldwide. Her clear teaching style and engaging format have built a dedicated following of students and self-learners.',
         lesson: 'The pure educator model monetizes through Creator Rewards, digital products, and lesson plan sales at any follower count',
       },
+      {
+        name: 'History with Hilbert',
+        handle: 'historywithhilbert',
+        followers: '94K',
+        description:
+          'History teacher who creates engaging explainer videos about lesser-known historical events and figures. His storytelling approach turns dry textbook material into binge-worthy content that keeps viewers watching through the full explanation.',
+        lesson: 'Storytelling-driven education content earns higher watch time than lecture-style clips and converts viewers into resource buyers',
+      },
     ],
     strategy: [
       {
@@ -363,6 +387,38 @@ export const nicheContent: Record<string, NicheData> = {
         description:
           'Indian-Australian makeup artist known for bold, editorial looks that blend traditional South Asian beauty techniques with modern editorial styles. Her GRWM videos consistently earn strong watch times through storytelling paired with step-by-step application.',
         lesson: 'Culturally specific beauty content reaches an underserved audience and commands stronger engagement than generic tutorials',
+      },
+      {
+        name: 'Robert Welsh',
+        handle: 'robertwelsh',
+        followers: '390K',
+        description:
+          'UK-based makeup artist and twin brother duo member who built his TikTok following through honest product reviews and professional technique breakdowns. His "makeup artist reacts" format earns strong watch time by combining entertainment with genuine expertise.',
+        lesson: 'Professional credibility paired with honest reviews builds an audience that trusts and acts on your product recommendations',
+      },
+      {
+        name: 'Dustin Hunter',
+        handle: 'dustinhunter',
+        followers: '285K',
+        description:
+          'Male beauty creator and makeup artist known for bold, colorful looks and transformation videos. His content challenges beauty norms while delivering high-retention transformation reveals that keep viewers watching to the end.',
+        lesson: 'Standing out in beauty by breaking category norms attracts a dedicated audience and premium brand deal opportunities',
+      },
+      {
+        name: 'Ava Lee',
+        handle: 'glowwithava',
+        followers: '198K',
+        description:
+          'Skincare and minimal makeup creator who focuses on achievable everyday routines and drugstore product reviews. Her "get ready with me" morning routine videos consistently hit 60-second-plus watch times.',
+        lesson: 'Accessible, budget-friendly beauty content converts viewers into affiliate buyers at higher rates than luxury-focused content',
+      },
+      {
+        name: 'Christen Dominique',
+        handle: 'christendominique',
+        followers: '340K',
+        description:
+          'Makeup artist and beauty entrepreneur who shares professional-level tutorials and product reviews on TikTok. She built a dedicated following through detailed technique breakdowns and honest first impressions of trending products.',
+        lesson: 'Combining tutorial expertise with genuine product opinions builds a monetizable audience that trusts your affiliate recommendations',
       },
     ],
     strategy: [
@@ -439,6 +495,14 @@ export const nicheContent: Record<string, NicheData> = {
         description:
           'Stand-up comedian building his touring career through TikTok. Uses short clips of crowd work and original bits to drive ticket sales and grow his live audience.',
         lesson: 'TikTok comedy clips work as free advertising for live shows, turning views into ticket sales even at sub-500K followings',
+      },
+      {
+        name: 'Rod',
+        handle: 'rodwitha',
+        followers: '480K',
+        description:
+          'Reaction and commentary comedian who films himself reacting to absurd internet moments with deadpan delivery. His low-production, high-personality format proves comedy does not need expensive setups to earn strong engagement.',
+        lesson: 'Personality-driven reaction content is one of the lowest-cost, highest-retention comedy formats for Creator Rewards',
       },
     ],
     strategy: [
@@ -599,6 +663,14 @@ export const nicheContent: Record<string, NicheData> = {
         description:
           'Visited 17 countries in 2024 while working a 9-to-5 job. Her content proves travel creation is accessible to anyone with PTO and a plan, making her relatable to viewers who are not full-time creators.',
         lesson: 'You do not need to quit your job to build a travel audience. Part-time creators at 100K can monetize through gear affiliates and tourism partnerships.',
+      },
+      {
+        name: 'Karl Watson',
+        handle: 'karlwatson',
+        followers: '210K',
+        description:
+          'Solo backpacker and budget travel creator who documents off-the-beaten-path destinations across Southeast Asia and South America. His detailed cost breakdowns and itinerary walkthroughs give viewers a complete planning resource in each video.',
+        lesson: 'Detailed cost breakdown content has evergreen search value and drives consistent affiliate clicks long after the original post',
       },
     ],
     strategy: [
