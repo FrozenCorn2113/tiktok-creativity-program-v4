@@ -1,8 +1,9 @@
-// Unsubscribe API — marks a subscriber as unsubscribed in Supabase
+// Unsubscribe API — marks a subscriber as unsubscribed in Supabase + Resend audience
 // CAN-SPAM: always returns success to the user even if the DB update fails,
 // so the unsubscribe action is never blocked from the user's perspective.
 import { NextResponse } from 'next/server'
 import { z } from 'zod'
+import { unsubscribeContactFromAudience } from '@/lib/resend-audience'
 
 // Same hardcoded Supabase credentials as newsletter route
 const SUPABASE_PROJECT_URL = 'https://tpihpenmsiojzznpcmcr.supabase.co'
@@ -57,6 +58,11 @@ export async function POST(request: Request) {
     console.error('[api/unsubscribe] Fetch error:', err)
     // Still return success — see above
   }
+
+  // Also unsubscribe from Resend audience (fire-and-forget)
+  unsubscribeContactFromAudience(email).catch((err) => {
+    console.error('[api/unsubscribe] Resend audience unsub failed:', err)
+  })
 
   return NextResponse.json({ success: true })
 }

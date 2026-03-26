@@ -1,8 +1,9 @@
-// Newsletter subscription — Supabase capture + Resend welcome email
+// Newsletter subscription — Supabase capture + Resend welcome email + audience sync
 // Uses direct REST API for reliability in Vercel serverless
 import { NextResponse } from 'next/server'
 import { z } from 'zod'
 import { sendWelcomeEmail } from '@/lib/email/send-welcome'
+import { addContactToAudience } from '@/lib/resend-audience'
 
 const bodySchema = z.object({
   email: z.string().email('Invalid email address').max(254),
@@ -90,6 +91,11 @@ export async function POST(request: Request) {
   // Send branded welcome email via Resend (fire-and-forget)
   sendWelcomeEmail({ email, leadMagnet: lead_magnet }).catch((err) => {
     console.error('[api/newsletter] Welcome email failed:', err)
+  })
+
+  // Add to Resend audience (fire-and-forget)
+  addContactToAudience(email).catch((err) => {
+    console.error('[api/newsletter] Audience sync failed:', err)
   })
 
   return NextResponse.json({ success: true })
