@@ -11,20 +11,19 @@ const bodySchema = z.object({
   page_url: z.string().max(500).optional(),
 })
 
-// Resolve env vars lazily to handle Vercel's various naming conventions
-function getSupabaseUrl(): string | undefined {
-  return (
-    process.env.TCP_SUPABASE_URL ||
-    process.env.NEXT_PUBLIC_SUPABASE_URL ||
-    process.env.SUPABASE_URL
-  )
+// Hardcoded Supabase project URL — not a secret, avoids env var override issues
+// from Vercel integrations that inject wrong project credentials
+const SUPABASE_PROJECT_URL = 'https://tpihpenmsiojzznpcmcr.supabase.co'
+
+function getSupabaseUrl(): string {
+  return SUPABASE_PROJECT_URL
 }
 
 function getSupabaseKey(): string | undefined {
+  // Prefer NEXT_PUBLIC_ vars (manually set, known correct) over integration vars
   return (
-    process.env.TCP_SUPABASE_KEY ||
-    process.env.SUPABASE_SERVICE_ROLE_KEY ||
     process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY ||
+    process.env.TCP_SUPABASE_KEY ||
     process.env.SUPABASE_ANON_KEY
   )
 }
@@ -38,12 +37,9 @@ async function insertSubscriber(record: {
   const supabaseUrl = getSupabaseUrl()
   const supabaseKey = getSupabaseKey()
 
-  if (!supabaseUrl || !supabaseKey) {
-    console.error('[api/newsletter] Missing env vars:', {
-      hasUrl: !!supabaseUrl,
-      hasKey: !!supabaseKey,
-    })
-    return { ok: false, error: `Missing Supabase config (url=${!!supabaseUrl}, key=${!!supabaseKey})` }
+  if (!supabaseKey) {
+    console.error('[api/newsletter] Missing Supabase anon key')
+    return { ok: false, error: 'Missing Supabase key' }
   }
 
   const restUrl = `${supabaseUrl}/rest/v1`
@@ -73,9 +69,8 @@ async function insertSubscriber(record: {
     console.error(`[api/newsletter] Supabase REST error (${res.status}):`, errorBody)
     return { ok: false, error: `Supabase ${res.status}: ${errorBody}` }
   } catch (err) {
-    const errMsg = err instanceof Error ? `${err.message} | cause: ${JSON.stringify(err.cause)}` : 'Unknown fetch error'
-    console.error('[api/newsletter] Supabase fetch error:', errMsg, 'URL:', restUrl)
-    return { ok: false, error: `${errMsg} | url: ${restUrl}` }
+    console.error('[api/newsletter] Supabase fetch error:', err)
+    return { ok: false, error: err instanceof Error ? err.message : 'Unknown fetch error' }
   }
 }
 
@@ -106,10 +101,7 @@ export async function POST(request: Request) {
 
   if (!result.ok) {
     console.error('[api/newsletter] Insert failed:', result.error)
-    return NextResponse.json(
-      { error: 'Failed to save', detail: result.error },
-      { status: 500 }
-    )
+    return NextResponse.json({ error: 'Failed to save' }, { status: 500 })
   }
 
   // Send branded welcome email via Resend (fire-and-forget)
