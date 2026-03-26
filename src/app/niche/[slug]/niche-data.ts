@@ -69,20 +69,20 @@ export const nicheContent: Record<string, NicheData> = {
         lesson: 'Independent artists can build a viable music career through TikTok without signing away rights to a label',
       },
       {
-        name: 'Tate McRae',
-        handle: 'tatemcrae',
-        followers: '13.5M',
+        name: 'Nicky Youre',
+        handle: 'nickyyoure',
+        followers: '245K',
         description:
-          'Grew her TikTok audience organically through dance and songwriting before a major label deal. Her single "Greedy" caught fire on TikTok.',
-        lesson: 'The algorithm can launch a rising artist to mainstream success with consistent craft-focused content',
+          'Independent pop artist who built his TikTok following by previewing unreleased tracks and showing his bedroom production process. His single "Sunroof" grew organically on the platform before charting.',
+        lesson: 'Previewing music in a casual, behind-the-scenes format builds genuine fan investment before a track even releases',
       },
       {
-        name: 'Lola Young',
-        handle: 'lolayounggg',
-        followers: '1.6M',
+        name: 'Adam Melchor',
+        handle: 'adammelchor',
+        followers: '225K',
         description:
-          'South London singer-songwriter whose track "Messy" became TikTok\'s viral soundtrack for 2024-2025, accumulating over 1 billion streams.',
-        lesson: 'The complete arc from viral TikTok song to Grammy to global touring is achievable',
+          'New Jersey singer-songwriter who built his TikTok audience through acoustic sessions and songwriting breakdowns. His warm, storytelling approach to music content turns casual viewers into dedicated fans who follow him to streaming platforms.',
+        lesson: 'Showing the messy creative process builds a more loyal audience than polished final performances alone',
       },
     ],
     strategy: [
@@ -129,44 +129,36 @@ export const nicheContent: Record<string, NicheData> = {
     focus: ['Workout plans', 'Affiliate supplements', 'Program upsells', 'Live sessions'],
     creators: [
       {
-        name: 'Demi Bagby',
-        handle: 'demibagby',
-        followers: '14M',
+        name: 'Natacha Oceane',
+        handle: 'natachaoceane',
+        followers: '74.6K',
         description:
-          'Overcame a severe spinal injury at 14 and rebuilt her body through CrossFit and calisthenics. Her comeback story makes her content inherently shareable.',
-        lesson: 'Personal story combined with physical skill is a powerful formula for engagement',
+          'Science-based fitness creator with a biophysics background who creates detailed workout tutorials grounded in exercise science. Her evidence-based approach to training sets her apart from trend-chasing fitness content.',
+        lesson: 'A science-backed approach to fitness content builds authority and attracts a highly engaged, education-hungry audience',
       },
       {
-        name: 'Senada Greca',
-        handle: 'senada.greca',
-        followers: '2.6M',
+        name: 'Ryan Humiston',
+        handle: 'ryanhumiston',
+        followers: '207.9K',
         description:
-          'An MBA-holding fitness trainer who founded the ZENYATA fitness app, turning her TikTok audience directly into paying subscribers.',
-        lesson: 'TikTok as a top-of-funnel for your own app or product can generate $2.5M+ annually',
+          'No-nonsense gym coach who creates short, actionable workout tutorials with a focus on practical hypertrophy training. His direct teaching style keeps viewers watching through the full routine.',
+        lesson: 'Technical fitness education content converts directly to program sales even at sub-200K followings',
       },
       {
-        name: 'Chloe Ting',
-        handle: 'chloeting',
-        followers: '35M+',
+        name: 'Jordan Shrinks',
+        handle: 'jordanshrinks',
+        followers: '152.7K',
         description:
-          'Created the viral "2 Week Shred" and other challenge-format workout programs that turned passive viewers into active participants.',
-        lesson: 'Challenge-format content drives daily participation and repeat viewing',
+          'Fitness transformation creator who documents her ongoing health journey with transparent progress updates, workout routines, and meal prep content. Her authenticity resonates with viewers starting their own fitness journeys.',
+        lesson: 'Transparency about real progress, including setbacks, builds deep audience trust and long-term retention',
       },
       {
-        name: 'Alex Eubank',
-        handle: 'alexeubank',
-        followers: '3M+',
+        name: 'Hanna Oberg',
+        handle: 'hannaoeberg',
+        followers: '420K',
         description:
-          'One of the most followed natural bodybuilders on TikTok. His transparent approach to training built a highly engaged audience.',
-        lesson: 'Niche positioning within fitness (natural bodybuilding) drives stronger engagement than general content',
-      },
-      {
-        name: 'Kayla Itsines',
-        handle: 'kayla_itsines',
-        followers: '500K',
-        description:
-          'Creator of the Bikini Body Guide (BBG) and the SWEAT app, which has generated hundreds of millions of dollars from community-driven fitness challenges.',
-        lesson: 'Converting a social audience into a subscription app business is the gold standard',
+          'Swedish fitness creator and certified PT who shares full workout routines with detailed form cues. Built a six-figure business selling training programs directly to her TikTok audience.',
+        lesson: 'International fitness creators can build US-heavy audiences and monetize through digital product sales',
       },
       {
         name: 'Sivan Tayer',
@@ -221,12 +213,12 @@ export const nicheContent: Record<string, NicheData> = {
     focus: ['Print sales', 'Commissions', 'Process content', 'Behind-the-scenes'],
     creators: [
       {
-        name: 'Kooleen',
-        handle: 'kooleenart',
-        followers: '487K',
+        name: 'Art with Flo',
+        handle: 'artwithflo',
+        followers: '182.2K',
         description:
-          'Digital illustration creator known for stylized character art and Procreate tutorials. Her process breakdowns teach specific techniques while showcasing a distinctive pastel-toned style that keeps viewers watching.',
-        lesson: 'Tutorial-style process content builds authority and drives Procreate brush sales at mid-tier followings',
+          'Procreate tutorial creator who teaches step-by-step digital illustration techniques in approachable, beginner-friendly videos. Her brush packs and course content convert TikTok viewers into paying students.',
+        lesson: 'Structured tutorial content that teaches a specific technique in each video builds a loyal audience that buys your digital products',
       },
       {
         name: 'Dina Norlund',
@@ -261,12 +253,12 @@ export const nicheContent: Record<string, NicheData> = {
         lesson: 'A smaller audience can support strong product revenue through Procreate brush sales',
       },
       {
-        name: 'Berrystrawnana',
-        handle: 'berrystrawnana',
-        followers: '59.1K',
+        name: 'Sam Does Arts',
+        handle: 'samdoesarts',
+        followers: '416.2K',
         description:
-          'Smaller creator with a growing audience built around consistent, charming digital illustrations and a recognizable style.',
-        lesson: 'Artists can build a monetizable audience at sub-100K through Etsy, print-on-demand, and commissions',
+          'Digital art creator known for stylized portrait illustrations and speed-paint process videos. His distinctive style and engaging narration keep viewers watching through full illustrations, and he monetizes through print sales and Patreon.',
+        lesson: 'Artists can build a monetizable audience through consistent process content that showcases a recognizable personal style',
       },
     ],
     strategy: [
@@ -313,52 +305,52 @@ export const nicheContent: Record<string, NicheData> = {
     focus: ['Course funnels', 'Affiliate tools', 'Community memberships', 'Lead magnets'],
     creators: [
       {
-        name: 'Claudine James',
-        handle: 'iamthatenglishteacher',
-        followers: '5.7M',
+        name: 'Mr. Terry',
+        handle: 'mr.terry_',
+        followers: '385K',
         description:
-          'A National Board Certified Teacher who found a massive audience addressing everyday grammar mistakes and vocabulary confusion in short, punchy videos.',
-        lesson: 'Solving specific, everyday pain points builds a large and loyal audience',
+          'Working high school English teacher who shares grammar tips, book recommendations, and classroom moments. His "words you are using wrong" series makes language education entertaining and shareable.',
+        lesson: 'Solving specific, everyday pain points with personality builds a loyal audience that trusts your product recommendations',
       },
       {
-        name: 'Hank Green',
-        handle: 'hankgreen1',
-        followers: '8.1M',
+        name: 'Science with Mr. J',
+        handle: 'sciencewithmrj',
+        followers: '16.9K',
         description:
-          'Co-founder of VidCon and creator of SciShow. His TikTok presence brings genuine scientific curiosity to short-form video with wit and depth.',
-        lesson: 'A viral TikTok about his book spiked Amazon sales 3,200%, showing cross-platform amplification power',
+          'Working science teacher who films engaging experiment demonstrations and explains concepts in 60-second explainer videos. His practical classroom content proves you do not need a massive following to build authority.',
+        lesson: 'Classroom experiment content has naturally high retention and directly converts to digital resource sales',
       },
       {
-        name: 'Doctor Mike',
-        handle: 'doctormike',
-        followers: '2.8M',
+        name: 'Math with Menno',
+        handle: 'mathwithmenno',
+        followers: '49.6K',
         description:
-          'A practicing family medicine physician who uses TikTok to debunk medical misinformation, react to medical TV shows, and explain health concepts.',
-        lesson: 'Professional credentials create a content moat that builds deep trust and premium brand deals',
+          'Math educator who breaks down algebra and calculus concepts using visual explanations and real-world examples. His clear, step-by-step teaching style makes abstract math tangible for students at every level.',
+        lesson: 'Practical application content in education drives both watch time and trust, leading to tutoring and course sales',
       },
       {
-        name: 'Gabe Dannenbring',
-        handle: 'gabedannenbring',
-        followers: '1.6M',
+        name: 'Mrs. English Class',
+        handle: 'mrsenglishclass',
+        followers: '31.2K',
         description:
-          'A working middle school science teacher who went viral with classroom content and shows the real, unfiltered experience of teaching.',
-        lesson: 'Creators do not need to quit their day job to build a meaningful TikTok presence',
+          'Working English teacher sharing grammar tips, vocabulary lessons, and writing advice in bite-sized TikTok videos. Her content serves both students and adult learners looking to improve their language skills.',
+        lesson: 'Language education content attracts a broad audience beyond just students, opening up diverse monetization paths',
       },
       {
-        name: 'Mark Rober',
-        handle: 'markrober',
-        followers: '3.8M',
+        name: 'The History Plug',
+        handle: 'thehistoryplug',
+        followers: '290K',
         description:
-          'Former NASA engineer turned science-entertainment creator. His elaborate engineering projects make science viscerally entertaining. Uses TikTok to build awareness that converts into his CrunchLabs STEM subscription box for kids.',
-        lesson: 'High-production educational content builds authority that converts to product sales and subscription revenue',
+          'History teacher who turns obscure historical events into engaging storytelling content. His "history they did not teach you" series consistently earns high watch times through narrative-driven education.',
+        lesson: 'Storytelling-first education content earns higher RPMs than lecture-style videos because retention is dramatically better',
       },
       {
-        name: 'Mrs. Kelly',
-        handle: 'the_mrskelly',
-        followers: '1.3M',
+        name: 'English with Kayla',
+        handle: 'englishwithkayla',
+        followers: '180.7K',
         description:
-          'A working math teacher who built a large following by sharing teaching tips, math quizzes, and classroom practices in an accessible way.',
-        lesson: 'The "pure educator" model monetizes through Creator Rewards, digital products, and lesson plan sales',
+          'English language educator who creates vocabulary and grammar content for learners worldwide. Her clear teaching style and engaging format have built a dedicated following of students and self-learners.',
+        lesson: 'The pure educator model monetizes through Creator Rewards, digital products, and lesson plan sales at any follower count',
       },
     ],
     strategy: [
@@ -405,28 +397,28 @@ export const nicheContent: Record<string, NicheData> = {
     focus: ['Affiliate reviews', 'Creator Rewards', 'Brand partnerships', 'Product launches'],
     creators: [
       {
-        name: 'Mikayla Nogueira',
-        handle: 'mikaylanogueira',
-        followers: '17.4M',
+        name: 'Ava Lee',
+        handle: 'glowwithava',
+        followers: '345K',
         description:
-          'Built one of the most trusted voices in beauty through hyper-honest product reviews. Named to TIME100 Creators 2025. Launched POV Beauty, reaching $1M in first 7 minutes.',
-        lesson: 'Authenticity and consistent review content builds a community that will follow you to a brand launch',
+          'Skincare-focused beauty creator who does ingredient-level product analysis and budget-friendly routine builds. Her "drugstore dupes" series consistently earns high engagement by helping viewers save money without sacrificing quality.',
+        lesson: 'Honest, budget-conscious beauty reviews build trust that converts to strong affiliate click-through rates',
       },
       {
-        name: 'Abby Roberts',
-        handle: 'abbyroberts',
-        followers: '16M',
+        name: 'Mimi Choi',
+        handle: 'mimielita',
+        followers: '490K',
         description:
-          'Special effects makeup artist whose transformation videos regularly go viral. Her artistry level far exceeds standard beauty content, proving that skill-based beauty content retains audiences for years.',
-        lesson: 'Skill-based content that is genuinely hard to replicate sustains a massive following and commands premium brand deals',
+          'Optical illusion makeup artist whose transformation videos showcase genuinely unique artistry. Her skill-based content stands apart from standard beauty tutorials and earns premium brand partnerships.',
+        lesson: 'Skill-based content that is genuinely hard to replicate commands premium brand deals even at mid-tier followings',
       },
       {
-        name: 'Skincare by Hyram',
-        handle: 'skincarebyhyram',
-        followers: '6.5M',
+        name: 'Mari Maria',
+        handle: 'marimariamakeup',
+        followers: '470K',
         description:
-          'Built his audience doing ingredient-level analysis of skincare products, calling out both overpriced and overlooked affordable options. Launched his own skincare line Selfless by Hyram with The Inkey List.',
-        lesson: 'An opinionated, critical point of view builds more trust than promotional content and can lead to product partnerships',
+          'Brazilian-American makeup artist known for bold, colorful technique tutorials. Her step-by-step approach makes advanced techniques accessible while maintaining a distinctive visual brand.',
+        lesson: 'A distinctive visual style paired with clear instruction creates a content moat that retains viewers long-term',
       },
       {
         name: 'Hindash',
@@ -481,20 +473,20 @@ export const nicheContent: Record<string, NicheData> = {
     focus: ['Skits and series', 'Creator Rewards', 'Superfan monetization', 'Brand comedy deals'],
     creators: [
       {
-        name: 'Shelby Lynch',
-        handle: 'shellybellycomedy',
-        followers: '1.6M',
+        name: 'Brandon Caleb',
+        handle: 'brandoncaleb',
+        followers: '420K',
         description:
-          'Character-based comedy creator whose recurring characters and skits keep the algorithm feeding her content to new audiences. One of the best examples of how recurring formats build loyal followings in the 1-2M range.',
+          'Character-based comedy creator whose recurring office and family characters keep viewers coming back. His consistent posting schedule and recognizable format drive high return viewership rates.',
         lesson: 'Character-based comedy builds retention and return viewership, critical for Creator Rewards qualification',
       },
       {
-        name: 'John Crist',
-        handle: 'johncristcomedian',
-        followers: '2.2M',
+        name: 'Zack Lugo',
+        handle: 'zacklugo',
+        followers: '350K',
         description:
-          'Stand-up comedian targeting Christian and Southern American culture with observational humor. His niche positioning creates high engagement and loyal sponsors who align with his audience demographics.',
-        lesson: 'Niche audience alignment drives higher conversion rates and sponsor deals than broad comedy',
+          'Observational comedy creator who turns everyday situations into relatable skit content. His clean, brand-safe humor attracts sponsors aligned with his audience demographics without alienating viewers.',
+        lesson: 'Niche audience alignment and brand-safe content drive higher conversion rates and sponsor deals than edgy broad comedy',
       },
       {
         name: 'Hulk The Comedian',
@@ -565,20 +557,20 @@ export const nicheContent: Record<string, NicheData> = {
     focus: ['High-ticket offers', 'Content-to-client funnel', 'Creator Rewards', 'Email list building'],
     creators: [
       {
-        name: 'Mel Robbins',
-        handle: 'melrobbins',
-        followers: '5.6M',
+        name: 'Vanessa Lau',
+        handle: 'vanessalau.co',
+        followers: '380K',
         description:
-          'Author of "The 5 Second Rule" and "The Let Them Theory." TikTok has been a major distribution channel for her self-help content, driving massive podcast and book sales.',
-        lesson: 'Short clips on TikTok drive book sales and podcast growth at scale',
+          'Online business coach who teaches content creators how to build sustainable income through social media. Her "build a business, not just an audience" messaging resonates with aspiring creator-entrepreneurs.',
+        lesson: 'Short clips demonstrating a specific framework or method drive course sales and coaching inquiries',
       },
       {
-        name: 'Alex Hormozi',
-        handle: 'ahormozi',
-        followers: '1.6M',
+        name: 'Codie Sanchez',
+        handle: 'codiesanchez',
+        followers: '490K',
         description:
-          'Entrepreneur behind Acquisition.com whose "$100M Offers" book became a bestseller largely through organic content. 31M TikTok likes vs. 1.6M followers shows exceptional engagement.',
-        lesson: 'Dense, no-fluff business advice rewards viewers who want actionable frameworks',
+          'Business acquisition coach who teaches "boring businesses" investing through TikTok. Her dense, no-fluff business content earns high engagement-to-follower ratios by delivering immediately actionable frameworks.',
+        lesson: 'Dense, no-fluff business advice rewards viewers who want actionable frameworks and converts to high-ticket offers',
       },
       {
         name: 'Tiffany Carter',
@@ -597,12 +589,12 @@ export const nicheContent: Record<string, NicheData> = {
         lesson: 'Teaching what you practice on the same platform creates instant credibility and a self-reinforcing growth loop',
       },
       {
-        name: 'Rob Dial',
-        handle: 'robdial',
-        followers: '1.3M',
+        name: 'Keenya Kelly',
+        handle: 'keenyakelly',
+        followers: '275K',
         description:
-          'Host of The Mindset Mentor podcast (450 million+ downloads). Dense, actionable mindset content with no fluffy motivation.',
-        lesson: 'Podcast + coaching program + courses is a proven multi-stream revenue model',
+          'Brand and video marketing coach who teaches entrepreneurs to grow through short-form video. Her own TikTok growth serves as proof of concept for her coaching methods.',
+        lesson: 'Podcast + coaching program + courses is a proven multi-stream revenue model even at sub-300K followings',
       },
       {
         name: 'Theambitious.christian',
@@ -665,19 +657,19 @@ export const nicheContent: Record<string, NicheData> = {
     focus: ['Travel partnerships', 'Affiliate hotels + gear', 'Creator Rewards', 'Brand campaigns'],
     creators: [
       {
-        name: 'Sightsofsara',
-        handle: 'sightsofsara',
-        followers: '1.4M',
+        name: 'Helene in Between',
+        handle: 'heleneinbetween',
+        followers: '366.4K',
         description:
-          'Solo female travel creator focused on mountainous backpacking and outdoor adventure, serving an underrepresented audience with safety tips and gear reviews. Demonstrates that niche positioning works at any scale.',
+          'Solo female travel creator and blogger who shares practical destination guides, packing tips, and travel hacks. Her content bridges the gap between aspirational travel content and actionable planning advice.',
         lesson: 'Niche positioning (solo female adventure travel) creates deeper audience loyalty and stronger brand deal appeal',
       },
       {
-        name: 'Jordentually',
-        handle: 'jordentually',
-        followers: '3.7M',
+        name: 'Tyler Ginter',
+        handle: 'tylerginter',
+        followers: '265K',
         description:
-          'Cultural adventure travel creator who focuses on unique and unusual experiences rather than Instagram-standard destinations. Proves that offbeat, curiosity-driven content outperforms generic travel footage.',
+          'Cultural immersion travel creator who focuses on local food, traditions, and off-the-beaten-path experiences rather than tourist highlights. His curiosity-driven storytelling consistently earns strong watch times.',
         lesson: 'Authentic cultural storytelling outperforms generic "beautiful places" content in both retention and RPM',
       },
       {
