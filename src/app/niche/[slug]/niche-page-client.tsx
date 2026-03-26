@@ -94,13 +94,13 @@ function CreatorCard({ creator }: { creator: Creator }) {
       className="rounded-xl border border-border-default bg-white overflow-hidden hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200"
     >
       {/* Profile screenshot -- the main visual element */}
-      <div className="relative w-full aspect-[4/3] bg-gray-50">
+      <div className="relative w-full aspect-[976/212] bg-gray-50">
         {!imgFailed ? (
           <Image
             src={imagePath}
             alt={`${creator.name} TikTok profile`}
             fill
-            className="object-cover object-top"
+            className="object-contain object-top"
             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
             unoptimized
             onError={() => setImgFailed(true)}
