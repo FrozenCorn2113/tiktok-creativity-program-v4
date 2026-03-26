@@ -109,7 +109,7 @@ export default async function GuidePage({ params }: GuidePageProps) {
   const categoryKey = frontmatter.category ? (categoryImageMap[frontmatter.category.toLowerCase()] ?? 'getting-started') : 'getting-started'
   const perGuideHero = `/images/guides/hero-${frontmatter.slug}.webp`
   const heroImageSrc = PER_GUIDE_SLUGS.has(frontmatter.slug) ? perGuideHero : `/images/guides/hero-${categoryKey}.webp`
-  const thumbImagePrefix = `/images/guides/thumb-`
+  const thumbImagePrefix = `/images/guides/hero-`
 
   // Related guides — same category, exclude current
   const related = getAllGuides()
