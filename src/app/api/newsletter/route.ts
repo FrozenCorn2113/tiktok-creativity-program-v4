@@ -73,8 +73,9 @@ async function insertSubscriber(record: {
     console.error(`[api/newsletter] Supabase REST error (${res.status}):`, errorBody)
     return { ok: false, error: `Supabase ${res.status}: ${errorBody}` }
   } catch (err) {
-    console.error('[api/newsletter] Supabase fetch error:', err)
-    return { ok: false, error: err instanceof Error ? err.message : 'Unknown fetch error' }
+    const errMsg = err instanceof Error ? `${err.message} | cause: ${JSON.stringify(err.cause)}` : 'Unknown fetch error'
+    console.error('[api/newsletter] Supabase fetch error:', errMsg, 'URL:', restUrl)
+    return { ok: false, error: `${errMsg} | url: ${restUrl}` }
   }
 }
 
