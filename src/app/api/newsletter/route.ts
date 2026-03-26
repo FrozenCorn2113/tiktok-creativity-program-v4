@@ -23,6 +23,24 @@ function getSupabaseClient() {
   return createClient(supabaseUrl, supabaseKey)
 }
 
+export async function GET() {
+  // Health check endpoint for debugging
+  const hasUrl = !!process.env.NEXT_PUBLIC_SUPABASE_URL
+  const hasServiceKey = !!process.env.SUPABASE_SERVICE_ROLE_KEY
+  const hasAnonKey = !!process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
+  const hasResendKey = !!process.env.RESEND_API_KEY
+
+  return NextResponse.json({
+    status: 'ok',
+    config: {
+      supabaseUrl: hasUrl,
+      serviceRoleKey: hasServiceKey,
+      anonKey: hasAnonKey,
+      resendKey: hasResendKey,
+    },
+  })
+}
+
 export async function POST(request: Request) {
   let body: unknown
   try {
@@ -43,22 +61,27 @@ export async function POST(request: Request) {
 
   const supabase = getSupabaseClient()
   if (!supabase) {
-    console.error('[api/newsletter] Missing NEXT_PUBLIC_SUPABASE_URL or Supabase key env vars')
+    const hasUrl = !!process.env.NEXT_PUBLIC_SUPABASE_URL
+    const hasKey = !!process.env.SUPABASE_SERVICE_ROLE_KEY || !!process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
+    console.error(`[api/newsletter] Missing env vars — URL: ${hasUrl}, Key: ${hasKey}`)
     return NextResponse.json({ error: 'Email provider not configured' }, { status: 500 })
   }
 
   const usingServiceRole = !!process.env.SUPABASE_SERVICE_ROLE_KEY
   console.log(`[api/newsletter] Inserting subscriber: ${email} (source: ${source ?? 'newsletter'}, serviceRole: ${usingServiceRole})`)
 
-  const { error } = await supabase
+  const { data, error, status, statusText } = await supabase
     .from('email_subscribers')
     .insert({ email, source: source ?? 'newsletter', lead_magnet: lead_magnet ?? null, page_url: page_url ?? null })
+    .select()
 
   // 23505 = unique_violation — email already exists, treat as success
   if (error && error.code !== '23505') {
-    console.error('[api/newsletter] Supabase insert error:', JSON.stringify(error))
-    return NextResponse.json({ error: 'Failed to save' }, { status: 500 })
+    console.error(`[api/newsletter] Supabase insert error (HTTP ${status} ${statusText}):`, JSON.stringify(error))
+    return NextResponse.json({ error: 'Failed to save', debug: { code: error.code, message: error.message, hint: error.hint, status } }, { status: 500 })
   }
+
+  console.log(`[api/newsletter] Insert success for ${email}`, data ? `rows: ${data.length}` : '(no select data)')
 
   // Send branded welcome email via Resend (fire-and-forget — don't block response)
   sendWelcomeEmail({ email, leadMagnet: lead_magnet }).catch((err) => {
