@@ -2,6 +2,7 @@
 // SEO target: "TikTok Creativity Program Earnings Calculator"
 
 import type { Metadata } from 'next'
+import Image from 'next/image'
 import Link from 'next/link'
 import { BarChart2, TrendingUp, Zap, ArrowRight } from 'lucide-react'
 import {
@@ -351,63 +352,118 @@ export default function EarningsCalculatorPage() {
               <div className="grid gap-3 md:grid-cols-2 lg:grid-cols-3">
                 <Link
                   href="/guides/how-much-does-tiktok-pay-per-view"
-                  className="group flex flex-col rounded-xl border border-border-default bg-white p-5 transition-all duration-150 hover:border-brand-primary hover:shadow-sm"
+                  className="group flex flex-col rounded-xl border border-border-default bg-white overflow-hidden transition-all duration-150 hover:border-brand-primary hover:shadow-sm"
                 >
-                  <h3 className="text-sm font-semibold text-brand-ink">How Much Does TikTok Pay?</h3>
-                  <p className="mt-1.5 flex-1 text-xs leading-[1.6] text-text-secondary">
-                    Complete earnings breakdown with real creator examples and RPM data.
-                  </p>
-                  <span className="mt-3 flex items-center gap-1 text-xs font-semibold text-brand-primary transition-transform duration-200 group-hover:translate-x-0.5">
-                    Read guide <ArrowRight className="h-3.5 w-3.5" aria-hidden />
-                  </span>
+                  <div className="relative aspect-[16/9] w-full">
+                    <Image
+                      src="/images/guides/hero-how-much-does-tiktok-pay-per-view.webp"
+                      alt="How Much Does TikTok Pay?"
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    />
+                  </div>
+                  <div className="flex flex-col flex-1 p-5">
+                    <h3 className="text-sm font-semibold text-brand-ink">How Much Does TikTok Pay?</h3>
+                    <p className="mt-1.5 flex-1 text-xs leading-[1.6] text-text-secondary">
+                      Complete earnings breakdown with real creator examples and RPM data.
+                    </p>
+                    <span className="mt-3 flex items-center gap-1 text-xs font-semibold text-brand-primary transition-transform duration-200 group-hover:translate-x-0.5">
+                      Read guide <ArrowRight className="h-3.5 w-3.5" aria-hidden />
+                    </span>
+                  </div>
                 </Link>
                 <Link
                   href="/guides/optimize-rpm"
-                  className="group flex flex-col rounded-xl border border-border-default bg-white p-5 transition-all duration-150 hover:border-brand-primary hover:shadow-sm"
+                  className="group flex flex-col rounded-xl border border-border-default bg-white overflow-hidden transition-all duration-150 hover:border-brand-primary hover:shadow-sm"
                 >
-                  <h3 className="text-sm font-semibold text-brand-ink">How to Optimize Your RPM</h3>
-                  <p className="mt-1.5 flex-1 text-xs leading-[1.6] text-text-secondary">
-                    Actionable strategies to increase your revenue per 1,000 views.
-                  </p>
-                  <span className="mt-3 flex items-center gap-1 text-xs font-semibold text-brand-primary transition-transform duration-200 group-hover:translate-x-0.5">
-                    Read guide <ArrowRight className="h-3.5 w-3.5" aria-hidden />
-                  </span>
+                  <div className="relative aspect-[16/9] w-full">
+                    <Image
+                      src="/images/guides/hero-optimize-rpm.webp"
+                      alt="How to Optimize Your RPM"
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    />
+                  </div>
+                  <div className="flex flex-col flex-1 p-5">
+                    <h3 className="text-sm font-semibold text-brand-ink">How to Optimize Your RPM</h3>
+                    <p className="mt-1.5 flex-1 text-xs leading-[1.6] text-text-secondary">
+                      Actionable strategies to increase your revenue per 1,000 views.
+                    </p>
+                    <span className="mt-3 flex items-center gap-1 text-xs font-semibold text-brand-primary transition-transform duration-200 group-hover:translate-x-0.5">
+                      Read guide <ArrowRight className="h-3.5 w-3.5" aria-hidden />
+                    </span>
+                  </div>
                 </Link>
                 <Link
                   href="/calculators/rpm-by-country"
-                  className="group flex flex-col rounded-xl border border-border-default bg-white p-5 transition-all duration-150 hover:border-brand-primary hover:shadow-sm"
+                  className="group flex flex-col rounded-xl border border-border-default bg-white overflow-hidden transition-all duration-150 hover:border-brand-primary hover:shadow-sm"
                 >
-                  <h3 className="text-sm font-semibold text-brand-ink">RPM by Country Calculator</h3>
-                  <p className="mt-1.5 flex-1 text-xs leading-[1.6] text-text-secondary">
-                    Compare RPM rates by country and model weighted earnings by audience geography.
-                  </p>
-                  <span className="mt-3 flex items-center gap-1 text-xs font-semibold text-brand-primary transition-transform duration-200 group-hover:translate-x-0.5">
-                    Open calculator <ArrowRight className="h-3.5 w-3.5" aria-hidden />
-                  </span>
+                  <div className="relative aspect-[16/9] w-full">
+                    <Image
+                      src="/images/calculators/hero-rpm.webp"
+                      alt="RPM by Country Calculator"
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    />
+                  </div>
+                  <div className="flex flex-col flex-1 p-5">
+                    <h3 className="text-sm font-semibold text-brand-ink">RPM by Country Calculator</h3>
+                    <p className="mt-1.5 flex-1 text-xs leading-[1.6] text-text-secondary">
+                      Compare RPM rates by country and model weighted earnings by audience geography.
+                    </p>
+                    <span className="mt-3 flex items-center gap-1 text-xs font-semibold text-brand-primary transition-transform duration-200 group-hover:translate-x-0.5">
+                      Open calculator <ArrowRight className="h-3.5 w-3.5" aria-hidden />
+                    </span>
+                  </div>
                 </Link>
                 <Link
                   href="/guides/additional-reward-criteria-2025"
-                  className="group flex flex-col rounded-xl border border-border-default bg-white p-5 transition-all duration-150 hover:border-brand-primary hover:shadow-sm"
+                  className="group flex flex-col rounded-xl border border-border-default bg-white overflow-hidden transition-all duration-150 hover:border-brand-primary hover:shadow-sm"
                 >
-                  <h3 className="text-sm font-semibold text-brand-ink">Additional Reward Criteria</h3>
-                  <p className="mt-1.5 flex-1 text-xs leading-[1.6] text-text-secondary">
-                    How to qualify for the +20% bonus on your Creator Rewards earnings.
-                  </p>
-                  <span className="mt-3 flex items-center gap-1 text-xs font-semibold text-brand-primary transition-transform duration-200 group-hover:translate-x-0.5">
-                    Read guide <ArrowRight className="h-3.5 w-3.5" aria-hidden />
-                  </span>
+                  <div className="relative aspect-[16/9] w-full">
+                    <Image
+                      src="/images/guides/hero-additional-reward-criteria-2025.webp"
+                      alt="Additional Reward Criteria"
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    />
+                  </div>
+                  <div className="flex flex-col flex-1 p-5">
+                    <h3 className="text-sm font-semibold text-brand-ink">Additional Reward Criteria</h3>
+                    <p className="mt-1.5 flex-1 text-xs leading-[1.6] text-text-secondary">
+                      How to qualify for the +20% bonus on your Creator Rewards earnings.
+                    </p>
+                    <span className="mt-3 flex items-center gap-1 text-xs font-semibold text-brand-primary transition-transform duration-200 group-hover:translate-x-0.5">
+                      Read guide <ArrowRight className="h-3.5 w-3.5" aria-hidden />
+                    </span>
+                  </div>
                 </Link>
                 <Link
                   href="/calculators/follower-income-estimator"
-                  className="group flex flex-col rounded-xl border border-border-default bg-white p-5 transition-all duration-150 hover:border-brand-primary hover:shadow-sm"
+                  className="group flex flex-col rounded-xl border border-border-default bg-white overflow-hidden transition-all duration-150 hover:border-brand-primary hover:shadow-sm"
                 >
-                  <h3 className="text-sm font-semibold text-brand-ink">Follower Income Estimator</h3>
-                  <p className="mt-1.5 flex-1 text-xs leading-[1.6] text-text-secondary">
-                    Project earnings based on follower count, engagement rate, and posting frequency.
-                  </p>
-                  <span className="mt-3 flex items-center gap-1 text-xs font-semibold text-brand-primary transition-transform duration-200 group-hover:translate-x-0.5">
-                    Open calculator <ArrowRight className="h-3.5 w-3.5" aria-hidden />
-                  </span>
+                  <div className="relative aspect-[16/9] w-full">
+                    <Image
+                      src="/images/calculators/hero-follower.webp"
+                      alt="Follower Income Estimator"
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    />
+                  </div>
+                  <div className="flex flex-col flex-1 p-5">
+                    <h3 className="text-sm font-semibold text-brand-ink">Follower Income Estimator</h3>
+                    <p className="mt-1.5 flex-1 text-xs leading-[1.6] text-text-secondary">
+                      Project earnings based on follower count, engagement rate, and posting frequency.
+                    </p>
+                    <span className="mt-3 flex items-center gap-1 text-xs font-semibold text-brand-primary transition-transform duration-200 group-hover:translate-x-0.5">
+                      Open calculator <ArrowRight className="h-3.5 w-3.5" aria-hidden />
+                    </span>
+                  </div>
                 </Link>
               </div>
             </div>
