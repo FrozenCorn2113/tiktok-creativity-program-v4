@@ -143,29 +143,28 @@ All 4 over-500K creators replaced. Beauty raised to 5 creators. All 45 creators 
 ## Pending Review
 <!-- Agents add completed deliverables here. Bernard reviews and routes next. -->
 
-- **What:** Fixed broken email subscription flow. Root cause: Vercel's Supabase integration was injecting wrong project credentials (onmqirmoeovyonqloaxl) at runtime, overriding all standard env var names. Fixed by hardcoding correct Supabase URL/key in the API route and switching from JS client to direct REST API. Also added TCP_SUPABASE_URL/KEY env vars to Vercel. E2E tested: insert + welcome email both working.
-- **Where:** `src/app/api/newsletter/route.ts`, `src/app/api/email/route.ts`
-- **Status:** READY FOR REVIEW
-- **Note:** Brett should disconnect or reconfigure the Vercel Supabase integration (it's linked to a different Supabase project). Until then, the hardcoded values in route.ts are the workaround.
-
-- **What:** Full audit of all 43 TCP creators across 8 niches — verified handles, follower counts, account status, 500K flag check. 11 must-replace, 4 handle/description fixes, 6 need direct TikTok verification. Includes replacement suggestions for every flagged creator.
-- **Where:** `projects/tiktok-creativity-program/creator-audit.md`
+- **What:** Tools page fix: equipment cards now link to guide pages (not Amazon) with hero image thumbnails. Added Cameras card. AffiliateCardGrid supports internal links.
+- **Where:** `src/app/tools/page.tsx`, `src/components/affiliate/affiliate-card-grid.tsx`, `src/app/tools/ToolsTabs.tsx` (commit 8f7e981e)
 - **Status:** READY FOR REVIEW
 
-- **What:** Replaced SVG placeholder icons with real hero images on the niche index page (both card grid and ultimate guides list)
-- **Where:** `src/app/niche/page.tsx`
+- **What:** 88 guide hero images generated for all TCP guide pages (8 critical niche heroes + 80 guide pages). Flat vector illustration style matching Landpress brand (orange+black on white). Zero missing hero images across all 107 guides.
+- **Where:** `public/images/guides/hero-*.webp` (88 new files)
 - **Status:** READY FOR REVIEW
 
-- **What:** Fixed creator data per Christopher's audit -- corrected 4 handles/counts, removed 13 unverified/oversized creators, deleted corresponding screenshots
-- **Where:** `src/app/niche/[slug]/niche-data.ts`
+- **What:** Broken internal link audit: scanned 1,002 internal links across all .tsx/.ts/.mdx files. Fixed 2 broken guide links (tiktok-video-quality, how-to-increase-rpm). All niche page related guides, calculator links, and cross-references verified valid.
+- **Where:** `content/guides/best-ring-lights-tiktok.mdx`, `content/guides/tiktok-creativity-program-mexico.mdx` (commit e8867375)
 - **Status:** READY FOR REVIEW
 
-- **What:** Full link audit — all TODO affiliate entries researched, external MDX links verified, affiliate programs found for 11 of 13 TODO items, priority action list compiled
-- **Where:** `projects/tiktok-creativity-program/link-audit.md`
+- **What:** TikTok Creativity Program Mexico guide (2,400w, eligibility + RPM + payouts + language strategy + FAQ)
+- **Where:** `content/guides/tiktok-creativity-program-mexico.mdx`
 - **Status:** READY FOR REVIEW
 
-- **What:** Resolved all 13 TODO/placeholder affiliate entries in affiliateLinks.ts with direct URLs (Stan Store URL corrected, all TODO comments removed)
-- **Where:** `src/lib/affiliateLinks.ts`
+- **What:** Responsive table fix -- all 85 MDX guides with tables now properly contained on mobile (horizontal scroll within wrapper, reduced padding/font on small screens, no page overflow)
+- **Where:** `src/app/globals.css` (commit d76dd0d1)
+- **Status:** READY FOR REVIEW
+
+- **What:** Fixed email subscribe/capture box 500 error. Root cause: Vercel Supabase integration was overriding NEXT_PUBLIC_SUPABASE_URL and NEXT_PUBLIC_SUPABASE_ANON_KEY with credentials from a different Supabase project (onmqirmoeovyonqloaxl). Hardcoded correct URL and anon key in the newsletter API route. Also removed conflicting TCP_SUPABASE_URL/KEY env vars from Vercel. All email capture forms (homepage, dark section, inline, popup, mobile sticky, lead magnet gate) now work.
+- **Where:** `src/app/api/newsletter/route.ts` (commit 2f043944)
 - **Status:** READY FOR REVIEW
 
 ## Work Log
@@ -202,6 +201,8 @@ All 4 over-500K creators replaced. Beauty raised to 5 creators. All 45 creators 
 
 ## Done
 <!-- Completed and locked items. Archive periodically. -->
+- [2026-03-26] Niche index hero images fix (Devan): LOCKED 2026-03-26 — commit 669da9c5, visually verified: all 8 hero images showing in card grid, all 8 thumbnails in guides list, zero broken images, zero console errors.
+- [2026-03-26] Bernard morning cycle -- 8 Pending Review items assessed. 6 LOCKED: UNVERIFIED tag removal (6273ccaa), email subscription fix (REST API workaround), creator audit (43 creators, actionable), badge/pill removal (5a07f85d, badge.tsx deleted), link audit (179 lines, 13 TODO items resolved), affiliate link resolution (0 TODOs, all real URLs). Creator data fixes (niche-data.ts) conditionally LOCKED (57 entries plausible with replacements). Niche index hero images REVISION NEEDED (page still text-only, no hero images found).
 - [2026-03-25] Bernard ops review -- Creator sweep revision LOCKED (commit 58a55caf): 4 over-500K creators replaced, beauty raised to 5 creators, all 45 under 500K cap. DR1+DR2 design fixes confirmed LOCKED (commit bace7003). DR3 niche index redesign DEFERRED (page already functional). Build verified clean.
 - [2026-03-25] Evening ops sprint -- 6 items LOCKED:
   - Navbar logo swap (commit 11436746). LOCKED.
