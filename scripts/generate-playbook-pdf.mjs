@@ -664,12 +664,15 @@ const fullHtml = `<!DOCTYPE html>
 
   /* ─── Typography ────────────────────────────────────────────────── */
   h2 {
-    font-size: 15pt;
-    font-weight: 700;
-    color: var(--navy);
-    margin: 28pt 0 12pt 0;
-    padding-bottom: 6pt;
-    border-bottom: 2px solid var(--orange);
+    font-size: 16pt;
+    font-weight: 800;
+    color: white;
+    margin: 0 -50pt 20pt -50pt;
+    padding: 20pt 50pt;
+    border-bottom: none;
+    background: var(--navy);
+    border-left: 6pt solid var(--orange);
+    letter-spacing: 0.3px;
     page-break-before: always;
     break-before: page;
     page-break-after: avoid;
@@ -964,7 +967,8 @@ const fullHtml = `<!DOCTYPE html>
 
   .qrc-page h2 {
     color: white;
-    border-bottom-color: var(--orange);
+    background: rgba(255,255,255,0.08);
+    border-left-color: var(--orange);
     font-size: 14pt;
   }
 
@@ -1088,7 +1092,7 @@ const fullHtml = `<!DOCTYPE html>
     break-before: page;
   }
 
-  /* Suppress page break on first h2 right after a section banner */
+  /* First h2 right after a section banner stays on same page as banner */
   .section-content > h2:first-child {
     page-break-before: auto;
     break-before: auto;
