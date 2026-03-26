@@ -25,7 +25,7 @@ export function LeadMagnetGate({ leadMagnet, title, description }: LeadMagnetGat
     if (!email) return;
     setStatus("loading");
     try {
-      const res = await fetch("/api/email", {
+      const res = await fetch("/api/newsletter", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({

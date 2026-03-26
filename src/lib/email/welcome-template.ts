@@ -17,6 +17,8 @@
 const SITE_URL = 'https://tiktokcreativityprogram.com'
 
 interface WelcomeEmailOptions {
+  /** Subscriber email address (used for unsubscribe link) */
+  email?: string | null
   /** Which lead magnet they signed up for */
   leadMagnet?: string | null
   /** Direct download URL or guide URL */
@@ -61,8 +63,9 @@ export function buildWelcomeEmail(options: WelcomeEmailOptions = {}): {
   subject: string
   html: string
 } {
-  const { leadMagnet, downloadUrl } = options
+  const { email, leadMagnet, downloadUrl } = options
   const mainDownloadUrl = getDownloadUrl(leadMagnet, downloadUrl)
+  const unsubscribeUrl = `${SITE_URL}/unsubscribe?email=${encodeURIComponent(email || '')}`
 
   // Subject line from sequence: "Here's your TikTok cheat sheet"
   const subject = leadMagnet ? "Here's your TikTok cheat sheet" : 'Welcome to TikTok Creativity Program'
@@ -262,7 +265,7 @@ export function buildWelcomeEmail(options: WelcomeEmailOptions = {}): {
               </p>
               <p style="margin:0;font-family:'Manrope',Arial,Helvetica,sans-serif;font-size:11px;color:#9CA3AF;line-height:1.5;">
                 You received this because you signed up on our site.<br>
-                <a href="${SITE_URL}/unsubscribe?email={{email}}" style="color:#9CA3AF;text-decoration:underline;">Unsubscribe</a>
+                <a href="${unsubscribeUrl}" style="color:#9CA3AF;text-decoration:underline;">Unsubscribe</a>
               </p>
             </td>
           </tr>

@@ -22,7 +22,7 @@ export async function sendWelcomeEmail(
   }
 
   const { email, leadMagnet, downloadUrl } = options
-  const { subject, html } = buildWelcomeEmail({ leadMagnet, downloadUrl })
+  const { subject, html } = buildWelcomeEmail({ email, leadMagnet, downloadUrl })
 
   try {
     const { error } = await resend.emails.send({
