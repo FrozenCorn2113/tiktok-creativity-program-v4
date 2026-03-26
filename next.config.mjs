@@ -30,6 +30,9 @@ const securityHeaders = [
 const nextConfig = {
   reactStrictMode: true,
   pageExtensions: ['ts', 'tsx', 'mdx'],
+  images: {
+    unoptimized: true,
+  },
   async headers() {
     return [{ source: '/(.*)', headers: securityHeaders }]
   },
