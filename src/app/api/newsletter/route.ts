@@ -93,7 +93,11 @@ export async function POST(request: Request) {
 
   if (!result.ok) {
     console.error('[api/newsletter] Insert failed:', result.error)
-    return NextResponse.json({ error: 'Failed to save' }, { status: 500 })
+    const { url } = getSupabaseConfig()
+    return NextResponse.json({
+      error: 'Failed to save',
+      _d: { e: result.error, u: url?.substring(0, 35) },
+    }, { status: 500 })
   }
 
   // Send branded welcome email via Resend (fire-and-forget)
