@@ -16,9 +16,10 @@ const bodySchema = z.object({
 })
 
 function getSupabaseConfig() {
-  // Prefer non-public env vars (not overridden by Supabase integration)
-  const url = process.env.SUPABASE_URL || process.env.NEXT_PUBLIC_SUPABASE_URL
-  const key = process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.SUPABASE_ANON_KEY || process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
+  // Use TCP_ prefixed env vars to avoid Vercel's Supabase integration
+  // overriding with the wrong project's credentials at runtime
+  const url = process.env.TCP_SUPABASE_URL || process.env.SUPABASE_URL || process.env.NEXT_PUBLIC_SUPABASE_URL
+  const key = process.env.TCP_SUPABASE_KEY || process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.SUPABASE_ANON_KEY || process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
   return { url, key }
 }
 
