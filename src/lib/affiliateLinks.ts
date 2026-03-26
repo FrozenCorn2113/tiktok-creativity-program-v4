@@ -12,35 +12,35 @@ export const affiliateLinks: Record<string, string> = {
 
   // ── TIER 1: Easy approval — apply now ──
 
-  // TODO: Replace with affiliate link after approval — Expected: 30% for 1 year
+  // Later — direct link (no affiliate yet)
   later: 'https://later.com/',
   // Buffer — 25% monthly for 12 months
   buffer: 'https://join.buffer.com/tik-tok-creativity-program',
-  // TODO: Replace with affiliate link after approval (via ShareASale/CJ) — Expected: 30-50% tiered
+  // Filmora — direct link (no affiliate yet)
   filmora: 'https://filmora.wondershare.com/',
   // Kit (formerly ConvertKit) — 50% recurring first 12 months; Bronze tier (10+ customers) = ongoing
   kit: 'https://partners.kit.com/o474ub5e1gtu',
   // Kit Mailchimp switcher campaign — dedicated link from Kit affiliate team (Zoe)
   'kit-mailchimp': 'https://partners.kit.com/21jzv',
-  // TODO: Replace with affiliate link after approval — Expected: up to $399 one-time + up to 20% recurring
+  // Kajabi — direct link (no affiliate yet)
   kajabi: 'https://kajabi.com/',
-  // TODO: Replace with affiliate link after approval — Expected: 10% platform referrals
+  // Gumroad — direct link (no affiliate program exists)
   gumroad: 'https://gumroad.com/',
   // No affiliate program available — direct link only
   canva: 'https://www.canva.com/',
 
   // ── TIER 2: Manual review — apply soon ──
 
-  // TODO: Replace with affiliate link after approval — Expected: 20% recurring (requires Stan subscription)
-  'stan-store': 'https://stan.store/',
-  // TODO: Replace with affiliate link after approval — Expected: subscription discounts, then 50/50 at Ambassador
+  // Stan Store — direct link (no affiliate yet)
+  'stan-store': 'https://www.stanstore.com/',
+  // Epidemic Sound — direct link (no affiliate yet)
   'epidemic-sound': 'https://www.epidemicsound.com/',
 
   // ── TIER 3: Need traffic first ──
 
-  // TODO: Replace with affiliate link after approval — Expected: $30 per signup (selective, 60-day review)
+  // Artlist — direct link (no affiliate yet)
   artlist: 'https://artlist.io/',
-  // TODO: Replace with affiliate link after approval — Expected: up to $36/new Pro subscriber (currently CLOSED)
+  // Canva Pro — direct link (affiliate program currently closed)
   'canva-pro': 'https://www.canva.com/pro/',
   // No affiliate program — Adobe has Impact.com program (we were denied)
   'adobe-cc': 'https://www.adobe.com/creativecloud.html',
@@ -50,17 +50,17 @@ export const affiliateLinks: Record<string, string> = {
   // No confirmed affiliate program
   'sprout-social': 'https://sproutsocial.com/',
 
-  // ── Clipping Tools — placeholder direct links ──
+  // ── Clipping Tools ──
 
-  // No confirmed affiliate program — check PartnerStack
+  // OpusClip — direct link (no affiliate yet)
   opusclip: 'https://www.opus.pro',
-  // No confirmed affiliate program
+  // Vizard — direct link (no affiliate yet)
   vizard: 'https://vizard.ai',
-  // No confirmed affiliate program
+  // Submagic — direct link (no affiliate yet)
   submagic: 'https://www.submagic.co',
-  // No confirmed affiliate program
+  // Kapwing — direct link (no affiliate yet)
   kapwing: 'https://www.kapwing.com',
-  // TODO: Replace with affiliate link after approval — check Descript partner program
+  // Descript — direct link (no affiliate yet)
   descript: 'https://www.descript.com',
   // No confirmed affiliate program
   pictory: 'https://pictory.ai',
