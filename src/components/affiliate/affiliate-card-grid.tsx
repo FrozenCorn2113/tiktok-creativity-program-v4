@@ -61,9 +61,9 @@ export function AffiliateCardGrid({
   internal = false,
 }: AffiliateCardGridProps) {
   const logoSrc = imageUrl ?? `/images/tools/${slug}-logo.png`;
-  // Clearbit Logo API returns a proper brand logo (not a 16px favicon)
+  // Google Favicon API — reliable, supports size param for good quality
   const logoDomain = domain ?? `${slug.replace(/-/g, "")}.com`;
-  const clearbitUrl = `https://logo.clearbit.com/${logoDomain}`;
+  const googleFaviconUrl = `https://www.google.com/s2/favicons?domain=${logoDomain}&sz=128`;
   // Final fallback: styled letter badge as SVG data URI — looks intentional, never broken
   const letter = toolName.charAt(0).toUpperCase();
   const letterBadge = `data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='48' viewBox='0 0 48 48'%3E%3Crect width='48' height='48' rx='10' fill='%23FFF3E8'/%3E%3Ctext x='24' y='33' font-family='system-ui%2C sans-serif' font-size='22' font-weight='700' fill='%23C2622A' text-anchor='middle'%3E${letter}%3C/text%3E%3C/svg%3E`;
@@ -83,8 +83,8 @@ export function AffiliateCardGrid({
           ].join(" ")}
           onError={(e) => {
             if (!imageUrl && e.currentTarget.src.includes('/images/tools/')) {
-              // Stage 1: Clearbit
-              e.currentTarget.src = clearbitUrl;
+              // Stage 1: Google Favicon
+              e.currentTarget.src = googleFaviconUrl;
             } else if (!e.currentTarget.src.startsWith('data:')) {
               // Stage 2: letter badge (always available, looks intentional)
               e.currentTarget.src = letterBadge;

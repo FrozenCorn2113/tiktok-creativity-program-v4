@@ -23,9 +23,9 @@ export function AffiliateCardInline({
   ctaText,
   domain,
 }: AffiliateCardInlineProps) {
-  // Clearbit Logo API returns proper brand logos (not 16px favicons)
+  // Google Favicon API — reliable, supports size param for good quality
   const logoDomain = domain ?? `${slug.replace(/-/g, "")}.com`;
-  const clearbitUrl = `https://logo.clearbit.com/${logoDomain}`;
+  const googleFaviconUrl = `https://www.google.com/s2/favicons?domain=${logoDomain}&sz=128`;
   // Final fallback: styled letter badge — always available, looks intentional
   const letter = toolName.charAt(0).toUpperCase();
   const letterBadge = `data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='48' viewBox='0 0 48 48'%3E%3Crect width='48' height='48' rx='10' fill='%23FFF3E8'/%3E%3Ctext x='24' y='33' font-family='system-ui%2C sans-serif' font-size='22' font-weight='700' fill='%23C2622A' text-anchor='middle'%3E${letter}%3C/text%3E%3C/svg%3E`;
@@ -38,7 +38,7 @@ export function AffiliateCardInline({
         <span className="text-[11px] font-manrope font-medium">Affiliate</span>
       </div>
 
-      {/* Tool logo — try local file, fallback to Clearbit, fallback to letter badge */}
+      {/* Tool logo — try local file, fallback to Google Favicon, fallback to letter badge */}
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
         src={`/images/tools/${slug}-logo.png`}
@@ -46,8 +46,8 @@ export function AffiliateCardInline({
         className="w-12 h-12 rounded-lg object-contain flex-shrink-0 border border-border-default bg-white p-1"
         onError={(e) => {
           if (e.currentTarget.src.includes('/images/tools/')) {
-            // Stage 1 → Clearbit proper logo
-            e.currentTarget.src = clearbitUrl;
+            // Stage 1 → Google Favicon (128px, reliable)
+            e.currentTarget.src = googleFaviconUrl;
           } else {
             // Stage 2 → letter badge (always available, looks intentional)
             e.currentTarget.src = letterBadge;
