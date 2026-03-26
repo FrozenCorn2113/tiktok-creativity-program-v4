@@ -5,6 +5,17 @@ import { Download, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 
+/** Map lead magnet identifiers to their direct PDF download paths */
+const LEAD_MAGNET_PDFS: Record<string, string> = {
+  'rpm-cheat-sheet': '/downloads/tcp-creator-rewards-playbook-2026.pdf',
+  'RPM Cheat Sheet': '/downloads/tcp-creator-rewards-playbook-2026.pdf',
+  'Get the Free RPM Cheat Sheet': '/downloads/tcp-creator-rewards-playbook-2026.pdf',
+  'eligibility-checklist': '/downloads/tcp-eligibility-checklist-2026.pdf',
+  'Eligibility Checklist': '/downloads/tcp-eligibility-checklist-2026.pdf',
+  'Get the Free Creator Rewards Checklist': '/downloads/tcp-eligibility-checklist-2026.pdf',
+  'Creator Rewards Checklist': '/downloads/tcp-eligibility-checklist-2026.pdf',
+};
+
 interface LeadMagnetGateProps {
   leadMagnet: string;
   title: string;
@@ -47,15 +58,37 @@ export function LeadMagnetGate({ leadMagnet, title, description }: LeadMagnetGat
   };
 
   if (status === "success") {
+    const pdfUrl = LEAD_MAGNET_PDFS[leadMagnet] || '/downloads/tcp-creator-rewards-playbook-2026.pdf';
+    const isChecklist = leadMagnet.toLowerCase().includes('eligibility') || leadMagnet.toLowerCase().includes('checklist');
+    const pdfLabel = isChecklist ? 'Eligibility Checklist' : 'Creator Rewards Playbook';
+    const secondaryPdfUrl = isChecklist
+      ? '/downloads/tcp-creator-rewards-playbook-2026.pdf'
+      : '/downloads/tcp-eligibility-checklist-2026.pdf';
+    const secondaryLabel = isChecklist ? 'Creator Rewards Playbook' : 'Eligibility Checklist';
+
     return (
       <div className="rounded-2xl bg-brand-primarySoft border border-brand-primary/20 p-8 text-center">
         <Download className="w-8 h-8 text-brand-primary mx-auto mb-3" aria-hidden />
         <p className="font-bold text-brand-ink text-lg mb-1">
-          You&apos;re in! Check your inbox.
+          You&apos;re in! Your PDF is ready.
         </p>
-        <p className="text-text-secondary text-sm">
-          We sent your download link. You can also print or save this page as PDF using your
-          browser&apos;s print function (Ctrl+P / Cmd+P).
+        <p className="text-text-secondary text-sm mb-4">
+          We also sent download links to your inbox.
+        </p>
+        <a
+          href={pdfUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-2 bg-brand-primary text-brand-ink font-bold rounded-full px-6 py-3 text-sm hover:bg-brand-primaryHover transition-colors"
+        >
+          <Download className="w-4 h-4" aria-hidden />
+          Download: {pdfLabel} (PDF)
+        </a>
+        <p className="text-text-secondary text-sm mt-4">
+          Also available:{' '}
+          <a href={secondaryPdfUrl} target="_blank" rel="noopener noreferrer" className="text-brand-ink font-semibold underline hover:no-underline">
+            {secondaryLabel} (PDF)
+          </a>
         </p>
       </div>
     );

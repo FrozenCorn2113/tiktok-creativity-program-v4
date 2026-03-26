@@ -25,7 +25,18 @@ interface WelcomeEmailOptions {
   downloadUrl?: string | null
 }
 
-/** Map lead magnet identifiers to their page URLs */
+/** Map lead magnet identifiers to their direct PDF download URLs */
+const LEAD_MAGNET_PDF_URLS: Record<string, string> = {
+  'rpm-cheat-sheet': '/downloads/tcp-creator-rewards-playbook-2026.pdf',
+  'RPM Cheat Sheet': '/downloads/tcp-creator-rewards-playbook-2026.pdf',
+  'Get the Free RPM Cheat Sheet': '/downloads/tcp-creator-rewards-playbook-2026.pdf',
+  'eligibility-checklist': '/downloads/tcp-eligibility-checklist-2026.pdf',
+  'Eligibility Checklist': '/downloads/tcp-eligibility-checklist-2026.pdf',
+  'Get the Free Creator Rewards Checklist': '/downloads/tcp-eligibility-checklist-2026.pdf',
+  'Creator Rewards Checklist': '/downloads/tcp-eligibility-checklist-2026.pdf',
+}
+
+/** Map lead magnet identifiers to their landing page URLs (fallback) */
 const LEAD_MAGNET_URLS: Record<string, string> = {
   'rpm-cheat-sheet': '/lead-magnets/rpm-cheat-sheet',
   'RPM Cheat Sheet': '/lead-magnets/rpm-cheat-sheet',
@@ -43,8 +54,16 @@ const LEAD_MAGNET_URLS: Record<string, string> = {
   'Viral Video Worksheet': '/resources/viral-video-worksheet',
 }
 
+function getPdfUrl(leadMagnet?: string | null): string {
+  if (leadMagnet && LEAD_MAGNET_PDF_URLS[leadMagnet]) return `${SITE_URL}${LEAD_MAGNET_PDF_URLS[leadMagnet]}`
+  // Default to the playbook PDF
+  return `${SITE_URL}/downloads/tcp-creator-rewards-playbook-2026.pdf`
+}
+
 function getDownloadUrl(leadMagnet?: string | null, downloadUrl?: string | null): string {
   if (downloadUrl) return downloadUrl.startsWith('http') ? downloadUrl : `${SITE_URL}${downloadUrl}`
+  // Prefer direct PDF link
+  if (leadMagnet && LEAD_MAGNET_PDF_URLS[leadMagnet]) return `${SITE_URL}${LEAD_MAGNET_PDF_URLS[leadMagnet]}`
   if (leadMagnet && LEAD_MAGNET_URLS[leadMagnet]) return `${SITE_URL}${LEAD_MAGNET_URLS[leadMagnet]}`
   return `${SITE_URL}/guides`
 }
@@ -75,6 +94,9 @@ export function buildWelcomeEmail(options: WelcomeEmailOptions = {}): {
 
   // Build the lead magnet delivery section based on what they signed up for
   let leadMagnetSection = ''
+  const playbookPdfUrl = `${SITE_URL}/downloads/tcp-creator-rewards-playbook-2026.pdf`
+  const checklistPdfUrl = `${SITE_URL}/downloads/tcp-eligibility-checklist-2026.pdf`
+
   if (isRpmCheatSheet(leadMagnet)) {
     leadMagnetSection = `
       <p style="margin:0 0 16px 0;font-family:'Manrope',Arial,Helvetica,sans-serif;font-size:15px;color:#111827;line-height:1.65;">
@@ -84,14 +106,14 @@ export function buildWelcomeEmail(options: WelcomeEmailOptions = {}): {
         <tr>
           <td style="background-color:#F4A261;border-radius:999px;">
             <!--[if mso]>
-            <v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="${mainDownloadUrl}" style="height:48px;v-text-anchor:middle;width:280px;" arcsize="50%" fillcolor="#F4A261" stroke="f">
+            <v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="${playbookPdfUrl}" style="height:48px;v-text-anchor:middle;width:320px;" arcsize="50%" fillcolor="#F4A261" stroke="f">
               <w:anchorlock/>
-              <center style="color:#0B0F1A;font-family:Arial,Helvetica,sans-serif;font-size:15px;font-weight:bold;">Download: TikTok RPM Cheat Sheet</center>
+              <center style="color:#0B0F1A;font-family:Arial,Helvetica,sans-serif;font-size:15px;font-weight:bold;">Download: Creator Rewards Playbook (PDF)</center>
             </v:roundrect>
             <![endif]-->
             <!--[if !mso]><!-->
-            <a href="${mainDownloadUrl}" target="_blank" style="display:inline-block;padding:14px 28px;font-family:'Manrope',Arial,Helvetica,sans-serif;font-size:15px;font-weight:700;color:#0B0F1A;text-decoration:none;border-radius:999px;background-color:#F4A261;line-height:1;">
-              Download: TikTok RPM Cheat Sheet
+            <a href="${playbookPdfUrl}" target="_blank" style="display:inline-block;padding:14px 28px;font-family:'Manrope',Arial,Helvetica,sans-serif;font-size:15px;font-weight:700;color:#0B0F1A;text-decoration:none;border-radius:999px;background-color:#F4A261;line-height:1;">
+              Download: Creator Rewards Playbook (PDF)
             </a>
             <!--<![endif]-->
           </td>
@@ -104,7 +126,7 @@ export function buildWelcomeEmail(options: WelcomeEmailOptions = {}): {
         You might also find the eligibility checklist useful:
       </p>
       <p style="margin:0 0 20px 0;font-family:'Manrope',Arial,Helvetica,sans-serif;font-size:15px;line-height:1.65;">
-        <a href="${SITE_URL}/lead-magnets/eligibility-checklist" style="color:#0B0F1A;font-weight:700;text-decoration:underline;">Download: Creator Rewards Eligibility Checklist</a>
+        <a href="${checklistPdfUrl}" style="color:#0B0F1A;font-weight:700;text-decoration:underline;">Download: Eligibility Checklist (PDF)</a>
       </p>`
   } else if (isEligibilityChecklist(leadMagnet)) {
     leadMagnetSection = `
@@ -115,14 +137,14 @@ export function buildWelcomeEmail(options: WelcomeEmailOptions = {}): {
         <tr>
           <td style="background-color:#F4A261;border-radius:999px;">
             <!--[if mso]>
-            <v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="${mainDownloadUrl}" style="height:48px;v-text-anchor:middle;width:320px;" arcsize="50%" fillcolor="#F4A261" stroke="f">
+            <v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="${checklistPdfUrl}" style="height:48px;v-text-anchor:middle;width:320px;" arcsize="50%" fillcolor="#F4A261" stroke="f">
               <w:anchorlock/>
-              <center style="color:#0B0F1A;font-family:Arial,Helvetica,sans-serif;font-size:15px;font-weight:bold;">Download: Eligibility Checklist</center>
+              <center style="color:#0B0F1A;font-family:Arial,Helvetica,sans-serif;font-size:15px;font-weight:bold;">Download: Eligibility Checklist (PDF)</center>
             </v:roundrect>
             <![endif]-->
             <!--[if !mso]><!-->
-            <a href="${mainDownloadUrl}" target="_blank" style="display:inline-block;padding:14px 28px;font-family:'Manrope',Arial,Helvetica,sans-serif;font-size:15px;font-weight:700;color:#0B0F1A;text-decoration:none;border-radius:999px;background-color:#F4A261;line-height:1;">
-              Download: Eligibility Checklist
+            <a href="${checklistPdfUrl}" target="_blank" style="display:inline-block;padding:14px 28px;font-family:'Manrope',Arial,Helvetica,sans-serif;font-size:15px;font-weight:700;color:#0B0F1A;text-decoration:none;border-radius:999px;background-color:#F4A261;line-height:1;">
+              Download: Eligibility Checklist (PDF)
             </a>
             <!--<![endif]-->
           </td>
@@ -132,22 +154,22 @@ export function buildWelcomeEmail(options: WelcomeEmailOptions = {}): {
         Every requirement, the most common rejection reasons, and what to do if your application is denied.
       </p>
       <p style="margin:0 0 16px 0;font-family:'Manrope',Arial,Helvetica,sans-serif;font-size:15px;color:#111827;line-height:1.65;">
-        You might also find the RPM cheat sheet useful:
+        You might also find the Creator Rewards Playbook useful:
       </p>
       <p style="margin:0 0 20px 0;font-family:'Manrope',Arial,Helvetica,sans-serif;font-size:15px;line-height:1.65;">
-        <a href="${SITE_URL}/lead-magnets/rpm-cheat-sheet" style="color:#0B0F1A;font-weight:700;text-decoration:underline;">Download: TikTok RPM Cheat Sheet</a>
+        <a href="${playbookPdfUrl}" style="color:#0B0F1A;font-weight:700;text-decoration:underline;">Download: Creator Rewards Playbook (PDF)</a>
       </p>`
   } else {
-    // Generic signup — link both lead magnets
+    // Generic signup — link both PDFs
     leadMagnetSection = `
       <p style="margin:0 0 16px 0;font-family:'Manrope',Arial,Helvetica,sans-serif;font-size:15px;color:#111827;line-height:1.65;">
         Here are two free resources to get you started:
       </p>
       <p style="margin:0 0 8px 0;font-family:'Manrope',Arial,Helvetica,sans-serif;font-size:15px;line-height:1.65;">
-        <a href="${SITE_URL}/lead-magnets/rpm-cheat-sheet" style="color:#0B0F1A;font-weight:700;text-decoration:underline;">Download: TikTok RPM Cheat Sheet</a>
+        <a href="${playbookPdfUrl}" style="color:#0B0F1A;font-weight:700;text-decoration:underline;">Download: Creator Rewards Playbook (PDF)</a>
       </p>
       <p style="margin:0 0 20px 0;font-family:'Manrope',Arial,Helvetica,sans-serif;font-size:15px;line-height:1.65;">
-        <a href="${SITE_URL}/lead-magnets/eligibility-checklist" style="color:#0B0F1A;font-weight:700;text-decoration:underline;">Download: Creator Rewards Eligibility Checklist</a>
+        <a href="${checklistPdfUrl}" style="color:#0B0F1A;font-weight:700;text-decoration:underline;">Download: Eligibility Checklist (PDF)</a>
       </p>`
   }
 
@@ -198,6 +220,13 @@ export function buildWelcomeEmail(options: WelcomeEmailOptions = {}): {
                   </td>
                 </tr>
               </table>
+            </td>
+          </tr>
+
+          <!-- Hero image -->
+          <tr>
+            <td style="padding:24px 32px 0 32px;">
+              <img src="${SITE_URL}/images/email/lead-magnet-preview.webp" alt="Free PDF downloads" width="496" style="display:block;width:100%;max-width:496px;height:auto;border-radius:12px;" />
             </td>
           </tr>
 
