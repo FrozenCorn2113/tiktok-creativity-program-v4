@@ -16,6 +16,9 @@ interface Tool {
   priceRange: string;
   ctaText: string;
   isEditorsPick: boolean;
+  ctaUrl?: string;
+  imageUrl?: string;
+  internal?: boolean;
 }
 
 interface Category {
@@ -91,6 +94,9 @@ export function ToolsTabs({ categories }: ToolsTabsProps) {
                   priceRange={tool.priceRange}
                   ctaText={tool.ctaText}
                   isEditorsPick={tool.isEditorsPick}
+                  ctaUrl={tool.ctaUrl}
+                  imageUrl={tool.imageUrl}
+                  internal={tool.internal}
                 />
               ))}
             </div>
