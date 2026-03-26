@@ -3,3 +3,5 @@ node_modules
 .next
 ga-service-account.json
 .vercel
+tsconfig.tsbuildinfo
+supabase/.temp/
