@@ -93,35 +93,36 @@ function CreatorCard({ creator }: { creator: Creator }) {
       variants={staggerItem}
       className="rounded-xl border border-border-default bg-white overflow-hidden hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200"
     >
-      {/* Creator avatar header -- compact, no gray placeholder */}
-      <div className="px-5 pt-5 pb-4 flex items-center gap-4">
-        <div className="relative flex-shrink-0">
-          {!imgFailed ? (
-            <div className="w-14 h-14 rounded-full overflow-hidden border-2 border-brand-primary/20">
-              <Image
-                src={imagePath}
-                alt={`${creator.name} TikTok profile`}
-                width={56}
-                height={56}
-                className="object-cover w-full h-full"
-                onError={() => setImgFailed(true)}
-              />
-            </div>
-          ) : (
-            <div
-              className="w-14 h-14 rounded-full flex items-center justify-center border-2 border-brand-primary/20"
-              style={{
-                background: `linear-gradient(135deg, hsl(${25 + hueShift}, 85%, 92%), hsl(${25 + hueShift}, 75%, 82%))`,
-              }}
-            >
-              <span className="text-lg font-bold text-brand-primaryDeep">
-                {getInitials(creator.name)}
-              </span>
-            </div>
-          )}
-        </div>
-        <div className="min-w-0">
-          <h3 className="text-base font-bold text-brand-ink truncate">{creator.name}</h3>
+      {/* Profile screenshot -- the main visual element */}
+      <div className="relative w-full aspect-[4/3] bg-gray-50">
+        {!imgFailed ? (
+          <Image
+            src={imagePath}
+            alt={`${creator.name} TikTok profile`}
+            fill
+            className="object-cover object-top"
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+            onError={() => setImgFailed(true)}
+          />
+        ) : (
+          <div
+            className="absolute inset-0 flex flex-col items-center justify-center"
+            style={{
+              background: `linear-gradient(135deg, hsl(${25 + hueShift}, 85%, 92%), hsl(${25 + hueShift}, 75%, 82%))`,
+            }}
+          >
+            <span className="text-4xl font-bold text-brand-primaryDeep">
+              {getInitials(creator.name)}
+            </span>
+            <span className="text-sm text-brand-primaryDeep/70 mt-1">@{creator.handle}</span>
+          </div>
+        )}
+      </div>
+
+      {/* Creator info below the screenshot */}
+      <div className="px-5 pt-4 pb-5 space-y-3">
+        <div>
+          <h3 className="text-base font-bold text-brand-ink">{creator.name}</h3>
           <div className="flex items-center gap-2 mt-0.5">
             <span className="text-sm text-brand-primaryDeep font-semibold">@{creator.handle}</span>
             <span className="text-sm text-text-muted flex items-center gap-1">
@@ -130,10 +131,7 @@ function CreatorCard({ creator }: { creator: Creator }) {
             </span>
           </div>
         </div>
-      </div>
 
-      {/* Card content */}
-      <div className="px-5 pb-5 space-y-3">
         <p className="text-[15px] text-text-secondary leading-relaxed line-clamp-3">
           {creator.description}
         </p>
