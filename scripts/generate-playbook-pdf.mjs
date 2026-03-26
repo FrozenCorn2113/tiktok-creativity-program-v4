@@ -670,6 +670,8 @@ const fullHtml = `<!DOCTYPE html>
     margin: 28pt 0 12pt 0;
     padding-bottom: 6pt;
     border-bottom: 2px solid var(--orange);
+    page-break-before: always;
+    break-before: page;
     page-break-after: avoid;
     break-after: avoid;
   }
@@ -679,6 +681,11 @@ const fullHtml = `<!DOCTYPE html>
     font-weight: 700;
     color: var(--navy);
     margin: 20pt 0 8pt 0;
+    page-break-after: avoid;
+    break-after: avoid;
+  }
+
+  h4 {
     page-break-after: avoid;
     break-after: avoid;
   }
@@ -725,6 +732,8 @@ const fullHtml = `<!DOCTYPE html>
   .content-list li {
     margin-bottom: 4pt;
     padding-left: 4pt;
+    page-break-inside: avoid;
+    break-inside: avoid;
   }
 
   ol.content-list {
@@ -814,6 +823,8 @@ const fullHtml = `<!DOCTYPE html>
     border-collapse: collapse;
     font-size: 9.5pt;
     line-height: 1.4;
+    page-break-inside: avoid;
+    break-inside: avoid;
   }
 
   /* Data Tables */
@@ -856,6 +867,8 @@ const fullHtml = `<!DOCTYPE html>
     background: var(--warm-white);
     border-radius: 6pt;
     overflow: hidden;
+    page-break-inside: avoid;
+    break-inside: avoid;
   }
 
   .worksheet-table thead th {
@@ -893,6 +906,8 @@ const fullHtml = `<!DOCTYPE html>
     background: var(--warm-white);
     border-radius: 4pt;
     margin: 6pt 0;
+    page-break-inside: avoid;
+    break-inside: avoid;
   }
 
   .fill-blank-inline {
@@ -1071,6 +1086,12 @@ const fullHtml = `<!DOCTYPE html>
   .page-break {
     page-break-before: always;
     break-before: page;
+  }
+
+  /* Suppress page break on first h2 right after a section banner */
+  .section-content > h2:first-child {
+    page-break-before: auto;
+    break-before: auto;
   }
 
   /* Orange divider strip */
