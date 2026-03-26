@@ -72,14 +72,11 @@
     --tw-prose-td-borders: var(--color-border);
   }
 
-  /* Table wrapper — horizontal scroll on overflow, contains the table */
+  /* Table wrapper — allow tables to use full available width */
   .prose-table-wrapper {
     width: 100%;
-    max-width: 100%;
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
-    border-radius: 0.5rem;
-    border: 1px solid var(--color-border);
     margin-top: 1.25em;
     margin-bottom: 1.25em;
   }
@@ -87,18 +84,11 @@
   /* Table styling — branded header, striped rows */
   .prose :where(table):not(:where([class~='not-prose'] *)) {
     width: 100%;
-    min-width: 28rem;
     table-layout: auto;
     border-collapse: collapse;
     font-size: 0.9375em;
     margin: 0;
     border: none;
-    border-radius: 0;
-  }
-
-  /* 2-column tables can be narrower */
-  .prose :where(table):not(:where([class~='not-prose'] *)):has(thead th:nth-child(2):last-child) {
-    min-width: 20rem;
   }
 
   .prose :where(thead):not(:where([class~='not-prose'] *)) {
