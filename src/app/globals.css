@@ -75,6 +75,7 @@
   /* Table wrapper — horizontal scroll on overflow, contains the table */
   .prose-table-wrapper {
     width: 100%;
+    max-width: 100%;
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
     border-radius: 0.5rem;
@@ -86,11 +87,18 @@
   /* Table styling — branded header, striped rows */
   .prose :where(table):not(:where([class~='not-prose'] *)) {
     width: 100%;
+    min-width: 28rem;
+    table-layout: auto;
     border-collapse: collapse;
     font-size: 0.9375em;
     margin: 0;
     border: none;
     border-radius: 0;
+  }
+
+  /* 2-column tables can be narrower */
+  .prose :where(table):not(:where([class~='not-prose'] *)):has(thead th:nth-child(2):last-child) {
+    min-width: 20rem;
   }
 
   .prose :where(thead):not(:where([class~='not-prose'] *)) {
@@ -104,7 +112,7 @@
     padding: 0.75rem 1rem;
     border-bottom: 2px solid var(--color-brand-primary);
     white-space: normal;
-    min-width: 7rem;
+    min-width: 5rem;
   }
 
   .prose :where(tbody td):not(:where([class~='not-prose'] *)) {
@@ -120,6 +128,22 @@
 
   .prose :where(tbody tr:nth-child(even)):not(:where([class~='not-prose'] *)) {
     background: var(--color-background-surface);
+  }
+
+  /* Mobile table adjustments — tighter padding, smaller text */
+  @media (max-width: 640px) {
+    .prose :where(table):not(:where([class~='not-prose'] *)) {
+      font-size: 0.8125em;
+    }
+
+    .prose :where(thead th):not(:where([class~='not-prose'] *)) {
+      padding: 0.5rem 0.625rem;
+      min-width: 4rem;
+    }
+
+    .prose :where(tbody td):not(:where([class~='not-prose'] *)) {
+      padding: 0.5rem 0.625rem;
+    }
   }
 
   .prose :where(code):not(:where([class~='not-prose'] *)) {
