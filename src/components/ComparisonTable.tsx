@@ -55,6 +55,8 @@ function normalizeRows(rows: ComparisonTableProps['rows'], winnerIndex?: number)
 }
 
 export default function ComparisonTable({ columns, rows, caption, winnerIndex }: ComparisonTableProps) {
+  // Guard against undefined props (can happen with certain MDX compilation modes)
+  if (!rows || !columns) return null
   const normalizedRows = normalizeRows(rows, winnerIndex)
 
   return (
