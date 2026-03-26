@@ -85,8 +85,8 @@ export function CalculatorsPreview() {
               : {})}
           >
             <Image
-              src="/images/brand/landpress-marketing-2.png"
-              alt="TikTok earnings calculator on phone"
+              src="/images/brand/calculator-illustration.webp"
+              alt="Data visualization and analytics charts"
               width={400}
               height={440}
               className="rounded-2xl object-contain"

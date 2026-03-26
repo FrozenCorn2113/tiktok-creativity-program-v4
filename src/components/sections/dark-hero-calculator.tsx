@@ -36,7 +36,7 @@ export function DarkHeroCalculator() {
             The Real Guide to Getting Paid by TikTok
           </h1>
           <p className="mt-4 text-[1.125rem] leading-[1.65] text-gray-400 max-w-2xl">
-            Free calculators, 57 guides, and honest answers to the questions TikTok&apos;s help center won&apos;t touch.
+            Free calculators, 107 guides, and honest answers to the questions TikTok&apos;s help center won&apos;t touch.
           </p>
         </div>
 
@@ -166,8 +166,8 @@ export function DarkHeroCalculator() {
               {/* Subtle glow behind the image */}
               <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-[#F97316]/10 to-transparent blur-2xl" />
               <Image
-                src="/assets/brand-images/landpress-marketing-2.png"
-                alt="Creator analyzing TikTok earnings data"
+                src="/images/brand/hero-illustration.webp"
+                alt="Creator monetization and earnings growth visualization"
                 width={480}
                 height={480}
                 className="relative w-full h-auto drop-shadow-2xl"
