@@ -64,6 +64,7 @@ export async function GET() {
 
   return NextResponse.json({
     status: 'ok',
+    version: 'v3-rest-api',
     config: {
       supabaseUrl: hasUrl,
       serviceRoleKey: hasServiceKey,
@@ -99,7 +100,7 @@ export async function POST(request: Request) {
   })
 
   if (!result.ok) {
-    return NextResponse.json({ error: 'Failed to save' }, { status: 500 })
+    return NextResponse.json({ error: 'Failed to save', debug: result.error }, { status: 500 })
   }
 
   // Send branded welcome email via Resend (fire-and-forget)
