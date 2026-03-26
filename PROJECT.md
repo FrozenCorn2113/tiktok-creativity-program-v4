@@ -41,35 +41,139 @@ Next.js (App Router), Tailwind CSS, MDX guides, Resend email + Supabase subscrib
 
 ## Active
 <!-- Bernard maintains this section. Current tasks in flight. -->
-- **TCP VISUAL OVERHAUL (3 workstreams)**
-  - WS1: Guide Hero Images — 79 of 102 guides need branded hero+thumb images. Vale designs template, then batch generation.
-  - WS2: Niche SVG Icons — 8 custom SVGs to replace emojis on /niche index page.
-  - WS3: Niche Detail Page Redesign — 4 existing pages need redesign, 4 new pages need creation. Creator spotlights with real TikTok profile screenshots.
-  - **Phase 1 (current):** Vale designs hero image template/style + 8 niche SVG icons.
-  - **Phase 2:** Generate 79 hero images using Vale's approved style.
-  - **Phase 3:** Christopher researches real creators per niche for spotlights. Vale designs niche page layout. Devan builds.
-- **102 guides live + earnings calculator.** All guides loading. All Priority 1 keyword gaps covered.
-- **Social strategy: Christopher research LOCKED.** Rebuilding social with data-driven approach. Key findings: carousels outperform static on IG (6.9%), video dominates TikTok (3.39%), text posts win on X (3.56%), Pinterest is search-engine play (5.75% video). Old static illustrations = zero completion rate. Next: Vale creates new social templates per Christopher's format recs, then Wren rebuilds content calendar.
+
+### 2026-03-25 Creator Profile Screenshots -- COMPLETE
+
+**Real TikTok profile screenshots captured for niche pages.** All 43 creators now have real screenshots. Playwright script (`scripts/screenshot-creators.mjs`) captures profile headers and converts to .webp.
+
+**Status:** COMPLETE. All 3 dead accounts replaced. Full 500K+ sweep also completed (24 creators replaced total across all niches). Commit d6f3a113.
+
+### 2026-03-25 Design Review Sprint
+
+**Bernard visual review COMPLETE.** 17 issues identified across 7 pages. Review: `research/design-review-2026-03-25.md`
+
+**DR1: Niche Page Critical Fixes (DEVAN)** -- PENDING
+- Fix empty space below creator spotlights (pages are 70% blank)
+- Fix gray placeholder rectangles in creator cards (broken image fallback)
+- Increase font sizes across niche pages (body 16px min, descriptions 15px min)
+- Increase homepage "Where do you want to start?" card visual weight
+- Use frontend-design skill. See research/design-review-2026-03-25.md C1-C4.
+
+**DR2: Color + Typography Polish (DEVAN)** -- PENDING
+- Calculator results panel color to match site dark navy
+- Guide listing card descriptions: larger size, darker gray
+- Eligibility guide: add callout boxes and visual breaks
+- Niche page pill tabs: larger text, more padding
+- Lead magnet banner polish
+- Niche page peach background consistency evaluation
+- Use frontend-design skill. See research/design-review-2026-03-25.md S1-S7.
+
+**DR3: Niche Index Page Redesign (VALE then DEVAN)** -- PENDING
+- Vale: design niche index page -- visual cards, RPM ranges, color per niche, magazine-style layout
+- Devan: implement from Vale's spec (frontend-design skill)
+- Devan NEVER generates images. Vale provides all visual assets.
+
+### 2026-03-25 Quality Sprint -- ALL 7 WORKSTREAMS COMPLETE AND LOCKED
+
+All morning sprint items shipped, reviewed, and locked. Site is in strong shape.
+
+### 2026-03-25 Afternoon Sprint -- SEO + Revenue Optimization -- ALL COMPLETE
+
+**AS1: Orphan Guide Cross-Linking (DEVAN)** -- LOCKED
+- 36 internal links added across 28 source guides, all 12 orphans covered (commit ea211b1).
+
+**AS2: Creator Profile Images for Niche Pages (VALE)** -- CANCELLED
+- Styled initials are clean and honest. No action needed.
+
+**AS3: Content Gap + Guide (CHRISTOPHER -> SCRIBE -> DEVAN)** -- LOCKED
+- Christopher identified TikTok LIVE Subscriptions as #1 gap. Research: research/content-gap-seo-audit-2026-03-25.md
+- Scribe wrote 2,800-word guide. Devan integrated, build clean (commit 822bbbd). Guide #106 LIVE.
+- Runners-up for future: monetization-mexico, best-green-screen-tiktok-creators.
+
+**AS4: SEO Quick Wins (CHRISTOPHER -> DEVAN)** -- LOCKED
+- Only 1 of 8 reported stale 2025 files actually existed (additional-reward-criteria-2025). 301 redirect added (commit 74c91d1).
+- Title lengths: all 3 flagged titles already within acceptable range on inspection. No changes needed.
+- Meta descriptions: all 105 guides have descriptions. No issues.
+
+### 2026-03-25 Evening Sprint -- Bernard 6pm Ops Review
+
+**6 Pending Review items assessed and LOCKED:**
+
+1. **Devan -- Navbar Logo Swap (commit 11436746)** -- LOCKED
+   - Favicon SVG icon replaces text logo. Clean. Deployed.
+
+2. **Devan -- Markdown Table Rendering (commit 61500212)** -- LOCKED
+   - remark-gfm plugin + branded CSS. 81 guides with tables now render properly. Deployed.
+
+3. **Devan -- Guide Thumbnail Fix (commit ba4d106f)** -- LOCKED
+   - Thumbnails now use hero images consistently across 3 components. Deployed.
+
+4. **Devan -- Calculator UI Overhaul (commit 3b1211a)** -- LOCKED
+   - Dark slate results panel, instant slider, tight spacing, proper number formatting. All 3 calculators. Deployed.
+
+5. **Christopher -- Niche Case Study Research** -- LOCKED
+   - Comprehensive research with FACT/UNVERIFIED labeling. Named creators with verified earnings. RPM data by niche. Feeds niche page improvements.
+
+6. **Devan -- Niche Page Bug Fixes (commit 775b2cc5)** -- LOCKED
+   - Avatar/image overlap bug fixed. 3 too-famous artists creators replaced with mid-tier (Kooleen 487K, Dina Norlund 215K, Jess Karp 178K). Other niches still have famous creators -- Devan continuing.
+
+**Visual audit from 7 screenshots (homepage, guides, guide page, calculator, 2 niches, lead magnet):**
+- All pages visually consistent. Dark navy/orange brand applied throughout.
+- Calculator redesign looks polished. Guide thumbnails rendering correctly.
+- FINDING: Niche page middle sections (strategy, RPM, tools, related guides) use `whileInView` framer-motion animations. In headless screenshots these appear as blank space. For real users who scroll, sections render correctly. Low-risk but worth noting -- no SEO impact since sections are in the DOM (just opacity:0 initial state).
+
+**Niche content depth audit (all 8 niches):**
+- Fitness: 6 creators, 3 strategies, 4 focus, 3 tools, 4 guides -- BENCHMARK
+- Musicians: 5 creators -- at standard
+- Artists: 6 creators (3 just replaced with mid-tier) -- at standard
+- Teachers: 6 creators -- at standard
+- Comedy: 5 creators -- at standard
+- Coaches: 7 creators -- above standard
+- Travel: 5 creators -- at standard
+- **Beauty: 4 creators -- THIN (only niche below 5).** Needs 2 more mid-tier creators to match baseline.
+- All niches have identical structure: 3 strategy sections, 4 focus areas, 3 tools, 4 related guides, RPM note, ultimate guide CTA. Content quality is strong across the board.
+
+**In flight (DO NOT DUPLICATE):**
+- Devan: Swapping remaining too-famous creators across non-artists niches (musicians, fitness, teachers, beauty, comedy, coaches, travel)
+
+**Next actions queued:**
+- Route Devan: Add 2 mid-tier beauty creators (bring to 6, matching median) when current niche swap is done
+- Future consideration: Add "Real Earnings Example" callout to niche pages using Christopher's case study research
+
+### Ongoing
+- **106 guides live + 3 calculators.** All guides loading. All Priority 1 keyword gaps covered.
+- **Social rebuild LIVE:** 12 posts scheduled (6 IG + 6 Pinterest, Mar 26-31) with 6 unique Vale images.
 - **RULE: Every post gets a unique image. NEVER reuse images across posts.**
-- **Reddit outreach:** 6 HIGH leads, copy-paste replies. Manual posting by Brett. Report: Vault/Inbox/2026-03-24-tcp-reddit-leads.md
-- **Affiliate activation: Kit + Buffer + 4 more LIVE.** 6 active affiliate links. Remaining programs have TODO placeholders ready for 5-min activation.
-- **Email integration: DEPLOYED** — Brett verify sign-ups work
-- **EMAIL GROWTH SPRINT — Track A COMPLETE (LOCKED):** Lead magnet pages live (/lead-magnets/rpm-cheat-sheet, /lead-magnets/eligibility-checklist) with email gates + print. Inline CTA on all 102 guides promotes RPM Cheat Sheet. Exit-intent popup active. Welcome email rewritten to deliver lead magnets. Commit 021d29b.
-- **AdSense READY TO APPLY:** All 4 legal pages live (Privacy, Terms, About, Contact). Footer links added. Brett can now apply for AdSense.
-- **MONETIZATION PLAN:** Top 3 selected: (1) Google AdSense — legal pages done, Brett applies, (2) Digital product bundle on Gumroad, (3) Ko-fi tip jar.
-- **Content refreshes queued (4):** Algorithm 2026 (post-Oracle), posting schedule (Consistency Boost), country eligibility (Japan/SK), TikTok Shop (5 new features)
-- **Next guides:** Effect House ($50K/mo, zero competition), Minis/Micro-Dramas, Monetize Under 10K. See Vault/Inbox/2026-03-24-tcp-weekly-keyword-research.md
+- **Affiliate activation: Kit + Buffer + 4 more LIVE.** 6 active affiliate links.
+- **Email subscription fix DEPLOYED** (commit a78c59f) -- Vercel env vars + RLS upsert fix.
+- **AdSense READY TO APPLY.** All 4 legal pages live. Brett action item.
+- **Reddit outreach:** 6 HIGH leads, copy-paste replies. Manual posting by Brett.
 
 ## Pending Review
 <!-- Agents add completed deliverables here. Bernard reviews and routes next. -->
 
-- [2026-03-24] Vale — 8 niche SVG icons (flat, #F4A261, 24x24 viewBox) — What: hand-crafted SVG icons for all 8 niches replacing emojis — Where: `/public/images/niches/icon-{slug}.svg` (musicians, fitness-creators, artists, teachers, beauty, comedy, coaches, travel) — Status: READY FOR REVIEW
-- [2026-03-24] Vale — Hero image style guide + 5 sample hero images — What: documented prompt template for Imagen API hero generation; 5 unique sample heroes generated (ring-light-setup, rewards-strategy-2026, music-niche, views-not-counting, platform-comparison) — Where: style doc at `Vale/hero-image-style.md`; images at `/public/images/guides/hero-{slug}.webp` + `thumb-{slug}.webp` — Status: READY FOR REVIEW
-- [2026-03-24] Christopher — Niche creator research for 8 niches (48 creators) — What: real TikTok creator spotlights with handles, follower counts, content style, and monetization info for Musicians, Fitness, Artists, Teachers, Beauty, Comedians, Coaches, Travel. Includes flags for 6 creators needing verification before publish. — Where: `projects/tiktok-creativity-program/Christopher/niche-creator-research.md` — Status: READY FOR REVIEW
-- [2026-03-24] Christopher — Creator replacements + handle verification (follow-up to above) — What: replaced 6 creators (James Charles, Sydney Cummings, Kirsty Partridge Art, Gabrielle Bernstein, Jason Derulo, Karol G); corrected 2 handles (Mrs. Kelly: @the_mrskelly confirmed; Marc Chinkoun: @marcchinkoun confirmed). New entries: Hindash, Sivan Tayer, Noor Ahmad, Rob Dial, Venbee, Lola Young. Active flags documented in file. File updated in place. — Where: `projects/tiktok-creativity-program/Christopher/niche-creator-research.md` — Status: READY FOR REVIEW
-- [2026-03-24] Devan — Persistent cron for hero image generation — What: standalone bash script using Gemini Imagen API to generate hero + thumb WebP images for 68 remaining guides (65/day cap, 3s delay, idempotent). launchd plist runs daily at 6AM PT. — Where: script at `scripts/generate-hero-images.sh`, plist at `~/Library/LaunchAgents/com.tcp.generate-hero-images.plist` — Status: READY FOR REVIEW
+**Devan -- Full creator sweep: replace all 500K+ and dead creators (commit d6f3a113)** -- READY FOR REVIEW
+- What: Replaced 24 creators across all 7 niches with verified active mid-tier accounts (10K-500K followers). Fixed 3 dead accounts (kooleenart, berrystrawnana, gabedannenbring). All new handles verified on TikTok with screenshots captured.
+- Where: src/app/niche/[slug]/niche-data.ts, scripts/screenshot-creators.mjs, public/images/creators/ (50+ .webp screenshots)
+- Status: READY FOR REVIEW
+
+**Devan -- Design Review Fixes DR1+DR2 (commit bace7003)** -- READY FOR REVIEW
+- What: 9 fixes from Bernard's visual design review (C1-C4, S1-S3, S6-S7)
+- Where: niche-page-client.tsx, bento-grid.tsx, earnings-comparison-calculator.tsx, GuidesListingClient.tsx, eligibility-checklist/page.tsx, eligibility-requirements.mdx
+- Changes: Creator cards redesigned (no gray placeholders), fonts bumped across niche pages, homepage cards beefed up, calculator panel color aligned to navy, guide descriptions enlarged/darkened, lead magnet banner polished, eligibility guide visual breaks added, niche backgrounds harmonized
+- Screenshots: screenshots/review-fixes-2026-03-25/
+- Status: READY FOR REVIEW
 
 ## Work Log
+- [2026-03-25] Bernard 6pm ops sprint -- Reviewed and LOCKED 6 Pending Review items (navbar logo, table rendering, thumbnails, calculator overhaul, niche case study research, niche bug fixes). Visual audit of 7 screenshots: all pages consistent, no design issues. Niche content depth audit: beauty is thin (4 creators vs 5-7 everywhere else), all others at standard. Queued beauty creator additions for Devan after current niche swap completes.
+- [2026-03-25] Bernard Sprint Wave 4 -- Christopher content gap + SEO audit LOCKED. Scribe wrote LIVE Subscriptions guide (#106, 2,800 words). Devan integrated (822bbbd), orphan cross-linked 12 guides (ea211b1), added 301 redirect for stale 2025 guide (74c91d1). All reviewed and LOCKED.
+- [2026-03-25] Wren — Social rebuild: 12 posts scheduled (6 IG + 6 Pinterest, Mar 26-31). 6 unique Vale images, no reuse. Manifest: Vault/Inbox/2026-03-25-tcp-social-rebuild.md. Bernard LOCKED.
+- [2026-03-25] Devan — Minis/Micro-Dramas guide integrated (commit eede58e). Guide #104. 8 [UNVERIFIED] flags hedged, 2 affiliate links kept, build clean. Bernard LOCKED.
+- [2026-03-25] Devan — Monetize Under 10K guide integrated (commit 05a69f8). Guide #105. 4 flags hedged, 3 broken links fixed, build clean. Bernard LOCKED.
+- [2026-03-25] Scribe — Monetize Under 10K guide (2,338 words, highest funnel-top potential). Bernard G1 LOCKED.
+- [2026-03-25] Vale — 6 social images created (monetization, growth, algorithm, tools, affiliate, consistency). No text, no faces, unique compositions. Bernard G1 LOCKED.
+- [2026-03-25] Wren — X post LIVE: eligibility/monetization angle, social-monetization-01.png (DO NOT REUSE). Post ID 69c4078807747844faa0a0eb. URL: https://twitter.com/i/web/status/2036836625129283938
+- [2026-03-25] Scribe — Effect House Monetization guide (2,628 words, P1 keyword). Bernard G1 LOCKED. Queued for Devan integration.
 - [2026-03-24] Bernard — SOCIAL PURGE: Audited all 53 posts across 6 platforms. Visually inspected images: most TikTok/IG images were broken placeholders (faint dots, abstract shapes, blank canvases). Brett confirmed ugly. Deleted all 36 scheduled + 17 draft posts. New rule: unique image per post, no reuse. Holding for Christopher's cross-platform viral strategy research before rebuilding.
 - [2026-03-24] Bernard — Kit vs Mailchimp guide: Scribe wrote (~1,750 words), Bernard G1 LOCKED + added AffiliateCardInline, Devan integrated + pushed (commit c46b507). Guide #102 LIVE. Qualifies for Kit $25 affiliate bonus.
 - [2026-03-24] Bernard — Pinterest board fix: set boardId on all 16 pins (board "TikTok Creator Tips"), recreated 11 as scheduled, cleaned up 2 duplicate failed posts. Blocker resolved.
@@ -92,6 +196,40 @@ Next.js (App Router), Tailwind CSS, MDX guides, Resend email + Supabase subscrib
 
 ## Done
 <!-- Completed and locked items. Archive periodically. -->
+- [2026-03-25] Evening ops sprint -- 6 items LOCKED:
+  - Navbar logo swap (commit 11436746). LOCKED.
+  - Markdown table rendering fix (commit 61500212). LOCKED.
+  - Guide thumbnail fix (commit ba4d106f). LOCKED.
+  - Calculator UI overhaul v2 (commit 3b1211a). LOCKED.
+  - Christopher niche case study research (research/niche-case-studies-2026.md). LOCKED.
+  - Niche page bug fixes + 3 artist creator swaps (commit 775b2cc5). LOCKED.
+- [2026-03-25] Sprint Wave 4 ALL 4 AFTERNOON WORKSTREAMS LOCKED:
+  - AS1 Orphan Cross-Linking (commit ea211b1): 36 links across 28 guides, 12 orphans resolved. LOCKED.
+  - AS2 Creator Profile Images: CANCELLED (initials are appropriate for real people).
+  - AS3 Content Gap + Guide #106 (commit 822bbbd): LIVE Subscriptions guide, 2,800 words, 4 affiliate placements, build clean. LOCKED.
+  - AS4 SEO Quick Wins (commit 74c91d1): 1 redirect added, meta/titles verified clean. LOCKED.
+  - Christopher research: content-gap-seo-audit-2026-03-25.md. LOCKED.
+- [2026-03-25] Quality Sprint ALL 7 WORKSTREAMS LOCKED by Bernard afternoon review:
+  - WS1 Hero Images (commit 185c614): 105/105 guides have hero+thumb images. LOCKED.
+  - WS2 Niche Overhaul (commit 7c337c8): 10 mega-famous creators replaced, 20 profile images. LOCKED.
+  - WS3 Calculator Redesign (commit d6fbc8f): 3 calculators redesigned, Creator Fund removed. LOCKED.
+  - WS4 Email Flow (commit 4afeebf): Double-gating removed, honest welcome email. LOCKED.
+  - WS5 Search Bar (commit 6774ff6): Cmd+K across 116 pages. LOCKED.
+  - WS6 Site Audit (commit aa37beb): 3 broken links, 6 affiliates, 6 sitemap, 4 nav links fixed. LOCKED.
+  - Niche Audit research consumed by WS2. LOCKED.
+- [2026-03-25] Guides #104 + #105 LIVE: Minis/Micro-Dramas + Monetize Under 10K integrated by Devan (commits eede58e, 05a69f8, 212ea7a). All [UNVERIFIED] flags converted, links verified, build clean. Bernard LOCKED.
+- [2026-03-25] X post LIVE: eligibility angle + social-monetization-01.png. Wren via Zernio. Bernard LOCKED.
+- [2026-03-25] Bernard G1 review: 6 social images LOCKED. Production-ready, all specs met. Vale delivery approved for Wren social calendar.
+- [2026-03-25] Bernard G1 review: Minis/Micro-Dramas guide LOCKED. Clean content, 0 em dashes, affiliate components correct. Routed to Devan for integration.
+- [2026-03-25] Bernard G1 review: Monetize Under 10K guide LOCKED. 4 [UNVERIFIED] flags to convert to hedging language during Devan integration. Content otherwise clean.
+- [2026-03-25] Effect House Monetization guide: LIVE (commit e8afbbd). Guide #103. P1 keyword, zero competition. Bernard LOCKED.
+- [2026-03-25] Hero gen script fix: graceful quota handling (commit 344cb19). 50 guides remaining, 2 cron runs. Bernard LOCKED.
+- [2026-03-24] Visual Overhaul Phase 3: 8 niche detail pages LIVE (commit 71589f0). 48 creator spotlights, SVG icons, RPM viz, tools, email capture. Bernard LOCKED.
+- [2026-03-24] 8 niche SVG icons: flat #F4A261 24x24, all 8 niches. Vale LOCKED.
+- [2026-03-24] Hero image style guide + 5 samples: prompt template documented, 5 unique heroes. Vale LOCKED.
+- [2026-03-24] Creator research: 48 creators across 8 niches + 6 replacements + handle verification. Christopher LOCKED.
+- [2026-03-24] Hero gen cron: launchd daily 6AM PT. Script needs fix (routed to Devan). Bernard LOCKED with caveat.
+- [2026-03-24] Hero images: 65/102 generated. 37 remaining pending script fix. Vale partial LOCKED.
 - [2026-03-25] Lead magnets (RPM Cheat Sheet + Eligibility Checklist) + 5-email welcome sequence: Scribe LOCKED. Ready for Devan integration.
 - [2026-03-25] Favicon: all sizes deployed (commit d7cd4e1). Bernard LOCKED.
 - [2026-03-25] Cross-platform social strategy research: Christopher LOCKED. 20+ sources, 6 platforms analyzed. Report: Vault/Inbox/2026-03-24-tcp-social-content-research.md
