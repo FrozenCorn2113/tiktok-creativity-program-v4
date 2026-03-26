@@ -4,9 +4,6 @@ import { NextResponse } from 'next/server'
 import { z } from 'zod'
 import { sendWelcomeEmail } from '@/lib/email/send-welcome'
 
-const SUPABASE_REST_URL = `${process.env.NEXT_PUBLIC_SUPABASE_URL}/rest/v1`
-const SUPABASE_ANON_KEY = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
-
 const bodySchema = z.object({
   email: z.string().email('Invalid email address').max(254),
   source: z.string().max(100).optional(),
@@ -14,8 +11,22 @@ const bodySchema = z.object({
   page_url: z.string().max(500).optional(),
 })
 
-function getSupabaseKey() {
-  return process.env.TCP_SUPABASE_SERVICE_KEY || SUPABASE_ANON_KEY
+// Resolve env vars lazily to handle Vercel's various naming conventions
+function getSupabaseUrl(): string | undefined {
+  return (
+    process.env.TCP_SUPABASE_URL ||
+    process.env.NEXT_PUBLIC_SUPABASE_URL ||
+    process.env.SUPABASE_URL
+  )
+}
+
+function getSupabaseKey(): string | undefined {
+  return (
+    process.env.TCP_SUPABASE_KEY ||
+    process.env.SUPABASE_SERVICE_ROLE_KEY ||
+    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY ||
+    process.env.SUPABASE_ANON_KEY
+  )
 }
 
 async function insertSubscriber(record: {
@@ -24,14 +35,21 @@ async function insertSubscriber(record: {
   lead_magnet: string | null
   page_url: string | null
 }): Promise<{ ok: boolean; duplicate?: boolean; error?: string }> {
+  const supabaseUrl = getSupabaseUrl()
   const supabaseKey = getSupabaseKey()
 
-  if (!supabaseKey) {
-    return { ok: false, error: 'Missing Supabase key' }
+  if (!supabaseUrl || !supabaseKey) {
+    console.error('[api/newsletter] Missing env vars:', {
+      hasUrl: !!supabaseUrl,
+      hasKey: !!supabaseKey,
+    })
+    return { ok: false, error: `Missing Supabase config (url=${!!supabaseUrl}, key=${!!supabaseKey})` }
   }
 
+  const restUrl = `${supabaseUrl}/rest/v1`
+
   try {
-    const res = await fetch(`${SUPABASE_REST_URL}/email_subscribers`, {
+    const res = await fetch(`${restUrl}/email_subscribers`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -87,7 +105,10 @@ export async function POST(request: Request) {
 
   if (!result.ok) {
     console.error('[api/newsletter] Insert failed:', result.error)
-    return NextResponse.json({ error: 'Failed to save' }, { status: 500 })
+    return NextResponse.json(
+      { error: 'Failed to save', detail: result.error },
+      { status: 500 }
+    )
   }
 
   // Send branded welcome email via Resend (fire-and-forget)
