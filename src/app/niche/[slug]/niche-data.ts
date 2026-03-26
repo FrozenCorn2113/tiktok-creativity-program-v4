@@ -593,14 +593,6 @@ export const nicheContent: Record<string, NicheData> = {
         lesson: 'Niche positioning (solo female adventure travel) creates deeper audience loyalty and stronger brand deal appeal',
       },
       {
-        name: 'Tyler Ginter',
-        handle: 'tylerginter',
-        followers: '265K',
-        description:
-          'Cultural immersion travel creator who focuses on local food, traditions, and off-the-beaten-path experiences rather than tourist highlights. His curiosity-driven storytelling consistently earns strong watch times.',
-        lesson: 'Authentic cultural storytelling outperforms generic "beautiful places" content in both retention and RPM',
-      },
-      {
         name: 'Trent + Sarah',
         handle: 'riotravelers',
         followers: '495K',

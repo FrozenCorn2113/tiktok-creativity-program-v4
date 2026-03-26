@@ -67,7 +67,6 @@ const ALL_CREATORS = [
   'marcchinkoun',
   // Travel
   'heleneinbetween',
-  'tylerginter',
   'riotravelers',
   'theworldpursuit',
   'emsbudgettravel',
