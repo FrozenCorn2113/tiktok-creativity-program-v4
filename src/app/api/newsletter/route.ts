@@ -62,9 +62,27 @@ export async function GET() {
   const hasAnonKey = !!process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
   const hasResendKey = !!process.env.RESEND_API_KEY
 
+  // Test outbound connectivity
+  let connectivityTest = 'untested'
+  try {
+    const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL
+    if (supabaseUrl) {
+      const testRes = await fetch(`${supabaseUrl}/rest/v1/`, {
+        method: 'GET',
+        headers: {
+          'apikey': process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY ?? '',
+        },
+      })
+      connectivityTest = `status=${testRes.status}`
+    }
+  } catch (err) {
+    connectivityTest = `error: ${err instanceof Error ? err.message : String(err)}`
+  }
+
   return NextResponse.json({
     status: 'ok',
-    version: 'v3-rest-api',
+    version: 'v4-connectivity-test',
+    connectivity: connectivityTest,
     config: {
       supabaseUrl: hasUrl,
       serviceRoleKey: hasServiceKey,
