@@ -106,7 +106,6 @@ export const nicheContent: Record<string, NicheData> = {
       { label: 'TikTok Creator Rewards 2026 Guide', href: '/guides/creator-rewards-2026' },
       { label: 'Growing from 5K to 10K Followers', href: '/guides/grow-5k-to-10k' },
       { label: 'Best Monetization Methods for Creators', href: '/guides/best-monetization-methods' },
-      { label: 'Earnings Calculator', href: '/calculators/earnings-calculator' },
     ],
   },
   'fitness-creators': {
@@ -182,7 +181,6 @@ export const nicheContent: Record<string, NicheData> = {
       { label: 'Growing from 5K to 10K Followers', href: '/guides/grow-5k-to-10k' },
       { label: 'Additional Reward Criteria', href: '/guides/additional-reward-criteria-2026' },
       { label: 'Best Monetization Methods', href: '/guides/best-monetization-methods' },
-      { label: 'Earnings Calculator', href: '/calculators/earnings-calculator' },
     ],
   },
   artists: {
@@ -266,7 +264,6 @@ export const nicheContent: Record<string, NicheData> = {
       { label: 'TikTok Creator Rewards 2026 Guide', href: '/guides/creator-rewards-2026' },
       { label: 'Canada Monetization Without Rewards', href: '/guides/canada-without-rewards' },
       { label: 'Multiple Revenue Streams', href: '/guides/multiple-revenue-streams' },
-      { label: 'Earnings Calculator', href: '/calculators/earnings-calculator' },
     ],
   },
   teachers: {
@@ -342,7 +339,6 @@ export const nicheContent: Record<string, NicheData> = {
       { label: 'TikTok Creator Rewards 2026 Guide', href: '/guides/creator-rewards-2026' },
       { label: 'Additional Reward Criteria', href: '/guides/additional-reward-criteria-2026' },
       { label: 'Multiple Revenue Streams', href: '/guides/multiple-revenue-streams' },
-      { label: 'Earnings Calculator', href: '/calculators/earnings-calculator' },
     ],
   },
   beauty: {
@@ -410,7 +406,6 @@ export const nicheContent: Record<string, NicheData> = {
       { label: 'TikTok Creator Rewards 2026 Guide', href: '/guides/creator-rewards-2026' },
       { label: 'Best Monetization Methods', href: '/guides/best-monetization-methods' },
       { label: 'Multiple Revenue Streams', href: '/guides/multiple-revenue-streams' },
-      { label: 'Earnings Calculator', href: '/calculators/earnings-calculator' },
     ],
   },
   comedy: {
@@ -486,7 +481,6 @@ export const nicheContent: Record<string, NicheData> = {
       { label: 'TikTok Creator Rewards 2026 Guide', href: '/guides/creator-rewards-2026' },
       { label: 'Best Monetization Methods', href: '/guides/best-monetization-methods' },
       { label: 'Growing from 5K to 10K Followers', href: '/guides/grow-5k-to-10k' },
-      { label: 'Earnings Calculator', href: '/calculators/earnings-calculator' },
     ],
   },
   coaches: {
@@ -570,7 +564,6 @@ export const nicheContent: Record<string, NicheData> = {
       { label: 'TikTok Creator Rewards 2026 Guide', href: '/guides/creator-rewards-2026' },
       { label: 'Best Monetization Methods', href: '/guides/best-monetization-methods' },
       { label: 'Multiple Revenue Streams', href: '/guides/multiple-revenue-streams' },
-      { label: 'Earnings Calculator', href: '/calculators/earnings-calculator' },
     ],
   },
   travel: {
@@ -638,7 +631,6 @@ export const nicheContent: Record<string, NicheData> = {
       { label: 'TikTok Creator Rewards 2026 Guide', href: '/guides/creator-rewards-2026' },
       { label: 'Best Monetization Methods', href: '/guides/best-monetization-methods' },
       { label: 'Growing from 5K to 10K Followers', href: '/guides/grow-5k-to-10k' },
-      { label: 'Earnings Calculator', href: '/calculators/earnings-calculator' },
     ],
   },
 }
