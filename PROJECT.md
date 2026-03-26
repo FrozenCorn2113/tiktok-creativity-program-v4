@@ -42,6 +42,16 @@ Next.js (App Router), Tailwind CSS, MDX guides, Resend email + Supabase subscrib
 ## Active
 <!-- Bernard maintains this section. Current tasks in flight. -->
 
+### 2026-03-26 Creator Rewards Playbook (Full Content)
+
+**Pipeline:** content-only (Bernard design -> Scribe write)
+**Goal:** Production-ready 4,000-6,000 word playbook as markdown, ready for Canva Doc conversion to PDF.
+**Output:** `content/playbook-full-content.md`
+
+Bernard designed full architecture (12 sections). 3 exclusive frameworks not on website: Content Profit Matrix, RPM Scorecard, 60-Second Structure Blueprint. Includes fillable worksheets, decision trees, niche playbooks, weekly operating system, 25 hook templates. Scribe writing now.
+
+**Status:** Scribe writing. Bernard review pending.
+
 ### 2026-03-25 Creator Profile Screenshots -- COMPLETE
 
 **Real TikTok profile screenshots captured for niche pages.** All 43 creators now have real screenshots. Playwright script (`scripts/screenshot-creators.mjs`) captures profile headers and converts to .webp.
@@ -140,8 +150,44 @@ All morning sprint items shipped, reviewed, and locked. Site is in strong shape.
 ### Creator Sweep Revision -- LOCKED (commit 58a55caf)
 All 4 over-500K creators replaced. Beauty raised to 5 creators. All 45 creators now verified under 500K. Build clean.
 
+### 2026-03-26 Lead Magnet & Email Quality Audit
+
+**Full audit:** `TCP-LEAD-MAGNET-AUDIT.md`
+
+**Key findings:**
+- Zero actual PDF files exist. All "downloads" redirect to web pages with "use Ctrl+P" instructions.
+- Comprehensive cheat sheet (340 lines, 7 sections, 30-day plan) was written but never built into anything.
+- Welcome email is functional HTML but has no logo image, no PDF preview, no visual polish.
+- Only Email 1 of 5-email sequence is implemented. Emails 2-5 exist as content only.
+- Unsubscribe page does not exist (CAN-SPAM issue).
+- 9 email capture points across the site, all working but all promising deliverables that don't exist as actual downloads.
+
+**Execution plan:** Vale designs 2 PDFs in Canva + welcome email mockup. Devan builds unsubscribe page (parallel). Then Devan hosts PDFs, updates all links, implements email redesign, upgrades landing pages.
+
+**Status:** Audit complete. Ready for Brett review before routing agents.
+
 ## Pending Review
 <!-- Agents add completed deliverables here. Bernard reviews and routes next. -->
+
+- **What:** Lead magnet PDFs wired up across the site. Reformatted playbook renamed to final filename, old RPM cheat sheet removed. Both landing pages (/lead-magnets/rpm-cheat-sheet, /lead-magnets/eligibility-checklist) have prominent "Download Free PDF" buttons. Welcome email now delivers direct PDF links (playbook as primary for RPM signups, checklist as primary for eligibility signups, both for generic signups) with hero image. LeadMagnetGate success state shows direct PDF download button plus secondary PDF link. Eligibility checklist PDF and email hero image added to git.
+- **Where:** `src/lib/email/welcome-template.ts`, `src/app/lead-magnets/rpm-cheat-sheet/page.tsx`, `src/app/lead-magnets/eligibility-checklist/page.tsx`, `src/components/email/lead-magnet-gate.tsx`, `public/downloads/` (commit 11d2493b)
+- **Status:** READY FOR REVIEW
+
+- **What:** Premium branded 40-page PDF of the Creator Rewards Playbook. Puppeteer-based generator converts playbook-full-content.md to styled HTML with print CSS. Full TCP brand: Manrope font, navy/orange/warm-white palette. Cover page with orange accent strip, numbered TOC with EXCLUSIVE badges, navy section banners, styled data tables (navy headers, alternating rows, orange highlight on key rows), worksheet tables with dashed fill-in lines and orange column headers, formula blocks, checkbox items, matrix diagram, 4 Landpress images placed per Vale's brief, dark navy Quick Reference Card (pages 36-39), back cover with logo/URL/copyright. Regenerable via `node scripts/generate-playbook-pdf.mjs`.
+- **Where:** `public/downloads/tcp-creator-rewards-playbook-2026.pdf`, `scripts/generate-playbook-pdf.mjs` (commit c9f37b82)
+- **Status:** READY FOR REVIEW
+
+- **What:** Full TikTok Creator Rewards Playbook content (10,200 words). All 12 sections complete with zero placeholders: Cover, Eligibility Fast-Check, Money Math (full earnings table), Content Profit Matrix (2x2 matrix + 15 pre-filled topic reframes + blank worksheet), RPM Scorecard (6 factors with full 1/3/5 rubrics + scoring ranges), 60-Second Blueprint (4-act structure + pattern interrupt timing guide + "Plan Your Next Video" worksheet), Hook Vault (25 templates in 5 categories, all with filled examples), Niche RPM Playbook (RPM table + niche stacking concept + 5 examples + worksheet), Weekly Content OS (day-by-day workflow + weekly tracker worksheet), 30-Day Launch Plan (week-by-week with daily tasks), Revenue Stacking (5 income layers with context and ranges), Quick Reference Card (pre-post checklist, never-do list, key numbers table, weekly rhythm, bookmark list). No em dashes, no fictional case studies, no AI vocabulary tells.
+- **Where:** `content/playbook-full-content.md`
+- **Status:** READY FOR REVIEW
+
+- **What:** Lead magnet production spec for two premium PDFs (Creator Rewards Playbook, 20 pages + Eligibility Checklist, 9 pages). Complete page-by-page layouts with production-ready copy. 11 exclusive elements not on the website (RPM Scorecard, Content Strategy Worksheet, Content Ideas Bank, Revenue Stacking Guide, Weekly Tracker, Quick Reference Card, Content Audit, Application Timeline, Pre-Application Score, Rejection Recovery Plan, Post-Approval 48 Hours). Designed for Canva implementation (16:9 landscape presentation format). All copy is final -- no Scribe routing needed for PDF body text.
+- **Where:** `LEAD-MAGNET-SPEC.md`
+- **Status:** READY FOR REVIEW
+
+- **What:** Unsubscribe page (/unsubscribe) for CAN-SPAM compliance + API route. Fixed welcome email unsubscribe link (was literal {{email}}, now interpolates real address). Fixed LeadMagnetGate to use /api/newsletter instead of /api/email. BLOCKER: Brett must run SQL in Supabase dashboard: `ALTER TABLE email_subscribers ADD COLUMN unsubscribed_at timestamptz DEFAULT NULL;`
+- **Where:** `src/app/unsubscribe/page.tsx`, `src/app/api/unsubscribe/route.ts`, `src/lib/email/welcome-template.ts`, `src/lib/email/send-welcome.ts`, `src/components/email/lead-magnet-gate.tsx` (commit b5ad225d)
+- **Status:** READY FOR REVIEW
 
 - **What:** Tools page fix: equipment cards now link to guide pages (not Amazon) with hero image thumbnails. Added Cameras card. AffiliateCardGrid supports internal links.
 - **Where:** `src/app/tools/page.tsx`, `src/components/affiliate/affiliate-card-grid.tsx`, `src/app/tools/ToolsTabs.tsx` (commit 8f7e981e)
@@ -151,8 +197,24 @@ All 4 over-500K creators replaced. Beauty raised to 5 creators. All 45 creators 
 - **Where:** `public/images/guides/hero-*.webp` (88 new files)
 - **Status:** READY FOR REVIEW
 
+- **What:** Two branded lead magnet PDFs (RPM Cheat Sheet 9 pages + Eligibility Checklist 4 pages) + email hero image. Full TCP brand: Manrope font, navy/orange/warm-white palette, styled data tables, custom section headers, checklist graphics, 30-day plan blocks, mistake boxes.
+- **Where:** `public/downloads/tcp-rpm-cheat-sheet-2026.pdf`, `public/downloads/tcp-eligibility-checklist-2026.pdf`, `public/images/email/lead-magnet-preview.webp`, generator script at `scripts/generate-lead-magnets.py`
+- **Status:** READY FOR REVIEW
+
+- **What:** Added thumbnail images to related guides cards on niche detail pages (previously plain text). Uses same hero-{slug}.webp images with onError fallback for missing images or non-guide links.
+- **Where:** `src/app/niche/[slug]/niche-page-client.tsx` (commit 40bbc8d8)
+- **Status:** READY FOR REVIEW
+
 - **What:** Broken internal link audit: scanned 1,002 internal links across all .tsx/.ts/.mdx files. Fixed 2 broken guide links (tiktok-video-quality, how-to-increase-rpm). All niche page related guides, calculator links, and cross-references verified valid.
 - **Where:** `content/guides/best-ring-lights-tiktok.mdx`, `content/guides/tiktok-creativity-program-mexico.mdx` (commit e8867375)
+- **Status:** READY FOR REVIEW
+
+- **What:** Fixed 7 guide pages crashing with 500 errors (linked from niche detail pages). Root cause: next-mdx-remote v6 silently drops all JSX expression props in RSC mode, breaking ComparisonTable. Downgraded to v5 which correctly passes array/object/boolean props. Added defensive guard to ComparisonTable.
+- **Where:** `package.json`, `src/components/ComparisonTable.tsx` (commit 7673639e)
+- **Status:** SUPERSEDED by aa0cf571
+
+- **What:** Upgraded next-mdx-remote v5->v6 to resolve CVE-2026-0969 security vulnerability. ComparisonTable now accepts JSON string props (parsed internally) instead of JSX expression props that v6 drops in RSC mode. All 7 MDX files converted. Build clean.
+- **Where:** `package.json`, `src/components/ComparisonTable.tsx`, 7 MDX guides (commit aa0cf571)
 - **Status:** READY FOR REVIEW
 
 - **What:** TikTok Creativity Program Mexico guide (2,400w, eligibility + RPM + payouts + language strategy + FAQ)
