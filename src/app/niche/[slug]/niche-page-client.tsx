@@ -476,23 +476,52 @@ export default function NichePageClient({ params }: { params: { slug: string } }
             </motion.h2>
 
             <div className="flex gap-4 overflow-x-auto pb-4 -mx-2 px-2 snap-x snap-mandatory scrollbar-none">
-              {content.relatedGuides.map((guide) => (
-                <motion.div
-                  key={guide.href}
-                  variants={staggerItem}
-                  className="snap-start flex-shrink-0 w-72"
-                >
-                  <Link
-                    href={guide.href}
-                    className="block rounded-xl border border-border-default bg-white p-5 hover:shadow-md hover:-translate-y-0.5 transition-all duration-200 h-full"
+              {content.relatedGuides.map((guide) => {
+                // Extract slug from href like "/guides/creator-rewards-2026"
+                const guideSlug = guide.href.split('/').pop() || ''
+                const isGuide = guide.href.startsWith('/guides/')
+                return (
+                  <motion.div
+                    key={guide.href}
+                    variants={staggerItem}
+                    className="snap-start flex-shrink-0 w-72"
                   >
-                    <p className="text-base font-bold text-brand-ink mb-2 line-clamp-2">{guide.label}</p>
-                    <span className="inline-flex items-center gap-1 text-sm font-semibold text-brand-primaryDeep">
-                      Read guide <ChevronRight className="w-3.5 h-3.5" />
-                    </span>
-                  </Link>
-                </motion.div>
-              ))}
+                    <Link
+                      href={guide.href}
+                      className="group flex flex-col rounded-xl border border-border-default bg-white overflow-hidden hover:shadow-md hover:-translate-y-0.5 transition-all duration-200 h-full"
+                    >
+                      {/* Thumbnail */}
+                      <div className="relative w-full h-36 bg-brand-primarySoft overflow-hidden">
+                        {isGuide && (
+                          <Image
+                            src={`/images/guides/hero-${guideSlug}.webp`}
+                            alt=""
+                            fill
+                            className="object-cover"
+                            sizes="288px"
+                            loading="lazy"
+                            onError={(e) => {
+                              const target = e.currentTarget as HTMLImageElement
+                              target.style.display = 'none'
+                            }}
+                          />
+                        )}
+                        {/* Placeholder visible behind image or when no guide image */}
+                        <div className="absolute inset-0 bg-brand-primarySoft flex items-center justify-center -z-10">
+                          <ChevronRight className="h-8 w-8 text-brand-primary/30" aria-hidden />
+                        </div>
+                      </div>
+
+                      <div className="p-4 flex flex-col flex-1">
+                        <p className="text-base font-bold text-brand-ink mb-2 line-clamp-2">{guide.label}</p>
+                        <span className="inline-flex items-center gap-1 text-sm font-semibold text-brand-primaryDeep mt-auto">
+                          Read guide <ChevronRight className="w-3.5 h-3.5" />
+                        </span>
+                      </div>
+                    </Link>
+                  </motion.div>
+                )
+              })}
             </div>
           </motion.div>
         </Container>
