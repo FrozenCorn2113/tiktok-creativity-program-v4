@@ -102,6 +102,7 @@ function CreatorCard({ creator }: { creator: Creator }) {
             fill
             className="object-cover object-top"
             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+            unoptimized
             onError={() => setImgFailed(true)}
           />
         ) : (
