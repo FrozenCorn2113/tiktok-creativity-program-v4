@@ -376,6 +376,22 @@ export const nicheContent: Record<string, NicheData> = {
           'Makeup artist and beauty entrepreneur who shares professional-level tutorials and product reviews on TikTok. She built a dedicated following through detailed technique breakdowns and honest first impressions of trending products.',
         lesson: 'Combining tutorial expertise with genuine product opinions builds a monetizable audience that trusts your affiliate recommendations',
       },
+      {
+        name: 'Kelli Anne Sewell',
+        handle: 'makeupxka',
+        followers: '213K',
+        description:
+          'NYC-based makeup artist sharing makeup tutorials, product reviews, and skin prep tips. Her professional MUA background gives her content a polished, technique-focused edge that keeps viewers watching through full application routines.',
+        lesson: 'Professional credentials paired with accessible tutorial content build trust that converts directly into affiliate sales and brand partnerships',
+      },
+      {
+        name: 'Tamar',
+        handle: 'glowbytamar',
+        followers: '122K',
+        description:
+          'Licensed esthetician posting honest skincare product reviews with a focus on TikTok Shop products. Her clinical background lends credibility to her recommendations, and her straightforward review style builds audience trust.',
+        lesson: 'Licensed professionals who review products honestly build a highly trusting audience that converts at above-average rates on affiliate and shop links',
+      },
     ],
     strategy: [
       {
