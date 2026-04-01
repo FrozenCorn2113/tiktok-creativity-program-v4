@@ -5,3 +5,8 @@ ga-service-account.json
 .vercel
 tsconfig.tsbuildinfo
 supabase/.temp/
+Vale/
+Christopher/
+screenshots/
+test-results/
+.env.vercel
