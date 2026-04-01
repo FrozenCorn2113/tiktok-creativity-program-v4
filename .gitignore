@@ -10,3 +10,6 @@ Christopher/
 screenshots/
 test-results/
 .env.vercel
+scripts/*.log
+*.DS_Store
+content/lead-magnets/*.pdf

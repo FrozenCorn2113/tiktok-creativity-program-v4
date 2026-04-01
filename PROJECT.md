@@ -42,18 +42,6 @@ Next.js (App Router), Tailwind CSS, MDX guides, Resend email + Supabase subscrib
 ## Pending Review
 <!-- Items awaiting Bernard review -->
 
-- **What:** Guide #114 -- TikTok Carousels and Creator Rewards Program (2,400w)
-- **Where:** `projects/tiktok-creativity-program/content/guides/tiktok-carousel-creator-rewards.mdx`
-- **Status:** READY FOR REVIEW
-
-- **What:** Hero image for Guide #114 -- TikTok Carousel Posts and Creator Rewards (1200x630 WebP)
-- **Where:** `projects/tiktok-creativity-program/public/images/guides/hero-tiktok-carousel-creator-rewards.webp`
-- **Status:** READY FOR REVIEW
-
-- **What:** Guide #114 integration -- build verified, all internal links valid, affiliate tag correct, pushed to main
-- **Where:** `content/guides/tiktok-carousel-creator-rewards.mdx` (commit b069ef8f)
-- **Status:** READY FOR REVIEW
-
 
 ## Active
 <!-- Bernard maintains this section. Current tasks in flight. -->
@@ -61,9 +49,9 @@ Next.js (App Router), Tailwind CSS, MDX guides, Resend email + Supabase subscrib
 ### April Content Queue (LOCKED 2026-03-31, execution started 2026-04-01)
 **Research:** `research/monthly-keyword-research-april-2026.md`
 **Guide pipeline:**
-1. TikTok Carousel + Creator Rewards (HIGH) -- Christopher research LOCKED. Scribe guide LOCKED (2,400w, 0 em dashes, evidence labels correct). Devan integrating + Vale hero image in progress. Guide #114.
-2. Q2 Spring Content Strategy 2026 (MEDIUM-HIGH -- seasonal, tax deadline angle) -- QUEUED
-3. TikTok Shop Creator Restrictions + Non-Interactive Video Rules (MEDIUM) -- QUEUED
+1. TikTok Carousel + Creator Rewards (HIGH) -- DONE. Guide #114 LIVE (commit b069ef8f). All LOCKED: Christopher research, Scribe 2,400w, Devan integration, Vale hero wired in frontmatter. Bernard LOCKED 2026-04-01.
+2. Q2 Spring Content Strategy 2026 (MEDIUM-HIGH -- seasonal, tax deadline angle) -- DONE. Guide #115 LIVE (commit 22809988). Full pipeline: Christopher research LOCKED, Scribe 2,300w LOCKED, Vale hero LOCKED, Devan integration LOCKED. Bernard LOCKED 2026-04-01.
+3. TikTok Shop Creator Restrictions + Non-Interactive Video Rules (MEDIUM) -- DONE. Guide #116 LIVE (commit 22809988). Full pipeline: Christopher research LOCKED, Scribe 2,300w LOCKED, Vale hero LOCKED, Devan integration LOCKED. Editorial fix applied to old Shop guide (commit 55762712). Bernard LOCKED 2026-04-01.
 4. Japan + South Korea country guides (gap fill) -- QUEUED
 
 **Freshness fixes -- DONE (commit 1ec16ce4, Bernard LOCKED 2026-04-01):**
@@ -90,7 +78,7 @@ Next.js (App Router), Tailwind CSS, MDX guides, Resend email + Supabase subscrib
 4 guides audited. Oracle deal: LOOKS GOOD. CHR + Additional Reward Criteria + Australia: fixes applied (commit 40950f04). Research: `research/freshness-audit-and-content-gap-2026-03-30.md`.
 
 ### Ongoing
-- **113 guides live + 3 calculators.** Guide #113 (Search Views + Creator Rewards, commit aeb94ebe) shipped today.
+- **116 guides live + 3 calculators.** Guide #115 (Q2 Spring Content Strategy, commit 22809988) + Guide #116 (TikTok Shop Restrictions, commit 22809988) shipped 2026-04-01.
 - **Week 1 social LIVE:** 17 posts scheduled across X/Pinterest/Instagram (Mar 28 - Apr 4).
 - **RULE: Every post gets a unique image. NEVER reuse images across posts.**
 - **Affiliate activation: Kit + Buffer + 4 more LIVE.** 6 active affiliate links.
@@ -227,10 +215,18 @@ All 4 over-500K creators replaced. Beauty raised to 5 creators. All 45 creators 
 ## Pending Review
 <!-- Agents add completed deliverables here. Bernard reviews and routes next. -->
 
+- **What:** TikTok Shop creator restrictions + non-interactive video rules research brief — covers all 9 angles: Shop eligibility, follower requirements, pilot program, region availability, product category restrictions, CRP non-interactive video definition, Shop tag effect on CRP earnings, 2025-2026 policy changes, logistics mandate timeline, dual-program participation rules, ineligible video types, best practices, common disqualification mistakes
+- **Where:** `projects/tiktok-creativity-program/research/tiktok-shop-restrictions-noninteractive-research.md`
+- **Status:** READY FOR REVIEW
+
+- **What:** Guide #115 — Q2 Spring Content Strategy 2026 (2,200-2,600 words). Covers Q2 RPM seasonality and Oracle transition context, spring content themes with watch time engineering, tax season window (April 15 + June 15 pivots), highest-RPM niches for Q2, SRP positioning, volume compound math, qualified views vs total views trade-off, 30-day content plan, and summer prep lead time.
+- **Where:** `projects/tiktok-creativity-program/content/guides/tiktok-q2-content-strategy-2026.mdx`
+- **Status:** READY FOR REVIEW
 
 
 
 ## Work Log
+- [2026-04-01] Bernard daily ops -- Guide #114 Pending Review cleared + LOCKED (hero wired, commit b069ef8f confirmed). Guides #115 + #116 full pipeline complete: Christopher research (8 angles each) -> Scribe (2,300w each) -> Vale (2 unique hero images) -> Devan integration (commit 22809988, broken link fixed, 8 cross-links added). Editorial fix: old Shop guide updated to hedge product tag CRP claim (commit 55762712). Site now at 116 guides. April Content Queue guides 2-3 DONE.
 - [2026-04-01] Bernard monthly cycle -- April Content Queue activated. Christopher researching Carousel Monetization (Guide #114). Freshness fixes DONE: 3 guides updated (tax threshold, Shop Plan date, logistics mandate), 2 already current. Commit 1ec16ce4. Monthly maintenance DONE: build restored (gray-matter), hero image restored, .gitignore cleanup. Commit 3c1828a4. Ricky leads LOCKED (15 TCP at 13-14/15).
 - [2026-03-31] Bernard overnight cycle -- Hero image for guide #112 (TikTok Shop Affiliate Commission Rates) LOCKED: 1200x630 WebP, dark charcoal + orange shapes, no text/faces, on-brand. Ricky overnight leads LOCKED: 25 leads (15 TCP at 15/15 quality, 10 YB, 0 VFO). TCP leads have copy-paste replies linking relevant guides. Brett posts manually.
 - [2026-03-30] Bernard daily ops -- Freshness audit: Oracle deal LOOKS GOOD, 3 guides fixed (CHR scale/scope/quiz + Additional Reward 2026 context + Australia speculation removed), commits aeb94ebe + 40950f04. Guide #113 (Search Views + Creator Rewards, 2,100w) LIVE via Christopher research -> Scribe -> Vale hero -> Devan integration. Site at 113 guides.
