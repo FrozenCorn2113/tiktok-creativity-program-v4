@@ -39,18 +39,65 @@ Next.js (App Router), Tailwind CSS, MDX guides, Resend email + Supabase subscrib
 - Autonomous content pipeline: auto-post to all socials, weekly analytics review, no approval gates.
 - Vercel auto-deploys from git pushes — no manual deploy needed. Verify local HEAD matches production before pushing.
 
+## Pending Review
+<!-- Items awaiting Bernard review -->
+
+- **What:** Guide #114 -- TikTok Carousels and Creator Rewards Program (2,400w)
+- **Where:** `projects/tiktok-creativity-program/content/guides/tiktok-carousel-creator-rewards.mdx`
+- **Status:** READY FOR REVIEW
+
+
 ## Active
 <!-- Bernard maintains this section. Current tasks in flight. -->
 
-### 2026-03-26 Creator Rewards Playbook (Full Content)
+### April Content Queue (LOCKED 2026-03-31, execution started 2026-04-01)
+**Research:** `research/monthly-keyword-research-april-2026.md`
+**Guide pipeline:**
+1. TikTok Carousel + Creator Rewards (HIGH) -- Christopher research LOCKED. Scribe guide LOCKED (2,400w, 0 em dashes, evidence labels correct). Devan integrating + Vale hero image in progress. Guide #114.
+2. Q2 Spring Content Strategy 2026 (MEDIUM-HIGH -- seasonal, tax deadline angle) -- QUEUED
+3. TikTok Shop Creator Restrictions + Non-Interactive Video Rules (MEDIUM) -- QUEUED
+4. Japan + South Korea country guides (gap fill) -- QUEUED
 
-**Pipeline:** content-only (Bernard design -> Scribe write)
-**Goal:** Production-ready 4,000-6,000 word playbook as markdown, ready for Canva Doc conversion to PDF.
-**Output:** `content/playbook-full-content.md`
+**Freshness fixes -- DONE (commit 1ec16ce4, Bernard LOCKED 2026-04-01):**
+- `creator-tax-guide-2026.mdx` -- Added OBBBA $2,000 threshold for 2026 income
+- `tiktok-shop-affiliate-commission-rates.mdx` -- Fixed Shop Plan date to early 2026 + added logistics mandate
+- `tiktok-shop-affiliate-creativity-program.mdx` -- Added logistics mandate context
+- `tiktok-creator-taxes-1099.mdx` -- Already current, no changes needed
+- `tiktok-one-creator-marketplace.mdx` -- Already reflects completed sunset, no changes needed
 
-Bernard designed full architecture (12 sections). 3 exclusive frameworks not on website: Content Profit Matrix, RPM Scorecard, 60-Second Structure Blueprint. Includes fillable worksheets, decision trees, niche playbooks, weekly operating system, 25 hook templates. Scribe writing now.
+**Brett action: Affiliate applications**
+- CapCut: re-apply via Impact Radius (35% recurring)
+- Metricool: open program (50% up to $50/user/month)
 
-**Status:** Scribe writing. Bernard review pending.
+### Week 2 Social Calendar -- LOCKED, execution Apr 6
+**Guide selection locked.** 7 guides: eligibility-requirements, creator-tax-guide-2026 (seasonal: US tax deadline Apr 15), multiple-revenue-streams, increase-watch-time-tiktok, best-video-editing-apps-tiktok, tiktok-rpm-by-niche-2026, viral-psychology.
+**28 unique images needed from Vale.**
+**Execution:** Monday Apr 6 -- Bernard routes Scribe (copy) + Vale (images). Schedule Wednesday Apr 8 via Zernio.
+**See:** `TCP-CONTENT-CALENDAR.md` Week 2 section.
+
+### 2026-03-30 Guide #112 -- TikTok Shop Affiliate Commission Rates -- DONE
+**Full pipeline complete.** Christopher research LOCKED -> Scribe guide LOCKED (2,680w) -> Devan integrated (eb1430be) -> Vale hero image included. LIVE.
+
+### 2026-03-30 Freshness Review Queue -- DONE
+4 guides audited. Oracle deal: LOOKS GOOD. CHR + Additional Reward Criteria + Australia: fixes applied (commit 40950f04). Research: `research/freshness-audit-and-content-gap-2026-03-30.md`.
+
+### Ongoing
+- **113 guides live + 3 calculators.** Guide #113 (Search Views + Creator Rewards, commit aeb94ebe) shipped today.
+- **Week 1 social LIVE:** 17 posts scheduled across X/Pinterest/Instagram (Mar 28 - Apr 4).
+- **RULE: Every post gets a unique image. NEVER reuse images across posts.**
+- **Affiliate activation: Kit + Buffer + 4 more LIVE.** 6 active affiliate links.
+- **Email system LIVE.** Brett action: Run SQL for unsubscribe tracking.
+- **AdSense READY TO APPLY.** Brett action item.
+**Where:** `TCP-CONTENT-PIPELINE.md`
+
+### 2026-03-26 Traffic Generation + Social Media Strategy
+**Goal:** Comprehensive traffic and social strategy for TCP launch.
+**Output:** `TCP-TRAFFIC-STRATEGY.md`
+**Status:** Delivered. Awaiting Brett review.
+
+### 2026-03-26 Creator Rewards Playbook (Full Content) -- DONE
+
+Completed and LOCKED 2026-03-28. PDF (40 pages, full TCP brand, commit c9f37b82). Content: 10,200 words, 12 sections, 0 placeholders. See Done section.
 
 ### 2026-03-25 Creator Profile Screenshots -- COMPLETE
 
@@ -131,19 +178,22 @@ All morning sprint items shipped, reviewed, and locked. Site is in strong shape.
 - **Beauty: 4 creators -- THIN (only niche below 5).** Needs 2 more mid-tier creators to match baseline.
 - All niches have identical structure: 3 strategy sections, 4 focus areas, 3 tools, 4 related guides, RPM note, ultimate guide CTA. Content quality is strong across the board.
 
-**In flight (DO NOT DUPLICATE):**
-- Devan: Swapping remaining too-famous creators across non-artists niches (musicians, fitness, teachers, beauty, comedy, coaches, travel)
-
 **Next actions queued:**
-- Route Devan: Add 2 mid-tier beauty creators (bring to 6, matching median) when current niche swap is done
 - Future consideration: Add "Real Earnings Example" callout to niche pages using Christopher's case study research
 
+### 2026-03-27 Beauty Niche Creator Addition -- DONE
+
+Added 2 mid-tier beauty creators via Christopher research + Devan implementation. Build clean, auto-deployed.
+- Kelli Anne Sewell (@makeupxka, ~213K) — NYC MUA, makeup tutorials/reviews/skin prep
+- Tamar (@glowbytamar, ~122K) — licensed esthetician, honest skincare reviews, TikTok Shop focus
+- **Note:** Devan found beauty niche at 3 in `niche-data.ts` (not 5 as tracked in PROJECT.md). Now at 5. May be a data file discrepancy vs `nicheData.ts` — verify if needed.
+
 ### Ongoing
-- **106 guides live + 3 calculators.** All guides loading. All Priority 1 keyword gaps covered.
-- **Social rebuild LIVE:** 12 posts scheduled (6 IG + 6 Pinterest, Mar 26-31) with 6 unique Vale images.
+- **108 guides live + 3 calculators.** All guides loading. Search index current. Next gap queued: France country guide.
+- **Week 1 social LIVE:** 17 posts scheduled across X/Pinterest/Instagram (Mar 28 - Apr 4) with 30 unique Vale images.
 - **RULE: Every post gets a unique image. NEVER reuse images across posts.**
 - **Affiliate activation: Kit + Buffer + 4 more LIVE.** 6 active affiliate links.
-- **Email subscription fix DEPLOYED** (commit a78c59f) -- Vercel env vars + RLS upsert fix.
+- **Email system LIVE:** PDFs delivered via welcome email + landing pages. Unsubscribe page deployed. **Brett action: Run SQL in Supabase to activate unsubscribe tracking:** `ALTER TABLE email_subscribers ADD COLUMN unsubscribed_at timestamptz DEFAULT NULL;`
 - **AdSense READY TO APPLY.** All 4 legal pages live. Brett action item.
 - **Reddit outreach:** 6 HIGH leads, copy-paste replies. Manual posting by Brett.
 
@@ -164,72 +214,23 @@ All 4 over-500K creators replaced. Beauty raised to 5 creators. All 45 creators 
 
 **Execution plan:** Vale designs 2 PDFs in Canva + welcome email mockup. Devan builds unsubscribe page (parallel). Then Devan hosts PDFs, updates all links, implements email redesign, upgrades landing pages.
 
-**Status:** Audit complete. Ready for Brett review before routing agents.
+**Status:** RESOLVED (2026-03-28). All deliverables built and deployed: 2 PDFs live in /public/downloads/, unsubscribe page + API deployed, welcome email wired to deliver PDFs, landing pages have download buttons. One Brett action remaining (SQL migration).
 
 ## Pending Review
 <!-- Agents add completed deliverables here. Bernard reviews and routes next. -->
 
-- **What:** Lead magnet PDFs wired up across the site. Reformatted playbook renamed to final filename, old RPM cheat sheet removed. Both landing pages (/lead-magnets/rpm-cheat-sheet, /lead-magnets/eligibility-checklist) have prominent "Download Free PDF" buttons. Welcome email now delivers direct PDF links (playbook as primary for RPM signups, checklist as primary for eligibility signups, both for generic signups) with hero image. LeadMagnetGate success state shows direct PDF download button plus secondary PDF link. Eligibility checklist PDF and email hero image added to git.
-- **Where:** `src/lib/email/welcome-template.ts`, `src/app/lead-magnets/rpm-cheat-sheet/page.tsx`, `src/app/lead-magnets/eligibility-checklist/page.tsx`, `src/components/email/lead-magnet-gate.tsx`, `public/downloads/` (commit 11d2493b)
-- **Status:** READY FOR REVIEW
 
-- **What:** Premium branded 40-page PDF of the Creator Rewards Playbook. Puppeteer-based generator converts playbook-full-content.md to styled HTML with print CSS. Full TCP brand: Manrope font, navy/orange/warm-white palette. Cover page with orange accent strip, numbered TOC with EXCLUSIVE badges, navy section banners, styled data tables (navy headers, alternating rows, orange highlight on key rows), worksheet tables with dashed fill-in lines and orange column headers, formula blocks, checkbox items, matrix diagram, 4 Landpress images placed per Vale's brief, dark navy Quick Reference Card (pages 36-39), back cover with logo/URL/copyright. Regenerable via `node scripts/generate-playbook-pdf.mjs`.
-- **Where:** `public/downloads/tcp-creator-rewards-playbook-2026.pdf`, `scripts/generate-playbook-pdf.mjs` (commit c9f37b82)
-- **Status:** READY FOR REVIEW
 
-- **What:** Full TikTok Creator Rewards Playbook content (10,200 words). All 12 sections complete with zero placeholders: Cover, Eligibility Fast-Check, Money Math (full earnings table), Content Profit Matrix (2x2 matrix + 15 pre-filled topic reframes + blank worksheet), RPM Scorecard (6 factors with full 1/3/5 rubrics + scoring ranges), 60-Second Blueprint (4-act structure + pattern interrupt timing guide + "Plan Your Next Video" worksheet), Hook Vault (25 templates in 5 categories, all with filled examples), Niche RPM Playbook (RPM table + niche stacking concept + 5 examples + worksheet), Weekly Content OS (day-by-day workflow + weekly tracker worksheet), 30-Day Launch Plan (week-by-week with daily tasks), Revenue Stacking (5 income layers with context and ranges), Quick Reference Card (pre-post checklist, never-do list, key numbers table, weekly rhythm, bookmark list). No em dashes, no fictional case studies, no AI vocabulary tells.
-- **Where:** `content/playbook-full-content.md`
-- **Status:** READY FOR REVIEW
-
-- **What:** Lead magnet production spec for two premium PDFs (Creator Rewards Playbook, 20 pages + Eligibility Checklist, 9 pages). Complete page-by-page layouts with production-ready copy. 11 exclusive elements not on the website (RPM Scorecard, Content Strategy Worksheet, Content Ideas Bank, Revenue Stacking Guide, Weekly Tracker, Quick Reference Card, Content Audit, Application Timeline, Pre-Application Score, Rejection Recovery Plan, Post-Approval 48 Hours). Designed for Canva implementation (16:9 landscape presentation format). All copy is final -- no Scribe routing needed for PDF body text.
-- **Where:** `LEAD-MAGNET-SPEC.md`
-- **Status:** READY FOR REVIEW
-
-- **What:** Unsubscribe page (/unsubscribe) for CAN-SPAM compliance + API route. Fixed welcome email unsubscribe link (was literal {{email}}, now interpolates real address). Fixed LeadMagnetGate to use /api/newsletter instead of /api/email. BLOCKER: Brett must run SQL in Supabase dashboard: `ALTER TABLE email_subscribers ADD COLUMN unsubscribed_at timestamptz DEFAULT NULL;`
-- **Where:** `src/app/unsubscribe/page.tsx`, `src/app/api/unsubscribe/route.ts`, `src/lib/email/welcome-template.ts`, `src/lib/email/send-welcome.ts`, `src/components/email/lead-magnet-gate.tsx` (commit b5ad225d)
-- **Status:** READY FOR REVIEW
-
-- **What:** Tools page fix: equipment cards now link to guide pages (not Amazon) with hero image thumbnails. Added Cameras card. AffiliateCardGrid supports internal links.
-- **Where:** `src/app/tools/page.tsx`, `src/components/affiliate/affiliate-card-grid.tsx`, `src/app/tools/ToolsTabs.tsx` (commit 8f7e981e)
-- **Status:** READY FOR REVIEW
-
-- **What:** 88 guide hero images generated for all TCP guide pages (8 critical niche heroes + 80 guide pages). Flat vector illustration style matching Landpress brand (orange+black on white). Zero missing hero images across all 107 guides.
-- **Where:** `public/images/guides/hero-*.webp` (88 new files)
-- **Status:** READY FOR REVIEW
-
-- **What:** Two branded lead magnet PDFs (RPM Cheat Sheet 9 pages + Eligibility Checklist 4 pages) + email hero image. Full TCP brand: Manrope font, navy/orange/warm-white palette, styled data tables, custom section headers, checklist graphics, 30-day plan blocks, mistake boxes.
-- **Where:** `public/downloads/tcp-rpm-cheat-sheet-2026.pdf`, `public/downloads/tcp-eligibility-checklist-2026.pdf`, `public/images/email/lead-magnet-preview.webp`, generator script at `scripts/generate-lead-magnets.py`
-- **Status:** READY FOR REVIEW
-
-- **What:** Added thumbnail images to related guides cards on niche detail pages (previously plain text). Uses same hero-{slug}.webp images with onError fallback for missing images or non-guide links.
-- **Where:** `src/app/niche/[slug]/niche-page-client.tsx` (commit 40bbc8d8)
-- **Status:** READY FOR REVIEW
-
-- **What:** Broken internal link audit: scanned 1,002 internal links across all .tsx/.ts/.mdx files. Fixed 2 broken guide links (tiktok-video-quality, how-to-increase-rpm). All niche page related guides, calculator links, and cross-references verified valid.
-- **Where:** `content/guides/best-ring-lights-tiktok.mdx`, `content/guides/tiktok-creativity-program-mexico.mdx` (commit e8867375)
-- **Status:** READY FOR REVIEW
-
-- **What:** Fixed 7 guide pages crashing with 500 errors (linked from niche detail pages). Root cause: next-mdx-remote v6 silently drops all JSX expression props in RSC mode, breaking ComparisonTable. Downgraded to v5 which correctly passes array/object/boolean props. Added defensive guard to ComparisonTable.
-- **Where:** `package.json`, `src/components/ComparisonTable.tsx` (commit 7673639e)
-- **Status:** SUPERSEDED by aa0cf571
-
-- **What:** Upgraded next-mdx-remote v5->v6 to resolve CVE-2026-0969 security vulnerability. ComparisonTable now accepts JSON string props (parsed internally) instead of JSX expression props that v6 drops in RSC mode. All 7 MDX files converted. Build clean.
-- **Where:** `package.json`, `src/components/ComparisonTable.tsx`, 7 MDX guides (commit aa0cf571)
-- **Status:** READY FOR REVIEW
-
-- **What:** TikTok Creativity Program Mexico guide (2,400w, eligibility + RPM + payouts + language strategy + FAQ)
-- **Where:** `content/guides/tiktok-creativity-program-mexico.mdx`
-- **Status:** READY FOR REVIEW
-
-- **What:** Responsive table fix -- all 85 MDX guides with tables now properly contained on mobile (horizontal scroll within wrapper, reduced padding/font on small screens, no page overflow)
-- **Where:** `src/app/globals.css` (commit d76dd0d1)
-- **Status:** READY FOR REVIEW
-
-- **What:** Fixed email subscribe/capture box 500 error. Root cause: Vercel Supabase integration was overriding NEXT_PUBLIC_SUPABASE_URL and NEXT_PUBLIC_SUPABASE_ANON_KEY with credentials from a different Supabase project (onmqirmoeovyonqloaxl). Hardcoded correct URL and anon key in the newsletter API route. Also removed conflicting TCP_SUPABASE_URL/KEY env vars from Vercel. All email capture forms (homepage, dark section, inline, popup, mobile sticky, lead magnet gate) now work.
-- **Where:** `src/app/api/newsletter/route.ts` (commit 2f043944)
-- **Status:** READY FOR REVIEW
 
 ## Work Log
+- [2026-04-01] Bernard monthly cycle -- April Content Queue activated. Christopher researching Carousel Monetization (Guide #114). Freshness fixes DONE: 3 guides updated (tax threshold, Shop Plan date, logistics mandate), 2 already current. Commit 1ec16ce4. Monthly maintenance DONE: build restored (gray-matter), hero image restored, .gitignore cleanup. Commit 3c1828a4. Ricky leads LOCKED (15 TCP at 13-14/15).
+- [2026-03-31] Bernard overnight cycle -- Hero image for guide #112 (TikTok Shop Affiliate Commission Rates) LOCKED: 1200x630 WebP, dark charcoal + orange shapes, no text/faces, on-brand. Ricky overnight leads LOCKED: 25 leads (15 TCP at 15/15 quality, 10 YB, 0 VFO). TCP leads have copy-paste replies linking relevant guides. Brett posts manually.
+- [2026-03-30] Bernard daily ops -- Freshness audit: Oracle deal LOOKS GOOD, 3 guides fixed (CHR scale/scope/quiz + Additional Reward 2026 context + Australia speculation removed), commits aeb94ebe + 40950f04. Guide #113 (Search Views + Creator Rewards, 2,100w) LIVE via Christopher research -> Scribe -> Vale hero -> Devan integration. Site at 113 guides.
+- [2026-03-30] Guide #112 TikTok Shop Affiliate Commission Rates LIVE. Christopher research LOCKED, Scribe wrote (2,680w), Bernard reviewed + LOCKED, Devan integrated (eb1430be) with Vale hero image. Full pipeline in single cycle.
+- [2026-03-30] Guide #111 TikTok One Creator Marketplace LIVE. Scribe wrote (2,350w), Bernard reviewed (em dash fix), Devan integrated (4f846f0a), Vale hero image (3dbfeada). Full pipeline complete.
+- [2026-03-30] Bernard Monday cycle -- Reviewed 3 pending items. TikTok One Research: LOCKED (2,800w, all 9 questions, claims labeled). France Guide #109: LOCKED (1,750w, all 8 sections, minor note on em dashes in AffiliateLink labels). TikTok One Guide: REVISION NEEDED (3 em dashes at lines 44-46, Scribe routed for fix). Content Gap Analysis: all 3 gaps closed, moved to Done. Duplicate Week 2 calendar entry cleaned. Christopher routed for Monday weekly keyword scan. Kit 11 niche selection research started (Christopher, background).
+- [2026-03-29] Bernard daily ops -- Closed all 3 content gaps from 2026-03-28 analysis. Guide #109 France LIVE (Scribe 1,800w + Devan d65a4ac4 + Vale hero e88e1b6a). Guide #110 TikTok One LIVE (Christopher research + Scribe 2,200w + Devan 62a10299 + Vale hero 17cc338b). Playbook Active entry cleaned up (was stale -- already done 2026-03-28). Week 2 social calendar LOCKED (7 guides, starts Apr 7, Scribe+Vale routes Apr 6).
+- [2026-03-28] Bernard daily ops -- Cleared 17-item Pending Review backlog. All items LOCKED (see Done). Christopher content gap analysis: top opportunity is TikTok Pulse Ad Revenue Sharing (Low difficulty, zero TCP coverage). Routing Scribe for Pulse guide + Devan for Mexico guide integration. Brett action items: (1) SQL migration for unsubscribe tracking, (2) AdSense application.
 - [2026-03-25] Bernard sprint review -- All 7 priority items assessed. Items 1-7 already completed in prior sessions: hero images (185c614), niche overhaul (7c337c8), creator spotlights (58a55caf), calculator redesign (3b1211a+d6fbc8f), email flow (4afeebf), search bar (6774ff6), site audit (aa37beb). Creator sweep revision LOCKED. DR1+DR2 LOCKED. DR3 DEFERRED. No new work needed -- site is production-ready.
 - [2026-03-25] Bernard 5:36pm cycle -- Reviewed 3 Pending Review items. Creator card screenshots restore LOCKED (commit 52010413). Design Review DR1+DR2 fixes LOCKED (commit bace7003). Creator sweep REVISION NEEDED: 4 creators still over 500K (Sivan Tayer 572.8K, Mysweetchubs 540.9K, Hindash 710K, Theambitious.christian 751.5K). Devan routed for revision.
 - [2026-03-25] Bernard 6pm ops sprint -- Reviewed and LOCKED 6 Pending Review items (navbar logo, table rendering, thumbnails, calculator overhaul, niche case study research, niche bug fixes). Visual audit of 7 screenshots: all pages consistent, no design issues. Niche content depth audit: beauty is thin (4 creators vs 5-7 everywhere else), all others at standard. Queued beauty creator additions for Devan after current niche swap completes.
@@ -263,6 +264,35 @@ All 4 over-500K creators replaced. Beauty raised to 5 creators. All 45 creators 
 
 ## Done
 <!-- Completed and locked items. Archive periodically. -->
+- [2026-03-31] Vale hero image for guide #112 (TikTok Shop Affiliate Commission Rates): 1200x630 WebP, on-brand. Bernard LOCKED.
+- [2026-03-31] Ricky overnight leads: 25 leads (15 TCP, 10 YB, 0 VFO). TCP leads quality at 15/15 with copy-paste replies. Bernard LOCKED. Brett posts manually.
+- [2026-03-28] Bernard batch review -- 17 Pending Review items ALL LOCKED:
+  - CalculatorNav component (all 3 calculator pages, active state, Framer Motion). LOCKED.
+  - Homepage hero alexeubank.webp (file confirmed, path correct, commit bbd3e668). LOCKED.
+  - Lead magnets wired up: PDFs in /public/downloads/, landing pages, welcome email (commit 11d2493b). LOCKED.
+  - Creator Rewards Playbook PDF (40 pages, full TCP brand, commit c9f37b82). LOCKED.
+  - Playbook content (10,200 words, 12 sections, no placeholders/em dashes). LOCKED.
+  - LEAD-MAGNET-SPEC.md (production spec for 2 PDFs, 11 exclusive elements). LOCKED.
+  - Unsubscribe page + API (CAN-SPAM compliance, commit b5ad225d). LOCKED. Brett SQL blocker noted.
+  - Tools page fix (equipment → guide links, Cameras card, commit 8f7e981e). LOCKED.
+  - 88 guide hero images (zero missing across all 107 guides). LOCKED.
+  - Week 1 social tone pass (17 posts, hooks tightened, em dashes removed, TCP-CONTENT-CALENDAR.md). LOCKED.
+  - Lead magnet PDFs (RPM Cheat Sheet 9pp + Eligibility Checklist 4pp + email hero image). LOCKED.
+  - Niche thumbnail images on related guide cards (commit 40bbc8d8). LOCKED.
+  - Broken internal link audit (1,002 links scanned, 2 fixed, commit e8867375). LOCKED.
+  - CVE-2026-0969 fix: next-mdx-remote v6 + ComparisonTable JSON props (commit aa0cf571). LOCKED.
+  - Mexico guide content (2,400w, no placeholders/em dashes -- routing to Devan for integration). LOCKED.
+  - Responsive table fix (mobile horizontal scroll, commit d76dd0d1). LOCKED.
+  - Email subscribe fix (hardcoded correct Supabase URL, commit 2f043944). LOCKED.
+- [2026-03-28] **TCP Week 1 Content System COMPLETE.** 17 posts scheduled across 3 platforms via Zernio: 5 X (Mon-Fri 9AM PT), 7 Pinterest (daily 9AM/1PM PT), 5 Instagram (Mon-Fri 10AM PT, incl. 3 carousels). 30 unique images. Zero Brett involvement. Week 2 planning starts next Monday.
+- [2026-03-28] Bernard batch review -- 7 items LOCKED:
+  - Ricky TCP leads 2026-03-28 (10 leads, top 3 at 13/15). Brett posts manually.
+  - Ricky TCP deep scan 2026-03-26 (10 leads). Brett posts manually.
+  - Ricky full scan 2026-03-26 (2 leads: TCP + YB). Brett posts manually.
+  - Resend audience sync (commit fcb0dfae). BLOCKER: Brett must set SUPABASE_SERVICE_ROLE_KEY in .env + Vercel for batch sync.
+  - Content Calendar Week 1 (17 posts, TCP-CONTENT-CALENDAR.md). Production-ready.
+  - Vale Week 1 images (30 unique, social/images/week-1/). Visually verified -- on-brand, unique, correct counts.
+  - Content Pipeline Spec (TCP-CONTENT-PIPELINE.md). Comprehensive, execution-ready.
 - [2026-03-26] Niche index hero images fix (Devan): LOCKED 2026-03-26 — commit 669da9c5, visually verified: all 8 hero images showing in card grid, all 8 thumbnails in guides list, zero broken images, zero console errors.
 - [2026-03-26] Bernard morning cycle -- 8 Pending Review items assessed. 6 LOCKED: UNVERIFIED tag removal (6273ccaa), email subscription fix (REST API workaround), creator audit (43 creators, actionable), badge/pill removal (5a07f85d, badge.tsx deleted), link audit (179 lines, 13 TODO items resolved), affiliate link resolution (0 TODOs, all real URLs). Creator data fixes (niche-data.ts) conditionally LOCKED (57 entries plausible with replacements). Niche index hero images REVISION NEEDED (page still text-only, no hero images found).
 - [2026-03-25] Bernard ops review -- Creator sweep revision LOCKED (commit 58a55caf): 4 over-500K creators replaced, beauty raised to 5 creators, all 45 under 500K cap. DR1+DR2 design fixes confirmed LOCKED (commit bace7003). DR3 niche index redesign DEFERRED (page already functional). Build verified clean.
