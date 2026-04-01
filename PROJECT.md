@@ -46,6 +46,14 @@ Next.js (App Router), Tailwind CSS, MDX guides, Resend email + Supabase subscrib
 - **Where:** `projects/tiktok-creativity-program/content/guides/tiktok-carousel-creator-rewards.mdx`
 - **Status:** READY FOR REVIEW
 
+- **What:** Hero image for Guide #114 -- TikTok Carousel Posts and Creator Rewards (1200x630 WebP)
+- **Where:** `projects/tiktok-creativity-program/public/images/guides/hero-tiktok-carousel-creator-rewards.webp`
+- **Status:** READY FOR REVIEW
+
+- **What:** Guide #114 integration -- build verified, all internal links valid, affiliate tag correct, pushed to main
+- **Where:** `content/guides/tiktok-carousel-creator-rewards.mdx` (commit b069ef8f)
+- **Status:** READY FOR REVIEW
+
 
 ## Active
 <!-- Bernard maintains this section. Current tasks in flight. -->
