@@ -4,7 +4,11 @@
  * Usage: node scripts/send-brett-tasks-email.mjs
  */
 
-const RESEND_API_KEY = 'REDACTED_RESEND_KEY'
+const RESEND_API_KEY = process.env.RESEND_API_KEY
+if (!RESEND_API_KEY) {
+  console.error('RESEND_API_KEY not set. Run: export RESEND_API_KEY=...')
+  process.exit(1)
+}
 const FROM = 'TikTok Creativity Program <hello@tiktokcreativityprogram.com>'
 const TO = 'theyellowbirdcompany@gmail.com'
 const SUBJECT = 'TCP Visual Overhaul - Your Tasks for Today'
