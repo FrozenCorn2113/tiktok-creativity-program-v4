@@ -1,17 +1,15 @@
-'use client'
+// Guides listing — SSR-first for SEO.
+// All guide cards render in initial server HTML so Googlebot can crawl every link.
+// Client-side filter/pagination toggles CSS visibility only — never removes cards from DOM.
 
-// Guides listing — client for filter interactivity + Framer Motion AnimatePresence
-// PAGE_SPECS.md Section 4: category tabs, 3-col card grid, Framer Motion enter/exit
-
-import { useState } from 'react'
 import Link from 'next/link'
 import { Clock } from 'lucide-react'
-import { motion, AnimatePresence, useReducedMotion } from 'framer-motion'
 import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs'
 
 import { Button } from '@/components/ui/button'
-import { staggerContainer, staggerItem, viewportOnce } from '@/lib/motion'
 import { EmailCapture } from '@/components/sections/email-capture'
+import GuidesFilterController from './GuidesFilterController'
+import GuideCardImage from './GuideCardImage'
 
 interface GuideItem {
   slug: string
@@ -38,22 +36,6 @@ const filterTabs = [
 const PAGE_SIZE = 12
 
 export default function GuidesListingClient({ guides }: { guides: GuideItem[] }) {
-  const shouldReduceMotion = useReducedMotion()
-  const [activeTab, setActiveTab] = useState('all')
-  const [visibleCount, setVisibleCount] = useState(PAGE_SIZE)
-
-  const filtered =
-    activeTab === 'all'
-      ? guides
-      : guides.filter((g) => g.category === activeTab)
-
-  const displayed = filtered.slice(0, visibleCount)
-  const hasMore = visibleCount < filtered.length
-
-  const handleTabChange = (value: string) => {
-    setActiveTab(value)
-    setVisibleCount(PAGE_SIZE)
-  }
 
   return (
     <>
@@ -64,17 +46,19 @@ export default function GuidesListingClient({ guides }: { guides: GuideItem[] })
             TikTok Creator Rewards Guides
           </h1>
           <p className="text-[1.125rem] text-text-secondary max-w-2xl mx-auto leading-[1.7]">
-            107 guides covering eligibility, earnings, troubleshooting, and strategy — updated for 2026.
+            {guides.length} guides covering eligibility, earnings, troubleshooting, and strategy — updated for 2026.
           </p>
 
-          {/* Category filter tabs — scrollable horizontal on mobile */}
-          <div className="mt-8 overflow-x-auto pb-1">
-            <Tabs value={activeTab} onValueChange={handleTabChange}>
+          {/* Category filter tabs — scrollable horizontal on mobile.
+              Rendered SSR with default 'all'; GuidesFilterController hydrates interactivity. */}
+          <div className="mt-8 overflow-x-auto pb-1" data-guides-tabs-container>
+            <Tabs defaultValue="all">
               <TabsList className="flex gap-1 bg-background-surface rounded-full p-1 w-max mx-auto">
                 {filterTabs.map((tab) => (
                   <TabsTrigger
                     key={tab.value}
                     value={tab.value}
+                    data-guides-tab={tab.value}
                     className="rounded-full text-sm whitespace-nowrap data-[state=active]:bg-brand-primary data-[state=active]:text-brand-ink data-[state=inactive]:text-text-secondary"
                   >
                     {tab.label}
@@ -86,49 +70,53 @@ export default function GuidesListingClient({ guides }: { guides: GuideItem[] })
         </div>
       </section>
 
-      {/* Guide cards grid */}
+      {/* Guide cards grid — ALL cards rendered server-side for SEO crawlability.
+          Visibility (filter + load-more pagination) is toggled client-side via CSS
+          classes on data-guide-card. Every <a href> is in the SSR HTML regardless. */}
       <section className="bg-white py-12">
         <div className="max-w-container mx-auto px-6">
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={activeTab}
-              initial={shouldReduceMotion ? false : "hidden"}
-              animate="show"
-              exit={shouldReduceMotion ? undefined : { opacity: 0 }}
-              variants={shouldReduceMotion ? {} : staggerContainer}
-              className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
-            >
-              {displayed.length > 0 ? (
-                displayed.map((guide) => (
-                  <motion.div
-                    key={guide.slug}
-                    variants={shouldReduceMotion ? {} : staggerItem}
-                  >
-                    <GuideCard guide={guide} />
-                  </motion.div>
-                ))
-              ) : (
-                <div className="col-span-3 text-center py-16 text-text-muted">
-                  No guides found in this category.
-                </div>
-              )}
-            </motion.div>
-          </AnimatePresence>
-
-          {/* Load more */}
-          {hasMore && (
-            <div className="flex justify-center mt-10">
-              <Button
-                variant="outline"
-                onClick={() => setVisibleCount((c) => c + PAGE_SIZE)}
-                className="min-h-[48px] px-8 font-semibold"
+          <div
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
+            data-guides-grid
+            data-page-size={PAGE_SIZE}
+          >
+            {guides.map((guide, index) => (
+              <div
+                key={guide.slug}
+                data-guide-card
+                data-category={guide.category}
+                data-index={index}
+                // First PAGE_SIZE cards visible by default (matches "All" initial view).
+                // Cards beyond PAGE_SIZE are hidden via CSS until "Load more" or filter change.
+                className={index >= PAGE_SIZE ? 'hidden' : ''}
               >
-                Load more guides
-              </Button>
+                <GuideCard guide={guide} />
+              </div>
+            ))}
+            <div
+              className="col-span-3 text-center py-16 text-text-muted hidden"
+              data-guides-empty
+            >
+              No guides found in this category.
             </div>
-          )}
+          </div>
+
+          {/* Load more — controller toggles visibility + increments visible count */}
+          <div className="flex justify-center mt-10" data-guides-loadmore-wrap>
+            <Button
+              variant="outline"
+              data-guides-loadmore
+              className="min-h-[48px] px-8 font-semibold"
+            >
+              Load more guides
+            </Button>
+          </div>
         </div>
       </section>
+
+      {/* Client-only filter/pagination controller — no-JS users see first 12 cards
+          but every link is still in the SSR HTML for crawlers. */}
+      <GuidesFilterController />
 
       {/* Email capture */}
       <EmailCapture
@@ -147,18 +135,9 @@ function GuideCard({ guide }: { guide: GuideItem }) {
       href={guide.href}
       className="group flex flex-col border border-border-default rounded-xl overflow-hidden bg-white hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200 h-full"
     >
-      {/* Thumbnail — dynamic slug path, onError hide if missing */}
+      {/* Thumbnail — dynamic slug path, onError hide if missing (client island) */}
       <div className="relative w-full h-48 bg-brand-primarySoft overflow-hidden">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          src={`/images/guides/hero-${guide.slug}.webp`}
-          alt={`Thumbnail for ${guide.title}`}
-          className="w-full h-full object-cover"
-          loading="lazy"
-          onError={(e) => {
-            ;(e.currentTarget as HTMLImageElement).style.display = 'none'
-          }}
-        />
+        <GuideCardImage slug={guide.slug} title={guide.title} />
       </div>
 
       {/* Card content */}

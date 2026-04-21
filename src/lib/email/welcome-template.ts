@@ -45,9 +45,9 @@ const LEAD_MAGNET_URLS: Record<string, string> = {
   'Eligibility Checklist': '/lead-magnets/eligibility-checklist',
   'Get the Free Creator Rewards Checklist': '/lead-magnets/eligibility-checklist',
   // Legacy mappings
-  'RPM Optimization Guide': '/guides/tiktok-rpm-rates-by-country',
-  'Follower Income Guide': '/guides/tiktok-money-per-follower',
-  'Earnings Calculator Results Guide': '/guides/tiktok-earnings-calculator',
+  'RPM Optimization Guide': '/calculators/rpm-by-country',
+  'Follower Income Guide': '/calculators/follower-income-estimator',
+  'Earnings Calculator Results Guide': '/calculators/earnings-calculator',
   'Earnings Tracker': '/resources/earnings-tracker',
   'Creator Rewards Checklist': '/lead-magnets/eligibility-checklist',
   'Content Planning Template': '/resources/content-planning-template',
