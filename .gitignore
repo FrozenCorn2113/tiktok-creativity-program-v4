@@ -11,5 +11,7 @@ screenshots/
 test-results/
 .env.vercel
 scripts/*.log
+scripts/last-digest.html
+logs/
 *.DS_Store
 content/lead-magnets/*.pdf
