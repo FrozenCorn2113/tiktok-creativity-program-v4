@@ -9,7 +9,7 @@ type VideoEmbedProps = {
 
 export default function VideoEmbed({ title, embedUrl }: VideoEmbedProps) {
   return (
-    <div className="overflow-hidden rounded-[var(--radius-lg)] border border-[var(--color-border)] bg-white shadow-sm">
+    <div className="not-prose my-8 overflow-hidden rounded-[16px] border border-line bg-white">
       <div className="aspect-video w-full">
         <iframe
           src={embedUrl}
@@ -26,7 +26,7 @@ export default function VideoEmbed({ title, embedUrl }: VideoEmbedProps) {
           }
         />
       </div>
-      <div className="border-t border-[var(--color-border)] p-3 text-xs text-[var(--color-text-subtle)]">
+      <div className="border-t border-line px-4 py-3 font-mono text-[11px] uppercase tracking-[0.08em] text-ink-soft">
         {title}
       </div>
     </div>

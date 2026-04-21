@@ -20,26 +20,26 @@ export default function QuickPickBox({
 }: QuickPickBoxProps) {
   return (
     <div
-      className={`border-l-[3px] border-l-[var(--color-primary)] rounded-r-[var(--radius-lg)] bg-[var(--color-surface-warm)] p-6 ${className}`}
+      className={`not-prose my-8 rounded-[20px] bg-soft border border-[rgba(244,162,97,0.25)] p-7 ${className}`}
       role="note"
       aria-label={`Quick pick: ${productName}`}
     >
-      {/* Label row */}
-      <div className="flex items-center gap-2 text-[0.75rem] font-semibold uppercase tracking-wide text-[var(--color-primary-hover)]">
-        <Star className="h-3.5 w-3.5 fill-[var(--color-primary)] text-[var(--color-primary)]" aria-hidden />
+      {/* Eyebrow */}
+      <div className="flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.12em] font-medium text-[#C2622A]">
+        <Star className="h-3.5 w-3.5 fill-[#F4A261] text-[#F4A261]" aria-hidden />
         {label}
       </div>
 
       {/* Product name */}
-      <h3 className="mt-2 text-[1.125rem] font-bold text-[var(--color-ink-strong)]">
+      <h3 className="mt-3 font-sans text-[22px] font-semibold tracking-[-0.01em] text-ink m-0">
         {productName}
       </h3>
 
       {/* Verdict */}
-      <p className="mt-1.5 text-sm leading-[1.7] text-[var(--color-text-muted)]">{verdict}</p>
+      <p className="mt-2 text-[15px] leading-[1.65] text-ink-soft">{verdict}</p>
 
       {/* Affiliate CTA */}
-      <div className="mt-4">
+      <div className="mt-5">
         <AffiliateLinkButton
           slug={affiliateSlug}
           label={affiliateLabel ?? `Check ${productName}`}

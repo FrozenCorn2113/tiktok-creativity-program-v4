@@ -10,15 +10,15 @@ type JourneyCardProps = {
 
 export default function JourneyCard({ title, description, linkText, linkHref }: JourneyCardProps) {
   return (
-    <div className="rounded-[var(--radius-lg)] border border-[var(--color-border)] bg-white p-6 transition-all duration-200 hover:border-[var(--color-primary)] hover:shadow-[var(--shadow-sm)]">
-      <h3 className="text-base font-semibold text-[var(--color-ink-strong)]">{title}</h3>
-      <p className="mt-2 text-sm leading-[1.7] text-[var(--color-text-muted)]">{description}</p>
+    <div className="not-prose rounded-[16px] border border-line bg-white p-6 transition-all duration-200 hover:-translate-y-[2px] hover:border-brand-primaryDeep hover:shadow-[0_10px_28px_-18px_rgba(194,98,42,0.3)]">
+      <h3 className="font-sans text-[17px] font-semibold text-ink m-0 leading-[1.3]">{title}</h3>
+      <p className="mt-2 text-[14px] leading-[1.65] text-ink-soft m-0">{description}</p>
       <Link
         href={linkHref}
-        className="mt-3 inline-flex cursor-pointer items-center gap-1 text-sm font-semibold text-[var(--color-primary)] transition-transform duration-200 hover:gap-2"
+        className="mt-4 inline-flex items-center gap-1.5 font-mono text-[11px] uppercase tracking-[0.12em] font-medium text-[#C2622A] hover:gap-2 transition-all duration-200"
       >
         {linkText}
-        <ArrowRight className="h-4 w-4" aria-hidden />
+        <ArrowRight className="h-3.5 w-3.5" aria-hidden />
       </Link>
     </div>
   )

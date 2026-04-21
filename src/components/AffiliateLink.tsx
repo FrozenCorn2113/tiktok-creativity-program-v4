@@ -16,8 +16,7 @@ type AffiliateLinkProps = {
 export default function AffiliateLink({ slug, label, href, children, className = '' }: AffiliateLinkProps) {
   // Derive slug from href if not provided directly (e.g. "/tools/filmora" -> "filmora")
   const resolvedSlug = slug ?? href?.split('/').pop() ?? 'unknown'
-  // Normalize /tools/{slug} hrefs to /go/{slug} — MDX guides use /tools/ pattern but the
-  // actual affiliate redirect route is /go/[slug]. No individual /tools/[slug] pages exist.
+  // Normalize /tools/{slug} hrefs to /go/{slug}
   const rawHref = slug ? `/go/${slug}` : href ?? `/go/${resolvedSlug}`
   const resolvedHref = rawHref.startsWith('/tools/') ? rawHref.replace('/tools/', '/go/') : rawHref
   const resolvedLabel = label ?? children
@@ -36,7 +35,7 @@ export default function AffiliateLink({ slug, label, href, children, className =
       href={resolvedHref}
       onClick={handleClick}
       rel="noopener noreferrer sponsored"
-      className={`text-[var(--color-primary-hover)] underline decoration-[var(--color-primary)] underline-offset-2 hover:text-[var(--color-ink)] ${className}`}
+      className={`text-[#C2622A] underline decoration-[#F4A261] decoration-[1.5px] underline-offset-[3px] hover:text-ink hover:decoration-ink transition-colors ${className}`}
     >
       {resolvedLabel}
     </a>

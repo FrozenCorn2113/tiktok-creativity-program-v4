@@ -1,8 +1,8 @@
-// Designed by Vale v4 — Editorial affiliate card, inline guide variant
+// Warm-editorial affiliate card, inline guide variant
 
 "use client";
 
-import { Info, Tag, ExternalLink } from "lucide-react";
+import { Info, ArrowUpRight } from "lucide-react";
 
 interface AffiliateCardInlineProps {
   toolName: string;
@@ -26,30 +26,27 @@ export function AffiliateCardInline({
   // Google Favicon API — reliable, supports size param for good quality
   const logoDomain = domain ?? `${slug.replace(/-/g, "")}.com`;
   const googleFaviconUrl = `https://www.google.com/s2/favicons?domain=${logoDomain}&sz=128`;
-  // Final fallback: styled letter badge — always available, looks intentional
   const letter = toolName.charAt(0).toUpperCase();
-  const letterBadge = `data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='48' viewBox='0 0 48 48'%3E%3Crect width='48' height='48' rx='10' fill='%23FFF3E8'/%3E%3Ctext x='24' y='33' font-family='system-ui%2C sans-serif' font-size='22' font-weight='700' fill='%23C2622A' text-anchor='middle'%3E${letter}%3C/text%3E%3C/svg%3E`;
+  const letterBadge = `data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='48' viewBox='0 0 48 48'%3E%3Crect width='48' height='48' rx='10' fill='%23FFF1E6'/%3E%3Ctext x='24' y='33' font-family='system-ui%2C sans-serif' font-size='22' font-weight='700' fill='%23C2622A' text-anchor='middle'%3E${letter}%3C/text%3E%3C/svg%3E`;
 
   return (
-    <div className="bg-surface border border-border-default rounded-xl p-5 flex items-start gap-4 my-8 relative not-prose">
-      {/* Affiliate disclosure label — top right, always visible */}
-      <div className="absolute top-3 right-3 flex items-center gap-1 text-text-muted">
+    <div className="not-prose my-8 relative rounded-[20px] bg-soft border border-[rgba(244,162,97,0.25)] p-6 flex items-start gap-4">
+      {/* Affiliate disclosure eyebrow — top right */}
+      <div className="absolute top-4 right-5 flex items-center gap-1 font-mono text-[10px] uppercase tracking-[0.12em] font-medium text-ink-soft">
         <Info className="w-3 h-3" aria-hidden />
-        <span className="text-[11px] font-manrope font-medium">Affiliate</span>
+        <span>Affiliate</span>
       </div>
 
-      {/* Tool logo — try local file, fallback to Google Favicon, fallback to letter badge */}
+      {/* Tool logo */}
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
         src={`/images/tools/${slug}-logo.png`}
         alt={`${toolName} logo`}
-        className="w-12 h-12 rounded-lg object-contain flex-shrink-0 border border-border-default bg-white p-1"
+        className="w-12 h-12 rounded-[12px] object-contain flex-shrink-0 border border-line bg-white p-1.5"
         onError={(e) => {
           if (e.currentTarget.src.includes('/images/tools/')) {
-            // Stage 1 → Google Favicon (128px, reliable)
             e.currentTarget.src = googleFaviconUrl;
           } else {
-            // Stage 2 → letter badge (always available, looks intentional)
             e.currentTarget.src = letterBadge;
             e.currentTarget.onerror = null;
           }
@@ -57,23 +54,26 @@ export function AffiliateCardInline({
       />
 
       {/* Content */}
-      <div className="flex-1 pr-12">
-        <h4 className="font-manrope font-semibold text-brand-ink text-base mb-1">{toolName}</h4>
-        <p className="text-text-secondary text-sm leading-relaxed mb-3">{review}</p>
-        <div className="flex items-center gap-2 flex-wrap mb-3">
-          <span className="inline-flex items-center text-text-secondary text-xs font-manrope">
-            <Tag className="w-3 h-3 mr-1" aria-hidden />
-            Best for: {bestFor}
+      <div className="flex-1 pr-14 min-w-0">
+        <h4 className="font-sans font-semibold text-ink text-[17px] tracking-[-0.01em] mb-1.5 m-0">
+          {toolName}
+        </h4>
+        <p className="text-ink-soft text-[14px] leading-[1.6] mb-3 m-0">{review}</p>
+        <div className="flex items-center gap-3 flex-wrap mb-4 font-mono text-[11px] uppercase tracking-[0.08em] text-ink-soft">
+          <span>
+            <span className="text-[#C2622A]">Best for:</span> {bestFor}
           </span>
-          <span className="text-text-muted text-xs">{priceRange}</span>
+          <span className="text-ink-soft/50" aria-hidden>·</span>
+          <span>{priceRange}</span>
         </div>
         <a
           href={`/go/${slug}`}
           target="_blank"
           rel="noopener sponsored"
-          className="inline-flex items-center gap-1.5 h-7 px-2.5 text-[0.8rem] rounded-lg border border-brand-primary text-brand-ink hover:bg-brand-primarySoft font-semibold transition-colors"
+          className="group inline-flex items-center gap-1.5 rounded-full bg-ink px-5 py-2.5 text-[13px] font-semibold text-paper transition-all duration-200 hover:bg-[#1a1916] active:scale-[0.98]"
         >
-          {ctaText} <ExternalLink className="w-3 h-3" aria-hidden />
+          {ctaText}
+          <ArrowUpRight className="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" aria-hidden />
         </a>
       </div>
     </div>

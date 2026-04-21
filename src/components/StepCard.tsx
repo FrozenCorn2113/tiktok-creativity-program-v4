@@ -5,17 +5,20 @@ type StepCardProps = {
 }
 
 export default function StepCard({ number, title, description }: StepCardProps) {
+  const num = String(number).padStart(2, '0')
   return (
-    <div className="flex gap-4 items-start">
+    <div className="not-prose flex gap-5 items-start my-5">
       <div
-        className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-[var(--color-primary)] text-base font-bold text-[var(--color-ink-strong)]"
+        className="flex-shrink-0 font-mono text-[13px] tracking-[0.08em] text-[#C2622A] pt-1"
         aria-hidden
       >
-        {number}
+        {num}
       </div>
-      <div className="pt-1.5">
-        <h3 className="text-[1.0625rem] font-semibold text-[var(--color-ink-strong)]">{title}</h3>
-        <p className="mt-1 text-sm leading-[1.7] text-[var(--color-text-muted)]">{description}</p>
+      <div className="flex-1 border-l border-line pl-5">
+        <h3 className="font-sans text-[17px] font-semibold text-ink m-0 leading-[1.35]">
+          {title}
+        </h3>
+        <p className="mt-1.5 text-[15px] leading-[1.65] text-ink-soft m-0">{description}</p>
       </div>
     </div>
   )

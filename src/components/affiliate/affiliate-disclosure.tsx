@@ -1,17 +1,21 @@
-// Designed by Vale v4 — FTC-compliant affiliate disclosure banner
+// FTC-compliant affiliate disclosure banner — warm editorial
 
 import Link from "next/link";
 import { Info } from "lucide-react";
 
 export function AffiliateDisclosure() {
   return (
-    <div className="flex items-start gap-2 bg-surface border border-border-default rounded-md px-4 py-2.5 text-text-muted mb-6 not-prose">
-      <Info className="w-3 h-3 mt-0.5 flex-shrink-0" aria-hidden />
-      <span className="text-[12px] font-manrope leading-relaxed">
+    <div className="not-prose flex items-start gap-2 rounded-[12px] bg-soft border border-[rgba(244,162,97,0.2)] px-4 py-2.5 text-ink-soft mb-6">
+      <Info className="w-3.5 h-3.5 mt-0.5 flex-shrink-0 text-[#C2622A]" aria-hidden />
+      <span className="text-[12px] leading-[1.55]">
         This page contains affiliate links. If you click through and make a purchase, we may earn a small commission at no extra cost to you. We only recommend tools we&apos;ve researched and genuinely think are useful.{" "}
-        <Link href="/affiliate-disclosure" className="underline hover:text-text-secondary transition-colors">
+        <Link
+          href="/affiliate-disclosure"
+          className="underline decoration-[#F4A261] underline-offset-[3px] hover:text-ink transition-colors"
+        >
           Learn more about our affiliate policy
-        </Link>.
+        </Link>
+        .
       </span>
     </div>
   );

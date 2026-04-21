@@ -3,54 +3,63 @@ import { Lightbulb, AlertTriangle, Info, XCircle } from 'lucide-react'
 
 type CalloutType = 'tip' | 'warning' | 'info' | 'error' | 'success'
 
-const config: Record<string, {
-  label: string
-  icon: React.ComponentType<{ className?: string }>
-  borderColor: string
-  bgColor: string
-  iconColor: string
-  labelColor: string
-}> = {
+/**
+ * Warm-editorial callout variants.
+ * tip / success: soft orange panel
+ * info: ink-dark callout with paper text (dramatic)
+ * warning / error: soft orange panel with deep orange accent
+ * All use Manrope body text, JetBrains mono eyebrow, orange accents on cream paper.
+ */
+const config: Record<
+  string,
+  {
+    label: string
+    icon: React.ComponentType<{ className?: string }>
+    wrapperClass: string
+    eyebrowClass: string
+    iconClass: string
+    bodyClass: string
+  }
+> = {
   tip: {
     label: 'Pro Tip',
     icon: Lightbulb,
-    borderColor: 'border-l-[var(--color-primary)]',
-    bgColor: 'bg-[var(--color-surface-warm)]',
-    iconColor: 'text-[var(--color-primary)]',
-    labelColor: 'text-[var(--color-primary-hover)]',
+    wrapperClass: 'bg-soft border border-[rgba(244,162,97,0.25)]',
+    eyebrowClass: 'text-[#C2622A]',
+    iconClass: 'text-[#C2622A]',
+    bodyClass: 'text-ink',
   },
-  warning: {
-    label: 'Warning',
-    icon: AlertTriangle,
-    borderColor: 'border-l-[var(--color-warning)]',
-    bgColor: 'bg-[#FFFAEB]',
-    iconColor: 'text-[var(--color-warning)]',
-    labelColor: 'text-[#B45309]',
+  success: {
+    label: 'Note',
+    icon: Lightbulb,
+    wrapperClass: 'bg-soft border border-[rgba(244,162,97,0.25)]',
+    eyebrowClass: 'text-[#C2622A]',
+    iconClass: 'text-[#C2622A]',
+    bodyClass: 'text-ink',
   },
   info: {
     label: 'Info',
     icon: Info,
-    borderColor: 'border-l-[var(--color-info)]',
-    bgColor: 'bg-[#F0F9FF]',
-    iconColor: 'text-[var(--color-info)]',
-    labelColor: 'text-[#0369A1]',
+    wrapperClass: 'bg-ink text-paper border border-ink',
+    eyebrowClass: 'text-[#F4A261]',
+    iconClass: 'text-[#F4A261]',
+    bodyClass: 'text-paper/90',
+  },
+  warning: {
+    label: 'Warning',
+    icon: AlertTriangle,
+    wrapperClass: 'bg-soft border border-[rgba(194,98,42,0.35)]',
+    eyebrowClass: 'text-[#C2622A]',
+    iconClass: 'text-[#C2622A]',
+    bodyClass: 'text-ink',
   },
   error: {
     label: 'Important',
     icon: XCircle,
-    borderColor: 'border-l-[var(--color-error)]',
-    bgColor: 'bg-[#FEF3F2]',
-    iconColor: 'text-[var(--color-error)]',
-    labelColor: 'text-[#B42318]',
-  },
-  // Legacy alias — maps to tip
-  success: {
-    label: 'Note',
-    icon: Lightbulb,
-    borderColor: 'border-l-[var(--color-primary)]',
-    bgColor: 'bg-[var(--color-surface-warm)]',
-    iconColor: 'text-[var(--color-primary)]',
-    labelColor: 'text-[var(--color-primary-hover)]',
+    wrapperClass: 'bg-ink text-paper border border-ink',
+    eyebrowClass: 'text-[#F4A261]',
+    iconClass: 'text-[#F4A261]',
+    bodyClass: 'text-paper/90',
   },
 }
 
@@ -71,15 +80,17 @@ export default function CalloutBox({
 
   return (
     <div
-      className={`border-l-[3px] rounded-r-[var(--radius-md)] px-5 py-4 max-w-[65ch] ${c.borderColor} ${c.bgColor} ${className}`}
+      className={`not-prose rounded-[20px] px-6 py-5 my-6 max-w-[65ch] ${c.wrapperClass} ${className}`}
       role="note"
       {...props}
     >
-      <div className={`flex items-center gap-2 text-[0.75rem] font-semibold uppercase tracking-wide ${c.labelColor}`}>
-        <Icon className={`h-4 w-4 flex-shrink-0 ${c.iconColor}`} aria-hidden />
+      <div
+        className={`flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.12em] font-medium ${c.eyebrowClass}`}
+      >
+        <Icon className={`h-4 w-4 flex-shrink-0 ${c.iconClass}`} aria-hidden />
         <span>{title ?? c.label}</span>
       </div>
-      <div className="mt-2 text-sm leading-[1.7] text-[var(--color-text)]">{children}</div>
+      <div className={`mt-2.5 text-[15px] leading-[1.65] ${c.bodyClass}`}>{children}</div>
     </div>
   )
 }

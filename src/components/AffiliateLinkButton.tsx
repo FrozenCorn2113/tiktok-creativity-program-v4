@@ -26,16 +26,18 @@ export default function AffiliateLinkButton({
   }
 
   return (
-    <div className={`inline-flex flex-col items-start gap-1 ${className}`}>
-      <span className="affiliate-label">{caption}</span>
+    <div className={`not-prose inline-flex flex-col items-start gap-1.5 ${className}`}>
+      <span className="font-mono text-[10px] uppercase tracking-[0.12em] font-medium text-ink-soft">
+        {caption}
+      </span>
       <a
         href={`/go/${slug}`}
         onClick={handleClick}
-        className="arrow-nudge inline-flex cursor-pointer items-center gap-2 rounded-[var(--radius-lg)] bg-[var(--color-primary)] px-7 py-4 text-[0.9375rem] font-semibold text-[var(--color-ink-strong)] transition-all duration-200 hover:bg-[var(--color-primary-hover)] hover:shadow-[var(--shadow-sm)] active:scale-95"
+        className="group inline-flex items-center gap-2 rounded-full bg-ink px-6 py-3 text-[14px] font-semibold text-paper transition-all duration-200 hover:bg-[#1a1916] active:scale-[0.98]"
         rel="noopener noreferrer sponsored"
       >
         {label}
-        <ArrowRight className="arrow-icon h-4 w-4" aria-hidden />
+        <ArrowRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5" aria-hidden />
       </a>
     </div>
   )
