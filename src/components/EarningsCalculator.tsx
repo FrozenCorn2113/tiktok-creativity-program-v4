@@ -3,6 +3,7 @@
 import { useMemo, useState } from 'react'
 import ComparisonTable from '@/components/ComparisonTable'
 import { trackEvent, trackCalculatorUsed } from '@/lib/analytics'
+import { DataPill } from '@/components/tcp'
 
 const comparisonRows = [
   { cells: ['10,000', '$4 – $10', 'Needs 100K views in last 30 days'] },
@@ -34,12 +35,19 @@ export default function EarningsCalculator() {
 
   return (
     <div className="space-y-8">
-      <div className="rounded-[var(--radius-xl)] border border-[var(--color-border)] bg-white shadow-[var(--shadow-md)] overflow-hidden">
-        <div className="grid gap-0 lg:grid-cols-[1.3fr_1fr]">
-          {/* Inputs panel */}
-          <div className="space-y-5 p-6 lg:p-8">
+      <div className="grid gap-5 lg:grid-cols-[1.15fr_1fr]">
+        {/* Inputs — paper card */}
+        <div className="bg-white rounded-[20px] border border-line p-7 md:p-9">
+          <div className="flex items-baseline gap-3 mb-7">
+            <span className="font-serif italic text-[40px] leading-none text-brand-primary" aria-hidden>
+              i
+            </span>
+            <h2 className="font-sans text-[22px] tracking-[-0.02em] font-semibold m-0 text-ink">Your inputs</h2>
+          </div>
+
+          <div className="flex flex-col gap-6">
             <div>
-              <label className="block text-sm font-semibold text-[var(--color-ink)]">
+              <label className="block font-sans text-[14px] font-medium text-ink mb-2">
                 Video views
               </label>
               <input
@@ -47,19 +55,19 @@ export default function EarningsCalculator() {
                 min={0}
                 value={views}
                 onChange={(event) => setViews(Number(event.target.value))}
-                className="mt-2 h-12 w-full rounded-[var(--radius-md)] border border-[var(--color-border)] bg-[var(--color-surface-inset)] px-4 font-[family-name:var(--font-mono)] text-right text-sm text-[var(--color-ink)] transition-shadow focus-visible:outline-none focus-visible:border-[var(--color-primary)] focus-visible:shadow-[var(--focus-ring-input)]"
+                className="h-11 w-full rounded-[10px] border border-line bg-paper px-4 font-mono text-right text-[14px] text-ink focus-visible:outline-none focus-visible:border-ink transition-colors"
               />
-              <p className="mt-2 text-xs text-[var(--color-text-subtle)]">
-                We estimate qualified views at 82% of total based on typical Creator Rewards reports.
+              <p className="mt-2 font-mono text-[11px] uppercase tracking-[0.08em] text-ink-soft">
+                Qualified views estimated at 82% of total.
               </p>
             </div>
             <div>
-              <label className="block text-sm font-semibold text-[var(--color-ink)]">
-                Estimated RPM{' '}
-                <span className="font-[family-name:var(--font-mono)] font-normal text-[var(--color-text-muted)]">
+              <div className="flex items-baseline justify-between mb-2">
+                <label className="font-sans text-[14px] font-medium text-ink">Estimated RPM</label>
+                <span className="font-mono text-[15px] font-medium tabular-nums text-ink">
                   ${rpm.toFixed(2)}
                 </span>
-              </label>
+              </div>
               <input
                 type="range"
                 min={0.4}
@@ -67,74 +75,89 @@ export default function EarningsCalculator() {
                 step={0.01}
                 value={rpm}
                 onChange={(event) => setRpm(Number(event.target.value))}
-                className="mt-3 w-full accent-[var(--color-primary)]"
+                className="w-full accent-brand-primary"
               />
-              <div className="mt-2 flex justify-between text-xs text-[var(--color-text-subtle)]">
+              <div className="mt-2 flex justify-between font-mono text-[10px] uppercase tracking-[0.08em] text-ink-soft">
                 <span>$0.40</span>
                 <span>$1.00+</span>
               </div>
             </div>
-            <label className="flex cursor-pointer items-center gap-3 text-sm text-[var(--color-text)]">
+            <label className="flex cursor-pointer items-center gap-3 text-[14px] text-ink rounded-[10px] bg-paper px-4 py-3 border border-line hover:border-ink/30 transition-colors">
               <input
                 type="checkbox"
                 checked={includeBonus}
                 onChange={(event) => setIncludeBonus(event.target.checked)}
-                className="h-4 w-4 cursor-pointer rounded border-[var(--color-border)] accent-[var(--color-primary)]"
+                className="h-4 w-4 cursor-pointer rounded border-line accent-brand-primary"
               />
-              Include Additional Reward bonus (+20%)
+              <span>Additional Reward bonus <span className="font-semibold text-brand-primaryDeep">+20%</span></span>
             </label>
             <button
               type="button"
               onClick={handleCalculate}
-              className="inline-flex w-full cursor-pointer items-center justify-center rounded-[var(--radius-md)] bg-[var(--color-primary)] px-4 py-3 text-[0.9375rem] font-semibold text-[var(--color-ink-strong)] transition-all duration-200 hover:bg-[var(--color-primary-hover)] hover:shadow-[var(--shadow-sm)] active:scale-95"
+              className="inline-flex w-full cursor-pointer items-center justify-center rounded-full bg-ink px-5 py-3.5 text-[14px] font-semibold text-paper transition-all duration-200 hover:bg-ink/90"
             >
               Update estimate
             </button>
             {lastCalculated ? (
-              <p className="text-xs text-[var(--color-text-subtle)]">
+              <p className="font-mono text-[11px] uppercase tracking-[0.08em] text-ink-soft">
                 Last updated {lastCalculated.toLocaleTimeString()}
               </p>
             ) : null}
           </div>
+        </div>
 
-          {/* Results panel */}
-          <div className="border-t border-[var(--color-border)] bg-[var(--color-surface-warm)] p-6 lg:border-t-0 lg:border-l lg:p-8">
-            <p className="text-[0.75rem] font-semibold uppercase tracking-wide text-[var(--color-text-subtle)]">
-              Estimated earnings
-            </p>
-            <p className="mono-output mt-3 text-[2rem] lg:text-[2.5rem]">
-              ${totalEarnings.toFixed(2)}
-            </p>
-            <div className="mt-5 space-y-3 border-t border-[var(--color-border)] pt-4">
-              <div className="flex items-center justify-between text-sm">
-                <span className="text-[var(--color-text-muted)]">Qualified views</span>
-                <span className="font-[family-name:var(--font-mono)] font-semibold text-[var(--color-ink)]">
-                  {qualifiedViews.toLocaleString()}
-                </span>
-              </div>
-              <div className="flex items-center justify-between text-sm">
-                <span className="text-[var(--color-text-muted)]">Base earnings</span>
-                <span className="font-[family-name:var(--font-mono)] font-semibold text-[var(--color-ink)]">
-                  ${baseEarnings.toFixed(2)}
-                </span>
-              </div>
-              <div className="flex items-center justify-between text-sm">
-                <span className="text-[var(--color-text-muted)]">Bonus applied</span>
-                <span className="font-semibold text-[var(--color-ink)]">
-                  {includeBonus ? 'Yes (+20%)' : 'No'}
-                </span>
-              </div>
-            </div>
-            <p className="mt-4 text-xs text-[var(--color-text-subtle)] leading-[1.6]">
-              Estimate only. Actual payouts vary by country, content quality, and engagement.
-            </p>
-            <a
-              href="/guides/optimize-rpm"
-              className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-[var(--color-primary)] hover:underline"
-            >
-              How to improve your RPM &rarr;
-            </a>
+        {/* Results — dark ink card */}
+        <div
+          className="rounded-[20px] p-7 md:p-9 relative overflow-hidden"
+          style={{ background: '#0F0E0C', color: '#FBF6EC' }}
+        >
+          <div className="font-mono text-[10px] uppercase tracking-[0.12em] mb-4" style={{ color: '#F4A261' }}>
+            Estimated earnings
           </div>
+          <div
+            className="font-serif italic tabular-nums"
+            style={{
+              fontSize: 'clamp(56px, 8vw, 96px)',
+              lineHeight: 0.95,
+              letterSpacing: '-0.03em',
+              fontWeight: 400,
+            }}
+          >
+            ${totalEarnings.toFixed(2)}
+          </div>
+
+          <div className="mt-7 space-y-3 pt-5 font-mono text-[12px]" style={{ borderTop: '1px solid rgba(251,246,236,0.08)' }}>
+            <div className="flex items-center justify-between">
+              <span style={{ opacity: 0.6 }}>Qualified views</span>
+              <span className="tabular-nums">{qualifiedViews.toLocaleString()}</span>
+            </div>
+            <div className="flex items-center justify-between">
+              <span style={{ opacity: 0.6 }}>Base earnings</span>
+              <span className="tabular-nums">${baseEarnings.toFixed(2)}</span>
+            </div>
+            <div className="flex items-center justify-between">
+              <span style={{ opacity: 0.6 }}>Bonus applied</span>
+              <span className="tabular-nums" style={{ color: includeBonus ? '#F4A261' : 'rgba(251,246,236,0.5)' }}>
+                {includeBonus ? 'Yes (+20%)' : 'No'}
+              </span>
+            </div>
+          </div>
+
+          <div className="mt-5 flex flex-wrap gap-2">
+            <DataPill variant="tag">${(totalEarnings * 12).toFixed(0)} / yr</DataPill>
+            <DataPill variant="emphasis">RPM ${rpm.toFixed(2)}</DataPill>
+          </div>
+
+          <p className="mt-5 text-[12px] leading-[1.6]" style={{ color: 'rgba(251,246,236,0.55)' }}>
+            Estimate only. Actual payouts vary by country, content quality, and engagement.
+          </p>
+          <a
+            href="/guides/optimize-rpm"
+            className="mt-4 inline-flex items-center gap-1 text-[13px] font-semibold"
+            style={{ color: '#F4A261' }}
+          >
+            How to improve your RPM &rarr;
+          </a>
         </div>
       </div>
 

@@ -17,32 +17,43 @@ const config: Config = {
           primaryHover: tokens.colors.brand.primaryHover, // #E8894A
           primarySoft:  tokens.colors.brand.primarySoft,  // #FFF1E6
           primaryDeep:  tokens.colors.brand.primaryDeep,  // #C2622A
-          ink:          tokens.colors.brand.ink,           // #111827
-          inkLight:     tokens.colors.brand.inkLight,     // #1F2937
+          paper:        tokens.colors.brand.paper,        // #FBF6EC
+          ink:          tokens.colors.brand.ink,           // #0F0E0C
+          inkSoft:      tokens.colors.brand.inkSoft,      // #49443D
+          inkLight:     tokens.colors.brand.inkLight,     // #1E293B
         },
+        // TCP short-form aliases for new chrome
+        paper: tokens.colors.brand.paper,                 // bg-paper
+        soft:  tokens.colors.brand.primarySoft,           // bg-soft
+        ink: {
+          DEFAULT: tokens.colors.brand.ink,               // text-ink / bg-ink
+          soft:    tokens.colors.brand.inkSoft,           // text-ink-soft / bg-ink-soft
+          strong:  tokens.colors.brand.ink,
+        },
+        line: tokens.colors.border.default,               // border-line
         // Backgrounds
         background: {
-          DEFAULT: tokens.colors.background.page,         // #FFFFFF — also used by shadcn bg-background
+          DEFAULT: tokens.colors.background.page,         // #FBF6EC
           page:     tokens.colors.background.page,
-          warm:     tokens.colors.background.warm,        // #FFF7ED
-          surface:  tokens.colors.background.surface,     // #F9FAFB
+          warm:     tokens.colors.background.warm,        // #FFF1E6
+          surface:  tokens.colors.background.surface,     // #F8FAFC
           elevated: tokens.colors.background.elevated,
         },
         // Text
         text: {
-          DEFAULT:   tokens.colors.text.primary,          // #111827
+          DEFAULT:   tokens.colors.text.primary,          // #0F0E0C
           primary:   tokens.colors.text.primary,
-          secondary: tokens.colors.text.secondary,        // #6B7280
+          secondary: tokens.colors.text.secondary,        // #49443D
           muted:     tokens.colors.text.muted,            // #9CA3AF
-          inverse:   tokens.colors.text.inverse,          // #FFFFFF
-          onPrimary: tokens.colors.text.onPrimary,        // #111827
+          inverse:   tokens.colors.text.inverse,          // #FBF6EC
+          onPrimary: tokens.colors.text.onPrimary,        // #0F0E0C
         },
         // Borders
         border: {
-          DEFAULT: tokens.colors.border.default,          // #E5E7EB
+          DEFAULT: tokens.colors.border.default,          // rgba(15,14,12,0.08)
           default: tokens.colors.border.default,
-          strong:  tokens.colors.border.strong,           // #D1D5DB
-          focus:   tokens.colors.border.focus,            // #F4A261
+          strong:  tokens.colors.border.strong,           // #CBD5E1
+          focus:   tokens.colors.border.focus,            // #F97316
         },
         // Status
         status: {
@@ -88,10 +99,6 @@ const config: Config = {
           hover:   tokens.colors.brand.primaryHover,
           soft:    tokens.colors.brand.primarySoft,
         },
-        ink: {
-          DEFAULT: tokens.colors.brand.ink,
-          strong:  tokens.colors.brand.ink,
-        },
         surface: tokens.colors.background.surface,
         'surface-warm':   tokens.colors.background.warm,
         'surface-muted':  tokens.colors.brand.primarySoft,
@@ -105,6 +112,7 @@ const config: Config = {
         sans:    ['var(--font-sans)', 'Manrope', 'system-ui', '-apple-system', 'sans-serif'],
         heading: ['var(--font-sans)', 'Manrope', 'system-ui', '-apple-system', 'sans-serif'],
         mono:    ['var(--font-mono)', 'JetBrains Mono', 'Menlo', 'Monaco', 'monospace'],
+        serif:   ['var(--font-serif)', 'Instrument Serif', 'Georgia', 'serif'],
       },
       fontSize: {
         // tokens.json sizes

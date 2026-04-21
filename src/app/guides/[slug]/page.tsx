@@ -1,6 +1,7 @@
-// Guide article page — Phase 3 v3 rebuild + Phase 4 per-guide hero images
-// PAGE_SPECS.md: breadcrumb, category badge, H1, description, meta, hero image, ToC LEFT + prose RIGHT
-// checklist items 52-68
+// Guide article page — Phase 5 TCP redesign
+// Reference: /tmp/tcp-zip/directions/guide-article.jsx
+// MDX loader / content parsing / frontmatter / JSON-LD / generateMetadata are PRESERVED.
+// Only chrome (hero, TOC shell, body container, callouts, related, share) is restyled.
 
 // next-mdx-remote RSC (compileMDX) cannot be serialized during static generation;
 // render on-demand at runtime to avoid prerender failures on Vercel
@@ -8,23 +9,15 @@ export const dynamic = 'force-dynamic'
 
 import { notFound } from 'next/navigation'
 import Image from 'next/image'
-import { Clock, BookOpen, ChevronRight } from 'lucide-react'
+import Link from 'next/link'
 import { buildMetadata } from '@/lib/seo'
 import { compileGuide, getGuideBySlug, getTableOfContents, getAllGuides } from '@/lib/mdx'
 import { siteConfig } from '@/lib/site'
 
-import {
-  Breadcrumb,
-  BreadcrumbList,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  BreadcrumbSeparator,
-  BreadcrumbPage,
-} from '@/components/ui/breadcrumb'
 import TableOfContents from '@/components/TableOfContents'
 import ReadingProgressBar from '@/components/ReadingProgressBar'
+import SocialShareButtons from '@/components/SocialShareButtons'
 import { EmailCapture } from '@/components/sections/email-capture'
-import { GuideCards } from '@/components/sections/guide-cards'
 import type { GuideCardData } from '@/components/sections/guide-cards'
 import GuideArticleClient from './GuideArticleClient'
 import { AffiliateDisclosure } from '@/components/affiliate/affiliate-disclosure'
@@ -32,13 +25,11 @@ import { AffiliateCardInline } from '@/components/affiliate/affiliate-card-inlin
 import { EmailCaptureInline } from '@/components/email/email-capture-inline'
 import { EmailCapturePopup } from '@/components/email/email-capture-popup'
 import { MobileStickyEmailBar } from '@/components/email/mobile-sticky-email-bar'
+import { EyebrowLabel, ItalicWord, DataPill } from '@/components/tcp'
 
 type GuidePageProps = {
   params: { slug: string }
 }
-
-// generateStaticParams removed: dynamic = 'force-dynamic' conflicts with static generation
-// when compileMDX (RSC) is used. Pages render on-demand; sitemap.ts lists all guide URLs.
 
 export async function generateMetadata({ params }: GuidePageProps) {
   const guide = getGuideBySlug(params.slug)
@@ -51,6 +42,18 @@ export async function generateMetadata({ params }: GuidePageProps) {
     path: `/guides/${frontmatter.slug}`,
     image: frontmatter.image,
   })
+}
+
+// Splits a title into leading text + one "italic" word (the last meaningful word).
+// Used for the H1 treatment — one Instrument-Serif italic accent word per heading.
+function splitTitleForItalic(title: string): { lead: string; italic: string; trail: string } {
+  const trimmed = title.trim().replace(/[.!?]$/, '')
+  const punct = title.trim().slice(trimmed.length)
+  const parts = trimmed.split(/\s+/)
+  if (parts.length < 2) return { lead: trimmed, italic: '', trail: punct }
+  const italic = parts[parts.length - 1]
+  const lead = parts.slice(0, -1).join(' ')
+  return { lead, italic, trail: punct }
 }
 
 export default async function GuidePage({ params }: GuidePageProps) {
@@ -79,6 +82,7 @@ export default async function GuidePage({ params }: GuidePageProps) {
   }))
 
   const articleUrl = `${siteConfig.url}/guides/${frontmatter.slug}`
+  const titleSplit = splitTitleForItalic(frontmatter.title)
 
   // JSON-LD structured data — Article schema
   const jsonLd = {
@@ -138,7 +142,7 @@ export default async function GuidePage({ params }: GuidePageProps) {
   }
 
   return (
-    <>
+    <div className="bg-paper">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
@@ -148,97 +152,93 @@ export default async function GuidePage({ params }: GuidePageProps) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
       />
 
-      {/* Reading progress bar — client component */}
+      {/* Reading progress bar — recolored to orange via existing CSS var */}
       <ReadingProgressBar />
 
-      {/* Breadcrumb — checklist item 52 — pt-20 clears fixed floating nav */}
-      <div className="max-w-container mx-auto px-6 pt-20">
-        <Breadcrumb>
-          <BreadcrumbList>
-            <BreadcrumbItem>
-              <BreadcrumbLink href="/" className="text-sm text-text-muted hover:text-text-primary">
-                Home
-              </BreadcrumbLink>
-            </BreadcrumbItem>
-            <BreadcrumbSeparator>
-              <ChevronRight className="h-3 w-3" aria-hidden />
-            </BreadcrumbSeparator>
-            <BreadcrumbItem>
-              <BreadcrumbLink href="/guides" className="text-sm text-text-muted hover:text-text-primary">
-                Guides
-              </BreadcrumbLink>
-            </BreadcrumbItem>
-            {frontmatter.category && (
-              <>
-                <BreadcrumbSeparator>
-                  <ChevronRight className="h-3 w-3" aria-hidden />
-                </BreadcrumbSeparator>
-                <BreadcrumbItem>
-                  <span className="text-sm text-text-muted">{frontmatter.category}</span>
-                </BreadcrumbItem>
-              </>
-            )}
-            <BreadcrumbSeparator>
-              <ChevronRight className="h-3 w-3" aria-hidden />
-            </BreadcrumbSeparator>
-            <BreadcrumbItem>
-              <BreadcrumbPage className="text-sm text-text-primary font-medium line-clamp-1">
-                {frontmatter.title}
-              </BreadcrumbPage>
-            </BreadcrumbItem>
-          </BreadcrumbList>
-        </Breadcrumb>
+      {/* Breadcrumb — mono eyebrow */}
+      <div className="max-w-[1400px] mx-auto px-6 md:px-[52px] pt-[72px]">
+        <nav
+          aria-label="Breadcrumb"
+          className="font-mono text-[11px] tracking-[0.08em] uppercase text-ink-soft"
+        >
+          <Link href="/" className="hover:text-ink transition-colors">
+            Home
+          </Link>
+          <span className="mx-2 text-ink-soft/60" aria-hidden>
+            ·
+          </span>
+          <Link href="/guides" className="hover:text-ink transition-colors">
+            Guides
+          </Link>
+          {frontmatter.category ? (
+            <>
+              <span className="mx-2 text-ink-soft/60" aria-hidden>
+                ·
+              </span>
+              <span className="text-ink-soft">{frontmatter.category}</span>
+            </>
+          ) : null}
+          <span className="mx-2 text-ink-soft/60" aria-hidden>
+            ·
+          </span>
+          <span className="text-ink">{frontmatter.title}</span>
+        </nav>
       </div>
 
-      {/* Affiliate Disclosure — v4: conditional on hasAffiliateLinks frontmatter */}
+      {/* Affiliate Disclosure */}
       {Boolean((frontmatter as Record<string, unknown>).hasAffiliateLinks) && (
-        <div className="max-w-container mx-auto px-6 mt-3">
+        <div className="max-w-[1400px] mx-auto px-6 md:px-[52px] mt-4">
           <AffiliateDisclosure />
         </div>
       )}
 
-      {/* Article header — checklist items 53 */}
-      <div className="max-w-container mx-auto px-6 pt-6 pb-8">
-        {/* H1 — Manrope 800, 48px desktop / 32px mobile */}
-        <h1 className="text-[2rem] md:text-[3rem] font-extrabold text-brand-ink leading-[1.15] mb-4">
-          {frontmatter.title}
-        </h1>
-
-        {/* Description */}
-        <p className="text-[1.125rem] text-text-secondary leading-[1.7] max-w-3xl mb-6">
-          {frontmatter.description}
-        </p>
-
-        {/* Meta row */}
-        <div className="flex items-center gap-4 text-sm text-text-muted">
-          <span className="flex items-center gap-1.5">
-            <Clock className="h-3.5 w-3.5" aria-hidden />
+      {/* Article hero */}
+      <section className="max-w-[1400px] mx-auto px-6 md:px-[52px] pt-8 pb-12">
+        <div className="flex flex-wrap items-center gap-3 mb-5">
+          {frontmatter.category ? (
+            <DataPill variant="soft">
+              <EyebrowLabel className="!text-[11px]">{frontmatter.category}</EyebrowLabel>
+            </DataPill>
+          ) : null}
+          <span className="text-[13px] text-ink-soft">
             {frontmatter.readingTime ?? '8 min read'}
-          </span>
-          <span aria-hidden>|</span>
-          <span className="flex items-center gap-1.5">
-            <BookOpen className="h-3.5 w-3.5" aria-hidden />
-            Last updated {frontmatter.date}
+            {frontmatter.date ? ` · updated ${frontmatter.date}` : ''}
           </span>
         </div>
-      </div>
 
-      {/* Hero image — checklist items 54-56 — per-guide hero */}
-      <div className="max-w-container mx-auto px-6">
+        <h1 className="font-sans text-[40px] md:text-[60px] lg:text-[72px] leading-[1.0] tracking-[-0.04em] font-medium text-ink m-0 text-balance max-w-[1100px]">
+          {titleSplit.italic ? (
+            <>
+              {titleSplit.lead}{' '}
+              <ItalicWord color="#C2622A">{titleSplit.italic}</ItalicWord>
+              {titleSplit.trail}
+            </>
+          ) : (
+            frontmatter.title
+          )}
+        </h1>
+
+        <p className="text-[18px] md:text-[19px] leading-[1.55] text-ink-soft mt-6 max-w-[680px]">
+          {frontmatter.description}
+        </p>
+      </section>
+
+      {/* Hero image */}
+      <div className="max-w-[1400px] mx-auto px-6 md:px-[52px] pb-10">
         <Image
           src={heroImageSrc}
           alt={`${frontmatter.title} — hero illustration`}
           width={1200}
           height={630}
-          className="w-full rounded-2xl object-cover mb-12"
+          className="w-full rounded-[24px] object-cover border border-line"
           priority
           loading="eager"
         />
       </div>
 
-      {/* Article body + sidebar — checklist items 60-65 */}
-      <section className="bg-white pb-24">
-        <div className="max-w-container mx-auto px-6">
+      {/* Article body + sticky TOC */}
+      <section className="pb-20">
+        <div className="max-w-[1400px] mx-auto px-6 md:px-[52px]">
           {/* Mobile collapsible ToC */}
           {toc.length > 0 && (
             <div className="mb-8 lg:hidden">
@@ -246,30 +246,41 @@ export default async function GuidePage({ params }: GuidePageProps) {
             </div>
           )}
 
-          {/* Two-column: ToC LEFT (sticky), article prose RIGHT */}
-          {/* PAGE_SPECS: grid grid-cols-1 lg:grid-cols-[1fr_300px] — ToC is left sidebar */}
-          <div className="grid grid-cols-1 lg:grid-cols-[280px_1fr] gap-12">
-            {/* LEFT: sticky sidebar ToC + mini email capture + related guides */}
+          {/* Two-column: sticky ToC LEFT, article prose RIGHT */}
+          <div className="grid grid-cols-1 lg:grid-cols-[240px_1fr] gap-12 lg:gap-16">
+            {/* TOC sidebar — restyled shell; existing component handles scrollspy */}
             {toc.length > 0 && (
               <aside className="hidden lg:block">
-                <TableOfContents items={toc} sidebar={true} />
+                <div className="sticky top-24">
+                  <EyebrowLabel tone="inkSoft" className="block mb-4">
+                    Contents
+                  </EyebrowLabel>
+                  <TableOfContents items={toc} sidebar={false} />
+                </div>
               </aside>
             )}
 
-            {/* RIGHT: article prose */}
+            {/* Article prose */}
             <article className="min-w-0">
-              {/* Prose — checklist item 60 */}
-              <div className="prose prose-lg max-w-none prose-headings:font-sans prose-headings:font-bold prose-headings:text-brand-ink prose-p:text-text-secondary prose-p:leading-[1.75] prose-a:text-brand-primaryDeep prose-a:no-underline hover:prose-a:underline prose-strong:text-brand-ink prose-code:font-mono prose-code:text-brand-primaryDeep prose-code:bg-brand-primarySoft prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-code:text-sm">
+              <div className="prose prose-lg max-w-[720px] prose-headings:font-sans prose-headings:font-semibold prose-headings:tracking-[-0.02em] prose-headings:text-ink prose-h2:text-[30px] md:prose-h2:text-[32px] prose-h2:mt-12 prose-h2:mb-4 prose-h3:text-[22px] prose-p:text-[18px] prose-p:leading-[1.7] prose-p:text-ink prose-a:text-brand-primaryDeep prose-a:no-underline hover:prose-a:underline prose-strong:text-ink prose-code:font-mono prose-code:text-brand-primaryDeep prose-code:bg-soft prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-code:text-[0.9em] prose-blockquote:font-serif prose-blockquote:italic prose-blockquote:text-[22px] prose-blockquote:leading-[1.45] prose-blockquote:text-brand-primaryDeep prose-blockquote:border-l-[3px] prose-blockquote:border-brand-primary prose-blockquote:not-italic">
                 {compiled.content}
               </div>
 
-              {/* Inline email capture — shown on ALL guides, promotes RPM Cheat Sheet */}
+              {/* Social share — pill buttons */}
+              <div className="mt-10 pt-6 border-t border-line">
+                <div className="flex items-center gap-4 flex-wrap">
+                  <EyebrowLabel tone="inkSoft">Share</EyebrowLabel>
+                  <SocialShareButtons url={articleUrl} title={frontmatter.title} />
+                </div>
+              </div>
+
+              {/* Inline email capture */}
               <EmailCaptureInline
                 leadMagnetTitle="Get the Free RPM Cheat Sheet"
                 leadMagnetDescription="RPM ranges for 18 TikTok niches, the 4 factors that set your rate, and quick tips to push your RPM higher. Free instant access."
               />
 
-              {/* v4: Affiliate card inline — tools recommendation */}
+              {/* Affiliate card inline */}
               {Boolean((frontmatter as Record<string, unknown>).hasAffiliateLinks) && (
                 <AffiliateCardInline
                   toolName="CapCut"
@@ -281,39 +292,51 @@ export default async function GuidePage({ params }: GuidePageProps) {
                 />
               )}
 
-              {/* Article footer — "Was this helpful?" + email capture */}
-              <div className="mt-16 pt-8 border-t border-border-default">
-                <GuideArticleClient articleUrl={articleUrl} title={frontmatter.title} slug={frontmatter.slug} />
+              {/* "Was this helpful?" feedback */}
+              <div className="mt-12 pt-8 border-t border-line">
+                <GuideArticleClient
+                  articleUrl={articleUrl}
+                  title={frontmatter.title}
+                  slug={frontmatter.slug}
+                />
               </div>
             </article>
           </div>
 
-          {/* Related guides — checklist item 66 */}
+          {/* Related guides */}
           {relatedCards.length > 0 && (
-            <div className="mt-16 pt-8 border-t border-border-default">
-              <h3 className="text-[1.5rem] font-bold text-brand-ink mb-6">More guides you might need</h3>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                {relatedCards.map((guide) => (
-                  <a
-                    key={guide.slug}
-                    href={guide.href}
-                    className="group flex flex-col border border-border-default rounded-xl overflow-hidden bg-white hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200"
+            <div className="mt-20 pt-10 border-t border-line">
+              <EyebrowLabel tone="deep" className="block mb-3">
+                Related guides
+              </EyebrowLabel>
+              <h3 className="font-sans text-[28px] md:text-[32px] leading-[1.1] tracking-[-0.02em] font-medium text-ink m-0 mb-8">
+                More guides you might need.
+              </h3>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+                {relatedCards.map((g) => (
+                  <Link
+                    key={g.slug}
+                    href={g.href}
+                    className="group flex flex-col bg-white rounded-[16px] border border-line overflow-hidden hover:-translate-y-[2px] hover:border-brand-primaryDeep transition-all duration-200 hover:shadow-[0_10px_28px_-18px_rgba(194,98,42,0.3)]"
                   >
-                    <div className="relative w-full h-36 bg-brand-primarySoft overflow-hidden">
+                    <div className="relative w-full h-36 bg-soft overflow-hidden">
                       {/* eslint-disable-next-line @next/next/no-img-element */}
                       <img
-                        src={`/images/guides/hero-${guide.slug}.webp`}
-                        alt={`Thumbnail for ${guide.title}`}
+                        src={`/images/guides/hero-${g.slug}.webp`}
+                        alt={`Thumbnail for ${g.title}`}
                         className="w-full h-full object-cover"
                         loading="lazy"
                       />
                     </div>
-                    <div className="p-4 flex-1">
-                      <p className="text-sm font-bold text-brand-ink line-clamp-2 leading-snug">
-                        {guide.title}
+                    <div className="p-5 flex-1">
+                      <div className="font-mono text-[10px] tracking-[0.08em] uppercase text-brand-primaryDeep mb-2">
+                        {g.category} · {g.readTime}
+                      </div>
+                      <p className="font-sans text-[15px] font-semibold text-ink line-clamp-2 leading-[1.35] m-0">
+                        {g.title}
                       </p>
                     </div>
-                  </a>
+                  </Link>
                 ))}
               </div>
             </div>
@@ -321,7 +344,7 @@ export default async function GuidePage({ params }: GuidePageProps) {
         </div>
       </section>
 
-      {/* End-of-article email capture — checklist per PAGE_SPECS article footer */}
+      {/* End-of-article email capture */}
       <EmailCapture
         headline="Want to Know When Something Changes?"
         subheadline="Every requirement in plain language, the most common rejection reasons, and what to do if your qualified views aren't counting. Updated for 2026."
@@ -330,15 +353,15 @@ export default async function GuidePage({ params }: GuidePageProps) {
         compact={true}
       />
 
-      {/* Exit-intent popup — desktop users, promotes RPM Cheat Sheet */}
+      {/* Exit-intent popup */}
       <EmailCapturePopup
         leadMagnetTitle="RPM Cheat Sheet"
         headline="Before you go — grab the free RPM Cheat Sheet"
         description="RPM ranges for 18 TikTok niches, the 4 factors that determine your rate, and quick tips to earn more per view."
       />
 
-      {/* Mobile sticky bar — shows after 30s of reading */}
+      {/* Mobile sticky bar */}
       <MobileStickyEmailBar />
-    </>
+    </div>
   )
 }

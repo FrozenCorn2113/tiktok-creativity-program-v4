@@ -11,7 +11,7 @@ Next.js (App Router), Tailwind CSS, MDX guides, Resend email + Supabase subscrib
 
 ## Accounts
 - Google Analytics: G-9YX5PRYTJJ (property 507035708)
-- Google Search Console: configured
+- Google Search Console: verified 2026-04-21 (domain property via Vercel DNS TXT)
 - Amazon Associates: tag `tiktokcreatpr-20`
 - Resend: transactional + welcome emails (RESEND_API_KEY via Vercel integration, free tier)
 - Supabase: email_subscribers table (lead_magnet, source columns) for subscriber storage + segmentation
@@ -42,6 +42,21 @@ Next.js (App Router), Tailwind CSS, MDX guides, Resend email + Supabase subscrib
 ## Pending Review
 <!-- Items awaiting Bernard review -->
 
+- **What:** Week 4 social images (April 21-27, 2026) — 30 unique WebP images (7 Pinterest 1000x1500, 2 IG singles 1080x1080, 21 carousel slides 1080x1080 across 3 carousels: LIVE Subscriptions, Shop Affiliate Rates, Creator Marketplace)
+- **Where:** `/Users/bcarter/Desktop/Claude Agents/projects/tiktok-creativity-program/social/week-4-images/` — manifest at `MANIFEST.md`
+- **Status:** READY FOR REVIEW
+
+- **What:** Guide #122 — TikTok Bulletin Boards: The Complete Creator Guide (50K+ Followers), 2,231 words, 0 em dashes, no ComparisonTable, no invented case studies
+- **Where:** `/Users/bcarter/Desktop/Claude Agents/projects/tiktok-creativity-program/content/guides/tiktok-bulletin-boards-creators.mdx`
+- **Status:** READY FOR REVIEW
+
+*Cleared 2026-04-07: All items LOCKED. Guide #121 full pipeline complete (commit 32f6299). Week 2 social LIVE (23 posts). Freshness updates deployed. Site at 121 guides.*
+
+- **What:** Week 3 social media copy (April 14-20, 2026) — 7 Pinterest pins, 5 Instagram posts (3 carousels + 2 singles), 5 X posts (3 single tweets + 2 threads)
+- **Where:** `/Users/bcarter/Desktop/Claude Agents/projects/tiktok-creativity-program/TCP-CONTENT-CALENDAR.md` (appended at end, WEEK 3 section)
+- **Status:** READY FOR REVIEW
+
+*Cleared 2026-04-21: Week 3 social images LOCKED (30 unique images delivered). June 2026 keyword research LOCKED (execution started). Week 4 social LOCKED and scheduled.*
 
 ## Active
 <!-- Bernard maintains this section. Current tasks in flight. -->
@@ -52,7 +67,7 @@ Next.js (App Router), Tailwind CSS, MDX guides, Resend email + Supabase subscrib
 1. TikTok Carousel + Creator Rewards (HIGH) -- DONE. Guide #114 LIVE (commit b069ef8f). All LOCKED: Christopher research, Scribe 2,400w, Devan integration, Vale hero wired in frontmatter. Bernard LOCKED 2026-04-01.
 2. Q2 Spring Content Strategy 2026 (MEDIUM-HIGH -- seasonal, tax deadline angle) -- DONE. Guide #115 LIVE (commit 22809988). Full pipeline: Christopher research LOCKED, Scribe 2,300w LOCKED, Vale hero LOCKED, Devan integration LOCKED. Bernard LOCKED 2026-04-01.
 3. TikTok Shop Creator Restrictions + Non-Interactive Video Rules (MEDIUM) -- DONE. Guide #116 LIVE (commit 22809988). Full pipeline: Christopher research LOCKED, Scribe 2,300w LOCKED, Vale hero LOCKED, Devan integration LOCKED. Editorial fix applied to old Shop guide (commit 55762712). Bernard LOCKED 2026-04-01.
-4. Japan + South Korea country guides (gap fill) -- QUEUED
+4. Japan + South Korea country guides (gap fill) -- DONE. Guide #117 LIVE (commit de44bfb9). Christopher research LOCKED, Scribe 2,147w LOCKED, Vale hero LOCKED, Devan integration LOCKED. Bernard LOCKED 2026-04-03.
 
 **Freshness fixes -- DONE (commit 1ec16ce4, Bernard LOCKED 2026-04-01):**
 - `creator-tax-guide-2026.mdx` -- Added OBBBA $2,000 threshold for 2026 income
@@ -65,11 +80,19 @@ Next.js (App Router), Tailwind CSS, MDX guides, Resend email + Supabase subscrib
 - CapCut: re-apply via Impact Radius (35% recurring)
 - Metricool: open program (50% up to $50/user/month)
 
-### Week 2 Social Calendar -- LOCKED, execution Apr 6
+### Week 2 Social Calendar -- LIVE
 **Guide selection locked.** 7 guides: eligibility-requirements, creator-tax-guide-2026 (seasonal: US tax deadline Apr 15), multiple-revenue-streams, increase-watch-time-tiktok, best-video-editing-apps-tiktok, tiktok-rpm-by-niche-2026, viral-psychology.
-**28 unique images needed from Vale.**
-**Execution:** Monday Apr 6 -- Bernard routes Scribe (copy) + Vale (images). Schedule Wednesday Apr 8 via Zernio.
+**Copy:** Scribe delivered 17 posts. Bernard LOCKED 2026-04-05.
+**Images:** Vale delivered 28 unique images. Bernard LOCKED 2026-04-05.
+**Scheduled:** Wren scheduled 23 posts via Zernio (11 X, 5 IG, 7 Pinterest). Apr 7-13. Bernard LOCKED 2026-04-07.
 **See:** `TCP-CONTENT-CALENDAR.md` Week 2 section.
+
+### Week 3 Social Calendar -- LIVE
+**Guide selection locked.** 7 guides: sell-digital-products-tiktok, no-qualified-views, tiktok-search-seo-optimize-views, monetize-fitness, best-analytics-tools-tiktok, repurpose-content-roi, brand-deals-small-creator. Pillars: Advanced/Earnings/Growth/Niche/Tools.
+**Copy:** Scribe delivered 17 posts. Bernard LOCKED 2026-04-07.
+**Images:** Vale delivered 28 unique images. Bernard LOCKED 2026-04-07.
+**Scheduled:** Wren scheduled 17 posts via Zernio (5 X, 5 IG, 7 Pinterest). Apr 14-20. Bernard LOCKED 2026-04-07.
+**See:** `TCP-CONTENT-CALENDAR.md` Week 3 section. Images: `social/week-3-images/`.
 
 ### 2026-03-30 Guide #112 -- TikTok Shop Affiliate Commission Rates -- DONE
 **Full pipeline complete.** Christopher research LOCKED -> Scribe guide LOCKED (2,680w) -> Devan integrated (eb1430be) -> Vale hero image included. LIVE.
@@ -77,9 +100,44 @@ Next.js (App Router), Tailwind CSS, MDX guides, Resend email + Supabase subscrib
 ### 2026-03-30 Freshness Review Queue -- DONE
 4 guides audited. Oracle deal: LOOKS GOOD. CHR + Additional Reward Criteria + Australia: fixes applied (commit 40950f04). Research: `research/freshness-audit-and-content-gap-2026-03-30.md`.
 
+### May Content Queue (LOCKED 2026-04-06, execution started)
+**Research:** `research/monthly-keyword-research-may-2026.md` (Christopher, LOCKED 2026-04-06)
+**Weekly scan:** `research/weekly-scan-2026-04-06.md` (Christopher, LOCKED 2026-04-06)
+**Guide pipeline:**
+1. TikTok Cameo Personalized Videos (HIGH) -- DONE. Guide #118 LIVE (commit c8e88a1). Full pipeline complete. Bernard LOCKED 2026-04-06.
+2. TikTok RPM After Oracle Sale Impact 2026 (HIGH) -- DONE. Guide #119 LIVE (commit 365ee10). Full pipeline complete. Bernard LOCKED 2026-04-06.
+3. TikTok Q3 Content Strategy 2026 (HIGH -- seasonal, publish mid-May) -- DONE. Guide #120 LIVE (commit 3f50df4). Full pipeline complete. Bernard LOCKED 2026-04-06.
+4. TikTok AutoCut Feature Guide (MED-HIGH -- timely with platform push) -- DONE. Guide #121 LIVE (commit 32f6299). Full pipeline: Christopher research LOCKED, Scribe 2,300w LOCKED, Vale hero R2 LOCKED, Devan integration LOCKED (4 cross-links, search index updated). Bernard LOCKED 2026-04-07.
+
+**Freshness updates (from weekly scan) -- DONE:**
+- `tiktok-oracle-deal-creators.mdx` -- Oracle outages + post-sale RPM context -- Scribe LOCKED 2026-04-06
+- `rpm-dropping.mdx` -- Post-Oracle-sale RPM drop context -- Scribe LOCKED 2026-04-06
+- Devan integration needed (commit both freshness updates + Guide #118 after Vale hero)
+
+**Backlog (June candidates):**
+- Education Creators Back-to-School (MEDIUM, seasonal peak June-Aug)
+- CapCut Template Creator Program (MEDIUM, evergreen)
+
+### June Content Queue (LOCKED 2026-04-07, execution started 2026-04-21)
+**Research:** `research/monthly-keyword-research-june-2026.md` (Christopher, LOCKED 2026-04-07)
+**Guide pipeline:**
+1. TikTok Bulletin Boards (MED-HIGH) -- DONE. Guide #122 LIVE (commit 424b34c). Full pipeline: Scribe 2,231w, Vale hero (dark navy/amber radial broadcast composition), Devan integration (3 cross-links: multiple-revenue-streams, tiktok-live-subscriptions-strategy, tiktok-one-creator-marketplace), search index 131 entries. Bernard LOCKED 2026-04-21.
+2. Education Creators Back-to-School (MEDIUM -- seasonal, window opens June) -- PENDING
+3. CapCut Template Creator Program (MEDIUM -- evergreen) -- PENDING
+4. TikTok Shop AI Tools (MEDIUM -- summer Shop push angle) -- PENDING
+**Freshness alerts (from June scan):** `tiktok-creator-health-rating.mdx` (Shop CHR gap, medium) -- still to action
+
+### Week 4 Social Calendar -- LIVE
+**Guide selection locked.** 7 guides: tiktok-live-subscriptions-strategy, tiktok-shop-affiliate-commission-rates, tiktok-cameo-personalized-videos, tiktok-carousel-creator-rewards, tiktok-rpm-oracle-sale-impact-2026, tiktok-autocut-feature-guide, tiktok-one-creator-marketplace.
+**Copy:** Scribe delivered 17 posts. Bernard LOCKED 2026-04-21.
+**Images:** Vale delivered 30 unique images (21 carousel slides, 7 Pinterest, 2 IG singles). Bernard LOCKED 2026-04-21.
+**Scheduled:** Wren scheduled 17 posts via Zernio (5 X, 5 IG, 7 Pinterest). Apr 21-27. Bernard LOCKED 2026-04-21.
+**Notes:** X threads scheduled as standalone tweets at 5-min intervals (Zernio no native threading). PIN-W4-01 and PIN-W4-05 published immediately (past scheduled time at run). IG images converted WebP to JPG for API compatibility.
+**See:** `TCP-CONTENT-CALENDAR.md` Week 4 section. Images: `social/week-4-images/`.
+
 ### Ongoing
-- **116 guides live + 3 calculators.** Guide #115 (Q2 Spring Content Strategy, commit 22809988) + Guide #116 (TikTok Shop Restrictions, commit 22809988) shipped 2026-04-01.
-- **Week 1 social LIVE:** 17 posts scheduled across X/Pinterest/Instagram (Mar 28 - Apr 4).
+- **122 guides live + 3 calculators.** Guide #122 (Bulletin Boards, commit 424b34c) shipped 2026-04-21. June queue 1/4 complete.
+- **Week 3 social LIVE:** Apr 14-20. **Week 4 social LIVE:** Apr 21-27. 17 posts each.
 - **RULE: Every post gets a unique image. NEVER reuse images across posts.**
 - **Affiliate activation: Kit + Buffer + 4 more LIVE.** 6 active affiliate links.
 - **Email system LIVE.** Brett action: Run SQL for unsubscribe tracking.
@@ -215,17 +273,19 @@ All 4 over-500K creators replaced. Beauty raised to 5 creators. All 45 creators 
 ## Pending Review
 <!-- Agents add completed deliverables here. Bernard reviews and routes next. -->
 
-- **What:** TikTok Shop creator restrictions + non-interactive video rules research brief — covers all 9 angles: Shop eligibility, follower requirements, pilot program, region availability, product category restrictions, CRP non-interactive video definition, Shop tag effect on CRP earnings, 2025-2026 policy changes, logistics mandate timeline, dual-program participation rules, ineligible video types, best practices, common disqualification mistakes
-- **Where:** `projects/tiktok-creativity-program/research/tiktok-shop-restrictions-noninteractive-research.md`
-- **Status:** READY FOR REVIEW
+*Cleared 2026-04-07: Guide #120 pipeline items (research, hero, Scribe copy, Devan integration) already shipped commit 3f50df4 and LOCKED in prior cycle. Stale entries removed.*
 
-- **What:** Guide #115 — Q2 Spring Content Strategy 2026 (2,200-2,600 words). Covers Q2 RPM seasonality and Oracle transition context, spring content themes with watch time engineering, tax season window (April 15 + June 15 pivots), highest-RPM niches for Q2, SRP positioning, volume compound math, qualified views vs total views trade-off, 30-day content plan, and summer prep lead time.
-- **Where:** `projects/tiktok-creativity-program/content/guides/tiktok-q2-content-strategy-2026.mdx`
-- **Status:** READY FOR REVIEW
+- [2026-04-21] Devan — SEO indexing audit
+  - What: Root-cause audit for 149 "Discovered, not indexed" pages + 7 reported 404s. Findings: `/guides` hub only SSR-renders 12 of 117 guides (client-side pagination hides the rest from crawlers), 2 MDX files missing `slug` frontmatter, 1 duplicate-slug collision, 11 orphan guides, 30 guides with <3 incoming links, no topic category pages.
+  - Where: `/Users/bcarter/Desktop/Claude Agents/projects/tiktok-creativity-program/SEO-INDEXING-AUDIT.md`
+  - Status: READY FOR REVIEW
 
 
 
 ## Work Log
+- [2026-04-21] Bernard daily ops -- Guide #122 TikTok Bulletin Boards LIVE (commit 424b34c). Full pipeline: Christopher research (already LOCKED 2026-04-07 from June queue) -> Scribe 2,231w -> Vale hero (radial broadcast composition, dark navy/amber) -> Devan integration (3 cross-links, search index 131 entries, build clean). June queue now 1/4 complete. Week 4 social LOCKED: Scribe 17 posts + Vale 30 images + Wren scheduled via Zernio (5 X, 5 IG, 7 Pinterest, Apr 21-27). Notes: X threads as standalone tweets (no native threading in Zernio); 2 Pinterest pins published immediately (past schedule window); IG images converted to JPG. Freshness alert pending: tiktok-creator-health-rating.mdx Shop CHR section.
+- [2026-04-07] Bernard Monday cycle -- Guide #121 TikTok AutoCut Feature LIVE (commit 32f6299). Full pipeline in single cycle: Christopher research (AutoCut monetization eligibility, keyword gap confirmed, 10 angles) -> Scribe 2,300w (monetization question leads) -> Vale hero R2 (R1 had text artifacts, R2 clean) -> Devan integration (4 cross-links, search index, build clean). May queue now 4/4 COMPLETE. Freshness updates deployed same commit: eligibility business account callout + watch time algorithm update (70% completion rate, follower-first model). Week 2 social LIVE: 23 posts scheduled via Wren (11 X, 5 IG, 7 Pinterest, Apr 7-13). Weekly scan: no breaking CRP changes. VFO Ricky scan LOCKED (6th consecutive zero, recommend pausing). Site at 121 guides.
+- [2026-04-06] Bernard daily ops -- Guide #120 TikTok Q3 Content Strategy 2026 LIVE (commit 3f50df4). Full pipeline: Christopher research (FIFA World Cup lead angle, back-to-school, Oracle RPM context) -> Scribe 2,450w -> Vale hero (dark navy, orange arrow composition) -> Devan integration (4 cross-links, search index updated, build clean). May queue now 3/4 complete. Site at 120 guides.
 - [2026-04-01] Bernard daily ops -- Guide #114 Pending Review cleared + LOCKED (hero wired, commit b069ef8f confirmed). Guides #115 + #116 full pipeline complete: Christopher research (8 angles each) -> Scribe (2,300w each) -> Vale (2 unique hero images) -> Devan integration (commit 22809988, broken link fixed, 8 cross-links added). Editorial fix: old Shop guide updated to hedge product tag CRP claim (commit 55762712). Site now at 116 guides. April Content Queue guides 2-3 DONE.
 - [2026-04-01] Bernard monthly cycle -- April Content Queue activated. Christopher researching Carousel Monetization (Guide #114). Freshness fixes DONE: 3 guides updated (tax threshold, Shop Plan date, logistics mandate), 2 already current. Commit 1ec16ce4. Monthly maintenance DONE: build restored (gray-matter), hero image restored, .gitignore cleanup. Commit 3c1828a4. Ricky leads LOCKED (15 TCP at 13-14/15).
 - [2026-03-31] Bernard overnight cycle -- Hero image for guide #112 (TikTok Shop Affiliate Commission Rates) LOCKED: 1200x630 WebP, dark charcoal + orange shapes, no text/faces, on-brand. Ricky overnight leads LOCKED: 25 leads (15 TCP at 15/15 quality, 10 YB, 0 VFO). TCP leads have copy-paste replies linking relevant guides. Brett posts manually.

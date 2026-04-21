@@ -2,7 +2,7 @@
 
 import { useMemo, useState } from 'react'
 import { trackEvent, trackCalculatorUsed } from '@/lib/analytics'
-import { Users, TrendingUp, BarChart3, Info } from 'lucide-react'
+import { DataPill } from '@/components/tcp'
 
 const engagementOptions = [
   { label: 'Low (2%)', value: 0.02, reach: 2.5 },
@@ -48,16 +48,19 @@ export default function FollowerIncomeEstimator() {
   }
 
   return (
-    <form
-      onSubmit={handleCalculate}
-      className="rounded-2xl border border-border-default bg-white shadow-lg overflow-hidden"
-    >
-      <div className="grid gap-0 lg:grid-cols-[1fr_1fr]">
-        {/* Inputs panel */}
-        <div className="space-y-4 p-5 lg:p-6">
+    <form onSubmit={handleCalculate} className="grid gap-5 lg:grid-cols-[1fr_1fr]">
+      {/* Inputs — paper card */}
+      <div className="bg-white rounded-[20px] border border-line p-7 md:p-9">
+        <div className="flex items-baseline gap-3 mb-7">
+          <span className="font-serif italic text-[40px] leading-none text-brand-primary" aria-hidden>
+            i
+          </span>
+          <h2 className="font-sans text-[22px] tracking-[-0.02em] font-semibold m-0 text-ink">Your target</h2>
+        </div>
+
+        <div className="flex flex-col gap-6">
           <div>
-            <label className="block text-xs font-semibold uppercase tracking-wide text-text-muted mb-1.5 flex items-center gap-1.5">
-              <Users className="h-3.5 w-3.5" aria-hidden />
+            <label className="block font-sans text-[14px] font-medium text-ink mb-2">
               Current followers
             </label>
             <input
@@ -65,34 +68,37 @@ export default function FollowerIncomeEstimator() {
               min={0}
               value={followers}
               onChange={(event) => setFollowers(Number(event.target.value))}
-              className="h-10 w-full rounded-lg border border-border-default bg-background-surface px-3 font-[family-name:var(--font-mono)] text-right text-sm text-brand-ink transition-shadow focus-visible:outline-none focus-visible:border-brand-primary focus-visible:shadow-[0_0_0_3px_rgba(249,115,22,0.1)]"
+              className="h-11 w-full rounded-[10px] border border-line bg-paper px-4 font-mono text-right text-[14px] text-ink focus-visible:outline-none focus-visible:border-ink transition-colors"
             />
           </div>
 
           <div>
-            <label className="block text-xs font-semibold uppercase tracking-wide text-text-muted mb-1.5">
+            <label className="block font-sans text-[14px] font-medium text-ink mb-2">
               Engagement rate
             </label>
-            <select
-              value={engagement.value}
-              onChange={(event) =>
-                setEngagement(
-                  engagementOptions.find((option) => option.value === Number(event.target.value)) ??
-                    engagementOptions[1],
+            <div className="flex flex-wrap gap-2">
+              {engagementOptions.map((option) => {
+                const selected = option.value === engagement.value
+                return (
+                  <button
+                    key={option.label}
+                    type="button"
+                    onClick={() => setEngagement(option)}
+                    className={`px-4 py-2 rounded-full text-[12px] font-medium border transition-colors ${
+                      selected
+                        ? 'bg-ink text-paper border-ink'
+                        : 'bg-white text-ink border-line hover:border-ink/40'
+                    }`}
+                  >
+                    {option.label}
+                  </button>
                 )
-              }
-              className="h-10 w-full rounded-lg border border-border-default bg-background-surface px-3 text-sm text-brand-ink focus-visible:outline-none focus-visible:border-brand-primary focus-visible:shadow-[0_0_0_3px_rgba(249,115,22,0.1)]"
-            >
-              {engagementOptions.map((option) => (
-                <option key={option.label} value={option.value}>
-                  {option.label}
-                </option>
-              ))}
-            </select>
+              })}
+            </div>
           </div>
 
           <div>
-            <label className="block text-xs font-semibold uppercase tracking-wide text-text-muted mb-1.5">
+            <label className="block font-sans text-[14px] font-medium text-ink mb-2">
               Posts per month
             </label>
             <input
@@ -100,16 +106,14 @@ export default function FollowerIncomeEstimator() {
               min={1}
               value={postsPerMonth}
               onChange={(event) => setPostsPerMonth(Number(event.target.value))}
-              className="h-10 w-full rounded-lg border border-border-default bg-background-surface px-3 font-[family-name:var(--font-mono)] text-right text-sm text-brand-ink transition-shadow focus-visible:outline-none focus-visible:border-brand-primary focus-visible:shadow-[0_0_0_3px_rgba(249,115,22,0.1)]"
+              className="h-11 w-full rounded-[10px] border border-line bg-paper px-4 font-mono text-right text-[14px] text-ink focus-visible:outline-none focus-visible:border-ink transition-colors"
             />
           </div>
 
           <div>
-            <div className="flex items-center justify-between mb-1.5">
-              <label className="text-xs font-semibold uppercase tracking-wide text-text-muted">
-                Estimated RPM
-              </label>
-              <span className="text-sm font-bold text-brand-ink tabular-nums bg-background-surface rounded-md px-2 py-0.5" style={{ fontFamily: 'var(--font-mono)' }}>
+            <div className="flex items-baseline justify-between mb-2">
+              <label className="font-sans text-[14px] font-medium text-ink">Estimated RPM</label>
+              <span className="font-mono text-[15px] font-medium tabular-nums text-ink">
                 ${rpm.toFixed(2)}
               </span>
             </div>
@@ -122,94 +126,84 @@ export default function FollowerIncomeEstimator() {
               onChange={(event) => setRpm(Number(event.target.value))}
               className="w-full accent-brand-primary"
             />
-            <div className="flex justify-between mt-0.5 text-[10px] text-text-muted">
+            <div className="mt-2 flex justify-between font-mono text-[10px] uppercase tracking-[0.08em] text-ink-soft">
               <span>$0.40</span>
               <span>$1.00+</span>
             </div>
           </div>
 
-          <label className="flex cursor-pointer items-center gap-3 text-sm text-text-secondary rounded-lg bg-background-surface px-3 py-2.5 border border-border-default hover:border-brand-primary/30 transition-colors">
+          <label className="flex cursor-pointer items-center gap-3 text-[14px] text-ink rounded-[10px] bg-paper px-4 py-3 border border-line hover:border-ink/30 transition-colors">
             <input
               type="checkbox"
               checked={includeBonus}
               onChange={(event) => setIncludeBonus(event.target.checked)}
-              className="h-4 w-4 cursor-pointer rounded border-border-default accent-brand-primary"
+              className="h-4 w-4 cursor-pointer rounded border-line accent-brand-primary"
             />
-            <span className="text-sm">Additional Reward bonus <span className="font-semibold text-green-600">+20%</span></span>
+            <span>Additional Reward bonus <span className="font-semibold text-brand-primaryDeep">+20%</span></span>
           </label>
 
           <button
             type="submit"
-            className="inline-flex w-full cursor-pointer items-center justify-center rounded-lg bg-brand-primary px-4 py-2.5 text-sm font-semibold text-white transition-all duration-200 hover:bg-brand-primaryHover hover:shadow-md active:scale-[0.98]"
+            className="inline-flex w-full cursor-pointer items-center justify-center rounded-full bg-ink px-5 py-3.5 text-[14px] font-semibold text-paper transition-all duration-200 hover:bg-ink/90"
           >
             Calculate earnings
           </button>
         </div>
+      </div>
 
-        {/* Results panel */}
-        <div className="border-t border-border-default bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 p-5 lg:border-t-0 lg:border-l lg:border-l-slate-700 lg:p-6 text-white">
-          {/* Projected views */}
-          <div className="flex items-center gap-2 mb-4">
-            <div className="h-7 w-7 rounded-full bg-white/10 flex items-center justify-center">
-              <BarChart3 className="h-3.5 w-3.5 text-slate-300" aria-hidden />
-            </div>
-            <div>
-              <p className="text-[10px] font-semibold uppercase tracking-widest text-slate-400">
-                Projected Monthly Views
-              </p>
-              <p className="text-base font-bold text-white tabular-nums" style={{ fontFamily: 'var(--font-mono)' }}>
-                {projectedViews.toLocaleString()}
-              </p>
-            </div>
+      {/* Results — dark ink card */}
+      <div
+        className="rounded-[20px] p-7 md:p-9 relative overflow-hidden"
+        style={{ background: '#0F0E0C', color: '#FBF6EC' }}
+      >
+        <div className="font-mono text-[10px] uppercase tracking-[0.12em] mb-4" style={{ color: '#F4A261' }}>
+          Estimated Monthly Earnings
+        </div>
+        <div
+          className="font-serif italic tabular-nums"
+          style={{
+            fontSize: 'clamp(56px, 8vw, 96px)',
+            lineHeight: 0.95,
+            letterSpacing: '-0.03em',
+            fontWeight: 400,
+          }}
+        >
+          {formatMoney(earnings)}
+        </div>
+        <div className="mt-4 text-[14px]" style={{ color: 'rgba(251,246,236,0.65)' }}>
+          Projected <b style={{ color: '#FBF6EC' }}>{projectedViews.toLocaleString()}</b> monthly views · <b style={{ color: '#F4A261' }}>{formatMoney(yearlyEarnings)}</b>/yr
+        </div>
+
+        {/* Breakdown */}
+        <div className="mt-7 rounded-[12px] p-5 font-mono text-[12px]" style={{ background: 'rgba(251,246,236,0.04)' }}>
+          <div className="flex items-center justify-between py-1.5" style={{ borderBottom: '1px solid rgba(251,246,236,0.08)' }}>
+            <span style={{ opacity: 0.6 }}>Projected views</span>
+            <span className="tabular-nums">{projectedViews.toLocaleString()}</span>
           </div>
-
-          {/* Earnings display */}
-          <div className="rounded-xl bg-white/[0.07] border border-white/10 p-4 mb-4">
-            <div className="flex items-center gap-1.5 mb-2">
-              <TrendingUp className="h-3.5 w-3.5 text-emerald-400" aria-hidden />
-              <p className="text-[10px] font-semibold uppercase tracking-widest text-emerald-400">
-                Estimated Monthly Earnings
-              </p>
-            </div>
-            <p className="text-3xl lg:text-[2.25rem] font-bold text-emerald-400 tabular-nums" style={{ fontFamily: 'var(--font-mono)' }}>
-              {formatMoney(earnings)}
-            </p>
-            <p className="text-xs text-slate-400 mt-1.5 tabular-nums" style={{ fontFamily: 'var(--font-mono)' }}>
-              {formatMoney(yearlyEarnings)} / year
-            </p>
+          <div className="flex items-center justify-between py-1.5" style={{ borderBottom: '1px solid rgba(251,246,236,0.08)' }}>
+            <span style={{ opacity: 0.6 }}>Qualified views (82%)</span>
+            <span className="tabular-nums">{qualifiedViews.toLocaleString()}</span>
           </div>
-
-          {/* Breakdown */}
-          <div className="space-y-2.5">
-            <div className="flex items-center justify-between">
-              <span className="text-slate-400 text-xs">Qualified views (82%)</span>
-              <span className="font-semibold text-white text-xs tabular-nums" style={{ fontFamily: 'var(--font-mono)' }}>
-                {qualifiedViews.toLocaleString()}
-              </span>
-            </div>
-            <div className="flex items-center justify-between">
-              <span className="text-slate-400 text-xs">RPM applied</span>
-              <span className="font-semibold text-white text-xs tabular-nums" style={{ fontFamily: 'var(--font-mono)' }}>
-                ${rpm.toFixed(2)}
-              </span>
-            </div>
-            <div className="flex items-center justify-between">
-              <span className="text-slate-400 text-xs">Bonus applied</span>
-              <span className="font-semibold text-xs" style={{ color: includeBonus ? '#34d399' : '#94a3b8' }}>
-                {includeBonus ? 'Yes (+20%)' : 'No'}
-              </span>
-            </div>
+          <div className="flex items-center justify-between py-1.5" style={{ borderBottom: '1px solid rgba(251,246,236,0.08)' }}>
+            <span style={{ opacity: 0.6 }}>RPM applied</span>
+            <span className="tabular-nums">${rpm.toFixed(2)}</span>
           </div>
-
-          <div className="mt-4 rounded-lg bg-white/[0.05] border border-white/10 p-2.5">
-            <div className="flex gap-2">
-              <Info className="h-3.5 w-3.5 text-slate-500 flex-shrink-0 mt-0.5" aria-hidden />
-              <p className="text-[11px] text-slate-400 leading-[1.5]">
-                Assumes each post reaches {engagement.reach}x your engaged audience organically.
-              </p>
-            </div>
+          <div className="flex items-center justify-between py-1.5">
+            <span style={{ opacity: 0.6 }}>Bonus</span>
+            <span className="tabular-nums" style={{ color: includeBonus ? '#F4A261' : 'rgba(251,246,236,0.5)' }}>
+              {includeBonus ? '+20% applied' : 'Off'}
+            </span>
           </div>
         </div>
+
+        <div className="mt-5 flex flex-wrap gap-2">
+          <DataPill variant="tag">{formatMoney(yearlyEarnings)} / yr</DataPill>
+          <DataPill variant="emphasis">{engagement.label}</DataPill>
+        </div>
+
+        <p className="mt-5 text-[12px] leading-[1.6]" style={{ color: 'rgba(251,246,236,0.55)' }}>
+          Assumes each post reaches {engagement.reach}x your engaged audience organically.
+        </p>
       </div>
     </form>
   )

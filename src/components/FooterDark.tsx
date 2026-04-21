@@ -1,5 +1,6 @@
-// Version B — Dark editorial footer
-// Same content as Footer.tsx, deeper dark treatment with orange accents
+// TCP warm-editorial footer — matches TCPFooter in tcp-chrome.jsx
+// 2fr 1fr 1fr 1fr grid on desktop, paper bg with ink text, line top border.
+// Link columns preserve the existing structure from the legacy footer.
 
 import Link from 'next/link'
 
@@ -27,106 +28,88 @@ const resourceLinks = [
   { label: 'Contact', href: '/contact' },
 ]
 
+type LinkItem = { label: string; href: string }
+
+function LinkColumn({ heading, links }: { heading: string; links: LinkItem[] }) {
+  return (
+    <div>
+      <div className="mb-3 text-[12px] font-semibold text-ink">{heading}</div>
+      <ul className="flex flex-col">
+        {links.map((link) => (
+          <li key={link.href} className="py-[5px]">
+            <Link
+              href={link.href}
+              className="text-[13px] text-ink-soft transition-colors hover:text-ink"
+            >
+              {link.label}
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </div>
+  )
+}
+
 export default function FooterDark() {
   return (
-    <footer className="bg-[#0d1117] text-white border-t border-white/8">
-      <div className="max-w-container mx-auto px-6 py-16">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
-
-          {/* Column 1 — Brand */}
-          <div className="sm:col-span-2 lg:col-span-1">
-            <Link href="/" className="block">
-              <span className="text-lg font-extrabold text-white tracking-tight" style={{ fontWeight: 800 }}>
-                TikTok Creativity Program
-              </span>
-            </Link>
-            <p className="mt-3 text-sm text-gray-500 leading-relaxed max-w-xs">
-              Real information about TikTok&apos;s Creator Rewards Program. No hype.
-            </p>
-          </div>
-
-          {/* Column 2 — Top Guides */}
-          <div>
-            <h4 className="text-[11px] font-bold text-[#F97316] uppercase tracking-widest mb-4">
-              Top Guides
-            </h4>
-            <ul className="space-y-2.5">
-              {topGuides.map((link) => (
-                <li key={link.href}>
-                  <Link href={link.href} className="text-sm text-gray-500 hover:text-white transition-colors">
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-              <li>
-                <Link href="/guides" className="text-sm text-[#F97316] hover:text-[#EA6A0A] transition-colors font-medium">
-                  Browse all guides &rarr;
-                </Link>
-              </li>
-            </ul>
-          </div>
-
-          {/* Column 3 — Calculators */}
-          <div>
-            <h4 className="text-[11px] font-bold text-[#F97316] uppercase tracking-widest mb-4">
-              Calculators
-            </h4>
-            <ul className="space-y-2.5">
-              {calculatorLinks.map((link) => (
-                <li key={link.href}>
-                  <Link href={link.href} className="text-sm text-gray-500 hover:text-white transition-colors">
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Column 4 — Resources */}
-          <div>
-            <h4 className="text-[11px] font-bold text-[#F97316] uppercase tracking-widest mb-4">
-              Resources
-            </h4>
-            <ul className="space-y-2.5">
-              {resourceLinks.map((link) => (
-                <li key={link.href}>
-                  <Link href={link.href} className="text-sm text-gray-500 hover:text-white transition-colors">
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
-
-        {/* Bottom bar */}
-        <div className="mt-12 pt-6 border-t border-white/8">
-          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
-            <p className="text-xs text-gray-600">
-              &copy; {new Date().getFullYear()} TikTok Creativity Program. Independent educational resource.
-            </p>
-            <p className="text-xs text-gray-600">
-              Not affiliated with TikTok or ByteDance.
-            </p>
-          </div>
-          <p className="text-xs text-gray-600 mt-3">
-            Some links on this site are affiliate links. We may earn a commission at no cost to you.{' '}
-            <Link href="/affiliate-disclosure" className="underline hover:text-gray-400 transition-colors">
-              See our Affiliate Disclosure
-            </Link>.
-          </p>
-          <p className="text-xs text-gray-600 mt-2">
-            Find this helpful?{' '}
-            <a
-              href="https://ko-fi.com/tiktokcreativityprogram"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-[#F97316] hover:text-[#EA6A0A] transition-colors"
+    <footer className="border-t border-line bg-paper">
+      <div
+        className="mx-auto grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-[2fr_1fr_1fr_1fr]"
+        style={{ maxWidth: 1400, padding: '52px 52px 44px' }}
+      >
+        {/* Brand block */}
+        <div>
+          <div className="flex items-center gap-3">
+            <span
+              className="flex h-8 w-8 items-center justify-center bg-brand-primary"
+              style={{ borderRadius: 16 }}
+              aria-hidden
             >
-              Support this site on Ko-fi
-            </a>
+              <span
+                className="font-serif italic text-ink lowercase"
+                style={{ fontSize: 20, lineHeight: 1 }}
+              >
+                t
+              </span>
+            </span>
+            <span
+              className="text-[15px] font-semibold text-ink"
+              style={{ letterSpacing: '-0.01em' }}
+            >
+              Creator Rewards Handbook
+            </span>
+          </div>
+          <p
+            className="mt-[14px] text-[13px] text-ink-soft"
+            style={{ maxWidth: 280, lineHeight: 1.6 }}
+          >
+            Independent guides, calculators, and benchmarks for serious short-form creators.
           </p>
         </div>
+
+        <LinkColumn heading="Guides" links={topGuides} />
+        <LinkColumn heading="Calculators" links={calculatorLinks} />
+        <LinkColumn heading="Resources" links={resourceLinks} />
+      </div>
+
+      {/* Bottom legal strip — preserved from existing footer */}
+      <div
+        className="mx-auto border-t border-line"
+        style={{ maxWidth: 1400, padding: '20px 52px 28px' }}
+      >
+        <div className="flex flex-col gap-2 text-[12px] text-ink-soft sm:flex-row sm:items-center sm:justify-between">
+          <p>
+            &copy; {new Date().getFullYear()} TikTok Creativity Program. Independent educational resource.
+          </p>
+          <p>Not affiliated with TikTok or ByteDance.</p>
+        </div>
+        <p className="mt-2 text-[12px] text-ink-soft">
+          Some links on this site are affiliate links. We may earn a commission at no cost to you.{' '}
+          <Link href="/affiliate-disclosure" className="underline hover:text-ink transition-colors">
+            See our Affiliate Disclosure
+          </Link>
+          .
+        </p>
       </div>
     </footer>
   )

@@ -56,7 +56,7 @@ function renderCell(value: CellValue, colIndex: number) {
   if (value === null) {
     return <Minus className="h-5 w-5 text-[#475467]" aria-label="N/A" />
   }
-  return <span className={colIndex === 0 ? 'font-[600] text-[#0F172A]' : ''}>{value}</span>
+  return <span className={colIndex === 0 ? 'font-[600] text-ink' : ''}>{value}</span>
 }
 
 function normalizeRows(rows: ComparisonTableRow[] | Array<string[]>, winnerIndex?: number): Array<{ cells: CellValue[]; isWinner: boolean }> {
@@ -84,7 +84,7 @@ export default function ComparisonTable({ columns: rawColumns, rows: rawRows, ca
     <div className="relative overflow-x-auto rounded-xl border border-[#E8D5C4] after:pointer-events-none after:absolute after:right-0 after:top-0 after:bottom-0 after:w-8 after:bg-gradient-to-l after:from-white after:content-[''] md:after:hidden">
       <table className="w-full min-w-[640px] border-collapse text-sm">
         {caption ? (
-          <caption className="border-b border-[#E8D5C4] bg-[#FFF3E8] px-4 py-3 text-left text-[14px] font-[600] text-[#0F172A]">
+          <caption className="border-b border-[#E8D5C4] bg-[#FFF3E8] px-4 py-3 text-left text-[14px] font-[600] text-ink">
             {caption}
           </caption>
         ) : null}
@@ -94,7 +94,7 @@ export default function ComparisonTable({ columns: rawColumns, rows: rawRows, ca
             {columns.map((col, i) => (
               <th
                 key={col}
-                className={`px-4 py-3.5 text-left text-[14px] font-[600] text-[#0F172A] ${
+                className={`px-4 py-3.5 text-left text-[14px] font-[600] text-ink ${
                   // R4: first column sticky on mobile
                   i === 0 ? 'sticky left-0 z-10 bg-[#FFF3E8]' : ''
                 }`}

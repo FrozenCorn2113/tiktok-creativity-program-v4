@@ -4,7 +4,7 @@ import { useState, useMemo } from 'react'
 import { Slider } from '@/components/ui/slider'
 import { cn } from '@/lib/utils'
 import { trackCalculatorUsed } from '@/lib/analytics'
-import { TrendingUp, Info, DollarSign, Eye, Calendar } from 'lucide-react'
+import { DataPill } from '@/components/tcp'
 
 // Niche RPM data
 const niches = [
@@ -77,20 +77,27 @@ export function EarningsComparisonCalculator({ className }: { className?: string
 
   return (
     <div className={cn('', className)}>
-      <div className="rounded-2xl border border-border-default bg-white shadow-lg overflow-hidden">
-        <div className="grid gap-0 lg:grid-cols-[1fr_1fr]">
-          {/* Left: inputs */}
-          <div className="p-5 lg:p-6 space-y-5">
+      <div className="grid gap-5 lg:grid-cols-[1fr_1fr]">
+        {/* Left: Inputs — paper card */}
+        <div className="bg-white rounded-[20px] border border-line p-7 md:p-9">
+          <div className="flex items-baseline gap-3 mb-7">
+            <span className="font-serif italic text-[40px] leading-none text-brand-primary" aria-hidden>
+              i
+            </span>
+            <h2 className="font-sans text-[22px] tracking-[-0.02em] font-semibold m-0 text-ink">Your inputs</h2>
+          </div>
+
+          <div className="flex flex-col gap-6">
             {/* Niche selector */}
             <div>
-              <label htmlFor="niche-select" className="block text-xs font-semibold uppercase tracking-wide text-text-muted mb-1.5">
-                Content Niche
+              <label htmlFor="niche-select" className="block font-sans text-[14px] font-medium text-ink mb-2">
+                Content niche
               </label>
               <select
                 id="niche-select"
                 value={nicheId}
                 onChange={(e) => { setNicheId(e.target.value); handleInteraction() }}
-                className="w-full h-10 rounded-lg border border-border-default bg-background-surface px-3 text-sm text-brand-ink transition-shadow focus-visible:outline-none focus-visible:border-brand-primary focus-visible:shadow-[0_0_0_3px_rgba(249,115,22,0.1)]"
+                className="w-full h-11 rounded-[10px] border border-line bg-paper px-3 text-[14px] text-ink focus-visible:outline-none focus-visible:border-ink transition-colors"
               >
                 {niches.map((n) => (
                   <option key={n.id} value={n.id}>
@@ -98,22 +105,16 @@ export function EarningsComparisonCalculator({ className }: { className?: string
                   </option>
                 ))}
               </select>
-              <p className="mt-1 text-xs text-text-muted">
-                RPM: {results.rpmRange} per 1K views
+              <p className="mt-2 font-mono text-[11px] uppercase tracking-[0.08em] text-ink-soft">
+                RPM {results.rpmRange} per 1K
               </p>
             </div>
 
             {/* Views per video slider */}
             <div>
-              <div className="flex items-center justify-between mb-2">
-                <label className="text-xs font-semibold uppercase tracking-wide text-text-muted flex items-center gap-1.5">
-                  <Eye className="h-3.5 w-3.5" aria-hidden />
-                  Views Per Video
-                </label>
-                <span
-                  className="text-sm font-bold text-brand-ink tabular-nums bg-background-surface rounded-md px-2 py-0.5"
-                  style={{ fontFamily: 'var(--font-mono)' }}
-                >
+              <div className="flex items-baseline justify-between mb-2">
+                <label className="font-sans text-[14px] font-medium text-ink">Views per video</label>
+                <span className="font-mono text-[15px] font-medium tabular-nums text-ink">
                   {formatViews(viewsPerVideo)}
                 </span>
               </div>
@@ -129,7 +130,7 @@ export function EarningsComparisonCalculator({ className }: { className?: string
                 className="[&_[role=slider]]:bg-brand-primary [&_[role=slider]]:border-brand-primary [&_.relative]:bg-brand-primary"
                 aria-label="Average views per video"
               />
-              <div className="flex justify-between mt-1 text-[10px] text-text-muted">
+              <div className="flex justify-between mt-2 font-mono text-[10px] uppercase tracking-[0.08em] text-ink-soft">
                 <span>1K</span>
                 <span>5M</span>
               </div>
@@ -137,15 +138,9 @@ export function EarningsComparisonCalculator({ className }: { className?: string
 
             {/* Videos per month slider */}
             <div>
-              <div className="flex items-center justify-between mb-2">
-                <label className="text-xs font-semibold uppercase tracking-wide text-text-muted flex items-center gap-1.5">
-                  <Calendar className="h-3.5 w-3.5" aria-hidden />
-                  Videos Per Month
-                </label>
-                <span
-                  className="text-sm font-bold text-brand-ink tabular-nums bg-background-surface rounded-md px-2 py-0.5"
-                  style={{ fontFamily: 'var(--font-mono)' }}
-                >
+              <div className="flex items-baseline justify-between mb-2">
+                <label className="font-sans text-[14px] font-medium text-ink">Videos per month</label>
+                <span className="font-mono text-[15px] font-medium tabular-nums text-ink">
                   {videosPerMonth}
                 </span>
               </div>
@@ -161,107 +156,97 @@ export function EarningsComparisonCalculator({ className }: { className?: string
                 className="[&_[role=slider]]:bg-brand-primary [&_[role=slider]]:border-brand-primary [&_.relative]:bg-brand-primary"
                 aria-label="Videos per month"
               />
-              <div className="flex justify-between mt-1 text-[10px] text-text-muted">
+              <div className="flex justify-between mt-2 font-mono text-[10px] uppercase tracking-[0.08em] text-ink-soft">
                 <span>1</span>
                 <span>60</span>
               </div>
             </div>
 
             {/* Bonus toggle */}
-            <label className="flex cursor-pointer items-center gap-3 text-sm text-text-secondary rounded-lg bg-background-surface px-3 py-2.5 border border-border-default hover:border-brand-primary/30 transition-colors">
+            <label className="flex cursor-pointer items-center gap-3 text-[14px] text-ink rounded-[10px] bg-paper px-4 py-3 border border-line hover:border-ink/30 transition-colors">
               <input
                 type="checkbox"
                 checked={includeBonus}
                 onChange={(e) => { setIncludeBonus(e.target.checked); handleInteraction() }}
-                className="h-4 w-4 cursor-pointer rounded border-border-default accent-brand-primary"
+                className="h-4 w-4 cursor-pointer rounded border-line accent-brand-primary"
               />
-              <span className="text-sm">Additional Reward bonus <span className="font-semibold text-green-600">+20%</span></span>
+              <span>Additional Reward bonus <span className="font-semibold text-brand-primaryDeep">+20%</span></span>
             </label>
           </div>
+        </div>
 
-          {/* Right: results panel */}
-          <div className="border-t border-border-default bg-gradient-to-br from-[#0A0F1C] via-[#111827] to-[#0A0F1C] p-5 lg:border-t-0 lg:border-l lg:border-l-[#1E293B] lg:p-6 text-white">
-            {/* Monthly views badge */}
-            <div className="flex items-center gap-2 mb-4">
-              <div className="h-7 w-7 rounded-full bg-white/10 flex items-center justify-center">
-                <Eye className="h-3.5 w-3.5 text-gray-400" aria-hidden />
+        {/* Right: Results — dark ink card */}
+        <div
+          className="rounded-[20px] p-7 md:p-9 relative overflow-hidden"
+          style={{ background: '#0F0E0C', color: '#FBF6EC' }}
+        >
+          <div className="font-mono text-[10px] uppercase tracking-[0.12em] mb-4" style={{ color: '#F4A261' }}>
+            Estimated Monthly Earnings
+          </div>
+          <div
+            className="font-serif italic tabular-nums"
+            style={{
+              fontSize: 'clamp(56px, 8vw, 96px)',
+              lineHeight: 0.95,
+              letterSpacing: '-0.03em',
+              fontWeight: 400,
+            }}
+            aria-live="polite"
+            aria-atomic="true"
+          >
+            {formatMoney(results.low)}<span style={{ color: 'rgba(251,246,236,0.35)' }}> – </span>{formatMoney(results.high)}
+          </div>
+          <div className="mt-4 text-[14px]" style={{ color: 'rgba(251,246,236,0.65)' }}>
+            Based on <b style={{ color: '#FBF6EC' }}>{results.qualifiedViews.toLocaleString()}</b> qualified views · RPM <b style={{ color: '#F4A261' }}>{results.rpmRange}</b>
+          </div>
+
+          {/* Yearly + monthly views grid */}
+          <div className="mt-8 grid grid-cols-2 gap-3">
+            <div className="rounded-[12px] p-4" style={{ background: 'rgba(251,246,236,0.05)' }}>
+              <div className="font-mono text-[10px] uppercase tracking-[0.08em]" style={{ color: 'rgba(251,246,236,0.5)' }}>
+                Yearly
               </div>
-              <div>
-                <p className="text-[10px] font-semibold uppercase tracking-widest text-gray-400">
-                  Monthly Views
-                </p>
-                <p
-                  className="text-base font-bold text-white tabular-nums"
-                  style={{ fontFamily: 'var(--font-mono)' }}
-                >
-                  {results.totalMonthlyViews.toLocaleString()}
-                </p>
+              <div className="mt-1 font-mono text-[22px] font-semibold tabular-nums" style={{ letterSpacing: '-0.02em' }}>
+                {formatMoney(results.yearlyLow)} – {formatMoney(results.yearlyHigh)}
               </div>
             </div>
-
-            {/* Monthly earnings - the star */}
-            <div className="rounded-xl bg-white/[0.07] border border-white/10 p-4 mb-4">
-              <div className="flex items-center gap-1.5 mb-2">
-                <TrendingUp className="h-3.5 w-3.5 text-emerald-400" aria-hidden />
-                <p className="text-[10px] font-semibold uppercase tracking-widest text-emerald-400">
-                  Monthly Earnings
-                </p>
+            <div className="rounded-[12px] p-4" style={{ background: 'rgba(251,246,236,0.05)' }}>
+              <div className="font-mono text-[10px] uppercase tracking-[0.08em]" style={{ color: 'rgba(251,246,236,0.5)' }}>
+                Monthly views
               </div>
-              <div
-                className="flex items-baseline gap-1 flex-wrap"
-                aria-live="polite"
-                aria-atomic="true"
-              >
-                <span className="text-3xl lg:text-[2.25rem] font-bold text-emerald-400 tabular-nums whitespace-nowrap" style={{ fontFamily: 'var(--font-mono)' }}>
-                  {formatMoney(results.low)}
-                </span>
-                <span className="text-lg text-gray-500 font-medium mx-0.5">-</span>
-                <span className="text-3xl lg:text-[2.25rem] font-bold text-emerald-400 tabular-nums whitespace-nowrap" style={{ fontFamily: 'var(--font-mono)' }}>
-                  {formatMoney(results.high)}
-                </span>
-              </div>
-              <p className="text-xs text-gray-400 mt-1.5 tabular-nums" style={{ fontFamily: 'var(--font-mono)' }}>
-                {formatMoney(results.yearlyLow)} - {formatMoney(results.yearlyHigh)} / year
-              </p>
-            </div>
-
-            {/* Breakdown */}
-            <div className="space-y-2.5">
-              <div className="flex items-center justify-between text-sm">
-                <span className="text-gray-400 text-xs">Qualified views (82%)</span>
-                <span
-                  className="font-semibold text-white text-xs tabular-nums"
-                  style={{ fontFamily: 'var(--font-mono)' }}
-                >
-                  {results.qualifiedViews.toLocaleString()}
-                </span>
-              </div>
-              <div className="flex items-center justify-between text-sm">
-                <span className="text-gray-400 text-xs">RPM range</span>
-                <span
-                  className="font-semibold text-white text-xs tabular-nums"
-                  style={{ fontFamily: 'var(--font-mono)' }}
-                >
-                  {results.rpmRange}
-                </span>
-              </div>
-              {includeBonus && (
-                <div className="flex items-center justify-between text-sm">
-                  <span className="text-gray-400 text-xs">Additional Reward</span>
-                  <span className="font-semibold text-emerald-400 text-xs">+20% applied</span>
-                </div>
-              )}
-            </div>
-
-            <div className="mt-4 rounded-lg bg-white/[0.05] border border-white/10 p-2.5">
-              <div className="flex gap-2">
-                <Info className="h-3.5 w-3.5 text-gray-500 flex-shrink-0 mt-0.5" aria-hidden />
-                <p className="text-[11px] text-gray-400 leading-[1.5]">
-                  Only 1+ min videos earn Creator Rewards. Qualified views exclude Duets, Stitches, and paid promotion.
-                </p>
+              <div className="mt-1 font-mono text-[22px] font-semibold tabular-nums" style={{ letterSpacing: '-0.02em' }}>
+                {formatViews(results.totalMonthlyViews)}
               </div>
             </div>
           </div>
+
+          {/* Breakdown */}
+          <div className="mt-6 rounded-[12px] p-5 font-mono text-[12px]" style={{ background: 'rgba(251,246,236,0.04)' }}>
+            <div className="flex items-center justify-between py-1.5" style={{ borderBottom: '1px solid rgba(251,246,236,0.08)' }}>
+              <span style={{ opacity: 0.6 }}>Qualified views (82%)</span>
+              <span className="tabular-nums">{results.qualifiedViews.toLocaleString()}</span>
+            </div>
+            <div className="flex items-center justify-between py-1.5" style={{ borderBottom: '1px solid rgba(251,246,236,0.08)' }}>
+              <span style={{ opacity: 0.6 }}>RPM range</span>
+              <span className="tabular-nums">{results.rpmRange}</span>
+            </div>
+            <div className="flex items-center justify-between py-1.5">
+              <span style={{ opacity: 0.6 }}>Bonus</span>
+              <span className="tabular-nums" style={{ color: includeBonus ? '#F4A261' : 'rgba(251,246,236,0.5)' }}>
+                {includeBonus ? '+20% applied' : 'Off'}
+              </span>
+            </div>
+          </div>
+
+          {/* Range pill */}
+          <div className="mt-5 flex flex-wrap gap-2">
+            <DataPill variant="tag">{formatMoney(results.yearlyMid)} / yr mid</DataPill>
+            <DataPill variant="emphasis">{formatViews(results.qualifiedViews)} qualified</DataPill>
+          </div>
+
+          <p className="mt-5 text-[12px] leading-[1.6]" style={{ color: 'rgba(251,246,236,0.55)' }}>
+            Only 1+ min videos earn Creator Rewards. Qualified views exclude Duets, Stitches, and paid promotion.
+          </p>
         </div>
       </div>
     </div>

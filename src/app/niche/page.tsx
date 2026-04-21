@@ -1,11 +1,14 @@
-// Niches index page -- links to all niche pages and features ultimate guides as cornerstone content
+// Niches index — Phase 4 TCP redesign
+// Reference: /tmp/tcp-zip/directions/niches.jsx
+// Data source: src/app/niche/[slug]/niche-data.ts (unchanged)
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import Image from 'next/image'
-import { BookOpen } from 'lucide-react'
 
 import { buildMetadata } from '@/lib/seo'
 import { EmailCapture } from '@/components/sections/email-capture'
+import { EyebrowLabel, ItalicWord, SectionMarker } from '@/components/tcp'
+import { nicheIndex } from './[slug]/niche-data'
 
 export const metadata: Metadata = buildMetadata({
   title: 'TikTok Monetization by Niche: Creator Type Guides',
@@ -14,183 +17,111 @@ export const metadata: Metadata = buildMetadata({
   path: '/niche',
 })
 
-const niches = [
-  {
-    slug: 'musicians',
-    label: 'Musicians',
-    description: 'Promote music, drive streams, stack income beyond Creator Rewards.',
-    guideSlug: 'ultimate-music-guide',
-    guideLabel: 'Ultimate TikTok Monetization Guide for Musicians',
-    heroImage: '/images/guides/hero-ultimate-music-guide.webp',
-    focus: ['Music promotion links', 'Sync licensing', 'Live gifts + tips', 'Brand deals'],
-  },
-  {
-    slug: 'fitness-creators',
-    label: 'Fitness Creators',
-    description: 'Earn from workout content, programs, and affiliate tools built for creators.',
-    guideSlug: 'ultimate-fitness-guide',
-    guideLabel: 'Ultimate TikTok Monetization Guide for Fitness Creators',
-    heroImage: '/images/guides/hero-ultimate-fitness-guide.webp',
-    focus: ['Workout plans', 'Affiliate supplements', 'Program upsells', 'Live sessions'],
-  },
-  {
-    slug: 'artists',
-    label: 'Artists',
-    description: 'Showcase process content, sell prints, turn engagement into income.',
-    guideSlug: 'ultimate-artists-guide',
-    guideLabel: 'Ultimate TikTok Monetization Guide for Artists',
-    heroImage: '/images/guides/hero-ultimate-artists-guide.webp',
-    focus: ['Print sales', 'Commissions', 'Process content', 'Behind-the-scenes'],
-  },
-  {
-    slug: 'teachers',
-    label: 'Teachers & Educators',
-    description: 'Build authority, sell lesson resources, keep your account compliant.',
-    guideSlug: 'ultimate-educators-guide',
-    guideLabel: 'Ultimate TikTok Monetization Guide for Educators',
-    heroImage: '/images/guides/hero-ultimate-educators-guide.webp',
-    focus: ['Course funnels', 'Affiliate tools', 'Community memberships', 'Lead magnets'],
-  },
-  {
-    slug: 'beauty',
-    label: 'Beauty Creators',
-    description: 'Monetize tutorials, reviews, and affiliate deals in the beauty space.',
-    guideSlug: 'ultimate-beauty-guide',
-    guideLabel: 'Ultimate TikTok Monetization Guide for Beauty Creators',
-    heroImage: '/images/guides/hero-ultimate-beauty-guide.webp',
-    focus: ['Affiliate reviews', 'Creator Rewards', 'Brand partnerships', 'Product launches'],
-  },
-  {
-    slug: 'comedy',
-    label: 'Comedians',
-    description: 'Monetize skits, series, and superfans -- comedy is high-RPM if done right.',
-    guideSlug: 'ultimate-comedy-guide',
-    guideLabel: 'Ultimate TikTok Monetization Guide for Comedians',
-    heroImage: '/images/guides/hero-ultimate-comedy-guide.webp',
-    focus: ['Skits and series', 'Creator Rewards', 'Superfan monetization', 'Brand comedy deals'],
-  },
-  {
-    slug: 'coaches',
-    label: 'Coaches & Consultants',
-    description: 'Turn authority content into clients, courses, and recurring revenue.',
-    guideSlug: 'ultimate-coaches-guide',
-    guideLabel: 'Ultimate TikTok Monetization Guide for Coaches and Consultants',
-    heroImage: '/images/guides/hero-ultimate-coaches-guide.webp',
-    focus: ['High-ticket offers', 'Content-to-client funnel', 'Creator Rewards', 'Email list building'],
-  },
-  {
-    slug: 'travel',
-    label: 'Travel Creators',
-    description: 'Earn from travel content with partnerships, affiliates, and Creator Rewards.',
-    guideSlug: 'ultimate-travel-guide',
-    guideLabel: 'Ultimate TikTok Monetization Guide for Travel Creators',
-    heroImage: '/images/guides/hero-ultimate-travel-guide.webp',
-    focus: ['Travel partnerships', 'Affiliate hotels + gear', 'Creator Rewards', 'Brand campaigns'],
-  },
-]
-
 export default function NichesIndexPage() {
+  const niches = nicheIndex
+
   return (
-    <>
-      {/* Page header */}
-      <section className="bg-background-warm pt-24 pb-16">
-        <div className="max-w-container mx-auto px-6">
-          <h1 className="text-[2.25rem] md:text-[3rem] font-extrabold text-brand-ink leading-tight mb-4">
-            Monetization guides for your niche
-          </h1>
-          <p className="text-[1.125rem] text-text-secondary leading-[1.7] max-w-2xl">
-            Generic TikTok advice ignores what actually matters for your content type. These guides are written for specific creator categories, with revenue breakdowns, tool picks, and strategy that fits how you already create.
-          </p>
-        </div>
+    <div className="bg-paper">
+      {/* Hero */}
+      <section className="max-w-[1400px] mx-auto px-6 md:px-[52px] pt-[88px] pb-8">
+        <EyebrowLabel className="mb-4 block">Niche guides · 8 creator types</EyebrowLabel>
+        <h1 className="font-sans text-[44px] md:text-[72px] lg:text-[84px] leading-[0.98] tracking-[-0.04em] font-medium text-ink m-0 max-w-[1200px]">
+          Monetization guides{' '}
+          <ItalicWord color="#C2622A">for your niche</ItalicWord>.
+        </h1>
+        <p className="text-[18px] text-ink-soft mt-6 max-w-[700px] leading-[1.55]">
+          Generic TikTok advice ignores what actually matters for your content type. These guides are written for specific creator categories, with revenue breakdowns, tool picks, and strategy that fits how you already create.
+        </p>
       </section>
 
       {/* Niche cards grid */}
-      <section className="bg-white py-16">
-        <div className="max-w-container mx-auto px-6">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {niches.map((niche) => (
-                <Link
-                  key={niche.slug}
-                  href={`/niche/${niche.slug}`}
-                  className="group flex flex-col border border-border-default rounded-xl bg-white overflow-hidden hover:shadow-md hover:-translate-y-0.5 transition-all duration-200"
-                >
-                  <div className="relative w-full aspect-[16/9] bg-background-warm">
-                    <Image
-                      src={niche.heroImage}
-                      alt={`${niche.label} niche`}
-                      fill
-                      sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                      className="object-cover"
-                    />
-                  </div>
-                  <div className="flex flex-col p-6 flex-1">
-                    <h2 className="text-lg font-bold text-brand-ink group-hover:text-brand-primaryDeep transition-colors mb-1">
-                      {niche.label}
-                    </h2>
-                    <p className="text-sm text-text-secondary leading-relaxed mb-4 flex-1">
-                      {niche.description}
-                    </p>
-                    <ul className="space-y-1 mb-4">
-                      {niche.focus.map((item) => (
-                        <li key={item} className="flex items-center gap-2 text-xs text-text-muted">
-                          <span className="h-1 w-1 rounded-full bg-brand-primary flex-shrink-0" aria-hidden />
-                          {item}
-                        </li>
-                      ))}
-                    </ul>
-                    <div className="flex items-center gap-1.5 text-xs font-semibold text-brand-primaryDeep mt-auto pt-2 border-t border-border-default">
-                      <BookOpen className="w-3.5 h-3.5" aria-hidden />
-                      Read the full guide
+      <section className="max-w-[1400px] mx-auto px-6 md:px-[52px] pt-8 pb-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+          {niches.map((n) => (
+            <Link
+              key={n.slug}
+              href={`/niche/${n.slug}`}
+              className="group flex flex-col bg-white rounded-[22px] border border-line overflow-hidden hover:-translate-y-[3px] hover:border-brand-primaryDeep transition-all duration-200 hover:shadow-[0_12px_32px_-18px_rgba(194,98,42,0.35)]"
+            >
+              <div className="relative h-[240px] bg-soft border-b border-line overflow-hidden">
+                <Image
+                  src={n.heroImage}
+                  alt={`${n.label} illustration`}
+                  fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  className="object-cover"
+                />
+              </div>
+              <div className="p-7 flex flex-col flex-1">
+                <div className="text-[24px] font-semibold tracking-[-0.02em] mb-2.5 text-ink">{n.label}</div>
+                <p className="text-[14px] text-ink-soft leading-[1.55] mb-4">{n.tagline}</p>
+                <div className="flex flex-col gap-1.5 mb-5">
+                  {n.focus.map((l) => (
+                    <div key={l} className="flex items-center gap-2.5 text-[13px] text-ink-soft">
+                      <span className="w-[5px] h-[5px] rounded-full bg-brand-primary flex-shrink-0" aria-hidden />
+                      <span>{l}</span>
                     </div>
-                  </div>
-                </Link>
-            ))}
-          </div>
+                  ))}
+                </div>
+                <div className="mt-auto pt-4 border-t border-line flex items-center gap-2 text-[13px] font-semibold text-brand-primaryDeep">
+                  <svg width="15" height="15" viewBox="0 0 16 16" fill="none" aria-hidden>
+                    <path d="M3 3h10v10H3V3z M3 6h10" stroke="currentColor" strokeWidth="1.5" />
+                  </svg>
+                  <span>Read the full guide</span>
+                  <span className="ml-auto transition-transform duration-200 group-hover:translate-x-1">→</span>
+                </div>
+              </div>
+            </Link>
+          ))}
         </div>
       </section>
 
-      {/* Ultimate guides featured section */}
-      <section className="bg-background-warm py-16">
-        <div className="max-w-container mx-auto px-6">
-          <h2 className="text-[1.75rem] font-bold text-brand-ink mb-2">
-            Ultimate guides by niche
-          </h2>
-          <p className="text-text-secondary mb-8 max-w-2xl">
+      {/* Lead magnet CTA */}
+      <section className="max-w-[1400px] mx-auto px-6 md:px-[52px] py-8">
+        <EmailCapture
+          headline="Get the niche-specific Creator Rewards breakdown"
+          subheadline="RPM ranges, best content formats, and monetization paths by creator type. Free."
+          cta="Send It to Me"
+          showImage={false}
+        />
+      </section>
+
+      {/* Ultimate guides — dense grid */}
+      <section className="max-w-[1400px] mx-auto px-6 md:px-[52px] pt-12">
+        <SectionMarker numeral="ii" heading="Ultimate guides by niche.">
+          <p className="text-[16px] text-ink-soft leading-[1.55] max-w-[720px] m-0">
             Each ultimate guide covers the full picture for that creator type: Creator Rewards strategy, additional income streams, tools, and a month-one action plan.
           </p>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {niches.map((niche) => (
-              <Link
-                key={niche.guideSlug}
-                href={`/guides/${niche.guideSlug}`}
-                className="flex items-center gap-4 border border-border-default rounded-xl overflow-hidden bg-white hover:shadow-sm hover:border-brand-primary/40 transition-all duration-200 group"
-              >
-                <div className="relative w-24 h-16 flex-shrink-0 bg-background-warm">
-                  <Image
-                    src={niche.heroImage}
-                    alt={niche.label}
-                    fill
-                    sizes="96px"
-                    className="object-cover"
-                  />
-                </div>
-                <div className="flex-1 min-w-0 py-3 pr-4">
-                  <p className="text-sm font-bold text-brand-ink line-clamp-1 group-hover:text-brand-primaryDeep transition-colors">
-                    {niche.guideLabel}
-                  </p>
-                </div>
-              </Link>
-            ))}
-          </div>
-        </div>
+        </SectionMarker>
       </section>
 
-      <EmailCapture
-        headline="Get the niche-specific Creator Rewards breakdown"
-        subheadline="RPM ranges, best content formats, and monetization paths by creator type. Free."
-        cta="Send It to Me"
-        showImage={false}
-      />
-    </>
+      <section className="max-w-[1400px] mx-auto px-6 md:px-[52px] pt-8 pb-16">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+          {niches.map((n) => (
+            <Link
+              key={`u-${n.slug}`}
+              href={`/guides/${n.guideSlug}`}
+              className="flex flex-col bg-white rounded-[18px] border border-line overflow-hidden hover:border-brand-primaryDeep hover:-translate-y-0.5 transition-all duration-200"
+            >
+              <div className="relative h-[140px] bg-soft border-b border-line">
+                <Image
+                  src={n.heroImage}
+                  alt=""
+                  fill
+                  sizes="(max-width: 768px) 50vw, 25vw"
+                  className="object-cover"
+                />
+              </div>
+              <div className="p-5">
+                <EyebrowLabel className="mb-2 block">Ultimate guide</EyebrowLabel>
+                <div className="text-[15px] font-semibold leading-[1.35] text-ink">
+                  Ultimate TikTok Monetization Guide for {n.label}
+                </div>
+              </div>
+            </Link>
+          ))}
+        </div>
+      </section>
+    </div>
   )
 }

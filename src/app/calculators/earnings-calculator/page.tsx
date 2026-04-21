@@ -1,21 +1,28 @@
-// Earnings Calculator page -- redesigned: compact, polished, modern SaaS feel
-// SEO target: "TikTok Creativity Program Earnings Calculator"
+// Earnings Calculator page — Phase 6 TCP redesign
+// Reference: /tmp/tcp-zip/directions/calculator.jsx
+// NOTE: All math, state, inputs, outputs preserved in EarningsComparisonCalculator.
+// Only page chrome + component visual wrappers restyled.
 
 import type { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
-import { BarChart2, TrendingUp, Zap, ArrowRight } from 'lucide-react'
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from '@/components/ui/accordion'
-import Container from '@/components/ui/Container'
 import { EarningsComparisonCalculator } from '@/components/sections/earnings-comparison-calculator'
 import { CalculatorNav } from '@/components/calculators/CalculatorNav'
 import { EmailCapturePopup } from '@/components/email/email-capture-popup'
 import { siteConfig } from '@/lib/site'
+import {
+  EyebrowLabel,
+  ItalicWord,
+  SectionMarker,
+  DarkCallout,
+  DataPill,
+} from '@/components/tcp'
 
 export const metadata: Metadata = {
   title: 'TikTok Creativity Program Earnings Calculator',
@@ -117,7 +124,7 @@ const faqJsonLd = {
       name: 'What RPM should I expect on TikTok?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'RPM varies by niche: Finance and education content earns $0.60-$1.00 per 1,000 views, while entertainment and comedy typically earn $0.35-$0.70. Geography matters too -- US, UK, and Germany have the highest rates.',
+        text: 'RPM varies by niche: Finance and education content earns $0.60-$1.00 per 1,000 views, while entertainment and comedy typically earn $0.35-$0.70. Geography matters too, US, UK, and Germany have the highest rates.',
       },
     },
     {
@@ -146,7 +153,7 @@ const faqs = [
   },
   {
     q: 'What RPM should I expect?',
-    a: "Use the niche selector above to see RPM ranges for your content type. Finance and education earn the most ($0.60-$1.00). Entertainment and comedy are lower ($0.35-$0.70). Your country matters too -- US, UK, and Germany have the highest advertiser demand.",
+    a: "Use the niche selector above to see RPM ranges for your content type. Finance and education earn the most ($0.60-$1.00). Entertainment and comedy are lower ($0.35-$0.70). Your country matters too, US, UK, and Germany have the highest advertiser demand.",
   },
   {
     q: 'Why are qualified views lower than total views?',
@@ -172,7 +179,7 @@ const faqs = [
 
 export default function EarningsCalculatorPage() {
   return (
-    <>
+    <div className="bg-paper">
       {/* JSON-LD structured data */}
       <script
         type="application/ld+json"
@@ -195,289 +202,223 @@ export default function EarningsCalculatorPage() {
         itemCount="Free guide"
       />
 
-      {/* Hero header - tighter */}
-      <section className="pt-10 pb-6 md:pt-12 md:pb-8">
-        <Container>
-          <div className="max-w-3xl">
-            {/* Breadcrumbs */}
-            <nav aria-label="Breadcrumb" className="mb-4">
-              <ol className="flex flex-wrap items-center gap-1 text-xs text-text-muted">
-                <li><Link href="/" className="hover:text-brand-ink transition-colors">Home</Link></li>
-                <li className="text-border-default">/</li>
-                <li><Link href="/calculators" className="hover:text-brand-ink transition-colors">Calculators</Link></li>
-                <li className="text-border-default">/</li>
-                <li className="text-brand-ink font-medium">Earnings Calculator</li>
-              </ol>
-            </nav>
+      {/* Hero */}
+      <section className="max-w-[1400px] mx-auto px-6 md:px-[52px] pt-[72px] md:pt-[88px] pb-10">
+        {/* Breadcrumbs */}
+        <nav aria-label="Breadcrumb" className="mb-6">
+          <ol className="flex flex-wrap items-center gap-1.5 text-[12px] text-ink-soft font-mono">
+            <li><Link href="/" className="hover:text-ink transition-colors">Home</Link></li>
+            <li className="text-line">/</li>
+            <li><Link href="/calculators" className="hover:text-ink transition-colors">Calculators</Link></li>
+            <li className="text-line">/</li>
+            <li className="text-ink">Earnings Calculator</li>
+          </ol>
+        </nav>
 
-            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-brand-ink leading-[1.1]">
-              TikTok Earnings Calculator
-            </h1>
-            <p className="mt-3 text-base md:text-lg text-text-secondary leading-relaxed max-w-2xl">
-              Estimate your monthly and yearly Creator Rewards earnings. Select your niche, set your average views, and see what your content could earn.
-            </p>
-          </div>
-        </Container>
+        <EyebrowLabel className="mb-4 block">Calculators · 01 of 03 · Earnings</EyebrowLabel>
+        <h1 className="font-sans text-[44px] md:text-[72px] lg:text-[84px] leading-[0.98] tracking-[-0.04em] font-medium text-ink m-0 max-w-[1100px]">
+          What will TikTok actually pay you?{' '}
+          <ItalicWord color="#C2622A">Run the numbers.</ItalicWord>
+        </h1>
+        <p className="text-[18px] md:text-[19px] text-ink-soft mt-6 max-w-[720px] leading-[1.55]">
+          Estimate your monthly and yearly Creator Rewards earnings. Select your niche, set your average views, and see what your content could earn.
+        </p>
+        <p className="mt-5 font-mono text-[11px] uppercase tracking-[0.12em] text-ink-soft">
+          Updated Apr 2026
+        </p>
       </section>
 
-      {/* Calculator navigation */}
-      <section className="pb-4">
-        <Container>
-          <CalculatorNav currentCalculator="earnings-calculator" />
-        </Container>
+      {/* Calculator nav */}
+      <section className="max-w-[1400px] mx-auto px-6 md:px-[52px] pb-6">
+        <CalculatorNav currentCalculator="earnings-calculator" />
       </section>
 
       {/* Calculator tool */}
-      <section className="pb-10">
-        <Container>
-          <div className="space-y-10">
-            {/* Calculator */}
-            <EarningsComparisonCalculator />
-
-            {/* Quick earnings reference table */}
-            <div>
-              <h2 className="text-xl font-bold text-brand-ink mb-4">
-                Earnings at a glance
-              </h2>
-              <div className="overflow-x-auto rounded-xl border border-border-default">
-                <table className="w-full text-sm">
-                  <thead>
-                    <tr className="bg-background-surface border-b border-border-default">
-                      <th className="text-left px-4 py-2.5 font-semibold text-brand-ink text-xs">Monthly Views</th>
-                      <th className="text-right px-4 py-2.5 font-semibold text-brand-ink text-xs">Low</th>
-                      <th className="text-right px-4 py-2.5 font-semibold text-brand-ink text-xs">High</th>
-                      <th className="text-right px-4 py-2.5 font-semibold text-brand-ink text-xs">Per Year (High)</th>
-                    </tr>
-                  </thead>
-                  <tbody className="divide-y divide-border-default">
-                    {[
-                      { views: '10,000', low: '$3.28', high: '$8.20', yearly: '$98' },
-                      { views: '100,000', low: '$33', high: '$82', yearly: '$984' },
-                      { views: '500,000', low: '$164', high: '$410', yearly: '$4,920' },
-                      { views: '1,000,000', low: '$328', high: '$820', yearly: '$9,840' },
-                      { views: '5,000,000', low: '$1,640', high: '$4,100', yearly: '$49,200' },
-                    ].map((row) => (
-                      <tr key={row.views} className="bg-white hover:bg-background-surface/50 transition-colors">
-                        <td className="px-4 py-2.5 font-medium text-brand-ink text-xs tabular-nums" style={{ fontFamily: 'var(--font-mono)' }}>
-                          {row.views}
-                        </td>
-                        <td className="px-4 py-2.5 text-right font-semibold text-text-secondary text-xs tabular-nums" style={{ fontFamily: 'var(--font-mono)' }}>
-                          {row.low}
-                        </td>
-                        <td className="px-4 py-2.5 text-right font-semibold text-green-700 text-xs tabular-nums" style={{ fontFamily: 'var(--font-mono)' }}>
-                          {row.high}
-                        </td>
-                        <td className="px-4 py-2.5 text-right font-semibold text-green-700 text-xs tabular-nums" style={{ fontFamily: 'var(--font-mono)' }}>
-                          {row.yearly}
-                        </td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
-              <p className="mt-2 text-xs text-text-muted">
-                Based on qualified views (82% of total) at General/Entertainment RPM ($0.40-$1.00). Finance and education niches earn more.
-              </p>
-            </div>
-
-            {/* What affects your results? */}
-            <div>
-              <h2 className="text-xl font-bold text-brand-ink mb-4">What affects your earnings</h2>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                <div className="bg-white p-5 rounded-xl border border-border-default">
-                  <div className="flex items-center gap-2 mb-2">
-                    <div className="h-8 w-8 rounded-lg bg-orange-50 flex items-center justify-center">
-                      <BarChart2 className="h-4 w-4 text-brand-primary" aria-hidden />
-                    </div>
-                    <h3 className="font-bold text-brand-ink text-sm">Your RPM</h3>
-                  </div>
-                  <p className="text-xs text-text-secondary leading-[1.6] mb-2">
-                    RPM varies by country, niche, content length, and viewer behavior. US, UK, and Germany see the highest rates ($0.50-$1.20).
-                  </p>
-                  <Link href="/guides/optimize-rpm" className="text-xs font-semibold text-brand-primaryDeep hover:underline">
-                    How to improve your RPM &rarr;
-                  </Link>
-                </div>
-
-                <div className="bg-white p-5 rounded-xl border border-border-default">
-                  <div className="flex items-center gap-2 mb-2">
-                    <div className="h-8 w-8 rounded-lg bg-orange-50 flex items-center justify-center">
-                      <TrendingUp className="h-4 w-4 text-brand-primary" aria-hidden />
-                    </div>
-                    <h3 className="font-bold text-brand-ink text-sm">Qualified view rate</h3>
-                  </div>
-                  <p className="text-xs text-text-secondary leading-[1.6] mb-2">
-                    TikTok only counts organic FYP views on 1+ minute videos. Duets, Stitches, and Photo Mode don&apos;t count.
-                  </p>
-                  <Link href="/guides/no-qualified-views" className="text-xs font-semibold text-brand-primaryDeep hover:underline">
-                    Why views aren&apos;t counting &rarr;
-                  </Link>
-                </div>
-
-                <div className="bg-white p-5 rounded-xl border border-border-default">
-                  <div className="flex items-center gap-2 mb-2">
-                    <div className="h-8 w-8 rounded-lg bg-orange-50 flex items-center justify-center">
-                      <Zap className="h-4 w-4 text-brand-primary" aria-hidden />
-                    </div>
-                    <h3 className="font-bold text-brand-ink text-sm">Content niche</h3>
-                  </div>
-                  <p className="text-xs text-text-secondary leading-[1.6] mb-2">
-                    Finance and education niches earn up to 2x more than entertainment or gaming.
-                  </p>
-                  <Link href="/guides/tiktok-rpm-by-niche-2026" className="text-xs font-semibold text-brand-primaryDeep hover:underline">
-                    RPM by niche breakdown &rarr;
-                  </Link>
-                </div>
-              </div>
-            </div>
-
-            {/* FAQ Accordion */}
-            <div className="max-w-2xl">
-              <h2 className="text-xl font-bold text-brand-ink mb-4">Frequently Asked Questions</h2>
-              <Accordion className="space-y-2">
-                {faqs.map((faq, i) => (
-                  <AccordionItem
-                    key={i}
-                    value={i}
-                    className="border border-border-default rounded-xl px-4 shadow-sm bg-white"
-                  >
-                    <AccordionTrigger className="text-left font-semibold text-brand-ink text-sm py-3 hover:no-underline min-h-[44px]">
-                      {faq.q}
-                    </AccordionTrigger>
-                    <AccordionContent className="text-sm text-text-secondary leading-[1.7] pb-3">
-                      {faq.a}
-                    </AccordionContent>
-                  </AccordionItem>
-                ))}
-              </Accordion>
-            </div>
-
-            {/* Related guides and tools */}
-            <div>
-              <h2 className="text-xl font-bold text-brand-ink mb-3">
-                Related guides and tools
-              </h2>
-              <div className="grid gap-3 md:grid-cols-2 lg:grid-cols-3">
-                <Link
-                  href="/guides/how-much-does-tiktok-pay-per-view"
-                  className="group flex flex-col rounded-xl border border-border-default bg-white overflow-hidden transition-all duration-150 hover:border-brand-primary hover:shadow-sm"
-                >
-                  <div className="relative aspect-[16/9] w-full">
-                    <Image
-                      src="/images/guides/hero-how-much-does-tiktok-pay-per-view.webp"
-                      alt="How Much Does TikTok Pay?"
-                      fill
-                      className="object-cover"
-                      sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                    />
-                  </div>
-                  <div className="flex flex-col flex-1 p-5">
-                    <h3 className="text-sm font-semibold text-brand-ink">How Much Does TikTok Pay?</h3>
-                    <p className="mt-1.5 flex-1 text-xs leading-[1.6] text-text-secondary">
-                      Complete earnings breakdown with real creator examples and RPM data.
-                    </p>
-                    <span className="mt-3 flex items-center gap-1 text-xs font-semibold text-brand-primary transition-transform duration-200 group-hover:translate-x-0.5">
-                      Read guide <ArrowRight className="h-3.5 w-3.5" aria-hidden />
-                    </span>
-                  </div>
-                </Link>
-                <Link
-                  href="/guides/optimize-rpm"
-                  className="group flex flex-col rounded-xl border border-border-default bg-white overflow-hidden transition-all duration-150 hover:border-brand-primary hover:shadow-sm"
-                >
-                  <div className="relative aspect-[16/9] w-full">
-                    <Image
-                      src="/images/guides/hero-optimize-rpm.webp"
-                      alt="How to Optimize Your RPM"
-                      fill
-                      className="object-cover"
-                      sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                    />
-                  </div>
-                  <div className="flex flex-col flex-1 p-5">
-                    <h3 className="text-sm font-semibold text-brand-ink">How to Optimize Your RPM</h3>
-                    <p className="mt-1.5 flex-1 text-xs leading-[1.6] text-text-secondary">
-                      Actionable strategies to increase your revenue per 1,000 views.
-                    </p>
-                    <span className="mt-3 flex items-center gap-1 text-xs font-semibold text-brand-primary transition-transform duration-200 group-hover:translate-x-0.5">
-                      Read guide <ArrowRight className="h-3.5 w-3.5" aria-hidden />
-                    </span>
-                  </div>
-                </Link>
-                <Link
-                  href="/calculators/rpm-by-country"
-                  className="group flex flex-col rounded-xl border border-border-default bg-white overflow-hidden transition-all duration-150 hover:border-brand-primary hover:shadow-sm"
-                >
-                  <div className="relative aspect-[16/9] w-full">
-                    <Image
-                      src="/images/calculators/hero-rpm.webp"
-                      alt="RPM by Country Calculator"
-                      fill
-                      className="object-cover"
-                      sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                    />
-                  </div>
-                  <div className="flex flex-col flex-1 p-5">
-                    <h3 className="text-sm font-semibold text-brand-ink">RPM by Country Calculator</h3>
-                    <p className="mt-1.5 flex-1 text-xs leading-[1.6] text-text-secondary">
-                      Compare RPM rates by country and model weighted earnings by audience geography.
-                    </p>
-                    <span className="mt-3 flex items-center gap-1 text-xs font-semibold text-brand-primary transition-transform duration-200 group-hover:translate-x-0.5">
-                      Open calculator <ArrowRight className="h-3.5 w-3.5" aria-hidden />
-                    </span>
-                  </div>
-                </Link>
-                <Link
-                  href="/guides/additional-reward-criteria-2025"
-                  className="group flex flex-col rounded-xl border border-border-default bg-white overflow-hidden transition-all duration-150 hover:border-brand-primary hover:shadow-sm"
-                >
-                  <div className="relative aspect-[16/9] w-full">
-                    <Image
-                      src="/images/guides/hero-additional-reward-criteria-2025.webp"
-                      alt="Additional Reward Criteria"
-                      fill
-                      className="object-cover"
-                      sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                    />
-                  </div>
-                  <div className="flex flex-col flex-1 p-5">
-                    <h3 className="text-sm font-semibold text-brand-ink">Additional Reward Criteria</h3>
-                    <p className="mt-1.5 flex-1 text-xs leading-[1.6] text-text-secondary">
-                      How to qualify for the +20% bonus on your Creator Rewards earnings.
-                    </p>
-                    <span className="mt-3 flex items-center gap-1 text-xs font-semibold text-brand-primary transition-transform duration-200 group-hover:translate-x-0.5">
-                      Read guide <ArrowRight className="h-3.5 w-3.5" aria-hidden />
-                    </span>
-                  </div>
-                </Link>
-                <Link
-                  href="/calculators/follower-income-estimator"
-                  className="group flex flex-col rounded-xl border border-border-default bg-white overflow-hidden transition-all duration-150 hover:border-brand-primary hover:shadow-sm"
-                >
-                  <div className="relative aspect-[16/9] w-full">
-                    <Image
-                      src="/images/calculators/hero-follower.webp"
-                      alt="Follower Income Estimator"
-                      fill
-                      className="object-cover"
-                      sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                    />
-                  </div>
-                  <div className="flex flex-col flex-1 p-5">
-                    <h3 className="text-sm font-semibold text-brand-ink">Follower Income Estimator</h3>
-                    <p className="mt-1.5 flex-1 text-xs leading-[1.6] text-text-secondary">
-                      Project earnings based on follower count, engagement rate, and posting frequency.
-                    </p>
-                    <span className="mt-3 flex items-center gap-1 text-xs font-semibold text-brand-primary transition-transform duration-200 group-hover:translate-x-0.5">
-                      Open calculator <ArrowRight className="h-3.5 w-3.5" aria-hidden />
-                    </span>
-                  </div>
-                </Link>
-              </div>
-            </div>
-          </div>
-        </Container>
+      <section className="max-w-[1400px] mx-auto px-6 md:px-[52px] pb-14">
+        <EarningsComparisonCalculator />
       </section>
-    </>
+
+      {/* Earnings at a glance — SectionMarker i */}
+      <section className="max-w-[1400px] mx-auto px-6 md:px-[52px] pb-14">
+        <SectionMarker numeral="i" heading="Earnings at a glance.">
+          <div className="overflow-x-auto rounded-[20px] border border-line bg-white">
+            <table className="w-full text-sm">
+              <thead>
+                <tr className="border-b border-line bg-soft/60">
+                  <th className="text-left px-5 py-3 font-mono text-[11px] uppercase tracking-[0.12em] text-ink-soft">Monthly Views</th>
+                  <th className="text-right px-5 py-3 font-mono text-[11px] uppercase tracking-[0.12em] text-ink-soft">Low</th>
+                  <th className="text-right px-5 py-3 font-mono text-[11px] uppercase tracking-[0.12em] text-ink-soft">High</th>
+                  <th className="text-right px-5 py-3 font-mono text-[11px] uppercase tracking-[0.12em] text-ink-soft">Per Year (High)</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-line">
+                {[
+                  { views: '10,000', low: '$3.28', high: '$8.20', yearly: '$98' },
+                  { views: '100,000', low: '$33', high: '$82', yearly: '$984' },
+                  { views: '500,000', low: '$164', high: '$410', yearly: '$4,920' },
+                  { views: '1,000,000', low: '$328', high: '$820', yearly: '$9,840' },
+                  { views: '5,000,000', low: '$1,640', high: '$4,100', yearly: '$49,200' },
+                ].map((row) => (
+                  <tr key={row.views}>
+                    <td className="px-5 py-3 font-mono text-[13px] tabular-nums text-ink">{row.views}</td>
+                    <td className="px-5 py-3 text-right font-mono text-[13px] tabular-nums text-ink-soft">{row.low}</td>
+                    <td className="px-5 py-3 text-right font-mono text-[13px] tabular-nums text-ink">{row.high}</td>
+                    <td className="px-5 py-3 text-right font-mono text-[13px] tabular-nums text-ink">{row.yearly}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          <p className="mt-3 text-[13px] text-ink-soft">
+            Based on qualified views (82% of total) at General/Entertainment RPM ($0.40-$1.00). Finance and education niches earn more.
+          </p>
+        </SectionMarker>
+      </section>
+
+      {/* What affects your earnings — SectionMarker ii */}
+      <section className="max-w-[1400px] mx-auto px-6 md:px-[52px] pb-14">
+        <SectionMarker numeral="ii" heading="What affects your earnings.">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+            {[
+              {
+                title: 'Your RPM',
+                body: 'RPM varies by country, niche, content length, and viewer behavior. US, UK, and Germany see the highest rates ($0.50-$1.20).',
+                href: '/guides/optimize-rpm',
+                cta: 'How to improve your RPM',
+              },
+              {
+                title: 'Qualified view rate',
+                body: 'TikTok only counts organic FYP views on 1+ minute videos. Duets, Stitches, and Photo Mode don’t count.',
+                href: '/guides/no-qualified-views',
+                cta: "Why views aren’t counting",
+              },
+              {
+                title: 'Content niche',
+                body: 'Finance and education niches earn up to 2x more than entertainment or gaming.',
+                href: '/guides/tiktok-rpm-by-niche-2026',
+                cta: 'RPM by niche breakdown',
+              },
+            ].map((card) => (
+              <div
+                key={card.title}
+                className="bg-white rounded-[20px] border border-line p-6"
+              >
+                <div className="text-[16px] font-semibold text-ink mb-2 tracking-[-0.01em]">{card.title}</div>
+                <p className="text-[14px] text-ink-soft leading-[1.6] mb-4">{card.body}</p>
+                <Link
+                  href={card.href}
+                  className="text-[13px] font-semibold text-brand-primaryDeep hover:text-ink transition-colors"
+                >
+                  {card.cta} &rarr;
+                </Link>
+              </div>
+            ))}
+          </div>
+        </SectionMarker>
+      </section>
+
+      {/* Reality check — DarkCallout */}
+      <section className="max-w-[1400px] mx-auto px-6 md:px-[52px] pb-14">
+        <DarkCallout title="These are estimates." italic="Not guarantees.">
+          Actual payouts move with content quality, audience geography, seasonal advertiser demand, and the algorithm&rsquo;s read of your watch-time. Use the calculator to model scenarios, not to plan rent.
+        </DarkCallout>
+      </section>
+
+      {/* FAQ — SectionMarker iii */}
+      <section className="max-w-[1400px] mx-auto px-6 md:px-[52px] pb-14">
+        <SectionMarker numeral="iii" heading="Frequently asked.">
+          <div className="max-w-[760px]">
+            <Accordion className="space-y-3">
+              {faqs.map((faq, i) => (
+                <AccordionItem
+                  key={i}
+                  value={i}
+                  className="border border-line rounded-[16px] px-5 bg-white"
+                >
+                  <AccordionTrigger className="text-left font-semibold text-ink text-[15px] py-4 hover:no-underline min-h-[44px]">
+                    {faq.q}
+                  </AccordionTrigger>
+                  <AccordionContent className="text-[14px] text-ink-soft leading-[1.7] pb-4">
+                    {faq.a}
+                  </AccordionContent>
+                </AccordionItem>
+              ))}
+            </Accordion>
+          </div>
+        </SectionMarker>
+      </section>
+
+      {/* Related — 2-up grid */}
+      <section className="max-w-[1400px] mx-auto px-6 md:px-[52px] pb-20">
+        <div className="flex items-baseline justify-between mb-6 flex-wrap gap-3">
+          <h2 className="font-sans text-[28px] md:text-[32px] leading-[1.05] tracking-[-0.02em] font-medium text-ink m-0">
+            Related <ItalicWord color="#C2622A">guides and tools</ItalicWord>.
+          </h2>
+          <DataPill variant="soft">5 related</DataPill>
+        </div>
+        <div className="grid gap-5 md:grid-cols-2">
+          {[
+            {
+              href: '/guides/how-much-does-tiktok-pay-per-view',
+              image: '/images/guides/hero-how-much-does-tiktok-pay-per-view.webp',
+              title: 'How Much Does TikTok Pay?',
+              desc: 'Complete earnings breakdown with real creator examples and RPM data.',
+              cta: 'Read guide',
+              tag: 'Guide',
+            },
+            {
+              href: '/guides/optimize-rpm',
+              image: '/images/guides/hero-optimize-rpm.webp',
+              title: 'How to Optimize Your RPM',
+              desc: 'Actionable strategies to increase your revenue per 1,000 views.',
+              cta: 'Read guide',
+              tag: 'Guide',
+            },
+            {
+              href: '/calculators/rpm-by-country',
+              image: '/images/calculators/hero-rpm.webp',
+              title: 'RPM by Country Calculator',
+              desc: 'Compare RPM rates by country and model weighted earnings by audience geography.',
+              cta: 'Open calculator',
+              tag: 'Calculator',
+            },
+            {
+              href: '/calculators/follower-income-estimator',
+              image: '/images/calculators/hero-follower.webp',
+              title: 'Follower Income Estimator',
+              desc: 'Project earnings based on follower count, engagement rate, and posting frequency.',
+              cta: 'Open calculator',
+              tag: 'Calculator',
+            },
+          ].map((card) => (
+            <Link
+              key={card.href}
+              href={card.href}
+              className="group flex flex-col rounded-[22px] border border-line bg-white overflow-hidden transition-all duration-200 hover:-translate-y-[3px] hover:border-brand-primaryDeep hover:shadow-[0_12px_32px_-18px_rgba(194,98,42,0.35)]"
+            >
+              <div className="relative aspect-[16/9] w-full bg-soft border-b border-line">
+                <Image
+                  src={card.image}
+                  alt={card.title}
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                />
+              </div>
+              <div className="flex flex-col flex-1 p-6">
+                <div className="mb-3">
+                  <DataPill variant="soft">{card.tag}</DataPill>
+                </div>
+                <h3 className="text-[18px] font-semibold text-ink tracking-[-0.01em]">{card.title}</h3>
+                <p className="mt-2 flex-1 text-[14px] leading-[1.6] text-ink-soft">{card.desc}</p>
+                <span className="mt-4 flex items-center gap-1.5 text-[13px] font-semibold text-brand-primaryDeep transition-transform duration-200 group-hover:translate-x-0.5">
+                  {card.cta} <span aria-hidden>&rarr;</span>
+                </span>
+              </div>
+            </Link>
+          ))}
+        </div>
+      </section>
+    </div>
   )
 }

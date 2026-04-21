@@ -64,7 +64,7 @@ export default function EarningsTrackerPage() {
               href={trackerUrl}
               target="_blank"
               rel="noreferrer"
-              className="inline-flex w-full items-center justify-center rounded-[var(--radius-lg)] bg-[var(--color-primary)] px-5 py-3 text-sm font-semibold text-[#0F172A] transition hover:bg-[var(--color-primary-hover)] cursor-pointer"
+              className="inline-flex w-full items-center justify-center rounded-[var(--radius-lg)] bg-[var(--color-primary)] px-5 py-3 text-sm font-semibold text-ink transition hover:bg-[var(--color-primary-hover)] cursor-pointer"
             >
               Open the tracker
             </a>

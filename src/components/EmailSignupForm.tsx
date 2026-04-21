@@ -53,8 +53,7 @@ export default function EmailSignupForm({
 
   const copy = defaultCopy[variant]
   const isHero = variant === 'hero'
-  const inputHeight = isHero ? 'h-14' : 'h-12'
-  const inputFont = isHero ? 'text-base' : 'text-sm'
+  const isInline = variant === 'inline'
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
@@ -91,6 +90,107 @@ export default function EmailSignupForm({
       setMessage('Something went wrong. Please try again.')
     }
   }
+
+  // Inline variant — TCP warm-editorial dark block (matches TCPNewsletter in tcp-chrome.jsx)
+  if (isInline) {
+    const headline = title ?? copy.title
+    const sub = description ?? copy.description
+    return (
+      <section
+        id="newsletter"
+        className={className}
+        style={{ padding: '64px 0', maxWidth: 1400, margin: '0 auto' }}
+      >
+        <div
+          className="grid grid-cols-1 items-center gap-8 bg-ink text-paper lg:grid-cols-2 lg:gap-12"
+          style={{ padding: 52, borderRadius: 24 }}
+        >
+          <div>
+            <div
+              className="mb-5 inline-block font-mono font-semibold uppercase"
+              style={{
+                padding: '5px 14px',
+                background: '#F4A261',
+                color: '#0F0E0C',
+                borderRadius: 100,
+                fontSize: 11,
+                letterSpacing: '0.08em',
+              }}
+            >
+              Dispatch
+            </div>
+            <h2
+              className="m-0 text-paper"
+              style={{ fontSize: 44, lineHeight: 1.04, letterSpacing: '-0.03em', fontWeight: 500 }}
+            >
+              {headline}{' '}
+              <span
+                className="font-serif italic"
+                style={{ color: '#F4A261', fontWeight: 400 }}
+              >
+                Every Sunday.
+              </span>
+            </h2>
+          </div>
+          <div>
+            <form
+              onSubmit={handleSubmit}
+              className="flex bg-paper"
+              style={{ borderRadius: 100, padding: 6 }}
+            >
+              <input
+                type="email"
+                name="email"
+                value={email}
+                onChange={(event) => setEmail(event.target.value)}
+                placeholder="you@domain.com"
+                required
+                className="flex-1 bg-transparent text-ink outline-none"
+                style={{ border: 'none', padding: '14px 20px', fontSize: 14, fontFamily: 'inherit' }}
+              />
+              <button
+                type="submit"
+                disabled={status === 'loading'}
+                className="font-semibold transition-opacity hover:opacity-90 disabled:opacity-60"
+                style={{
+                  background: '#F4A261',
+                  color: '#0F0E0C',
+                  border: 'none',
+                  padding: '0 24px',
+                  fontSize: 14,
+                  borderRadius: 100,
+                  cursor: 'pointer',
+                }}
+              >
+                {status === 'loading' ? 'Sending…' : ctaLabel ?? copy.ctaLabel ?? 'Subscribe →'}
+              </button>
+            </form>
+            {sub ? (
+              <div
+                className="mt-4 text-[12px]"
+                style={{ color: 'rgba(251,246,236,0.55)' }}
+              >
+                {sub}
+              </div>
+            ) : null}
+            {message ? (
+              <div
+                className={`mt-3 text-[12px] ${
+                  status === 'success' ? 'text-[#86efac]' : 'text-[#fca5a5]'
+                }`}
+              >
+                {message}
+              </div>
+            ) : null}
+          </div>
+        </div>
+      </section>
+    )
+  }
+
+  // Non-inline variants (sidebar / exit-intent / hero) — light card, existing styling.
+  const inputHeight = isHero ? 'h-14' : 'h-12'
+  const inputFont = isHero ? 'text-base' : 'text-sm'
 
   return (
     <div

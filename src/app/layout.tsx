@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import Script from 'next/script'
-import { Manrope, JetBrains_Mono } from 'next/font/google'
+import { Manrope, JetBrains_Mono, Instrument_Serif } from 'next/font/google'
 import './globals.css'
 import { siteConfig } from '@/lib/site'
 import NavbarDark from '@/components/NavbarDark'
@@ -20,6 +20,15 @@ const jetbrainsMono = JetBrains_Mono({
   subsets: ['latin'],
   weight: ['400'],
   variable: '--font-mono',
+  display: 'swap',
+})
+
+// Instrument Serif — italic flourish on large headings, roman-numeral section markers
+const instrumentSerif = Instrument_Serif({
+  subsets: ['latin'],
+  weight: ['400'],
+  style: ['italic'],
+  variable: '--font-serif',
   display: 'swap',
 })
 
@@ -92,7 +101,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   const isProduction = process.env.NODE_ENV === 'production'
 
   return (
-    <html lang="en" className={cn(manrope.variable, jetbrainsMono.variable)}>
+    <html lang="en" className={cn(manrope.variable, jetbrainsMono.variable, instrumentSerif.variable)}>
       <head>
         <script
           type="application/ld+json"
@@ -114,7 +123,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           />
         ) : null}
       </head>
-      <body className="min-h-screen bg-background text-text font-sans antialiased">
+      <body className="min-h-screen bg-paper text-ink font-sans antialiased">
         {gaId ? (
           <>
             <Script

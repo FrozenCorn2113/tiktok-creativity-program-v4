@@ -7,40 +7,45 @@
   /* ── Brand ──────────────────────────────────────────────────────────────── */
   --color-brand-primary:      #F4A261;
   --color-brand-primaryHover: #E8894A;
-  --color-brand-primarySoft:  #FFFAF5;
+  --color-brand-primarySoft:  #FFF1E6;
   --color-brand-primaryDeep:  #C2622A;
-  --color-brand-ink:          #0F172A;
+  --color-brand-paper:        #FBF6EC;
+  --color-brand-ink:          #0F0E0C;
+  --color-brand-inkSoft:      #49443D;
   --color-brand-inkLight:     #1E293B;
 
   /* Aliases for existing component usage */
   --color-primary:       #F4A261;
   --color-primary-hover: #E8894A;
-  --color-accent-soft:   #FFFAF5;
-  --color-ink:           #0F172A;
-  --color-ink-strong:    #0F172A;
+  --color-accent-soft:   #FFF1E6;
+  --color-paper:         #FBF6EC;
+  --color-ink:           #0F0E0C;
+  --color-ink-soft:      #49443D;
+  --color-ink-strong:    #0F0E0C;
 
   /* ── Backgrounds ────────────────────────────────────────────────────────── */
-  --color-background:       #FFFFFF;
-  --color-background-page:  #FFFFFF;
-  --color-background-warm:  #FFFCF8;
+  --color-background:       #FBF6EC;
+  --color-background-page:  #FBF6EC;
+  --color-background-warm:  #FFF1E6;
   --color-background-surface: #F8FAFC;
-  --color-surface-warm:     #FFFCF8;
-  --color-surface-muted:    #FFFAF5;
+  --color-surface-warm:     #FFF1E6;
+  --color-surface-muted:    #FFF1E6;
   --color-surface-inset:    #F8FAFC;
 
   /* ── Text ───────────────────────────────────────────────────────────────── */
-  --color-text:           #0F172A;
-  --color-text-primary:   #0F172A;
-  --color-text-secondary: #475569;
+  --color-text:           #0F0E0C;
+  --color-text-primary:   #0F0E0C;
+  --color-text-secondary: #49443D;
   --color-text-muted:     #94A3B8;
-  --color-text-inverse:   #FFFFFF;
-  --color-text-onPrimary: #FFFFFF;
+  --color-text-inverse:   #FBF6EC;
+  --color-text-onPrimary: #0F0E0C;
   /* Legacy aliases */
-  --color-text-subtle:    #475569;
+  --color-text-subtle:    #49443D;
 
   /* ── Borders ────────────────────────────────────────────────────────────── */
-  --color-border:         #E2E8F0;
-  --color-border-default: #E2E8F0;
+  --color-border:         rgba(15,14,12,0.08);
+  --color-border-default: rgba(15,14,12,0.08);
+  --color-border-line:    rgba(15,14,12,0.08);
   --color-border-strong:  #CBD5E1;
   --color-border-focus:   #F4A261;
 
@@ -56,6 +61,7 @@
   /* ── Typography ─────────────────────────────────────────────────────────── */
   --font-sans: 'Manrope', system-ui, -apple-system, sans-serif;
   --font-mono: 'JetBrains Mono', Menlo, Monaco, 'Courier New', monospace;
+  --font-serif: 'Instrument Serif', Georgia, serif;
 
   /* Type scale */
   --text-display:  3.5rem;    /* 56px — H1 per BRAND.md */
