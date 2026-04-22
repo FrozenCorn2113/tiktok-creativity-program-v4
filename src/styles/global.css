@@ -40,9 +40,11 @@ body {
 }
 
 /* ── Typography Base ────────────────────────────────────────────────────────── */
-h1, h2, h3, h4, h5, h6 {
+:where(h1, h2, h3, h4, h5, h6) {
   font-family: var(--font-sans);
-  color: var(--color-ink-strong);
+  color: inherit;
+}
+h1, h2, h3, h4, h5, h6 {
   margin: 0;
 }
 

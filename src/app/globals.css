@@ -47,9 +47,9 @@
     line-height: 1.7;
   }
 
-  h1, h2, h3, h4, h5, h6 {
+  :where(h1, h2, h3, h4, h5, h6) {
     font-family: var(--font-sans);
-    color: var(--color-ink-strong);
+    color: inherit;
   }
 
   /* Tailwind typography plugin — Manrope everywhere, JetBrains Mono for code */

@@ -260,11 +260,7 @@ export default function HomePageClient() {
                 <div className="p-7">
                   <h3
                     className="font-semibold"
-                    style={{
-                      fontSize: 24,
-                      letterSpacing: '-0.02em',
-                      color: isFeatured ? '#FBF6EC' : '#0F0E0C',
-                    }}
+                    style={{ fontSize: 24, letterSpacing: '-0.02em' }}
                   >
                     {p.title}
                   </h3>

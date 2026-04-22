@@ -33,12 +33,11 @@ export default function NavbarDark() {
           className="flex items-center gap-3 text-ink no-underline shrink-0"
         >
           <Image
-            src="/images/brand/tcp-logo.svg"
+            src="/favicon.svg"
             alt="TikTok Creativity Program"
             width={36}
             height={36}
             priority
-            style={{ borderRadius: 10 }}
           />
           <span
             className="hidden sm:inline text-[16px] font-semibold"
@@ -72,7 +71,7 @@ export default function NavbarDark() {
         {/* Right — CTA + hamburger */}
         <div className="flex items-center gap-3">
           <Link
-            href="#newsletter"
+            href="/newsletter"
             className="hidden sm:inline-flex items-center rounded-full bg-ink text-paper px-[18px] py-[10px] text-[13px] font-semibold transition-opacity hover:opacity-90"
           >
             Join {JOIN_COUNT} →
@@ -116,7 +115,7 @@ export default function NavbarDark() {
             })}
             <div className="mt-4 pt-4 border-t border-line">
               <Link
-                href="#newsletter"
+                href="/newsletter"
                 className="flex items-center justify-center h-12 rounded-full bg-ink text-paper font-semibold text-[14px] hover:opacity-90 transition-opacity"
               >
                 Join {JOIN_COUNT} →
