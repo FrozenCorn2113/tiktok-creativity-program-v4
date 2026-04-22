@@ -8,7 +8,7 @@ import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs'
 
 import { Button } from '@/components/ui/button'
 import { EmailCapture } from '@/components/sections/email-capture'
-import { EyebrowLabel, ItalicWord, SectionMarker } from '@/components/tcp'
+import { EyebrowLabel, ItalicWord } from '@/components/tcp'
 import GuidesFilterController from './GuidesFilterController'
 import GuideCardImage from './GuideCardImage'
 
@@ -35,12 +35,8 @@ const filterTabs = [
 ]
 
 const PAGE_SIZE = 12
-const FEATURED_COUNT = 3
 
 export default function GuidesListingClient({ guides }: { guides: GuideItem[] }) {
-  // First three guides act as editor's picks (featured strip).
-  const featured = guides.slice(0, FEATURED_COUNT)
-
   return (
     <div className="bg-paper">
       {/* Hero */}
@@ -77,43 +73,6 @@ export default function GuidesListingClient({ guides }: { guides: GuideItem[] })
           </Tabs>
         </div>
       </section>
-
-      {/* Editor's picks — first 3 guides as featured row */}
-      {featured.length > 0 && (
-        <section className="max-w-[1400px] mx-auto px-6 md:px-[52px] pb-10">
-          <SectionMarker numeral="i" heading="Editor's picks.">
-            <p className="sr-only">Hand-picked guides to start with.</p>
-          </SectionMarker>
-
-          <div className="mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-            {featured.map((guide) => (
-              <Link
-                key={`featured-${guide.slug}`}
-                href={guide.href}
-                className="group flex flex-col bg-white rounded-[20px] border border-line overflow-hidden hover:-translate-y-[3px] hover:border-brand-primaryDeep transition-all duration-200 hover:shadow-[0_12px_32px_-18px_rgba(194,98,42,0.35)]"
-              >
-                <div className="relative w-full h-[200px] bg-soft overflow-hidden">
-                  <GuideCardImage slug={guide.slug} title={guide.title} />
-                </div>
-                <div className="p-8 flex flex-col flex-1">
-                  <div className="font-mono text-[11px] tracking-[0.08em] uppercase text-brand-primaryDeep mb-3.5">
-                    {guide.category || 'Guide'} · {guide.readTime}
-                  </div>
-                  <h3 className="font-sans text-[22px] md:text-[24px] leading-[1.15] tracking-[-0.02em] font-medium text-ink m-0">
-                    {guide.title}
-                  </h3>
-                  <p className="text-[14px] leading-[1.6] text-ink-soft mt-3.5 mb-5 line-clamp-3">
-                    {guide.excerpt}
-                  </p>
-                  <div className="mt-auto text-[13px] font-semibold text-ink">
-                    Read the guide →
-                  </div>
-                </div>
-              </Link>
-            ))}
-          </div>
-        </section>
-      )}
 
       {/* All guides grid — ALL cards rendered server-side for SEO. Visibility toggled via CSS. */}
       <section className="max-w-[1400px] mx-auto px-6 md:px-[52px] pb-12">
