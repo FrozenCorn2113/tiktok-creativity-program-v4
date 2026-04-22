@@ -2,6 +2,7 @@ import Container from '@/components/ui/Container'
 import type { Metadata } from 'next'
 import { PrintButton } from '@/components/PrintButton'
 import Link from 'next/link'
+import LeadMagnetDownloadLink from '@/components/LeadMagnetDownloadLink'
 
 export const metadata: Metadata = {
   title: 'TikTok RPM Cheat Sheet — Free Download',
@@ -56,14 +57,15 @@ export default function RpmCheatSheetPage() {
               the 4 factors TikTok uses to calculate your rate, and the quickest ways to push that
               number higher.
             </p>
-            <Link
+            <LeadMagnetDownloadLink
               href="/downloads/tcp-creator-rewards-playbook-2026.pdf"
-              target="_blank"
+              leadMagnet="rpm-cheat-sheet"
+              source="rpm-cheat-sheet-hero"
               className="inline-flex items-center gap-2 bg-brand-primary text-brand-ink font-bold rounded-full px-8 py-3.5 text-base hover:bg-brand-primaryHover transition-colors print:hidden"
             >
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3" /></svg>
               Download Free PDF
-            </Link>
+            </LeadMagnetDownloadLink>
           </div>
         </Container>
       </section>

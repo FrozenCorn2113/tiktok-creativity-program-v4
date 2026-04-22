@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef, useCallback } from 'react'
 import { useRouter } from 'next/navigation'
 import { Search, X, FileText, Calculator, Users, ArrowRight } from 'lucide-react'
+import { track } from '@/lib/analytics'
 
 type SearchEntry = {
   title: string
@@ -151,6 +152,21 @@ export default function SearchBar() {
     setResults(scored)
     setActiveIndex(0)
   }, [query, index])
+
+  // Fire `search_performed` once per "finished typing" burst (600ms debounce).
+  // Only when the user has at least 2 characters so we don't spam PostHog
+  // for every single keystroke.
+  useEffect(() => {
+    const q = query.trim()
+    if (q.length < 2) return
+    const timer = setTimeout(() => {
+      track('search_performed', {
+        search_query: q,
+        results_count: results.length,
+      })
+    }, 600)
+    return () => clearTimeout(timer)
+  }, [query, results.length])
 
   // Navigate to result
   const navigateTo = useCallback(

@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import Button from '@/components/ui/button'
-import { trackEvent, trackEmailSignupAttempt } from '@/lib/analytics'
+import { track, trackEmailSignupAttempt, trackEvent } from '@/lib/analytics'
 
 type Variant = 'inline' | 'sidebar' | 'exit-intent' | 'hero'
 
@@ -80,11 +80,27 @@ export default function EmailSignupForm({
       setStatus('success')
       setMessage('Check your inbox for your free resources.')
       setEmail('')
+      // Legacy GA wrapper — dual-fires to PostHog via lib/analytics.
       trackEvent({
         action: 'email_signup',
         category: 'engagement',
         label: variant,
       })
+      // PostHog with taxonomy-aligned properties.
+      track('email_signup', {
+        signup_source: variant,
+        lead_magnet: leadMagnet ?? null,
+        page_url: typeof window !== 'undefined' ? window.location.pathname : undefined,
+      })
+      // If this signup was driven by a lead magnet, a download will follow on
+      // the email side. Fire a lightweight download-intent event so we can
+      // measure the magnet-specific funnel.
+      if (leadMagnet) {
+        track('lead_magnet_download', {
+          lead_magnet: leadMagnet,
+          signup_source: variant,
+        })
+      }
     } catch {
       setStatus('error')
       setMessage('Something went wrong. Please try again.')

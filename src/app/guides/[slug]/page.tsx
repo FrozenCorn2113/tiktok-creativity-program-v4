@@ -17,6 +17,7 @@ import { siteConfig } from '@/lib/site'
 import TableOfContents from '@/components/TableOfContents'
 import ReadingProgressBar from '@/components/ReadingProgressBar'
 import SocialShareButtons from '@/components/SocialShareButtons'
+import GuideViewedTracker from '@/components/GuideViewedTracker'
 import { EmailCapture } from '@/components/sections/email-capture'
 import type { GuideCardData } from '@/components/sections/guide-cards'
 import GuideArticleClient from './GuideArticleClient'
@@ -63,6 +64,9 @@ export default async function GuidePage({ params }: GuidePageProps) {
   const { frontmatter, content } = guide
   const toc = getTableOfContents(content)
   const compiled = await compileGuide(content)
+  // Rough word count (whitespace split, ignores MDX overhead). Used as a
+  // PostHog property on guide_viewed — good enough for segmentation.
+  const wordCount = content.trim().split(/\s+/).length
 
   // Every guide has its own hero image at /images/guides/hero-{slug}.webp
   const heroImageSrc = `/images/guides/hero-${frontmatter.slug}.webp`
@@ -300,6 +304,13 @@ export default async function GuidePage({ params }: GuidePageProps) {
                   slug={frontmatter.slug}
                 />
               </div>
+
+              {/* PostHog guide_viewed — mount-only, no UI */}
+              <GuideViewedTracker
+                slug={frontmatter.slug}
+                category={frontmatter.category}
+                wordCount={wordCount}
+              />
             </article>
           </div>
 
