@@ -1,6 +1,5 @@
 import { forwardRef, type HTMLAttributes } from 'react'
 import { cn } from '@/lib/utils'
-import EyebrowLabel from './EyebrowLabel'
 
 export interface SnapshotCell {
   label: string
@@ -35,8 +34,8 @@ const SnapshotStrip = forwardRef<HTMLDivElement, SnapshotStripProps>(
               i !== 0 && 'border-l border-line',
             )}
           >
-            <EyebrowLabel tone="deep">{cell.label}</EyebrowLabel>
-            <div className="mt-3 font-serif italic text-[32px] leading-[1.1] text-ink">
+            <div className="text-[13px] font-medium text-ink-soft">{cell.label}</div>
+            <div className="mt-2 font-serif italic text-[32px] leading-[1.1] text-ink">
               {cell.value}
             </div>
             {cell.note ? (

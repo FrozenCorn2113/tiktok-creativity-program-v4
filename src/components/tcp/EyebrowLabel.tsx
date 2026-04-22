@@ -15,21 +15,7 @@ const toneClass: Record<EyebrowLabelTone, string> = {
 }
 
 const EyebrowLabel = forwardRef<HTMLSpanElement, EyebrowLabelProps>(
-  ({ children, className, tone = 'deep', ...rest }, ref) => {
-    return (
-      <span
-        ref={ref}
-        className={cn(
-          'font-mono text-[11px] uppercase tracking-[0.12em] font-medium',
-          toneClass[tone],
-          className,
-        )}
-        {...rest}
-      >
-        {children}
-      </span>
-    )
-  },
+  (_props, _ref) => null,
 )
 
 EyebrowLabel.displayName = 'EyebrowLabel'

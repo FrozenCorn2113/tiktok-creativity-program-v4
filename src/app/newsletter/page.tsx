@@ -43,7 +43,7 @@ export default function NewsletterPage() {
           </ol>
         </nav>
 
-        <EyebrowLabel className="mb-4 block">Dispatch archive · Free every week</EyebrowLabel>
+        <EyebrowLabel className="mb-4 block">Free every Sunday</EyebrowLabel>
         <h1 className="font-sans text-[44px] md:text-[72px] lg:text-[84px] leading-[0.98] tracking-[-0.04em] font-medium text-ink m-0 max-w-[1150px]">
           The TikTok Creator Rewards{' '}
           <ItalicWord color="#C2622A">newsletter</ItalicWord>.
@@ -92,11 +92,9 @@ export default function NewsletterPage() {
       </section>
 
       {/* Inline signup */}
-      <section className="max-w-[1400px] mx-auto px-6 md:px-[52px] pb-24">
-        <div className="rounded-[20px] border border-line bg-white p-6 md:p-10 max-w-[760px] mx-auto">
-          <EmailSignupForm variant="inline" />
-        </div>
-      </section>
+      <div className="max-w-[1400px] mx-auto px-6 md:px-[52px] pb-16">
+        <EmailSignupForm variant="inline" />
+      </div>
     </div>
   )
 }

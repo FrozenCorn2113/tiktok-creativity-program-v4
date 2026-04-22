@@ -106,19 +106,6 @@ export default function EmailSignupForm({
           style={{ padding: 52, borderRadius: 24 }}
         >
           <div>
-            <div
-              className="mb-5 inline-block font-mono font-semibold uppercase"
-              style={{
-                padding: '5px 14px',
-                background: '#F4A261',
-                color: '#0F0E0C',
-                borderRadius: 100,
-                fontSize: 11,
-                letterSpacing: '0.08em',
-              }}
-            >
-              Dispatch
-            </div>
             <h2
               className="m-0 text-paper"
               style={{ fontSize: 44, lineHeight: 1.04, letterSpacing: '-0.03em', fontWeight: 500 }}
