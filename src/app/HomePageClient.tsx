@@ -104,15 +104,6 @@ const calculators = [
   },
 ]
 
-const rpms: Array<[string, string, string]> = [
-  ['US', '$1.08', '+2.1%'],
-  ['UK', '$0.87', '-0.4%'],
-  ['DE', '$0.62', '+1.2%'],
-  ['FR', '$0.58', '+0.9%'],
-  ['CA', '$0.94', '+1.6%'],
-  ['AU', '$0.82', '+0.3%'],
-]
-
 // ─── Component ──────────────────────────────────────────────────────────────
 export default function HomePageClient() {
   return (
@@ -201,208 +192,16 @@ export default function HomePageClient() {
             </div>
           </div>
 
-          {/* Right — hero illustration stack */}
-          <div className="relative mx-auto w-full max-w-[560px] lg:h-[560px]">
-            {/* Main dark earnings card */}
-            <div
-              className="relative rounded-[24px] bg-ink p-7 text-paper shadow-[0_30px_80px_rgba(15,14,12,0.22)] lg:absolute lg:left-[80px] lg:right-0 lg:top-[80px] lg:bottom-[40px]"
-              style={{ borderRadius: 24 }}
-            >
-              <div className="flex items-center justify-between">
-                <EyebrowLabel tone="paper">Last 30 days</EyebrowLabel>
-                <div className="flex gap-1">
-                  <span className="h-1.5 w-1.5 rounded-full bg-[#F4A261]" />
-                  <span className="h-1.5 w-1.5 rounded-full bg-[rgba(251,246,236,0.2)]" />
-                  <span className="h-1.5 w-1.5 rounded-full bg-[rgba(251,246,236,0.2)]" />
-                </div>
-              </div>
-              <div
-                className="mt-3 font-serif"
-                style={{
-                  fontSize: 72,
-                  lineHeight: 1,
-                  letterSpacing: '-0.02em',
-                  fontStyle: 'italic',
-                }}
-              >
-                $2,840
-              </div>
-              <div className="mt-1.5 flex items-center gap-2 text-[13px] opacity-70">
-                <span className="text-[#F4A261]">↑ 12.4%</span>
-                vs. previous month
-              </div>
-
-              {/* Mini chart */}
-              <svg
-                viewBox="0 0 300 80"
-                preserveAspectRatio="none"
-                className="mt-6 block w-full"
-                aria-hidden
-              >
-                <path
-                  d="M0,60 L30,50 L60,55 L90,42 L120,48 L150,38 L180,30 L210,35 L240,22 L270,18 L300,10"
-                  fill="none"
-                  stroke="#F4A261"
-                  strokeWidth="2"
-                />
-                <path
-                  d="M0,60 L30,50 L60,55 L90,42 L120,48 L150,38 L180,30 L210,35 L240,22 L270,18 L300,10 L300,80 L0,80 Z"
-                  fill="#F4A261"
-                  fillOpacity="0.12"
-                />
-              </svg>
-
-              <div className="mt-5 grid grid-cols-2 gap-2.5">
-                {[
-                  ['Qualifying rate', '38.2%'],
-                  ['Blended RPM', '$1.08'],
-                ].map(([k, v]) => (
-                  <div
-                    key={k}
-                    className="rounded-2xl p-3.5"
-                    style={{ background: 'rgba(251,246,236,0.05)' }}
-                  >
-                    <div className="text-[11px] opacity-60">{k}</div>
-                    <div
-                      className="mt-0.5 font-medium tabular-nums"
-                      style={{ fontSize: 22 }}
-                    >
-                      {v}
-                    </div>
-                  </div>
-                ))}
-              </div>
-
-              <Link
-                href="/calculators/earnings-calculator"
-                className="mt-5 flex items-center justify-between rounded-2xl p-3.5 text-ink transition-opacity hover:opacity-90"
-                style={{ background: '#F4A261' }}
-              >
-                <span className="text-[13px] font-semibold">
-                  Run your own numbers
-                </span>
-                <span className="text-lg">→</span>
-              </Link>
-            </div>
-
-            {/* Callout chip — desktop only overlay */}
-            <div
-              className="mt-6 hidden lg:mt-0 lg:block lg:absolute lg:top-[-10px] lg:left-[-20px] lg:h-[170px] lg:w-[170px] lg:-rotate-[5deg] lg:z-10"
-              style={{
-                background: '#FFF1E6',
-                borderRadius: 24,
-                boxShadow: '0 12px 40px rgba(15,14,12,0.1)',
-              }}
-            >
-              <div className="flex h-full w-full flex-col items-center justify-center text-center">
-                <div
-                  className="font-serif italic"
-                  style={{
-                    fontSize: 56,
-                    lineHeight: 1,
-                    color: '#C2622A',
-                  }}
-                >
-                  47
-                </div>
-                <div
-                  className="mt-1.5 font-semibold uppercase"
-                  style={{
-                    fontSize: 11,
-                    letterSpacing: '0.08em',
-                    color: '#C2622A',
-                  }}
-                >
-                  In-depth guides
-                </div>
-              </div>
-            </div>
-
-            {/* Small creator badge — desktop only overlay */}
-            <div
-              className="hidden lg:flex lg:absolute lg:-bottom-6 lg:-right-2 lg:z-10 lg:items-center lg:gap-2.5"
-              style={{
-                background: '#FBF6EC',
-                border: '1px solid rgba(15,14,12,0.08)',
-                borderRadius: 100,
-                padding: '12px 16px',
-                boxShadow: '0 8px 24px rgba(15,14,12,0.08)',
-              }}
-            >
-              <div
-                className="flex h-7 w-7 items-center justify-center rounded-full font-bold text-ink"
-                style={{ background: '#F4A261', fontSize: 11 }}
-              >
-                AM
-              </div>
-              <div className="text-[12px] leading-tight">
-                <div className="font-semibold">Ana M. — Q1 payout</div>
-                <div className="text-ink-soft tabular-nums">
-                  $4,210 · 2.1M views
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ── Country RPM strip ────────────────────────────────────────────── */}
-      <section className="mx-auto w-full max-w-[1400px] px-6 lg:px-[52px]">
-        <div
-          className="rounded-[20px] bg-ink text-paper"
-          style={{ padding: '28px 44px' }}
-        >
-          <div className="grid grid-cols-1 items-center gap-6 lg:grid-cols-[auto_1fr] lg:gap-10">
-            <div>
-              <div
-                className="font-mono font-medium uppercase"
-                style={{
-                  fontSize: 10,
-                  letterSpacing: '0.12em',
-                  color: '#F4A261',
-                }}
-              >
-                Live · Snapshot
-              </div>
-              <div
-                className="mt-1.5 whitespace-nowrap font-medium"
-                style={{ fontSize: 16, letterSpacing: '-0.01em' }}
-              >
-                RPM by country
-              </div>
-            </div>
-            <div
-              className="grid grid-cols-3 gap-4 md:grid-cols-6 lg:border-l lg:pl-8"
-              style={{ borderColor: 'rgba(251,246,236,0.12)' }}
-            >
-              {rpms.map(([c, v, d]) => (
-                <div key={c}>
-                  <div
-                    className="font-mono opacity-55"
-                    style={{ fontSize: 11, letterSpacing: '0.08em' }}
-                  >
-                    {c}
-                  </div>
-                  <div
-                    className="mt-0.5 font-medium tabular-nums"
-                    style={{ fontSize: 22, letterSpacing: '-0.02em' }}
-                  >
-                    {v}
-                  </div>
-                  <div
-                    className="font-mono"
-                    style={{
-                      fontSize: 10,
-                      color: d.startsWith('+')
-                        ? '#F4A261'
-                        : 'rgba(251,246,236,0.5)',
-                    }}
-                  >
-                    {d}
-                  </div>
-                </div>
-              ))}
-            </div>
+          {/* Right — hero illustration */}
+          <div className="relative mx-auto hidden h-[440px] w-full max-w-[560px] lg:block lg:h-[520px]">
+            <Image
+              src="/assets/brand-images/landpress-marketing-hero.png"
+              alt="Creator reviewing TikTok Creator Rewards earnings"
+              fill
+              priority
+              className="object-contain object-right"
+              sizes="(min-width: 1024px) 45vw, 100vw"
+            />
           </div>
         </div>
       </section>
