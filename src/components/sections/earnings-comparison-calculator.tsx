@@ -1,7 +1,6 @@
 'use client'
 
 import { useState, useMemo } from 'react'
-import { Slider } from '@/components/ui/slider'
 import { cn } from '@/lib/utils'
 import { trackCalculatorUsed } from '@/lib/analytics'
 import { DataPill } from '@/components/tcp'
@@ -118,16 +117,14 @@ export function EarningsComparisonCalculator({ className }: { className?: string
                   {formatViews(viewsPerVideo)}
                 </span>
               </div>
-              <Slider
+              <input
+                type="range"
                 min={1000}
                 max={5000000}
                 step={1000}
-                value={[viewsPerVideo]}
-                onValueChange={(val) => {
-                  const v = Array.isArray(val) ? val[0] : val
-                  if (typeof v === 'number') setViewsPerVideo(v)
-                }}
-                className="[&_[role=slider]]:bg-brand-primary [&_[role=slider]]:border-brand-primary [&_.relative]:bg-brand-primary"
+                value={viewsPerVideo}
+                onChange={(e) => { setViewsPerVideo(Number(e.target.value)); handleInteraction() }}
+                className="w-full accent-brand-primary"
                 aria-label="Average views per video"
               />
               <div className="flex justify-between mt-2 font-mono text-[10px] uppercase tracking-[0.08em] text-ink-soft">
@@ -144,16 +141,14 @@ export function EarningsComparisonCalculator({ className }: { className?: string
                   {videosPerMonth}
                 </span>
               </div>
-              <Slider
+              <input
+                type="range"
                 min={1}
                 max={60}
                 step={1}
-                value={[videosPerMonth]}
-                onValueChange={(val) => {
-                  const v = Array.isArray(val) ? val[0] : val
-                  if (typeof v === 'number') setVideosPerMonth(v)
-                }}
-                className="[&_[role=slider]]:bg-brand-primary [&_[role=slider]]:border-brand-primary [&_.relative]:bg-brand-primary"
+                value={videosPerMonth}
+                onChange={(e) => { setVideosPerMonth(Number(e.target.value)); handleInteraction() }}
+                className="w-full accent-brand-primary"
                 aria-label="Videos per month"
               />
               <div className="flex justify-between mt-2 font-mono text-[10px] uppercase tracking-[0.08em] text-ink-soft">
