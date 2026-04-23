@@ -42,6 +42,18 @@ Next.js (App Router), Tailwind CSS, MDX guides, Resend email + Supabase subscrib
 ## Pending Review
 <!-- Items awaiting Bernard review -->
 
+- **What:** TCP email template spec — full design spec for `renderEmailShell()` covering header, typography, color palette (light + dark mode), CTA button (gradient + Outlook VML fallback), hero image slot, four content modules, footer, 600px table-based structure, render-test checklist (5 clients), and Devan code hints
+- **Where:** `/Users/bcarter/Desktop/Claude Agents/projects/tiktok-creativity-program/Vale/tcp-email-template-spec.md`
+- **Status:** READY FOR REVIEW
+
+- **What:** Playbook PDF visual audit — page-by-page review of all 27 pages of `tcp-creator-rewards-playbook-2026.pdf`, 12 blockers and 14 polish items identified, PDF is HTML-rendered via Puppeteer (fixes are CSS in `generate-playbook-pdf.mjs`), includes specific CSS fix recommendations for each blocker
+- **Where:** `/Users/bcarter/Desktop/Claude Agents/projects/tiktok-creativity-program/Vale/playbook-pdf-audit.md`
+- **Status:** READY FOR REVIEW
+
+- **What:** Hormozi Nurture Playbook research — Value Equation audit of all 5 drip emails, LM tiering assessment, Core Four reshuffle, Grand Slam Offer anatomy for Pro Edition, 3 free assets for 60-day "give until embarrassed" plan, and 3 reply-based demand signal prompts ready to plug into the drip.
+- **Where:** `/Users/bcarter/Desktop/Claude Agents/projects/tiktok-creativity-program/research/hormozi-nurture-playbook-tcp.md`
+- **Status:** READY FOR REVIEW
+
 - **What:** Week 4 social images (April 21-27, 2026) — 30 unique WebP images (7 Pinterest 1000x1500, 2 IG singles 1080x1080, 21 carousel slides 1080x1080 across 3 carousels: LIVE Subscriptions, Shop Affiliate Rates, Creator Marketplace)
 - **Where:** `/Users/bcarter/Desktop/Claude Agents/projects/tiktok-creativity-program/social/week-4-images/` — manifest at `MANIFEST.md`
 - **Status:** READY FOR REVIEW
@@ -60,6 +72,19 @@ Next.js (App Router), Tailwind CSS, MDX guides, Resend email + Supabase subscrib
 
 ## Active
 <!-- Bernard maintains this section. Current tasks in flight. -->
+
+### [TOP PRIORITY] Subscriber nurture — wire the day 2/5/8/12 drip (ADDED 2026-04-22)
+**Why:** Welcome email sends on signup, Sunday digest runs on cron, but subs hear nothing between. The drip copy (5 emails over 12 days) is already written and unused.
+**State:**
+- Copy: `content/email-sequences/welcome-sequence.md` — emails 2–5 fully written
+- Infra live: Resend + Supabase signup flow in `src/app/api/newsletter/route.ts`, welcome in `src/lib/email/send-welcome.ts`
+- Gap: zero scheduling — emails 2–5 never send
+**Approach:** On signup, call `resend.emails.send({ scheduledAt })` four times with the pre-written copy. Optionally branch email 2 by `lead_magnet`.
+**Next step:** Route to Devan with task brief. ~2–3 hour build.
+**Related follow-ups (do after drip is live):**
+- Run pending `ALTER TABLE email_subscribers ADD COLUMN unsubscribed_at timestamptz` (Brett action)
+- Segmentation: branch drip content by `lead_magnet` / `source`
+- 30/60-day re-engagement / win-back sequence (only after drip has run a month)
 
 ### April Content Queue (LOCKED 2026-03-31, execution started 2026-04-01)
 **Research:** `research/monthly-keyword-research-april-2026.md`
@@ -275,6 +300,12 @@ All 4 over-500K creators replaced. Beauty raised to 5 creators. All 45 creators 
 
 *Cleared 2026-04-07: Guide #120 pipeline items (research, hero, Scribe copy, Devan integration) already shipped commit 3f50df4 and LOCKED in prior cycle. Stale entries removed.*
 
+- [2026-04-22] Devan — Phase 1a.1 dark-mode link fix + Phase 1b drip scheduling + backfill
+  - What: Added `.card-text a` override in template-shell dark-mode block (body links now render brand orange #F4A261 with underline). Shipped `drip-templates.ts` (day 2/5/8/12 builders, subject lines verbatim from sequence doc), `schedule-drip.ts` (Resend scheduledAt sends with per-day try/catch), wired into `/api/newsletter` as fire-and-forget skipping duplicates, extended preview script to render 7 variants, added `backfill-drip.mjs` dry-run/execute CLI with per-subscriber logging. Build passes, previews render cleanly in both light + dark mode (visually verified drip-day2 via headless Chrome). Zero em dashes across all new files.
+  - Where: `src/lib/email/template-shell.ts`, `src/lib/email/drip-templates.ts`, `src/lib/email/schedule-drip.ts`, `src/app/api/newsletter/route.ts`, `scripts/render-email-preview.mjs`, `scripts/backfill-drip.mjs`. Commits: `dde3bbf` (Next.js code), `619aaa8` (backfill script). Pushed to main, Vercel auto-deploying.
+  - Open: backfill dry-run returned 0 subscribers because the anon Supabase key cannot SELECT under RLS. Script now prefers `SUPABASE_SERVICE_ROLE_KEY` from env; Brett must set that before running (same blocker already noted in PROJECT.md for Resend audience sync). Once set, expected output is `{subscriberCount: 18, totalEmailsWouldSend: 72}`.
+  - Status: READY FOR REVIEW
+
 - [2026-04-21] Devan — SEO indexing audit
   - What: Root-cause audit for 149 "Discovered, not indexed" pages + 7 reported 404s. Findings: `/guides` hub only SSR-renders 12 of 117 guides (client-side pagination hides the rest from crawlers), 2 MDX files missing `slug` frontmatter, 1 duplicate-slug collision, 11 orphan guides, 30 guides with <3 incoming links, no topic category pages.
   - Where: `/Users/bcarter/Desktop/Claude Agents/projects/tiktok-creativity-program/SEO-INDEXING-AUDIT.md`
@@ -283,6 +314,7 @@ All 4 over-500K creators replaced. Beauty raised to 5 creators. All 45 creators 
 
 
 ## Work Log
+- [2026-04-21] Devan full warm-editorial redesign shipped (commits 3e328f6, bd3120c, cd3c0ec). 8 phases: tokens+fonts+chrome, 6 TCP primitives under src/components/tcp/, homepage, 8 niche detail pages, guides index+article, 3 calculators, about+newsletter+new /countries. 16 MDX inline components restyled. Weekly guide digest script added (scripts/send-weekly-digest.mjs) with Sunday 5pm PT crontab installed. FROM defaults to hello@tiktokcreativityprogram.com. Source zip: ~/Downloads/TCP.zip. Plan: ~/.claude/plans/i-was-just-workin-tingly-book.md. Open: Resend click-tracking subdomain CNAME (Brett action), Scribe pass on TODO(content) placeholders in 4 niche pages (beauty/comedy/coaches/travel), newsletter archive data source.
 - [2026-04-21] Bernard daily ops -- Guide #122 TikTok Bulletin Boards LIVE (commit 424b34c). Full pipeline: Christopher research (already LOCKED 2026-04-07 from June queue) -> Scribe 2,231w -> Vale hero (radial broadcast composition, dark navy/amber) -> Devan integration (3 cross-links, search index 131 entries, build clean). June queue now 1/4 complete. Week 4 social LOCKED: Scribe 17 posts + Vale 30 images + Wren scheduled via Zernio (5 X, 5 IG, 7 Pinterest, Apr 21-27). Notes: X threads as standalone tweets (no native threading in Zernio); 2 Pinterest pins published immediately (past schedule window); IG images converted to JPG. Freshness alert pending: tiktok-creator-health-rating.mdx Shop CHR section.
 - [2026-04-07] Bernard Monday cycle -- Guide #121 TikTok AutoCut Feature LIVE (commit 32f6299). Full pipeline in single cycle: Christopher research (AutoCut monetization eligibility, keyword gap confirmed, 10 angles) -> Scribe 2,300w (monetization question leads) -> Vale hero R2 (R1 had text artifacts, R2 clean) -> Devan integration (4 cross-links, search index, build clean). May queue now 4/4 COMPLETE. Freshness updates deployed same commit: eligibility business account callout + watch time algorithm update (70% completion rate, follower-first model). Week 2 social LIVE: 23 posts scheduled via Wren (11 X, 5 IG, 7 Pinterest, Apr 7-13). Weekly scan: no breaking CRP changes. VFO Ricky scan LOCKED (6th consecutive zero, recommend pausing). Site at 121 guides.
 - [2026-04-06] Bernard daily ops -- Guide #120 TikTok Q3 Content Strategy 2026 LIVE (commit 3f50df4). Full pipeline: Christopher research (FIFA World Cup lead angle, back-to-school, Oracle RPM context) -> Scribe 2,450w -> Vale hero (dark navy, orange arrow composition) -> Devan integration (4 cross-links, search index updated, build clean). May queue now 3/4 complete. Site at 120 guides.
