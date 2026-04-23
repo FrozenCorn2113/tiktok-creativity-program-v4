@@ -3,6 +3,7 @@
 import { NextResponse } from 'next/server'
 import { z } from 'zod'
 import { sendWelcomeEmail } from '@/lib/email/send-welcome'
+import { scheduleDripEmails } from '@/lib/email/schedule-drip'
 import { addContactToAudience } from '@/lib/resend-audience'
 
 const bodySchema = z.object({
@@ -92,6 +93,14 @@ export async function POST(request: Request) {
   sendWelcomeEmail({ email, leadMagnet: lead_magnet }).catch((err) => {
     console.error('[api/newsletter] Welcome email failed:', err)
   })
+
+  // Schedule day 2/5/8/12 drip emails (fire-and-forget). Skip on duplicates
+  // so resubscribes do not double-schedule.
+  if (!result.duplicate) {
+    scheduleDripEmails(email, lead_magnet ?? null).catch((err) => {
+      console.error('[api/newsletter] Drip scheduling failed:', err)
+    })
+  }
 
   // Add to Resend audience (fire-and-forget)
   addContactToAudience(email).catch((err) => {

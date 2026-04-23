@@ -13,5 +13,6 @@ test-results/
 scripts/*.log
 scripts/last-digest.html
 logs/
+tmp/
 *.DS_Store
 content/lead-magnets/*.pdf
