@@ -175,6 +175,30 @@ export default async function ReviewPage({
             {row.item_label}
           </h1>
 
+          {/* Preview link — only for item types with a dedicated renderer */}
+          {(row.item_type === 'email-draft' ||
+            row.item_type === 'copy-draft' ||
+            row.item_type === 'page-draft') ? (
+            <div style={{ margin: '0 0 20px 0' }}>
+              <a
+                href={`/preview/${row.id}?t=${encodeURIComponent(params.token)}`}
+                style={{
+                  display: 'inline-block',
+                  padding: '10px 16px',
+                  borderRadius: 999,
+                  border: '1px solid #EADFD3',
+                  backgroundColor: '#FFF1E6',
+                  color: '#0B0F1A',
+                  fontSize: 13,
+                  fontWeight: 700,
+                  textDecoration: 'none',
+                }}
+              >
+                Open full preview →
+              </a>
+            </div>
+          ) : null}
+
           {/* Optional context */}
           {row.context_md ? (
             <div

@@ -12,6 +12,15 @@
  *
  * Safe to run repeatedly; rows with acted_on_at set are skipped.
  *
+ * Dispatched-agent handoff (important):
+ *   When an agent invoked here finishes its draft, it should INSERT a new
+ *   review_requests row with item_type in { email-draft, copy-draft, page-draft }.
+ *   Populate `preview_html` for email-draft (the final renderEmailShell output),
+ *   `context_md` with markdown body for copy-draft, or `preview_urls[0]` for
+ *   page-draft. The Supabase DB webhook auto-emails Brett on INSERT; the
+ *   `/preview/[id]?t=<token>` route renders the artifact faithfully from his phone.
+ *   Full spec in docs/TCP-AUTONOMY-SETUP.md (Gap 2).
+ *
  * Usage:
  *   node scripts/dispatch-processor.mjs
  *   DRY_RUN=1 node scripts/dispatch-processor.mjs

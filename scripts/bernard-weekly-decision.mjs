@@ -15,6 +15,18 @@
  * When Brett clicks GO, `/api/review/[token]` PATCH dispatches the action immediately
  * (Devan/Scribe/Christopher), not queued to Monday's content cron.
  *
+ * Handoff note for agents the dispatcher invokes (Scribe/Devan/Vale):
+ *   When YOU finish a draft that Brett should eyeball, INSERT a new row into
+ *   review_requests with item_type set to one of:
+ *     - email-draft  → populate `preview_html` with the final renderEmailShell()
+ *                       output; put `Subject: …`, `From: …`, `To: …` lines at
+ *                       the top of `context_md` (frontmatter parsed by the
+ *                       preview route).
+ *     - copy-draft   → put the markdown body in `context_md`. No preview_html.
+ *     - page-draft   → put the staging URL in `preview_urls[0]`. No preview_html.
+ *   The Supabase DB webhook fires `/api/review/notify` on INSERT, which emails
+ *   Brett with GO / REVISE links. Full spec in docs/TCP-AUTONOMY-SETUP.md.
+ *
  * Usage:
  *   node scripts/bernard-weekly-decision.mjs
  *   DRY_RUN=1 node scripts/bernard-weekly-decision.mjs
