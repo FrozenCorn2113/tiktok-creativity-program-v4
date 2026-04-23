@@ -24,6 +24,7 @@
  * Usage:
  *   DRY_RUN=1 node scripts/brett-monday-briefing.mjs
  *   node scripts/brett-monday-briefing.mjs
+ *   node scripts/brett-monday-briefing.mjs --daily   (alt subject + shortened period copy)
  */
 
 import fs from 'fs'
@@ -157,10 +158,10 @@ async function gatherSubscriberDelta() {
   }
 }
 
-// ---------- data: pending reviews ----------
+// ---------- data: pending reviews + Bernard proposals ----------
 async function gatherPendingReviews() {
   try {
-    const url = `${SUPABASE_PROJECT_URL}/rest/v1/review_requests?decision=is.null&select=id,item_type,item_label,created_at&order=created_at.desc`
+    const url = `${SUPABASE_PROJECT_URL}/rest/v1/review_requests?decision=is.null&select=id,item_type,item_label,context_md,created_by,created_at&order=created_at.desc`
     const res = await fetch(url, {
       headers: {
         apikey: SUPABASE_ANON_KEY,
@@ -169,18 +170,38 @@ async function gatherPendingReviews() {
     })
     if (!res.ok) {
       console.warn(`[brett-monday-briefing] pending reviews fetch returned ${res.status}`)
-      return []
+      return { proposals: [], reviews: [] }
     }
     const rows = await res.json()
-    if (!Array.isArray(rows)) return []
-    return rows.map((r) => ({
-      label: r.item_label || '(unlabeled)',
-      itemType: r.item_type || 'item',
-      reviewUrl: `${SITE_URL}/review/${signToken(r.id)}`,
-    }))
+    if (!Array.isArray(rows)) return { proposals: [], reviews: [] }
+
+    const proposals = []
+    const reviews = []
+    for (const r of rows) {
+      const url = `${SITE_URL}/review/${signToken(r.id)}`
+      // Bernard proposal detected by TCP_DISPATCH sentinel in context_md.
+      const isProposal = r.context_md && /<!--\s*TCP_DISPATCH:/.test(r.context_md)
+      if (isProposal) {
+        // Extract a short summary line (first paragraph of context_md, pre-sentinel).
+        const beforeSentinel = (r.context_md || '').split('<!-- TCP_DISPATCH:')[0].trim()
+        const firstLine = beforeSentinel.split('\n').find((l) => l.trim().length > 0) || ''
+        proposals.push({
+          label: r.item_label || '(unlabeled proposal)',
+          summary: firstLine.slice(0, 200),
+          reviewUrl: url,
+        })
+      } else {
+        reviews.push({
+          label: r.item_label || '(unlabeled)',
+          itemType: r.item_type || 'item',
+          reviewUrl: url,
+        })
+      }
+    }
+    return { proposals, reviews }
   } catch (err) {
     console.warn('[brett-monday-briefing] pending reviews fetch failed:', err.message)
-    return []
+    return { proposals: [], reviews: [] }
   }
 }
 
@@ -240,6 +261,10 @@ function sectionHeading(title, first = false) {
 
 function reviewLine(r) {
   return `<strong>${escapeHtml(r.itemType)}:</strong> <a href="${r.reviewUrl}" style="color:#0B0F1A;text-decoration:underline;">${escapeHtml(r.label)}</a>`
+}
+
+function proposalLine(p) {
+  return `<strong><a href="${p.reviewUrl}" style="color:#0B0F1A;text-decoration:underline;">${escapeHtml(p.label)}</a></strong><br/><span style="color:#475467;font-size:14px;">${escapeHtml(p.summary)}</span>`
 }
 
 function renderCTA(cta) {
@@ -367,10 +392,18 @@ function renderShell({ preheader, body, cta, footerEmail, title }) {
 </html>`
 }
 
-function renderBriefing({ weekOfLabel, shipped, thisWeek, pendingReviews, blockers, rickyLeadsNote }) {
+function renderBriefing({ weekOfLabel, bernardProposals = [], shipped, thisWeek, pendingReviews, blockers, rickyLeadsNote, daily = false }) {
   const parts = []
 
-  parts.push(sectionHeading('Shipped last week', true))
+  let firstDone = false
+  if (bernardProposals.length > 0) {
+    parts.push(sectionHeading('Bernard proposals — your call', true))
+    parts.push(bulletList(bernardProposals.map(proposalLine)))
+    parts.push(bodyText('One-click GO dispatches the downstream agent same-day. REVISE bounces it back with your comment.'))
+    firstDone = true
+  }
+
+  parts.push(sectionHeading('Shipped last week', !firstDone))
   if (shipped.length > 0) {
     parts.push(bulletList(shipped.map(escapeHtml)))
   } else {
@@ -400,47 +433,55 @@ function renderBriefing({ weekOfLabel, shipped, thisWeek, pendingReviews, blocke
   parts.push(sectionHeading('Ricky leads'))
   parts.push(bodyText(escapeHtml(rickyLeadsNote || 'Ricky reactivation lands Phase B. No leads to post this week.')))
 
-  const cta = pendingReviews.length > 0 ? { text: 'Open first review', url: pendingReviews[0].reviewUrl } : undefined
+  const cta = bernardProposals.length > 0
+    ? { text: 'Review first proposal', url: bernardProposals[0].reviewUrl }
+    : pendingReviews.length > 0
+    ? { text: 'Open first review', url: pendingReviews[0].reviewUrl }
+    : undefined
+  const totalAsk = bernardProposals.length + pendingReviews.length
   const preheader =
-    pendingReviews.length > 0
-      ? `${pendingReviews.length} item${pendingReviews.length === 1 ? '' : 's'} need your eye this week.`
-      : `All clear. Week of ${weekOfLabel}.`
+    totalAsk > 0
+      ? `${totalAsk} item${totalAsk === 1 ? '' : 's'} need your eye ${daily ? 'today' : 'this week'}.`
+      : `All clear. ${daily ? 'Daily brief' : `Week of ${weekOfLabel}`}.`
 
   return renderShell({
     preheader,
     body: parts.join('\n'),
     cta,
     footerEmail: null,
-    title: `TCP: Week of ${weekOfLabel}`,
+    title: daily ? `TCP daily brief: ${weekOfLabel}` : `TCP: Week of ${weekOfLabel}`,
   })
 }
 
 // ---------- main ----------
 async function main() {
+  const daily = process.argv.includes('--daily')
   const weekOfLabel = monthDay(new Date())
 
   const shipped = gatherShipped()
   const subscriberDelta = await gatherSubscriberDelta()
   const thisWeek = gatherThisWeek(subscriberDelta)
-  const pendingReviews = await gatherPendingReviews()
+  const { proposals: bernardProposals, reviews: pendingReviews } = await gatherPendingReviews()
   const blockers = [] // Phase A: empty by default. Bernard can wire data source later.
 
   const html = renderBriefing({
     weekOfLabel,
+    bernardProposals,
     shipped,
     thisWeek,
     pendingReviews,
     blockers,
     rickyLeadsNote: undefined,
+    daily,
   })
 
-  const subject = `TCP: Week of ${weekOfLabel}`
+  const subject = daily ? `TCP daily brief: ${weekOfLabel}` : `TCP: Week of ${weekOfLabel}`
 
   if (DRY_RUN) {
     fs.writeFileSync(outHtmlPath, html, 'utf8')
     console.log(`[brett-monday-briefing] DRY_RUN: wrote ${outHtmlPath}`)
     console.log(
-      `[brett-monday-briefing] Would send: subject="${subject}" to=${RESEND_TO_BRETT} shipped=${shipped.length} pending=${pendingReviews.length}`
+      `[brett-monday-briefing] Would send: subject="${subject}" to=${RESEND_TO_BRETT} shipped=${shipped.length} pending=${pendingReviews.length} proposals=${bernardProposals.length}`
     )
     process.exit(0)
   }

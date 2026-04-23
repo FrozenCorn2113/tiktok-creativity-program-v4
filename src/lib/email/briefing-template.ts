@@ -33,11 +33,25 @@ export interface Blocker {
   text: string
 }
 
+export interface BernardProposal {
+  /** Short human label, e.g. "H1: A/B /start-here hero copy" */
+  label: string
+  /** One-line "why now" summary. */
+  summary: string
+  /** Dashboard URL for GO/REVISE. */
+  reviewUrl: string
+}
+
 export interface BriefingData {
   /** Week-of label, e.g. "Apr 27". */
   weekOfLabel: string
   /** Optional recipient email (drives unsubscribe link). Pass null for ops-list footer. */
   recipientEmail?: string | null
+  /** If true, render a "Daily brief" header instead of "Week of" header. */
+  daily?: boolean
+
+  /** Section 0 (top): Bernard proposals awaiting GO/REVISE. Omit if empty. */
+  bernardProposals?: BernardProposal[]
 
   /** Section 1: Shipped last week. Plain bullet strings. */
   shipped: string[]
@@ -79,10 +93,18 @@ function reviewLine(r: PendingReview): string {
   return `<strong>${safeType}:</strong> <a href="${r.reviewUrl}" style="color:#0B0F1A;text-decoration:underline;">${safeLabel}</a>`
 }
 
+function proposalLine(p: BernardProposal): string {
+  const safeLabel = escapeHtml(p.label)
+  const safeSummary = escapeHtml(p.summary)
+  return `<strong><a href="${p.reviewUrl}" style="color:#0B0F1A;text-decoration:underline;">${safeLabel}</a></strong><br/><span style="color:#475467;font-size:14px;">${safeSummary}</span>`
+}
+
 export function renderBriefingEmail(data: BriefingData): string {
   const {
     weekOfLabel,
     recipientEmail = null,
+    daily = false,
+    bernardProposals = [],
     shipped,
     thisWeek,
     pendingReviews,
@@ -91,9 +113,22 @@ export function renderBriefingEmail(data: BriefingData): string {
   } = data
 
   const parts: string[] = []
+  let firstRendered = false
+
+  // 0. Bernard proposals (top section when present)
+  if (bernardProposals.length > 0) {
+    parts.push(firstSectionHeading('Bernard proposals — your call'))
+    parts.push(bulletList(bernardProposals.map(proposalLine)))
+    parts.push(
+      bodyText(
+        'One-click GO dispatches the downstream agent same-day. REVISE bounces it back with your comment.'
+      )
+    )
+    firstRendered = true
+  }
 
   // 1. Shipped last week
-  parts.push(firstSectionHeading('Shipped last week'))
+  parts.push(firstRendered ? sectionHeading('Shipped last week') : firstSectionHeading('Shipped last week'))
   if (shipped.length > 0) {
     parts.push(bulletList(shipped.map(escapeHtml)))
   } else {
@@ -137,22 +172,27 @@ export function renderBriefingEmail(data: BriefingData): string {
 
   const body = parts.join('\n')
 
-  // CTA: first pending review URL, or omitted.
+  // CTA: first Bernard proposal OR first pending review URL, or omitted.
   const cta =
-    pendingReviews.length > 0
+    bernardProposals.length > 0
+      ? { text: 'Review first proposal', url: bernardProposals[0].reviewUrl }
+      : pendingReviews.length > 0
       ? { text: 'Open first review', url: pendingReviews[0].reviewUrl }
       : undefined
 
+  const totalAsk = bernardProposals.length + pendingReviews.length
   const preheader =
-    pendingReviews.length > 0
-      ? `${pendingReviews.length} item${pendingReviews.length === 1 ? '' : 's'} need your eye this week.`
-      : `All clear. Week of ${weekOfLabel}.`
+    totalAsk > 0
+      ? `${totalAsk} item${totalAsk === 1 ? '' : 's'} need your eye ${daily ? 'today' : 'this week'}.`
+      : `All clear. ${daily ? 'Daily brief' : `Week of ${weekOfLabel}`}.`
+
+  const title = daily ? `TCP daily brief: ${weekOfLabel}` : `TCP: Week of ${weekOfLabel}`
 
   return renderEmailShell({
     preheader,
     body,
     cta,
     footer: { email: recipientEmail },
-    title: `TCP: Week of ${weekOfLabel}`,
+    title,
   })
 }
