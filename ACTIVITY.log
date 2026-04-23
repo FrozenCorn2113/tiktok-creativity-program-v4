@@ -1,0 +1,8 @@
+2026-04-22 12:11 | Homepage: replaced fake earnings dashboard + '47 guides' chip + RPM country strip with landpress hero image; kept Estimate my earnings as calculator CTA. Navbar: restored tcp-logo.svg brand mark. Renamed 5 broken guide hero files to hero-{slug}.webp convention.
+2026-04-22 13:01 | Homepage hero, header logo, calculator sliders, dark-card heading color inheritance, duplicate Editor's picks removal, Join CTA target fix — all shipped.
+2026-04-22 19:43 | Phase A autonomous ops routed to Devan: review dashboard + Monday briefing email + Supabase review_requests table. Phase 1a template shell confirmed as dependency, unblocked.
+2026-04-22 19:44 | Phase A audit complete. Devan brief drafted. Awaiting orchestrator dispatch to Devan.
+2026-04-22 19:50 | Phase 1a+1b shipped: on-brand email shell, day 2/5/8/12 drip wired, dark-mode link fix, 20 missing subs synced to Resend audience (39 total). Forward-only, no backfill per Brett.
+2026-04-22 19:52 | TCP Phase A shipped — review dashboard + Monday briefing
+2026-04-22 19:54 | Phase A reviewed and crontab installed
+2026-04-22 21:16 | Phase A shipped and locked — review dashboard live, Monday briefing cron armed for 2026-04-27 7am PT

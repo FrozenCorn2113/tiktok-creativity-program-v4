@@ -1,0 +1,82 @@
+{
+  "summary": "Week 1 baseline locks. Only one weekly snapshot exists (2026-04-23, window 2026-04-16→2026-04-22); HYPOTHESES.md was already populated from this exact snapshot, so no new data has arrived since last update — no hypothesis clears the 3-consecutive-week gate, and most email-side hypotheses (H2/H4/H8) remain blocked pending RESEND_API_KEY. Traffic is healthy at 436 sessions with AI-search (chatgpt+copilot+cn.bing) holding 29.1% share and top-5 pages holding 38.6% share — both directionally alive at 0.3 confidence, week 1 of replication counter. Signups 13/week with 0 unsubs (n=13, below 30-event gate on H5). No guides at ≥50 sessions yet (best: 39, how-much-does-tiktok-pay-per-view). Prime mode: zero proposals fire this cycle — replication needs another 2 weekly snapshots minimum on H5/H7/H9.",
+  "hypotheses_update": [
+    {
+      "id": "H1",
+      "new_value": "tbd — /start-here still not isolated in GA4 top pages this week",
+      "new_confidence": 0,
+      "new_weeks_holding": 0,
+      "note": "No measurement path yet. Needs GA4 page-level filter or query-param instrumentation before hypothesis becomes testable.",
+      "retire": false
+    },
+    {
+      "id": "H2",
+      "new_value": "tbd — RESEND_API_KEY still missing, email data blocked",
+      "new_confidence": 0,
+      "new_weeks_holding": 0,
+      "note": "Blocked on infra. Phase C (inbox reply capture) also pending — hypothesis cannot progress until one of the two lands.",
+      "retire": false
+    },
+    {
+      "id": "H3",
+      "new_value": "0 guides at ≥50 sessions; best 39 (how-much-does-tiktok-pay-per-view)",
+      "new_confidence": 0,
+      "new_weeks_holding": 0,
+      "note": "Best guide crept within 22% of threshold this week. 4 new guides shipped. Watch week 2 — if top guide crosses 50, confidence jumps to 0.3.",
+      "retire": false
+    },
+    {
+      "id": "H4",
+      "new_value": "tbd — RESEND_API_KEY missing",
+      "new_confidence": 0,
+      "new_weeks_holding": 0,
+      "note": "Blocked on infra. Same retirement timer as H2/H8 — all three unblock when the key lands.",
+      "retire": false
+    },
+    {
+      "id": "H5",
+      "new_value": "0% (0 unsubs / 13 new signups, week 2026-04-16) — n=13, still below 30-event gate",
+      "new_confidence": 0.3,
+      "new_weeks_holding": 1,
+      "note": "No new snapshot since HYPOTHESES.md was last updated — this is the same data point, not a replication. Weeks-holding counter stays at 1 until the 2026-04-30 snapshot lands.",
+      "retire": false
+    },
+    {
+      "id": "H6",
+      "new_value": "Unmeasurable — social platforms absent from GA4 top sources; total social referral near-zero",
+      "new_confidence": 0,
+      "new_weeks_holding": 0,
+      "note": "No Pinterest/IG/X traffic detected in top sources. Top sources dominated by (direct), chatgpt, bing. Hypothesis cannot move until social referral actually materializes.",
+      "retire": false
+    },
+    {
+      "id": "H7",
+      "new_value": "38.6% (171/443 pageviews in top-5, week 2026-04-16)",
+      "new_confidence": 0.3,
+      "new_weeks_holding": 1,
+      "note": "Directionally close to the >40% threshold. Same snapshot already scored — counter does not increment until next weekly snapshot.",
+      "retire": false
+    },
+    {
+      "id": "H8",
+      "new_value": "tbd — RESEND_API_KEY missing",
+      "new_confidence": 0,
+      "new_weeks_holding": 0,
+      "note": "Blocked on infra.",
+      "retire": false
+    },
+    {
+      "id": "H9",
+      "new_value": "29.1% (127/436 sessions: chatgpt 110 + cn.bing 13 + copilot 4, week 2026-04-16)",
+      "new_confidence": 0.3,
+      "new_weeks_holding": 1,
+      "note": "Recomputed from snapshot source table (prior value 29.6% used slightly different denominator). Still comfortably above 20% threshold. Counter does not increment — same data point.",
+      "retire": false
+    }
+  ],
+  "proposals": [],
+  "meta_signals": {
+    "channel_entropy": 1,
+    "baseline_drift_notes": "Week 1 baseline is locked against 2026-04-23 snapshot (436 sessions, 13 signups, 443 pageviews). All future delta comparisons anchor here until 2026-07-16 (12 weeks). AI referral share (29.1%) is the single most interesting meta-signal — if it holds at Week 4 and sample size grows, promote to formal hypothesis. Channel entropy remains 1.0 (SEO-only input); at week 12 of sustained 1.0, flag over-optimization risk per rule. No weekly snapshot exists prior to 2026-04-23, so replication counters on H5/H7/H9 genuinely start at week 1 — next real increment happens when 2026-04-30 snapshot lands."
+  }
+}

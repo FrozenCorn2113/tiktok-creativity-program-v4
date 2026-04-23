@@ -68,38 +68,31 @@ After acting, set `acted_on_at = now()` so the row stops surfacing in stale-deci
 ## Pending Review
 <!-- Items awaiting Bernard review -->
 
-- **What:** TCP email template spec — full design spec for `renderEmailShell()` covering header, typography, color palette (light + dark mode), CTA button (gradient + Outlook VML fallback), hero image slot, four content modules, footer, 600px table-based structure, render-test checklist (5 clients), and Devan code hints
-- **Where:** `/Users/bcarter/Desktop/Claude Agents/projects/tiktok-creativity-program/Vale/tcp-email-template-spec.md`
-- **Status:** READY FOR REVIEW
+- **[2026-04-23] Christopher — Guide #123 back-to-school research brief**
+  - What: Research brief for education creator back-to-school guide — keywords, RPM data, content formats, seasonal calendar, affiliate opportunities, competitor gap confirmation
+  - Where: `projects/tiktok-creativity-program/research/guide-123-back-to-school-research.md`
+  - Status: READY FOR REVIEW
 
-- **What:** Playbook PDF visual audit — page-by-page review of all 27 pages of `tcp-creator-rewards-playbook-2026.pdf`, 12 blockers and 14 polish items identified, PDF is HTML-rendered via Puppeteer (fixes are CSS in `generate-playbook-pdf.mjs`), includes specific CSS fix recommendations for each blocker
-- **Where:** `/Users/bcarter/Desktop/Claude Agents/projects/tiktok-creativity-program/Vale/playbook-pdf-audit.md`
-- **Status:** READY FOR REVIEW
+- **[2026-04-23] Scribe — Guide #123 education creators back-to-school**
+  - What: Full MDX guide (2,300 words) targeting education/teacher creators, covering CRP RPM advantages, back-to-school content formats, June-August seasonal calendar, income stack (CRP + Shop + affiliate + brand deals), and RPM maximization tactics. Zero em dashes. No fabricated creators or stats. Unverified claims hedged with "estimates suggest" / "some creators report". Amazon tag tiktokcreatpr-20. AffiliateLink components for school supplies and ring lights.
+  - Where: `projects/tiktok-creativity-program/content/guides/education-creators-back-to-school.mdx`
+  - Status: READY FOR REVIEW
 
-- **What:** Hormozi Nurture Playbook research — Value Equation audit of all 5 drip emails, LM tiering assessment, Core Four reshuffle, Grand Slam Offer anatomy for Pro Edition, 3 free assets for 60-day "give until embarrassed" plan, and 3 reply-based demand signal prompts ready to plug into the drip.
-- **Where:** `/Users/bcarter/Desktop/Claude Agents/projects/tiktok-creativity-program/research/hormozi-nurture-playbook-tcp.md`
-- **Status:** READY FOR REVIEW
+- **[2026-04-23] Scribe — TCP drip v2 copy polish (Hormozi reshuffle)**
+  - What: Revised day 2/5/8/12 drip copy. Day 2 = Internal Growth (60% ratio benchmark + reply prompt 1). Day 5 = External Health (RPM niche spread case study, finance vs comedy, no fabricated creators + reply prompt 2). Day 8 = External Growth (TikTok Shop no-follower-minimum anchor, clipping services removed from under-10K tier). Day 12 = Internal Health (closes transformation arc, 6 links top 2 per path + reply prompt 3 demand-signal pre-sell for $39 Pro playbook). Zero em dashes. Zero fabricated case studies.
+  - Where: `projects/tiktok-creativity-program/content/email-sequences/welcome-sequence-v2.md`
+  - Status: READY FOR REVIEW
 
-- **What:** Week 4 social images (April 21-27, 2026) — 30 unique WebP images (7 Pinterest 1000x1500, 2 IG singles 1080x1080, 21 carousel slides 1080x1080 across 3 carousels: LIVE Subscriptions, Shop Affiliate Rates, Creator Marketplace)
-- **Where:** `/Users/bcarter/Desktop/Claude Agents/projects/tiktok-creativity-program/social/week-4-images/` — manifest at `MANIFEST.md`
-- **Status:** READY FOR REVIEW
-
-- **What:** Guide #122 — TikTok Bulletin Boards: The Complete Creator Guide (50K+ Followers), 2,231 words, 0 em dashes, no ComparisonTable, no invented case studies
-- **Where:** `/Users/bcarter/Desktop/Claude Agents/projects/tiktok-creativity-program/content/guides/tiktok-bulletin-boards-creators.mdx`
-- **Status:** READY FOR REVIEW
-
-*Cleared 2026-04-07: All items LOCKED. Guide #121 full pipeline complete (commit 32f6299). Week 2 social LIVE (23 posts). Freshness updates deployed. Site at 121 guides.*
-
-- **What:** Week 3 social media copy (April 14-20, 2026) — 7 Pinterest pins, 5 Instagram posts (3 carousels + 2 singles), 5 X posts (3 single tweets + 2 threads)
-- **Where:** `/Users/bcarter/Desktop/Claude Agents/projects/tiktok-creativity-program/TCP-CONTENT-CALENDAR.md` (appended at end, WEEK 3 section)
-- **Status:** READY FOR REVIEW
-
-*Cleared 2026-04-21: Week 3 social images LOCKED (30 unique images delivered). June 2026 keyword research LOCKED (execution started). Week 4 social LOCKED and scheduled.*
+*Cleared 2026-04-23 by Bernard autonomous cycle: Vale email template spec LOCKED (consumed by Devan Phase 1a). Playbook PDF audit LOCKED as review artifact (blocker list remains open work). Hormozi research LOCKED (Scribe routed for v2 polish, delivered same cycle). Week 4 social images + Guide #122 + Week 3 social LOCKED (already live). Devan Phase A + Phase 1a.1 + 1b + SEO indexing audit LOCKED.*
 
 ## Active
 <!-- Bernard maintains this section. Current tasks in flight. -->
 
-### TCP Autonomous Ops — Phase A (ROUTED TO DEVAN 2026-04-22)
+### TCP Autonomous Ops — Phase A (SHIPPED + LOCKED 2026-04-22)
+**Status:** All 9 files live on main (commits `dcee27b` + `49a2757`). Vercel redeployed with `REVIEW_TOKEN_SECRET` set. Crontab installed. Migration `002_create_review_requests.sql` run by Brett. **First Monday briefing fires Mon 2026-04-27 7am PT.**
+**Next:** Phase B (Ricky reactivation, Atlas health check, monthly content kickoff) — week of 2026-05-04 when Brett gives the go.
+
+### TCP Autonomous Ops — Phase A (HISTORICAL — ROUTED TO DEVAN 2026-04-22)
 **Spec:** `TCP-AUTONOMOUS-OPS.md` Phase A
 **Owner:** Devan (build), Bernard (review + crontab install)
 **Why:** Cuts Brett's TCP mental load 80%. Single Monday email + one-click visual approval dashboard replaces "open terminal, read PROJECT.md, scroll Pending Review" loop.
@@ -343,6 +336,25 @@ All 4 over-500K creators replaced. Beauty raised to 5 creators. All 45 creators 
 
 *Cleared 2026-04-07: Guide #120 pipeline items (research, hero, Scribe copy, Devan integration) already shipped commit 3f50df4 and LOCKED in prior cycle. Stale entries removed.*
 
+- [2026-04-23] Devan — TCP autonomy loop Gap 1 (real-time review notify) + Gap 2 (/preview/[id] route)
+  - What: Extends commit `37e2d72`. Gap 1 — `src/app/api/review/notify/route.ts` is a Supabase DB webhook target; validates `x-tcp-webhook-secret` via timingSafeEqual, signs an HMAC review link, sends a dark-mode-safe Resend email to `brettlc2113@gmail.com`. Subject `TCP review: {item_label}`. Gap 2 — `src/app/preview/[id]/page.tsx` renders drafts faithfully per item_type: `email-draft` iframes `preview_html` with Subject/From/To frontmatter chrome, `copy-draft` renders `context_md` as styled article prose, `page-draft` iframes `preview_urls[0]`. Other item_types (incl. `bernard-proposal`) redirect to `/review/[token]`. Review dashboard links to the preview route when the item_type has a dedicated renderer.
+  - Where: commit `30b2793` (local, unpushed). Files: `src/app/api/review/notify/route.ts`, `src/app/preview/[id]/page.tsx`, `src/app/review/[token]/page.tsx`, `supabase/migrations/003_add_preview_html.sql`, `docs/TCP-AUTONOMY-SETUP.md`, `scripts/bernard-weekly-decision.mjs`, `scripts/dispatch-processor.mjs`.
+  - Self-test: `npm run build` clean. Both routes registered (`/api/review/notify` ƒ, `/preview/[id]` ƒ). Token verification unchanged (reuses `verifyToken`). Invalid token -> notFound; token/id mismatch -> notFound.
+  - Brett actions to enable:
+    1. Run `supabase/migrations/003_add_preview_html.sql` in Supabase SQL editor (prod).
+    2. `openssl rand -hex 32` → add to Vercel env as `REVIEW_WEBHOOK_SECRET` (Production), redeploy.
+    3. Register Supabase DB webhook on `review_requests` INSERT → `https://tiktokcreativityprogram.com/api/review/notify` with the secret in `x-tcp-webhook-secret` header. Full steps in `docs/TCP-AUTONOMY-SETUP.md` → "Real-time review notifications".
+    4. `git push origin main` (sandbox blocked the push from the agent).
+    5. Dry-run: `INSERT INTO review_requests (item_type, item_label, context_md, created_by) VALUES ('copy-draft', 'Webhook test', 'Testing real-time notify.', 'manual');` — email lands in seconds. Delete the row after.
+  - Status: READY FOR REVIEW
+
+- [2026-04-23] Bernard LOCKED Devan Phase A, Phase 1a.1 + 1b, SEO indexing audit, Vale email template spec, Playbook PDF audit, Hormozi research, Week 4 images, Guide #122, Week 3 social. Routed Scribe for Hormozi v2 drip copy polish. SEO indexing audit → Devan backlog (149 Discovered-not-indexed, `/guides` SSR all-117 fix).
+
+- [2026-04-23] Scribe — v2 drip copy polish (day 2/5/8/12), Hormozi Core Four reshuffle applied
+  - What: Revised copy for all 4 drip emails. Day 5 converted to Case Study type (narrative RPM gap story, not framework lecture). Reply prompts on days 2, 5, 12. Day 8 added TikTok Shop income proof anchor (no follower minimum). Day 12 closes transformation loop before path list, trims 9 links to 6. Zero em dashes. Zero fabricated claims. One UNVERIFIED flag noted for Devan (day 8 Shop earnings range).
+  - Where: `projects/tiktok-creativity-program/content/email-sequences/welcome-sequence-v2.md`
+  - Status: READY FOR REVIEW
+
 - [2026-04-22] Devan — TCP Autonomous Ops Phase A shipped (review dashboard + Monday briefing)
   - What: 8 deliverables shipped per spec — Supabase migration `002_create_review_requests.sql` (RLS + partial pending index), HMAC token helper (`src/lib/review/token.ts`, sign+verify, 14-day TTL, timingSafeEqual, fails closed), review dashboard at `/review/<token>` (TCP cream/orange/Manrope, server component + client island for GO/REVISE buttons, force-dynamic, notFound on invalid token or missing row), PATCH endpoint at `/api/review/<token>` (Zod-validated, 404 on bad token), `src/lib/email/briefing-template.ts` (5-section: shipped / queue / needs-eye / blockers / Ricky on top of `renderEmailShell()`), `scripts/brett-monday-briefing.mjs` (Resend `emails.send`, DRY_RUN writes `scripts/last-briefing.html`, fs.statSync for shipped guides, Supabase REST for subs + pending reviews), `scripts/brett-monday-briefing.sh` cron wrapper. PROJECT.md Rules section now documents the `INSERT INTO review_requests` runbook for Bernard.
   - Where: see commit `dcee27b`. Files: `supabase/migrations/002_create_review_requests.sql`, `src/lib/review/token.ts`, `src/app/review/[token]/page.tsx`, `src/app/review/[token]/ReviewActions.tsx`, `src/app/api/review/[token]/route.ts`, `src/lib/email/briefing-template.ts`, `scripts/brett-monday-briefing.mjs`, `scripts/brett-monday-briefing.sh`.
@@ -369,6 +381,7 @@ All 4 over-500K creators replaced. Beauty raised to 5 creators. All 45 creators 
 
 
 ## Work Log
+- [2026-04-22] Nurture system Phase 1 shipped. Brett ran `ALTER TABLE email_subscribers ADD COLUMN unsubscribed_at timestamptz`. Christopher Hormozi research (research/hormozi-nurture-playbook-tcp.md). Vale email template spec (Vale/tcp-email-template-spec.md) + Playbook PDF audit (27pp, 12 blockers at Vale/playbook-pdf-audit.md). Devan shipped 3 commits (dde3bbf, 619aaa8, a8224d5): shared `renderEmailShell` with dark-mode + Outlook VML, welcome-template refactored, day 2/5/8/12 drip scheduling wired at src/app/api/newsletter/route.ts, dark-mode link contrast fixed, render-preview CLI, backfill-drip.mjs. Also sync-audience-retry.mjs added (not committed): 20 previously-unsynced Supabase subs pushed to Resend audience (19 to 39, 0 failures). 9 test/debug rows in Supabase left in place, filtered by scripts. Backfill skipped per Brett: forward-only drip from here. Autonomous ops plan drafted at TCP-AUTONOMOUS-OPS.md awaiting Brett read. Plan: ~/.claude/plans/yes-i-know-that-frolicking-pine.md. Open: Scribe v2 copy polish (Hormozi Core Four reshuffle + 3 reply prompts), Phase 2 newsletter upgrade, Phase 3.5 PDF blocker fixes, callout strong-label dark-mode bug, persist SUPABASE_SERVICE_ROLE_KEY to .env + Vercel so audience sync stops silently failing.
 - [2026-04-21] Devan full warm-editorial redesign shipped (commits 3e328f6, bd3120c, cd3c0ec). 8 phases: tokens+fonts+chrome, 6 TCP primitives under src/components/tcp/, homepage, 8 niche detail pages, guides index+article, 3 calculators, about+newsletter+new /countries. 16 MDX inline components restyled. Weekly guide digest script added (scripts/send-weekly-digest.mjs) with Sunday 5pm PT crontab installed. FROM defaults to hello@tiktokcreativityprogram.com. Source zip: ~/Downloads/TCP.zip. Plan: ~/.claude/plans/i-was-just-workin-tingly-book.md. Open: Resend click-tracking subdomain CNAME (Brett action), Scribe pass on TODO(content) placeholders in 4 niche pages (beauty/comedy/coaches/travel), newsletter archive data source.
 - [2026-04-21] Bernard daily ops -- Guide #122 TikTok Bulletin Boards LIVE (commit 424b34c). Full pipeline: Christopher research (already LOCKED 2026-04-07 from June queue) -> Scribe 2,231w -> Vale hero (radial broadcast composition, dark navy/amber) -> Devan integration (3 cross-links, search index 131 entries, build clean). June queue now 1/4 complete. Week 4 social LOCKED: Scribe 17 posts + Vale 30 images + Wren scheduled via Zernio (5 X, 5 IG, 7 Pinterest, Apr 21-27). Notes: X threads as standalone tweets (no native threading in Zernio); 2 Pinterest pins published immediately (past schedule window); IG images converted to JPG. Freshness alert pending: tiktok-creator-health-rating.mdx Shop CHR section.
 - [2026-04-07] Bernard Monday cycle -- Guide #121 TikTok AutoCut Feature LIVE (commit 32f6299). Full pipeline in single cycle: Christopher research (AutoCut monetization eligibility, keyword gap confirmed, 10 angles) -> Scribe 2,300w (monetization question leads) -> Vale hero R2 (R1 had text artifacts, R2 clean) -> Devan integration (4 cross-links, search index, build clean). May queue now 4/4 COMPLETE. Freshness updates deployed same commit: eligibility business account callout + watch time algorithm update (70% completion rate, follower-first model). Week 2 social LIVE: 23 posts scheduled via Wren (11 X, 5 IG, 7 Pinterest, Apr 7-13). Weekly scan: no breaking CRP changes. VFO Ricky scan LOCKED (6th consecutive zero, recommend pausing). Site at 121 guides.

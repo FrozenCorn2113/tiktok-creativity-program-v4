@@ -426,3 +426,48 @@ All post topics are drawn from existing TCP guides. No original research require
 - TikTok videos: 60+ seconds minimum.
 - All stats marked [UNVERIFIED] must be held for verification before posting.
 - Do not schedule more than 2 weeks ahead. Content should adapt based on early performance.
+
+---
+
+## WEEK 5+ Direction (data-driven, set 2026-04-23)
+
+**Source:** Bernard analytics review — GA4 snapshot week 2026-04-16, 436 sessions, 13 signups.
+
+### What to lean into
+
+**1. Earnings / RPM content (highest traffic + highest signup conversion)**
+- "how-much-does-tiktok-pay-per-view" is the #1 non-homepage guide (39 views)
+- RPM Cheat Sheet is the top lead magnet (4 of 13 signups)
+- Every week should include at least one earnings-angle post
+- Reframe other pillars through a money lens where possible (e.g. "How live subscriptions pay you differently from Creator Rewards")
+
+**2. Live / subscription monetization**
+- "tiktok-live-subscriptions-strategy" shipped this week and immediately hit top 5 (19 views)
+- Strong signal of unmet demand — expand with follow-up content
+- Suggested Week 5 addition: "How much do TikTok LIVE gifts actually pay?" (earnings angle for live)
+
+**3. Minis / micro-dramas**
+- "tiktok-minis-micro-dramas" at #4 (21 views) despite being a newer format
+- Add one post on this format per 2 weeks
+
+**4. Social can now soft-introduce TCP**
+- Weeks 1-4 rule (zero promotional) ends after Week 4
+- From Week 5: occasional soft mention OK in context ("I write about this at...") — not in every post
+- Reddit: can now mention TCP once per thread where directly relevant
+
+### What to deprioritize
+
+- **Algorithm content** — "tiktok-algorithm-2026" is last in top 10 at 13 views despite being an evergreen keyword. Reduce to once per month max.
+- **Facebook** — Not appearing in any traffic source. Hold frequency at 1/week (Thursday only) until a referral session is confirmed.
+- **Generic engagement posts (polls, Q&As)** — No data showing these convert or drive traffic. Maintain for community warmth but don't increase.
+
+### Posting time notes
+
+No change to current schedule — Zernio best-time-to-post data blocked this week. Revisit when Zernio analytics access is restored.
+
+| Platform | Current slot | Status |
+|---|---|---|
+| TikTok | 6am / 6pm PT | Hold |
+| Instagram | 9am PT (Tue/Wed/Fri) | Hold |
+| Pinterest | 1pm or 4pm PT | Hold |
+| X | 9am PT (Wed best) | Hold |

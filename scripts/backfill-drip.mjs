@@ -55,8 +55,17 @@ function log(line) {
   logStream.write(msg + '\n')
 }
 
+const TEST_SOURCES = new Set(['debug', 'debug-test', 'hardcoded-test', 'e2e-test'])
+
+function isTestRow(row) {
+  if (TEST_SOURCES.has(row.source)) return true
+  if (/^test[-_]/i.test(row.email)) return true
+  if (/@(example|test)\./i.test(row.email)) return true
+  return false
+}
+
 async function fetchActiveSubscribers() {
-  const url = `${SUPABASE_PROJECT_URL}/rest/v1/email_subscribers?unsubscribed_at=is.null&select=email,lead_magnet`
+  const url = `${SUPABASE_PROJECT_URL}/rest/v1/email_subscribers?unsubscribed_at=is.null&select=email,lead_magnet,source`
   const res = await fetch(url, {
     headers: {
       apikey: SUPABASE_KEY,
@@ -67,7 +76,13 @@ async function fetchActiveSubscribers() {
     const body = await res.text()
     throw new Error(`Supabase ${res.status}: ${body}`)
   }
-  return res.json()
+  const rows = await res.json()
+  const filtered = rows.filter((r) => !isTestRow(r))
+  const excluded = rows.length - filtered.length
+  if (excluded > 0) {
+    log(`Excluded ${excluded} test/debug rows from backfill`)
+  }
+  return filtered
 }
 
 /**
