@@ -1,7 +1,7 @@
 /**
  * TCP drip email templates (days 2, 5, 8, 12).
  *
- * Source copy: content/email-sequences/welcome-sequence.md
+ * Source copy: content/email-sequences/welcome-sequence-v2.md
  * Each builder composes body HTML via the shared shell module helpers and
  * wraps with `renderEmailShell`. Subject lines are verbatim from the sequence
  * doc. No lead-magnet branching in v1.
@@ -35,36 +35,35 @@ function inlineLink(url: string, label: string): string {
 }
 
 function buildDay2(email: string | null): BuiltEmail {
-  const subject = 'The mistake that tanks most new Creator Rewards earnings'
-  const preheader = "It's not your content. It's what you're measuring."
+  const subject = 'The number creators ignore after joining Creator Rewards'
+  const preheader =
+    'Total views and qualified views are not the same thing. The gap is where the money goes missing.'
 
   const qualifiedGuideUrl = `${SITE_URL}/guides/qualified-views-not-counting`
 
   const body = [
     bodyText(
-      'Here is what I see happen constantly with creators who just got into the Rewards Program:'
+      'A lot of creators join the Rewards Program, check their analytics the next day, and feel like something is broken.'
     ),
+    bodyText('The views are there. The payout is not.'),
     bodyText(
-      'They check their total view count, see a decent number, and expect a proportional payout. Then the payout shows up and it is a fraction of what they calculated.'
+      'The disconnect is almost always the same: they are tracking total views. TikTok pays on qualified views only.'
     ),
-    bodyText(
-      'The disconnect is almost always the same thing: they are looking at total views, not qualified views.'
-    ),
-    bodyText('Qualified views are the only views that count toward your earnings. A view only qualifies when:'),
+    bodyText('A view qualifies when three things are true at once:'),
     bulletList([
-      'The video is 1+ minute long',
-      'The viewer watches a meaningful portion',
-      'The view comes from an eligible region (US, UK, Germany, France, Japan, South Korea, Brazil, or Mexico)',
+      'The video is at least 1 minute long',
+      'The viewer watches a meaningful portion of it',
+      'The view originates from an eligible region (US, UK, Germany, France, Japan, South Korea, Brazil, or Mexico)',
     ]),
     bodyText(
-      'Everything else is invisible to the Rewards algorithm. A video with 200K total views might have 40K qualified views. That gap is where the confusion lives.'
+      'Everything outside those conditions is invisible to the Rewards algorithm. A video with 200K total views can have 40K qualified views. That gap is where the confusion lives.'
     ),
     bodyText(
-      `<strong>What to do right now:</strong> Open Creator Studio, go to Creator Rewards analytics, and look at your qualified view count. Compare it to your total views. If there is a big gap, the guide below walks through exactly why and what to fix: ${inlineLink(qualifiedGuideUrl, 'Why Your TikTok Views Are Not Counting as Qualified')}.`
+      `<strong>One benchmark to know:</strong> If your qualified views are under 60% of your total views, that ratio is costing you money. Most accounts land between 45-70% early on. The guide below explains the biggest causes and the fixes that actually move the number: ${inlineLink(qualifiedGuideUrl, 'Why Your TikTok Views Are Not Counting as Qualified')}.`
     ),
     calloutBox(
-      'One number to remember:',
-      'Videos where viewers stay past the 60-second mark see 40-60% higher RPM than content with fast drop-off. Retention is the single heaviest factor in what TikTok pays you.'
+      'P.S.',
+      'Before I send the next one: what is the biggest thing you are trying to figure out with Creator Rewards right now? Just reply with one sentence. I read every reply and it shapes what I write.'
     ),
   ].join('\n')
 
@@ -80,22 +79,24 @@ function buildDay2(email: string | null): BuiltEmail {
   })
 
   const text = [
-    'Here is what I see happen constantly with creators who just got into the Rewards Program:',
+    'A lot of creators join the Rewards Program, check their analytics the next day, and feel like something is broken.',
     '',
-    'They check their total view count, see a decent number, and expect a proportional payout. Then the payout shows up and it is a fraction of what they calculated.',
+    'The views are there. The payout is not.',
     '',
-    'The disconnect is almost always the same thing: they are looking at total views, not qualified views.',
+    'The disconnect is almost always the same: they are tracking total views. TikTok pays on qualified views only.',
     '',
-    'Qualified views are the only views that count toward your earnings. A view only qualifies when:',
-    '- The video is 1+ minute long',
-    '- The viewer watches a meaningful portion',
-    '- The view comes from an eligible region (US, UK, Germany, France, Japan, South Korea, Brazil, or Mexico)',
+    'A view qualifies when three things are true at once:',
+    '- The video is at least 1 minute long',
+    '- The viewer watches a meaningful portion of it',
+    '- The view originates from an eligible region (US, UK, Germany, France, Japan, South Korea, Brazil, or Mexico)',
     '',
-    'What to do right now: Open Creator Studio, go to Creator Rewards analytics, and look at your qualified view count. Compare it to your total views.',
+    'Everything outside those conditions is invisible to the Rewards algorithm. A video with 200K total views can have 40K qualified views.',
+    '',
+    'One benchmark to know: if your qualified views are under 60% of your total views, that ratio is costing you money. Most accounts land between 45-70% early on.',
     '',
     `Read the full guide: ${qualifiedGuideUrl}`,
     '',
-    'One number to remember: videos where viewers stay past the 60-second mark see 40-60% higher RPM than content with fast drop-off.',
+    'P.S. Before I send the next one: what is the biggest thing you are trying to figure out with Creator Rewards right now? Just reply with one sentence. I read every reply and it shapes what I write.',
     '',
     '--',
     'TikTok Creativity Program',
@@ -106,40 +107,46 @@ function buildDay2(email: string | null): BuiltEmail {
 }
 
 function buildDay5(email: string | null): BuiltEmail {
-  const subject = 'How to earn more from the same number of views'
-  const preheader = 'Your niche sets the ceiling. These 4 things determine where you land.'
+  const subject = 'Same views, different paycheck. Here is why.'
+  const preheader = 'Two creators, 500K qualified views each. One earns $475. The other earns $110.'
 
   const rpmGuideUrl = `${SITE_URL}/guides/optimize-rpm`
   const calculatorUrl = `${SITE_URL}/calculators/earnings-calculator`
 
   const body = [
+    bodyText('Two creators. Same platform. Same month. Both hit 500,000 qualified views.'),
+    bodyText('One earned $475. The other earned $110.'),
     bodyText(
-      'Two creators both hit 500,000 qualified views last month. One earned $475. The other earned $110. Same platform, same view count.'
+      'Same view count, four times the payout. The difference is RPM: what TikTok pays per 1,000 qualified views. And RPM varies more than most creators expect.'
     ),
     bodyText(
-      'The difference is RPM (revenue per 1,000 qualified views), and it varies wildly depending on four things:'
+      'The $475 creator was in personal finance. The $110 creator was in comedy. Both made solid content. But their niches set different ceilings, and their retention numbers put them in different positions within those ceilings.'
+    ),
+    bodyText('Four things determine where you land:'),
+    bodyText(
+      '<strong>Watch time.</strong> The heaviest factor. When viewers stay past the 60-second mark, RPM climbs. When they drop off in the first 15 seconds, TikTok docks your rate regardless of everything else.'
     ),
     bodyText(
-      '<strong>Watch time.</strong> Heaviest factor. Completion rates above 80% separate top earners from average. If viewers drop off in the first 15 seconds, your RPM takes a hit regardless of your niche.'
+      '<strong>Originality.</strong> Original footage, audio, and framing score highest. Duets, Stitches, and reposted content earn near-zero.'
     ),
     bodyText(
-      '<strong>Originality.</strong> Original footage, audio, and perspective score highest. Duets, Stitches, and repurposed content earn zero or near-zero.'
+      '<strong>Search value.</strong> Videos that answer a specific question earn 2-5x the RPM of scroll-bait clips. Search viewers have intent. Advertisers pay more to reach them.'
     ),
     bodyText(
-      '<strong>Search value.</strong> Videos that answer specific search queries earn 2-5x the RPM of FYP-only content. "How to edit TikTok videos for beginners" beats "Watch me edit this" because search viewers have intent, and advertisers pay more to reach them.'
+      '<strong>Engagement quality.</strong> Saves and shares move the needle. Likes and emoji comments barely register.'
     ),
     bodyText(
-      '<strong>Engagement quality.</strong> Saves and shares count more than likes. Real comment threads beat emoji strings.'
+      'The highest-leverage move for most creators is retention, because it affects both your qualified view rate and your RPM at the same time. One fix, two outputs.'
     ),
     bodyText(
-      'Your niche sets the ceiling on all of this. Finance creators earn roughly $1.00-$2.30 per 1K views. Comedy sits at $0.25-$0.60. You downloaded the full niche breakdown in the RPM cheat sheet, so you already have those numbers.'
+      `The full breakdown is here, including what to prioritize based on your niche: ${inlineLink(rpmGuideUrl, 'How to Optimize Your TikTok RPM')}.`
     ),
     bodyText(
-      'The highest-leverage move for most creators: focus on retention first, because it affects both your qualified view rate AND your RPM at the same time.'
+      `And if you want to run the numbers on what your current views should be generating: ${inlineLink(calculatorUrl, 'Earnings Calculator')}.`
     ),
-    bodyText(`The full optimization playbook is here: ${inlineLink(rpmGuideUrl, 'How to Optimize Your TikTok RPM')}.`),
-    bodyText(
-      `And if you want to model what different RPM rates mean for your actual earnings: ${inlineLink(calculatorUrl, 'Earnings Calculator')}.`
+    calloutBox(
+      'P.S.',
+      'One question: what is the biggest RPM frustration you are running into right now? Reply with one sentence. Even a "I do not know where to start" is useful to hear.'
     ),
   ].join('\n')
 
@@ -155,22 +162,30 @@ function buildDay5(email: string | null): BuiltEmail {
   })
 
   const text = [
-    'Two creators both hit 500,000 qualified views last month. One earned $475. The other earned $110. Same platform, same view count.',
+    'Two creators. Same platform. Same month. Both hit 500,000 qualified views.',
     '',
-    'The difference is RPM (revenue per 1,000 qualified views), and it varies wildly depending on four things:',
+    'One earned $475. The other earned $110.',
     '',
-    'Watch time. Heaviest factor. Completion rates above 80% separate top earners from average.',
+    'Same view count, four times the payout. The difference is RPM: what TikTok pays per 1,000 qualified views.',
     '',
-    'Originality. Original footage, audio, and perspective score highest. Duets, Stitches, and repurposed content earn zero or near-zero.',
+    'The $475 creator was in personal finance. The $110 creator was in comedy. Both made solid content. But their niches set different ceilings, and their retention numbers put them in different positions within those ceilings.',
     '',
-    'Search value. Videos that answer specific search queries earn 2-5x the RPM of FYP-only content.',
+    'Four things determine where you land:',
     '',
-    'Engagement quality. Saves and shares count more than likes.',
+    'Watch time. The heaviest factor. When viewers stay past the 60-second mark, RPM climbs.',
     '',
-    'Your niche sets the ceiling. Finance creators earn roughly $1.00-$2.30 per 1K views. Comedy sits at $0.25-$0.60.',
+    'Originality. Original footage, audio, and framing score highest. Duets, Stitches, and reposted content earn near-zero.',
+    '',
+    'Search value. Videos that answer a specific question earn 2-5x the RPM of scroll-bait clips.',
+    '',
+    'Engagement quality. Saves and shares move the needle. Likes and emoji comments barely register.',
+    '',
+    'The highest-leverage move for most creators is retention, because it affects both your qualified view rate and your RPM at the same time.',
     '',
     `Full playbook: ${rpmGuideUrl}`,
     `Earnings calculator: ${calculatorUrl}`,
+    '',
+    'P.S. One question: what is the biggest RPM frustration you are running into right now? Reply with one sentence. Even a "I do not know where to start" is useful to hear.',
     '',
     '--',
     'TikTok Creativity Program',
@@ -182,7 +197,7 @@ function buildDay5(email: string | null): BuiltEmail {
 
 function buildDay8(email: string | null): BuiltEmail {
   const subject = 'Creator Rewards is one income stream. Here are the others.'
-  const preheader = "The creators earning $5K-$10K/month aren't relying on RPM alone."
+  const preheader = 'The creators earning $5K-$10K/month are not relying on RPM alone.'
 
   const monetizationGuideUrl = `${SITE_URL}/guides/best-monetization-methods`
   const brandDealsGuideUrl = `${SITE_URL}/guides/brand-deals-small-creator`
@@ -190,42 +205,43 @@ function buildDay8(email: string | null): BuiltEmail {
 
   const body = [
     bodyText(
-      'Creator Rewards pays based on views. That is useful, but it has a ceiling. RPM rates fluctuate, qualified view thresholds cut into your total, and January payouts drop 40-60% from December peaks every year.'
+      'Creator Rewards pays on views. That is useful, but it has a ceiling. RPM rates shift quarterly, eligible view thresholds trim your total, and January payouts drop 40-60% from December peaks every year.'
     ),
+    bodyText('The creators building real income on TikTok are running multiple streams.'),
     bodyText(
-      'The creators who build real income from TikTok are stacking multiple streams. Here is what actually works at different stages:'
+      'One thing that surprises most people: TikTok Shop affiliate commissions have no follower minimum. Creators with under 5K followers can participate without Creator Rewards access at all, and some creators report $100-$400/month in Shop commissions at that stage (estimate, not a guarantee). It is one of the few monetization paths that does not gate you by audience size.'
     ),
+    bodyText('Here is what works at each stage:'),
     bodyText('<strong>Under 10K followers:</strong>'),
     bulletList([
       'Affiliate marketing (product links in bio, no follower minimum for most programs)',
-      'Digital products (templates, cheat sheets, mini-guides sold through your link-in-bio)',
-      'Clipping services for other creators',
+      'Digital products (templates, guides, cheat sheets sold through your link-in-bio)',
     ]),
     bodyText('<strong>10K-50K followers:</strong>'),
     bulletList([
       'Creator Rewards (you are here)',
-      'Brand deals (micro-influencer rates: $200-$2,000 per post)',
+      'Brand deals (micro-influencer rates run $200-$2,000 per post)',
       'Email list monetization',
     ]),
     bodyText('<strong>50K+ followers:</strong>'),
     bulletList([
-      'All of the above, plus higher brand deal rates',
+      'All of the above at higher rates',
       'TikTok LIVE gifts',
-      'TikTok Shop affiliate commissions',
+      'TikTok Shop affiliate commissions at scale',
       'Course or membership products',
     ]),
     bodyText(
-      `The monetization methods guide ranks every option by effort, timeline, and earning potential: ${inlineLink(monetizationGuideUrl, 'Best TikTok Monetization Methods Ranked')}.`
-    ),
-    bodyText(
-      `One thing worth setting up early regardless of your follower count: an email list. Social algorithms do not guarantee your followers see your posts. An email list does. ${inlineLink(kitAffiliateUrl, 'Kit')} is what most creators start with because the free tier handles up to 10,000 subscribers and includes automation.`
+      `One thing worth setting up now regardless of where you are: an email list. TikTok's algorithm does not guarantee your followers see your posts. An email list does. ${inlineLink(kitAffiliateUrl, 'Kit')} is where most creators start because the free tier covers up to 10,000 subscribers and includes automation.`
     ),
     calloutBox(
       'Affiliate disclosure:',
       'The Kit link above is an affiliate link. If you sign up through it, we earn a commission at no extra cost to you.'
     ),
     bodyText(
-      `The brand deals guide covers how to land paid partnerships even with a smaller audience: ${inlineLink(brandDealsGuideUrl, 'How to Get Brand Deals as a Small TikTok Creator')}.`
+      `The full monetization guide ranks every option by effort, timeline, and earning potential: ${inlineLink(monetizationGuideUrl, 'Best TikTok Monetization Methods Ranked')}.`
+    ),
+    bodyText(
+      `And if you want specifics on landing brand deals before you are "big": ${inlineLink(brandDealsGuideUrl, 'How to Get Brand Deals as a Small TikTok Creator')}.`
     ),
   ].join('\n')
 
@@ -241,19 +257,21 @@ function buildDay8(email: string | null): BuiltEmail {
   })
 
   const text = [
-    'Creator Rewards pays based on views. That is useful, but it has a ceiling. RPM rates fluctuate, qualified view thresholds cut into your total, and January payouts drop 40-60% from December peaks every year.',
+    'Creator Rewards pays on views. That is useful, but it has a ceiling. RPM rates shift quarterly, eligible view thresholds trim your total, and January payouts drop 40-60% from December peaks every year.',
     '',
-    'The creators who build real income from TikTok are stacking multiple streams.',
+    'The creators building real income on TikTok are running multiple streams.',
     '',
-    'Under 10K followers: affiliate marketing, digital products, clipping services.',
+    'One thing that surprises most people: TikTok Shop affiliate commissions have no follower minimum. Creators with under 5K followers can participate without Creator Rewards access at all, and some creators report $100-$400/month in Shop commissions at that stage (estimate, not a guarantee).',
+    '',
+    'Under 10K followers: affiliate marketing, digital products.',
     '10K-50K: Creator Rewards, brand deals ($200-$2,000/post), email list monetization.',
-    '50K+: higher brand rates, LIVE gifts, TikTok Shop affiliate, courses or memberships.',
-    '',
-    `Monetization methods ranked: ${monetizationGuideUrl}`,
-    `Brand deals guide: ${brandDealsGuideUrl}`,
+    '50K+: higher rates across the board, LIVE gifts, TikTok Shop at scale, courses or memberships.',
     '',
     `Set up an email list early. Kit is a common starting point: ${kitAffiliateUrl}`,
     '(Affiliate link. We earn a commission at no extra cost to you.)',
+    '',
+    `Monetization methods ranked: ${monetizationGuideUrl}`,
+    `Brand deals guide: ${brandDealsGuideUrl}`,
     '',
     '--',
     'TikTok Creativity Program',
@@ -264,49 +282,48 @@ function buildDay8(email: string | null): BuiltEmail {
 }
 
 function buildDay12(email: string | null): BuiltEmail {
-  const subject = 'Your next 3 moves (based on where you are)'
-  const preheader = "Skip the noise. Here's what matters at your stage."
+  const subject = '12 days in. Here is where to go next.'
+  const preheader =
+    'You know more about how TikTok pays creators than 90% of creators on the platform.'
 
   const eligibilityUrl = `${SITE_URL}/guides/eligibility-requirements`
   const growthUrl = `${SITE_URL}/guides/get-10000-followers-tiktok-2026`
-  const applyUrl = `${SITE_URL}/guides/how-to-join-creativity-program`
   const rpmUrl = `${SITE_URL}/guides/optimize-rpm`
   const calculatorUrl = `${SITE_URL}/calculators/earnings-calculator`
-  const rpmNicheUrl = `${SITE_URL}/guides/tiktok-rpm-by-niche-2026`
   const monetizationUrl = `${SITE_URL}/guides/best-monetization-methods`
-  const brandDealsUrl = `${SITE_URL}/guides/brand-deals-small-creator`
   const multipleStreamsUrl = `${SITE_URL}/guides/multiple-revenue-streams`
 
   const body = [
+    bodyText('Over the past 12 days you learned how TikTok actually pays creators.'),
     bodyText(
-      'Last email in this series. I want to make it useful, so here is a quick roadmap based on where you probably are right now.'
+      'Qualified views vs total views. The ratio that determines whether your analytics match your paycheck. The four RPM levers. Why two creators can post the same number of views and earn four times apart. How to stack income streams so you are not dependent on a single metric that TikTok resets every January.'
     ),
-    bodyText('<strong>If you are still working toward Creator Rewards eligibility:</strong>'),
+    bodyText(
+      'Most creators stumble through Creator Rewards for months before they figure any of that out. You have it now.'
+    ),
+    bodyText('Here is where to go next, based on where you are:'),
+    bodyText('<strong>If you are still working toward eligibility:</strong>'),
     bulletList([
-      `${inlineLink(eligibilityUrl, 'Eligibility Requirements Checklist')} - confirm every box is checked before you apply`,
-      `${inlineLink(growthUrl, 'How to Grow to 10K Followers')} - organic growth tactics that actually work`,
-      `${inlineLink(applyUrl, 'How to Join the Creator Rewards Program')} - step-by-step application walkthrough`,
+      `${inlineLink(eligibilityUrl, 'Eligibility Requirements Checklist')} - confirm every box before you apply`,
+      `${inlineLink(growthUrl, 'How to Grow to 10K Followers')} - growth tactics that move the number`,
     ]),
-    bodyText('<strong>If you are already in the program and want to earn more:</strong>'),
+    bodyText('<strong>If you are in the program and want to earn more:</strong>'),
     bulletList([
-      `${inlineLink(rpmUrl, 'RPM Optimization Guide')} - the 4 levers that move your rate`,
-      `${inlineLink(calculatorUrl, 'Earnings Calculator')} - model what your views should be generating`,
-      `${inlineLink(rpmNicheUrl, 'RPM by Niche Breakdown')} - where your niche sits and how to push higher`,
+      `${inlineLink(rpmUrl, 'RPM Optimization Guide')} - the 4 levers in depth`,
+      `${inlineLink(calculatorUrl, 'Earnings Calculator')} - model what your views should generate`,
     ]),
     bodyText('<strong>If you want to build beyond Creator Rewards:</strong>'),
     bulletList([
       `${inlineLink(monetizationUrl, 'Best Monetization Methods Ranked')} - every option compared`,
-      `${inlineLink(brandDealsUrl, 'Brand Deals for Small Creators')} - how to land partnerships before you are "big"`,
-      `${inlineLink(multipleStreamsUrl, 'Multiple Revenue Streams Guide')} - the stacking strategy`,
+      `${inlineLink(multipleStreamsUrl, 'Multiple Revenue Streams Guide')} - the stacking playbook`,
     ]),
     bodyText(
-      `The site has 100+ guides covering everything from algorithm changes to tax filing to niche-specific monetization. Browse by topic: ${inlineLink(SITE_URL, 'tiktokcreativityprogram.com')}.`
+      `The site has 122 guides covering everything from algorithm changes to tax filing to niche-specific monetization: ${inlineLink(SITE_URL, 'tiktokcreativityprogram.com')}.`
     ),
     calloutBox(
-      'One last thing:',
-      'if there is a topic the site does not cover well, reply to this email and tell me. The most useful guides I have written came from questions like yours.'
+      'P.S.',
+      'Last ask: if there was a $39 advanced playbook with a 12-month content calendar for your niche, an RPM benchmark database, and a rejection decoder, would you buy it? Reply with "yes," "maybe," or "no." No sales pitch. I am deciding whether to build it, and your answer shapes that.'
     ),
-    bodyText('Thanks for reading.'),
   ].join('\n')
 
   const html = renderEmailShell({
@@ -321,28 +338,29 @@ function buildDay12(email: string | null): BuiltEmail {
   })
 
   const text = [
-    'Last email in this series. Here is a quick roadmap based on where you probably are right now.',
+    'Over the past 12 days you learned how TikTok actually pays creators.',
     '',
-    'If you are still working toward Creator Rewards eligibility:',
+    'Qualified views vs total views. The four RPM levers. Why two creators can post the same number of views and earn four times apart. How to stack income streams so you are not dependent on a single metric that TikTok resets every January.',
+    '',
+    'Most creators stumble through Creator Rewards for months before they figure any of that out. You have it now.',
+    '',
+    'Here is where to go next, based on where you are:',
+    '',
+    'If you are still working toward eligibility:',
     `- ${eligibilityUrl}`,
     `- ${growthUrl}`,
-    `- ${applyUrl}`,
     '',
-    'If you are already in the program and want to earn more:',
+    'If you are in the program and want to earn more:',
     `- ${rpmUrl}`,
     `- ${calculatorUrl}`,
-    `- ${rpmNicheUrl}`,
     '',
     'If you want to build beyond Creator Rewards:',
     `- ${monetizationUrl}`,
-    `- ${brandDealsUrl}`,
     `- ${multipleStreamsUrl}`,
     '',
-    `Browse all guides: ${SITE_URL}`,
+    `Browse all 122 guides: ${SITE_URL}`,
     '',
-    'If there is a topic the site does not cover well, reply to this email and tell me.',
-    '',
-    'Thanks for reading.',
+    'P.S. Last ask: if there was a $39 advanced playbook with a 12-month content calendar for your niche, an RPM benchmark database, and a rejection decoder, would you buy it? Reply with "yes," "maybe," or "no." No sales pitch. I am deciding whether to build it, and your answer shapes that.',
     '',
     '--',
     'TikTok Creativity Program',
