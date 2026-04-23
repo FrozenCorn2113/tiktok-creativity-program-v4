@@ -39,6 +39,32 @@ Next.js (App Router), Tailwind CSS, MDX guides, Resend email + Supabase subscrib
 - Autonomous content pipeline: auto-post to all socials, weekly analytics review, no approval gates.
 - Vercel auto-deploys from git pushes — no manual deploy needed. Verify local HEAD matches production before pushing.
 
+### Runbook: Creating review_requests (Bernard)
+
+When you have something Brett needs to one-click approve (hero image, weekly social pack, new PDF cover, etc.) insert a row into `review_requests` instead of pasting it under `## Pending Review`. The Monday briefing surfaces all rows where `decision IS NULL` with signed dashboard links.
+
+INSERT pattern (Supabase SQL Editor or PostgREST):
+
+```sql
+INSERT INTO public.review_requests (item_type, item_label, preview_urls, context_md, created_by)
+VALUES (
+  'hero image',                                    -- short type label
+  'Hero: tiktok-rpm-by-niche-2026',                -- human-readable label
+  ARRAY[
+    'https://tiktokcreativityprogram.com/images/heroes/tiktok-rpm-by-niche-2026.webp'
+  ],
+  'Vale R2. Dark navy + amber radial. R1 had text artifacts.',  -- optional context
+  'bernard'
+)
+RETURNING id;
+```
+
+Then mint the dashboard URL by feeding `id` to `signToken()` (the Monday briefing does this automatically; for ad-hoc use, run `node -e "import('./src/lib/review/token.ts').then(m => console.log(m.signToken('<id>')))"` with `REVIEW_TOKEN_SECRET` exported).
+
+Brett opens `/review/<token>`, hits GO or REVISE, leaves an optional comment. Decision lands in the same row (`decision`, `decision_comment`, `decided_at`). Bernard polls the table on the next cycle and acts: GO → ship; REVISE → re-route to the originating agent with the comment as the brief.
+
+After acting, set `acted_on_at = now()` so the row stops surfacing in stale-decision audits.
+
 ## Pending Review
 <!-- Items awaiting Bernard review -->
 
@@ -72,6 +98,23 @@ Next.js (App Router), Tailwind CSS, MDX guides, Resend email + Supabase subscrib
 
 ## Active
 <!-- Bernard maintains this section. Current tasks in flight. -->
+
+### TCP Autonomous Ops — Phase A (ROUTED TO DEVAN 2026-04-22)
+**Spec:** `TCP-AUTONOMOUS-OPS.md` Phase A
+**Owner:** Devan (build), Bernard (review + crontab install)
+**Why:** Cuts Brett's TCP mental load 80%. Single Monday email + one-click visual approval dashboard replaces "open terminal, read PROJECT.md, scroll Pending Review" loop.
+**Dependency:** Phase 1a `template-shell.ts` is live — Phase A is unblocked.
+**Deliverables:**
+1. `supabase/migrations/00X_create_review_requests.sql` (X = next available, likely 002 or 003)
+2. `src/lib/review/token.ts` — HMAC sign + verify helper
+3. `src/app/review/[token]/page.tsx` — review dashboard (server component reading row, client island for buttons)
+4. `src/app/api/review/[token]/route.ts` — PATCH decision endpoint
+5. `src/lib/email/briefing-template.ts` — uses `renderEmailShell()` with the 5-section briefing layout
+6. `scripts/brett-monday-briefing.mjs` — gathers data, renders, sends via Resend
+7. `scripts/brett-monday-briefing.sh` — cron wrapper (mirror `send-weekly-digest.sh`)
+8. PROJECT.md playbook stub for "how to create review_requests" (Bernard writes this on review)
+**Schedule:** 5 days available. Target ship by EOW 2026-04-26 so the first Monday briefing fires 2026-04-27 at 7am PT.
+**Out of scope (Phase B):** Atlas health check, Ricky weekly cron, monthly content kickoff, inbox scanner.
 
 ### [TOP PRIORITY] Subscriber nurture — wire the day 2/5/8/12 drip (ADDED 2026-04-22)
 **Why:** Welcome email sends on signup, Sunday digest runs on cron, but subs hear nothing between. The drip copy (5 emails over 12 days) is already written and unused.
