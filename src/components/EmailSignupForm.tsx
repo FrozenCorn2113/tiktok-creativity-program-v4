@@ -55,6 +55,12 @@ export default function EmailSignupForm({
   const isHero = variant === 'hero'
   const isInline = variant === 'inline'
 
+  // Always pass a lead_magnet so Supabase has segmentation data.
+  // Fall back to the variant's default title (e.g. "Newsletter" for hero/inline)
+  // rather than null, which pollutes the analytics breakdown.
+  const effectiveLeadMagnet =
+    leadMagnet ?? (variant === 'inline' ? 'Newsletter' : copy.title)
+
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
     if (!email) return
@@ -70,7 +76,7 @@ export default function EmailSignupForm({
         body: JSON.stringify({
           email,
           source: variant,
-          lead_magnet: leadMagnet ?? undefined,
+          lead_magnet: effectiveLeadMagnet,
           page_url: typeof window !== 'undefined' ? window.location.pathname : undefined,
         }),
       })
@@ -89,12 +95,12 @@ export default function EmailSignupForm({
       // PostHog with taxonomy-aligned properties.
       track('email_signup', {
         signup_source: variant,
-        lead_magnet: leadMagnet ?? null,
+        lead_magnet: effectiveLeadMagnet,
         page_url: typeof window !== 'undefined' ? window.location.pathname : undefined,
       })
-      // If this signup was driven by a lead magnet, a download will follow on
-      // the email side. Fire a lightweight download-intent event so we can
-      // measure the magnet-specific funnel.
+      // If this signup was driven by an explicit lead magnet (not the newsletter
+      // default), a download will follow on the email side. Fire a lightweight
+      // download-intent event so we can measure the magnet-specific funnel.
       if (leadMagnet) {
         track('lead_magnet_download', {
           lead_magnet: leadMagnet,

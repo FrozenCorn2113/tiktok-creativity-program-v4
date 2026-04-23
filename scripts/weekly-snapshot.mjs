@@ -194,10 +194,18 @@ async function gatherTraffic() {
 }
 
 // ---------- Supabase signups ----------
+// Exclude synthetic/QA rows so totals, weekly, and unsub counts reflect real subs.
+const TEST_SOURCES = ['debug-test', 'e2e-test', 'debug', 'hardcoded-test']
+
 async function gatherSignups() {
   const key = SUPABASE_SERVICE_ROLE_KEY || SUPABASE_ANON_KEY
   try {
-    const url = `${SUPABASE_PROJECT_URL}/rest/v1/email_subscribers?select=created_at,unsubscribed_at,lead_magnet,source`
+    // PostgREST `not.in` filter — applied to all three derived counts since we
+    // fetch the full set once and bucket locally.
+    const notIn = `(${TEST_SOURCES.join(',')})`
+    const url = `${SUPABASE_PROJECT_URL}/rest/v1/email_subscribers?select=created_at,unsubscribed_at,lead_magnet,source&source=not.in.${encodeURIComponent(
+      notIn
+    )}`
     const res = await fetch(url, {
       headers: { apikey: key, Authorization: `Bearer ${key}` },
     })
