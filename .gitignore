@@ -1,4 +1,10 @@
 .env
+.env.local
+.env.*.local
+.env.development.local
+.env.production.local
+.env.test.local
+!.env.example
 node_modules
 .next
 ga-service-account.json
